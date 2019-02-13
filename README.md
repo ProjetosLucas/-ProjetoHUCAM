@@ -129,9 +129,19 @@ Para:
 
 14- Assim o navegador irá mostrar o Projeto baixado pelo git clone.
 
-15- Clica na pasta projeto.
+15- Clica na pasta projeto para ver o site.
 
-16- Qualquer modificação você deve fazer o seguinte, abrir o git e fazer os seguintes comandos, onde você coloca o seu e-mail no "you@example.com", o seu nome em "Your Name" e algum comentário em  "Algum Comentario":
+16- Antes de começa a fazer a alteração no código faça o seguinte:
+	
+	git config --global user.email "you@example.com"
+  	
+	git config --global user.name "Your Name"
+	
+	cd C:\xampp\htdocs\Projeto
+	
+	git pull
+
+17- Qualquer modificação você deve fazer o seguinte, abrir o git e fazer os seguintes comandos, onde você coloca o seu e-mail no "you@example.com", o seu nome em "Your Name" e algum comentário em  "Algum Comentario":
 	
 	git config --global user.email "you@example.com"
   	
