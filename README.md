@@ -17,7 +17,8 @@ Segue os passos para colocar no seu computador
 
 7- Abra o Git e escreva o seguinte comando: git clone https://github.com/ProjetosLucas/-ProjetoHUCAM.git C:\xampp\htdocs\Projeto
 
-8- No prompt escreva os seguintes comandos: 
+8- No prompt escreva os seguintes comandos:
+ 
 	cd C:\xampp\htdocs\Projeto\projeto
 	composer install 
 
@@ -28,6 +29,101 @@ Segue os passos para colocar no seu computador
 11-Aperta no canto esquerdo da tela "New" e em Criar base de Dados escreva "project"
 
 12-Depois vai na aba importar e aperte "Escolher Arquivo" e escolha o seguinte arquivo: C:\xampp\htdocs\Projeto\project.sql
+
+13-No arquivo C:\xampp\htdocs\Projeto\projeto\config\app.php, faça a seguinte alteração da seguinte parte do código:
+
+	'Datasources' => [
+        
+		'default' => [
+
+	            'className' => 'Cake\Database\Connection',
+	
+            'driver' => 'Cake\Database\Driver\Mysql',
+
+	            'persistent' => false,
+	
+            'host' => 'localhost',
+
+	            /*
+             * CakePHP will use the default DB port based on the driver selected
+	
+             * MySQL on MAMP uses port 8889, MAMP users will want to uncomment
+
+	             * the following line and set the port accordingly
+	
+             */
+            //'port' => 'non_standard_port_number',
+
+	            'username' => 'my_app',
+	
+            'password' => 'secret',
+	
+            'database' => 'my_app',
+			/*
+             
+			* You do not need to set this flag to use full utf-8 encoding (internal default since CakePHP 3.6).
+        			*/
+            
+			//'encoding' => 'utf8mb4',
+	
+               'timezone' => 'UTC',
+            
+			'flags' => [],
+
+	            'cacheMetadata' => true,
+	
+            'log' => false,
+
+
+Para:
+
+
+	'Datasources' => [
+        
+		'default' => [
+
+	            'className' => 'Cake\Database\Connection',
+	
+            'driver' => 'Cake\Database\Driver\Mysql',
+
+	            'persistent' => false,
+	
+            'host' => 'localhost',
+
+	            /*
+             * CakePHP will use the default DB port based on the driver selected
+	
+             * MySQL on MAMP uses port 8889, MAMP users will want to uncomment
+
+	             * the following line and set the port accordingly
+	
+             */
+            //'port' => 'non_standard_port_number',
+
+	            'username' => 'root',
+	
+            'password' => '',
+
+	            'database' => 'project',
+
+            	    /*
+             
+			* You do not need to set this flag to use full utf-8 encoding (internal default since CakePHP 3.6).
+        			*/
+            
+			//'encoding' => 'utf8mb4',
+	
+               'timezone' => 'UTC',
+            
+			'flags' => [],
+
+	            'cacheMetadata' => true,
+	
+            'log' => false,
+
+
+
+
 
 13- Agora com o Navegador (GoogleChrome, Mozilla,...) e escreva: localhost/Projeto/
 
