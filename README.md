@@ -13,7 +13,7 @@ Segue os passos para colocar no seu computador
 
 5- Abra o arquivo C:\xampp\php\php.ini e altera a linha ';extension=php_intl.dll' ou ';extension=intl'  para 'extension=php_intl.dll' ou 'extension=intl' (remover o ponto e vírgula) e salva o arquivo. Copie todos os arquivos /xamp/php/ic*.dll para /xampp/apache/bin.
 
-6- Instala o Composer(Pode achar o instalador olhe o seguinte site https://getcomposer.org/Composer-Setup.exe). Na aba Settings Check, quando ele pede "Choose the Command-Line PHP you want to use:" escolha a opção C:\xamppp\php\php.exe.
+6- Instala o Composer (Pode achar o instalador olhe o seguinte site https://getcomposer.org/Composer-Setup.exe). OBSERVAÇÃO: Na aba Settings Check, quando ele pede "Choose the Command-Line PHP you want to use:" escolha a opção C:\xamppp\php\php.exe.
 
 7- Abra o Git e escreva o seguinte comando: git clone https://github.com/ProjetosLucas/-ProjetoHUCAM.git C:\xampp\htdocs\Projeto
 
