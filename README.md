@@ -135,25 +135,17 @@ Para:
 16- Antes de começa a fazer a alteração no código faça o seguinte:
 	
 	git config --global user.email "you@example.com"
-  	
 	git config --global user.name "Your Name"
-	
 	cd C:\xampp\htdocs\Projeto
-	
 	git pull
 
 17- Qualquer modificação você deve fazer o seguinte, abrir o git e fazer os seguintes comandos, onde você coloca o seu e-mail no "you@example.com", o seu nome em "Your Name" e algum comentário em  "Algum Comentario":
 	
 	git config --global user.email "you@example.com"
-  	
 	git config --global user.name "Your Name"
-	
 	cd C:\xampp\htdocs\Projeto
-	
 	git add .
-	
 	git commit -m "Algum Comentario"
-	
 	git push
 
 Onde irá atualizar o código do github. Atualiza sempre o beckup do banco de dados que está presente no arquivo C:\xampp\htdocs\Projeto\project.sql. Para fazer o beckup é só digitar localhost/phpmyadmin/ no navegador, apertar no Menu do lado esquerdo em "project", aperta depois em "exportar" e depois em executar. O arquivo que foi feito o download sobreescreve sobre o arquivo C:\xampp\htdocs\Projeto\project.sql.
