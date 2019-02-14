@@ -29,7 +29,7 @@ Segue os passos para colocar no seu computador
 
 11-Aperta no canto esquerdo da tela "New" e em "Criar base de Dados" escreva "project"
 
-12-Depois vai na aba importar e aperte "Escolher Arquivo" e escolha o seguinte arquivo: C:\xampp\htdocs\Projeto\project.sql
+12-Depois vai na aba importar e aperte "Escolher Arquivo" e escolha o seguinte arquivo: C:\xampp\htdocs\Projeto\project.sql. Depois aperte em "Executar".
 
 13-No arquivo C:\xampp\htdocs\Projeto\projeto\config\app.php, faça a seguinte alteração da seguinte parte do código:
 
@@ -139,7 +139,7 @@ Para:
 	cd C:\xampp\htdocs\Projeto
 	git pull
 
-Caso perceba que ocorreu alguma mudança no arquivo project.sql (É dito na tela preta do git), faça a atualização do banco de dados do seu computador. Caso isso ocorra, abra o Navegador (GoogleChrome, Mozilla,...) e  escreva: localhost/phpmyadmin/, e vai em cima da tela e aperta Base de Dados, depois seleciona "project" e aperta "Elimina". No canto esquerdo da tela  aperta em "New" e em "Criar base de Dados" escreva "project". Depois vai na aba importar e aperte "Escolher Arquivo" e escolha o seguinte arquivo: C:\xampp\htdocs\Projeto\project.sql
+Caso perceba que ocorreu alguma mudança no arquivo project.sql (É dito na tela preta do git), faça a atualização do banco de dados do seu computador: abra o Navegador (GoogleChrome, Mozilla,...) e  escreva: localhost/phpmyadmin/, e vai em cima da tela e aperta Base de Dados, depois seleciona "project" e aperta "Elimina" e depois em "OK". Logo, no canto esquerdo da tela  aperta em "New" e em "Criar base de Dados" escreva "project". Depois vai na aba importar e aperte "Escolher Arquivo", escolha o seguinte arquivo: C:\xampp\htdocs\Projeto\project.sql e depois aperta em "Executar". 
 
 17- Qualquer modificação você deve fazer o seguinte, abrir o git e fazer os seguintes comandos, onde você coloca o seu e-mail no "you@example.com", o seu nome em "Your Name" e algum comentário em  "Algum Comentario":
 	
