@@ -43,7 +43,7 @@ $dir='exames/';//Modifiquei Aqui
                 <td><?= $this->Number->format($image->id) ?></td>
                 <td><?= h($image->name) ?></td>
                 <td><?php  
-                $var = '<img src="/-ProjetoHUCAM/projeto/'.$dir.$image->file_name.'" alt=""/>'; //Modifiquei Aqui!!
+                $var = '<img src="/Projeto/projeto/'.$dir.$image->file_name.'" alt=""/>'; //Modifiquei Aqui!!
                 echo $var;?></td>
                 <td><?= $image->has('image_type') ? $this->Html->link($image->image_type->name, ['controller' => 'ImageTypes', 'action' => 'view', $image->image_type->id]) : '' ?></td>
                 <td><?= $image->has('disease') ? $this->Html->link($image->disease->name, ['controller' => 'Diseases', 'action' => 'view', $image->disease->id]) : '' ?></td>

@@ -36,7 +36,7 @@ $dir='exames/';//Modifiquei Aqui
         <tr>
             <th scope="row"><?= __('File Name') ?></th>
             <td><?php  //Modifiquei Aqui
-                $var = '<img src="/-ProjetoHUCAM/projeto/'.$dir.$image->file_name.'" alt=""/>'; 
+                $var = '<img src="/Projeto/projeto/'.$dir.$image->file_name.'" alt=""/>'; 
                 echo $var;?></td>            
         </tr>
         <tr>

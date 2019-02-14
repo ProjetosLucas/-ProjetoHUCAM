@@ -61,7 +61,7 @@ $dir='exames/';//Modifiquei Aqui
                 <!--<td><?= h($images->id) ?></td>-->
                 <td><?= h($images->name) ?></td>
                 <td><?php  
-                $var = '<img src="/-ProjetoHUCAM/projeto/'.$dir.$images->file_name.'" alt=""/>'; //Modifiquei Aqui!!
+                $var = '<img src="/Projeto/projeto/'.$dir.$images->file_name.'" alt=""/>'; //Modifiquei Aqui!!
                 echo $var;?></td>
                 <!--<td><!--<?= h($images->description) ?> --></td><!--Comentei aqui Também!!!-->
                 <!--<td><?= h($images->image_type_id) ?></td>-->
