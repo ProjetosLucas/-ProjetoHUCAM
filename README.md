@@ -5,9 +5,9 @@ Segue os passos para colocar no seu computador
 
 1- Instala o aio-runtimes_v2.4.7.exe, que é programa que instala as atualizações do Windows nescessárias para o Xampp funcionar. Instala esses programas antes de instalar os outros. O instalador eu acho que pode ser encontrado no seguinte site: http://www.pcgameshardware.de/Windows-Software-122001/Downloads/All-in-One-Runtimes-Download-1164729/
 
-2- Instala se quiser o Sublime Text Build 3176 x64, que é um editor de texto. (Eu mandei no e-mail)
+2- Instala se quiser o Sublime Text Build 3176 x64, que é um editor de texto. Ele se encontra no seguinte site: https://www.sublimetext.com/3.
 
-3- Instala o Git-2.19.1-64-bit.exe.(Eu mandei no e-mail)
+3- Instala o Git-2.19.1-64-bit.exe.Ele se encontra no seguinte site: https://git-scm.com/downloads
 
 4- Instala o Xampp que está no seguinte site : https://www.apachefriends.org/xampp-files/7.3.1/xampp-win32-7.3.1-0-VC15-installer.exe.
 
