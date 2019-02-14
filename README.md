@@ -20,7 +20,8 @@ Segue os passos para colocar no seu computador
 8- No prompt escreva os seguintes comandos:
  
 	cd C:\xampp\htdocs\Projeto\projeto
-	composer install 
+	composer install
+	composer upgrade 
 
 9- Abra o Xampp (Xampp Control Panel) e aperte "Start" para todos os módulos, para inicializar todos os seus serviços.
 
@@ -155,4 +156,4 @@ Para:
 	
 	git push
 
-Onde irá atualizar o código do github.
+Onde irá atualizar o código do github. Atualiza sempre o beckup do banco de dados que está presente no arquivo C:\xampp\htdocs\Projeto\project.sql. Para fazer o beckup é só digitar localhost/phpmyadmin/ no navegador.
