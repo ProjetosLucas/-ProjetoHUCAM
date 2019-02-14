@@ -95,7 +95,7 @@ Para:
 
 15- Clica na pasta projeto para ver o site.
 
-16- Antes de começa a fazer a alteração no código faça o seguinte, onde você coloca o seu e-mail no "you@example.com", o seu nome em "Your Name".
+16- ATENÇÃO: Antes de começa a fazer a alteração no código faça o seguinte, onde você coloca o seu e-mail no "you@example.com", o seu nome em "Your Name".
 	
 	git config --global user.email "you@example.com"
 	git config --global user.name "Your Name"
