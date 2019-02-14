@@ -91,7 +91,7 @@ Para:
 
 13- Agora com o Navegador (GoogleChrome, Mozilla,...) e escreva: localhost/Projeto/
 
-14- Assim o navegador irá mostrar o Projeto baixado pelo git clone.
+14- Assim o navegador irá mostrar o Projeto baixado pelo git clone. Lembrando que esse projeto está salvo em: C:\xampp\htdocs\Projeto
 
 15- Clica na pasta projeto para ver o site.
 
