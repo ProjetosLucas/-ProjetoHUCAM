@@ -132,12 +132,14 @@ Para:
 
 15- Clica na pasta projeto para ver o site.
 
-16- Antes de começa a fazer a alteração no código faça o seguinte:
+16- Antes de começa a fazer a alteração no código faça o seguinte, onde você coloca o seu e-mail no "you@example.com", o seu nome em "Your Name".
 	
 	git config --global user.email "you@example.com"
 	git config --global user.name "Your Name"
 	cd C:\xampp\htdocs\Projeto
 	git pull
+
+Caso perceba que ocorreu alguma mudança no arquivo project.sql (É dito na tela preta do git), faça a atualização do banco de dados do seu computador. Caso isso ocorra, abra o Navegador (GoogleChrome, Mozilla,...) e  escreva: localhost/phpmyadmin/, e vai em cima da tela e aperta Base de Dados, depois seleciona "project" e aperta "Elimina". No canto esquerdo da tela  aperta em "New" e em "Criar base de Dados" escreva "project". Depois vai na aba importar e aperte "Escolher Arquivo" e escolha o seguinte arquivo: C:\xampp\htdocs\Projeto\project.sql
 
 17- Qualquer modificação você deve fazer o seguinte, abrir o git e fazer os seguintes comandos, onde você coloca o seu e-mail no "you@example.com", o seu nome em "Your Name" e algum comentário em  "Algum Comentario":
 	
