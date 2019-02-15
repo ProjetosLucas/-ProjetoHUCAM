@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: 13-Out-2018 às 17:26
--- Versão do servidor: 5.7.23
--- versão do PHP: 7.2.10
+-- Host: 127.0.0.1
+-- Generation Time: 15-Fev-2019 às 18:00
+-- Versão do servidor: 10.1.37-MariaDB
+-- versão do PHP: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,16 +28,14 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `arrows`
 --
 
-DROP TABLE IF EXISTS `arrows`;
-CREATE TABLE IF NOT EXISTS `arrows` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `arrows` (
+  `id` int(11) NOT NULL,
   `x1` int(11) NOT NULL,
   `y1` int(11) NOT NULL,
   `x2` int(11) NOT NULL,
   `y2` int(11) NOT NULL,
   `color` varchar(20) NOT NULL,
-  `image_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `image_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -46,15 +44,13 @@ CREATE TABLE IF NOT EXISTS `arrows` (
 -- Estrutura da tabela `diseases`
 --
 
-DROP TABLE IF EXISTS `diseases`;
-CREATE TABLE IF NOT EXISTS `diseases` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `diseases` (
+  `id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
   `presentation` text NOT NULL,
   `discution` text NOT NULL,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+  `user_id` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `diseases`
@@ -72,16 +68,14 @@ INSERT INTO `diseases` (`id`, `name`, `presentation`, `discution`, `user_id`) VA
 -- Estrutura da tabela `ellipses`
 --
 
-DROP TABLE IF EXISTS `ellipses`;
-CREATE TABLE IF NOT EXISTS `ellipses` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ellipses` (
+  `id` int(11) NOT NULL,
   `center_x` int(11) NOT NULL,
   `center_y` int(11) NOT NULL,
   `axis_one` int(11) NOT NULL,
   `axis_two` int(11) NOT NULL,
   `image_id` int(11) NOT NULL,
-  `color` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
+  `color` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -90,12 +84,10 @@ CREATE TABLE IF NOT EXISTS `ellipses` (
 -- Estrutura da tabela `genders`
 --
 
-DROP TABLE IF EXISTS `genders`;
-CREATE TABLE IF NOT EXISTS `genders` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(250) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+CREATE TABLE `genders` (
+  `id` int(11) NOT NULL,
+  `name` varchar(250) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `genders`
@@ -111,17 +103,15 @@ INSERT INTO `genders` (`id`, `name`) VALUES
 -- Estrutura da tabela `images`
 --
 
-DROP TABLE IF EXISTS `images`;
-CREATE TABLE IF NOT EXISTS `images` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `images` (
+  `id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
   `file_name` varchar(500) NOT NULL,
   `description` text NOT NULL,
   `image_type_id` int(11) NOT NULL,
   `disease_id` int(11) NOT NULL,
-  `patient_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+  `patient_id` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `images`
@@ -148,12 +138,10 @@ INSERT INTO `images` (`id`, `name`, `file_name`, `description`, `image_type_id`,
 -- Estrutura da tabela `image_types`
 --
 
-DROP TABLE IF EXISTS `image_types`;
-CREATE TABLE IF NOT EXISTS `image_types` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+CREATE TABLE `image_types` (
+  `id` int(11) NOT NULL,
+  `name` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `image_types`
@@ -171,14 +159,12 @@ INSERT INTO `image_types` (`id`, `name`) VALUES
 -- Estrutura da tabela `patients`
 --
 
-DROP TABLE IF EXISTS `patients`;
-CREATE TABLE IF NOT EXISTS `patients` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `patients` (
+  `id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
   `gender_id` tinyint(1) NOT NULL,
-  `age` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `age` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `patients`
@@ -191,18 +177,37 @@ INSERT INTO `patients` (`id`, `name`, `gender_id`, `age`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL,
+  `role` varchar(20) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `roles`
+--
+
+INSERT INTO `roles` (`id`, `role`, `created`, `modified`) VALUES
+(1, 'admin', '2019-02-15 16:28:46', '2019-02-15 16:28:46'),
+(2, 'moderador', '2019-02-15 16:29:05', '2019-02-15 16:29:05');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `textboxes`
 --
 
-DROP TABLE IF EXISTS `textboxes`;
-CREATE TABLE IF NOT EXISTS `textboxes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `textboxes` (
+  `id` int(11) NOT NULL,
   `x` int(11) NOT NULL,
   `y` int(11) NOT NULL,
   `text` text NOT NULL,
   `image_id` int(11) NOT NULL,
-  `color` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
+  `color` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -211,22 +216,155 @@ CREATE TABLE IF NOT EXISTS `textboxes` (
 -- Estrutura da tabela `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `username` varchar(20) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `roles_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
-INSERT INTO `users` (`id`, `name`) VALUES
-(2, 'Rodrigo Moll'),
-(3, 'Carolina Fiorin'),
-(4, 'Anselmo'),
-(5, 'Lucas Profiro');
+INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `roles_id`, `created`, `modified`) VALUES
+(2, 'Rodrigo Moll', 'Rodrigo', 'rodrigomoll@gmail.com', '123456', 2, '2019-02-15 00:00:00', '2019-02-15 00:00:00'),
+(3, 'Carolina Fiorin', 'Carolina', 'cfanhoque@gmail.com', '123456', 2, '2019-02-20 00:00:00', '2019-02-20 00:00:00'),
+(4, 'Anselmo', 'Anselmo', 'anselmoneto@gmail.com', '123456', 2, '2019-02-12 00:00:00', '2019-02-20 00:00:00'),
+(5, 'Lucas Profiro', 'Lucas', 'lucasprofiro@gmail.com', '123456', 2, '2019-02-20 00:00:00', '2019-02-21 00:00:00'),
+(6, 'admin', 'admin', 'admin@teste.com', '$2y$10$EXH0LuSXZH3DtU9yLzOC9OM690WaxRWD68mdS2vOVN4NOGFduICaK', 1, '2019-02-15 16:39:26', '2019-02-15 16:57:29');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `arrows`
+--
+ALTER TABLE `arrows`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `diseases`
+--
+ALTER TABLE `diseases`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ellipses`
+--
+ALTER TABLE `ellipses`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `genders`
+--
+ALTER TABLE `genders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `images`
+--
+ALTER TABLE `images`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `image_types`
+--
+ALTER TABLE `image_types`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `patients`
+--
+ALTER TABLE `patients`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `textboxes`
+--
+ALTER TABLE `textboxes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `arrows`
+--
+ALTER TABLE `arrows`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `diseases`
+--
+ALTER TABLE `diseases`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `ellipses`
+--
+ALTER TABLE `ellipses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `genders`
+--
+ALTER TABLE `genders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `images`
+--
+ALTER TABLE `images`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `image_types`
+--
+ALTER TABLE `image_types`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `patients`
+--
+ALTER TABLE `patients`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `textboxes`
+--
+ALTER TABLE `textboxes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
