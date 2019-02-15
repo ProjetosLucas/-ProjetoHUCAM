@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Users Controller
@@ -12,7 +13,11 @@ use App\Controller\AppController;
  */
 class UsersController extends AppController
 {
-
+     public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $this->Auth->allow('add');
+    }
     /**
      * Index method
      *
@@ -118,5 +123,9 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('Invalid username or password, try again'));
         }
+    }
+    public function logout()
+    {
+        return $this->redirect($this->Auth->logout());
     }
 }

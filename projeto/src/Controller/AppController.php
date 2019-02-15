@@ -69,4 +69,8 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
     }
+    public function beforeFilter(Event $event)
+    {
+        $this->set('username', $this->Auth->user('username'));
+    }
 }
