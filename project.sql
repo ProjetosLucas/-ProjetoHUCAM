@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 15-Fev-2019 às 18:00
+-- Generation Time: 15-Fev-2019 às 22:07
 -- Versão do servidor: 10.1.37-MariaDB
 -- versão do PHP: 7.3.1
 
@@ -49,18 +49,21 @@ CREATE TABLE `diseases` (
   `name` varchar(500) NOT NULL,
   `presentation` text NOT NULL,
   `discution` text NOT NULL,
-  `user_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `aproved` tinyint(1) NOT NULL,
+  `modified` datetime NOT NULL,
+  `created` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `diseases`
 --
 
-INSERT INTO `diseases` (`id`, `name`, `presentation`, `discution`, `user_id`) VALUES
-(12, '3rd metacarpal fracture', 'Hand injury after fighting. Intoxicated.', 'Fracture of the 3rd metacarpal after a fighting injury.', 3),
-(10, '11 pairs of ribs and lumbosacral transitional vertebra', 'Abdominal pain and vomiting. No significant medical history.', 'Since 11 rib pairs can be counted on the upright frontal chest film, one can confidently determine that the lumbosacral transitional vertebra is, in fact, a sacralised L5 vertebra.', 3),
-(11, '1st trimester nuchal/morphology ultrasound', 'Routine nuchal translucency ultrasound. Gestational age 12 weeks 4 days, as established on earlier scan.', 'This is a normal ultrasound performed at 12 weeks 4 days gestational age, demonstrating fairly detailed fetal anatomy.\r\n\r\nMorphologic assessment in the late first trimester is dependent on patient, machine and operator factors.  It is possible however with current equipment to obtain a great deal of anatomic information at this stage.  Detection of any anomalies at an earlier stage is optimal for patient counselling and management of pregnancy.', 5),
-(9, 'Spheno-orbital meningioma', 'Headache and right proptosis.', 'Sphenoid or (spheno-orbital) wing meningiomas are complex tumors involving sphenoid wing, orbit and cavernous sinus, with sphenoid bone remodelling.', 2);
+INSERT INTO `diseases` (`id`, `name`, `presentation`, `discution`, `user_id`, `aproved`, `modified`, `created`) VALUES
+(12, '3rd metacarpal fracture', 'Hand injury after fighting. Intoxicated', 'Fracture of the 3rd metacarpal after a fighting injury.', 3, 1, '2019-02-15 21:00:12', '2019-02-15 00:00:00'),
+(10, '11 pairs of ribs and lumbosacral transitional vertebra', 'Abdominal pain and vomiting. No significant medical history.', 'Since 11 rib pairs can be counted on the upright frontal chest film, one can confidently determine that the lumbosacral transitional vertebra is, in fact, a sacralised L5 vertebra.', 3, 0, '2019-02-15 00:00:00', '2019-02-15 00:00:00'),
+(11, '1st trimester nuchal/morphology ultrasound', 'Routine nuchal translucency ultrasound. Gestational age 12 weeks 4 days, as established on earlier scan.', 'This is a normal ultrasound performed at 12 weeks 4 days gestational age, demonstrating fairly detailed fetal anatomy.\r\n\r\nMorphologic assessment in the late first trimester is dependent on patient, machine and operator factors.  It is possible however with current equipment to obtain a great deal of anatomic information at this stage.  Detection of any anomalies at an earlier stage is optimal for patient counselling and management of pregnancy.', 5, 1, '2019-02-15 21:05:01', '2019-02-15 00:00:00'),
+(9, 'Spheno-orbital meningioma', 'Headache and right proptosis.', 'Sphenoid or (spheno-orbital) wing meningiomas are complex tumors involving sphenoid wing, orbit and cavernous sinus, with sphenoid bone remodelling.', 2, 0, '2019-02-15 00:00:00', '2019-02-15 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -316,7 +319,7 @@ ALTER TABLE `arrows`
 -- AUTO_INCREMENT for table `diseases`
 --
 ALTER TABLE `diseases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `ellipses`

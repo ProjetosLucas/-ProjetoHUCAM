@@ -32,6 +32,9 @@ class Disease extends Entity
         'presentation' => true,
         'discution' => true,
         'user_id' => true,
+        'aproved' => true,
+        'modified' => true,
+        'created' => true,
         'user' => true,
         'images' => true
     ];

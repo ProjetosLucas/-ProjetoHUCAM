@@ -37,12 +37,8 @@ class DiseasesController extends AppController
 
     public function articles()
     {
-        $this->paginate = [
-            'contain' => ['Users']
-        ];
-        $diseases = $this->paginate($this->Diseases);
-
-        $this->set(compact('diseases'));
+        $query = $this->Diseases->find('all')->where(['aproved' => 1]);
+        $this->set('diseases', $this->paginate($query));
     }
 
     /**
@@ -68,7 +64,7 @@ class DiseasesController extends AppController
      */
     public function add()
     {
-        $disease = $this->Diseases->newEntity();
+         $disease = $this->Diseases->newEntity();
         if ($this->request->is('post')) {
             $disease = $this->Diseases->patchEntity($disease, $this->request->getData());
             if ($this->Diseases->save($disease)) {

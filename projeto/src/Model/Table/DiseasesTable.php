@@ -45,6 +45,7 @@ class DiseasesTable extends Table
         $this->hasMany('Images', [
             'foreignKey' => 'disease_id'
         ]);
+        $this->addBehavior('Timestamp');
     }
 
     /**
@@ -74,6 +75,10 @@ class DiseasesTable extends Table
             ->scalar('discution')
             ->requirePresence('discution', 'create')
             ->notEmpty('discution');
+
+        $validator
+            ->boolean('aproved');
+
 
         return $validator;
     }
