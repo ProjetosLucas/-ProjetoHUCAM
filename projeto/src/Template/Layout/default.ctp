@@ -48,7 +48,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <li><?= $this->Html->link(__('Logout'),['controller'=>'Users','action'=>'logout']) ?></li>
                  <li><?= $this->Html->link(__($username),['controller' => 'Users', 'action' => 'view',$username_id])  ?></li>
                  <?php endif; ?>
-                 <li><a>Projeto do HUCAN</a></li>
+                 <li><?= $this->Html->link(__('Projeto Hucan'),['controller'=>'Diseases','action'=>'articles']) ?></li>
             </ul>
         </div>
     </nav>
