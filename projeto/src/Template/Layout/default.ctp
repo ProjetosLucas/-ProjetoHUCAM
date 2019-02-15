@@ -46,6 +46,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <li><a target="_blank" href="https://api.cakephp.org/3.0/">API</a></li>-->
                 <?php if ($username): ?>
                 <li><?= $this->Html->link(__('Logout'),['controller'=>'Users','action'=>'logout']) ?></li>
+                 <li><?= $this->Html->link(__($username),['controller' => 'Users', 'action' => 'view',$username_id])  ?></li>
                  <?php endif; ?>
                  <li><a>Projeto do HUCAN</a></li>
             </ul>
