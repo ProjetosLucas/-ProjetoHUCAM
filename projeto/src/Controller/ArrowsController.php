@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Arrows Controller
@@ -12,7 +13,7 @@ use App\Controller\AppController;
  */
 class ArrowsController extends AppController
 {
-
+    
     /**
      * Index method
      *

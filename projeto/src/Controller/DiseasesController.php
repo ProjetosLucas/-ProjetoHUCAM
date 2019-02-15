@@ -16,8 +16,8 @@ class DiseasesController extends AppController
      public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        $this->Auth->allow('index');
         $this->Auth->allow('view');
+        $this->Auth->allow('articles');
     }
     
     /**
@@ -26,6 +26,16 @@ class DiseasesController extends AppController
      * @return \Cake\Http\Response|void
      */
     public function index()
+    {
+        $this->paginate = [
+            'contain' => ['Users']
+        ];
+        $diseases = $this->paginate($this->Diseases);
+
+        $this->set(compact('diseases'));
+    }
+
+    public function articles()
     {
         $this->paginate = [
             'contain' => ['Users']
