@@ -50,6 +50,14 @@ class ImagesController extends AppController
         $this->set('image', $image);
     }
 
+    public function draw($id = null)
+    {
+        $image = $this->Images->get($id, [
+            'contain' => ['ImageTypes', 'Diseases', 'Patients', 'Arrows', 'Ellipses', 'Textboxes']
+        ]);
+
+        $this->set('image', $image);
+    }
     /**
      * Add method
      *
