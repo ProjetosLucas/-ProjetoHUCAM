@@ -136,4 +136,5 @@ $dir='exames/';//Modifiquei Aqui
         </table>
         <?php endif; ?>
     </div>
+    <h3><?= $this->Html->link(__('Edit This Image'), ['controller' => 'Images', 'action' => 'edit', $image->id]) ?></h3>
 </div>

@@ -64,4 +64,5 @@ $dir='exames/';//Modifiquei Aqui
         </table>
         <?php endif; ?>
     </div>
+    <h5><?= $this->Html->link(__('Edit This Article'), ['controller' => 'Diseases', 'action' => 'edit', $disease->id]) ?></h5>
 </div>
