@@ -1,0 +1,1391 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="expires" content="0">
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<title>Tooltips per JavaScript / DHTML</title>
+<link rel="stylesheet" type="text/css" href="../newwalterzorn.css">
+<style type="text/css">
+<!--
+.tt {
+  font-size:12px;
+}
+
+.sample {
+  border: 1px solid #000099;
+  background: #eeeeee;
+  padding: 3px;
+ }
+
+#T2tDirect {
+  border:2px solid red;
+  background:yellow;
+  padding:3px;
+}
+-->
+</style>
+<script type="text/javascript">
+<!--
+function MyTip(arg)
+{
+    switch(arg)
+    {
+    case "browser":
+        return Tip("Gecko-Browser (Firefox, Mozilla, Netscape 6+)<br>Konqueror<br>IE 5+<br>Opera 7+<br>Safari<br>und alle Browser, die einigerma&szlig;en dem<br>W3C-DOM-Standard folgen", TITLE, "Unterst&uuml;tzte Browser", ABOVE, true, JUMPHORZ, true, SHADOW, true);
+    case "docu":
+        return Tip("Lesen Sie, wie einfach das Script verwendet werden kann. Sie haben aber auch umfangreiche M&ouml;glichkeiten, die Tooltips zu konfigurieren, entweder global, indem Sie die Konfigurationsvariablen im Script selbst &auml;ndern, oder individuall mittels Kommandos.", WIDTH, 320, SHADOW, true, ABOVE, true, JUMPHORZ, true);
+    case "download":
+        return Tip("Zum Abschnitt, wo Sie wz_tooltip.js als<br>ZIP-Datei herunterladen k&ouml;nnen", SHADOW, true, JUMPHORZ, true);
+    case "extensions":
+        return TagToTip('T2TExtensions', BALLOON, true, ABOVE, true, JUMPHORZ, true, OFFSETX, -17);
+    case "features":
+        return Tip("Kurze Zusammenfassung der M&ouml;glichkeiten und Besonderheiten", SHADOW, true, ABOVE, true, JUMPHORZ, true);
+    case "home":
+        return Tip("Zur Startseite von walterzorn.de", SHADOW, true);
+    }
+}
+
+function FixCalcXY(el)
+{
+    if(typeof(el.offsetParent) == "undefined")
+        return [70, 4000];
+	var a = new Array(0, -70);
+	while(el)
+	{
+		a[0] += el.offsetLeft || 0;
+		a[1] += el.offsetTop || 0;
+		el = el.offsetParent || null;
+	}
+	return a;
+}
+//-->
+</script>
+</head>
+<body bgcolor="#ffffff">
+<script type="text/javascript" src="http://www.walterzorn.de/en/scripts/wz_tooltip.js"></script>
+<script type="text/javascript" src="http://www.walterzorn.de/en/scripts/tip_balloon.js"></script>
+<a name="top"> </a>
+  &nbsp;<a href="http://www.walterzorn.de/en/tooltip/tooltip_e.htm" target="_top"><img src="../images/uk.gif" align="middle" border="0" alt="English version" width="22" height="15"></a> <a href="http://www.walterzorn.de/en/tooltip/tooltip_e.htm" target="_top"><img src="../images/usa.gif" align="middle" border="0" alt="English version" width="22" height="15"></a> <small><a href="http://www.walterzorn.de/en/tooltip/tooltip_e.htm" target="_top">English version</a></small>
+  <center>
+    <table>
+      <tr>
+        <td align="center"><a onmouseover="MyTip('home')" onmouseout="UnTip()" href="../index.htm"><img name="logo" border="0" src="../images/logo.gif" alt="" width="271" height="30"></a></td>
+      </tr>
+    </table>
+    <table cellspacing="10">
+      <tr>
+        <td><img src="../images/transparentpixel.gif" alt="DHTML: Tooltips per JavaScript" width="1" height="1"><a onmouseover="MyTip('home')" onmouseout="UnTip()" href="../index.htm">Home</a></td>
+        <td><a onmouseover="Tip('Schlanke, leicht verst&auml;ndliche Cross-Browser-DHTML-Bibliothek. Kann zudem Bilder und Layer drag&amp;drop-f&auml;hig machen. Die Seite dient zugleich der Demonstration.', SHADOW, true, WIDTH, 300)" onmouseout="UnTip()" href="../dragdrop/dragdrop.htm">DHTML-Bibliothek</a></td>
+        <td><a onmouseover="Tip('Linien, Ellipsen, Kreise, Polygone und Rechtecke mit JavaScript dynamisch in eine Webseite zeichnen. Optimierte Performance, Pixeloptimierung. Die Seite dient zugleich der Demonstration...', SHADOW, true, WIDTH, 300)" onmouseout="UnTip()" href="../jsgraphics/jsgraphics.htm">Vektorgrafik-Bibliothek</a></td>
+        <td><a onmouseover="Tip('Online-Funktionsgraph-Plotter<br>&nbsp;<br><img src=http://www.walterzorn.de/en/images/grapher.gif width=210 height=175>', SHADOW, true, BGCOLOR, '#ffffff')" onmouseout="UnTip()" href="../grapher/grapher.htm">Funktionsgraph-Plotter</a></td>
+      </tr>
+<!--tr><td colspan="4"><form><select><option>abdlkdvsadfasdfasdvasdfasdfadfadfadsfassdfvsdadfasdfdfvsdfasd</option><option>avasas</option></select> <input type="text" size="20"></form></td></tr-->
+    </table>
+    <br>
+    <table cellpadding="3">
+      <tr>
+        <td width="130"><br></td>
+        <td>
+          <table>
+            <tr>
+              <td>
+                <b><big>JavaScript, DHTML
+                <br>Tooltips</big>
+                <br>JavaScript Bibliothek zum Download.</b><br>
+                <small>Entwickler: Walter Zorn</small><br>&nbsp;
+              </td>
+              <td rowspan="4" valign="top" align="center" width="150">
+                <table cellpadding="0" cellspacing="3">
+                  <tr>
+                    <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt="DHTML: Tooltip per JavaScript"></td>
+                    <td>
+                      <small>
+                        &nbsp;<br>
+                        <a href="#features" onmouseover="MyTip('features')" onmouseout="UnTip()">Kurzbeschreibung</a>
+                        <br>&nbsp;<br>
+                        <a onmouseover="MyTip('browser')" onmouseout="UnTip()" href="#browser">Cross-Browser</a>
+                        <br>&nbsp;<br>
+                        <a href="#docu" onmouseover="MyTip('docu')" onmouseout="UnTip()">Dokumentation</a>
+                        <br>&nbsp;<br>
+                        <a href="#extensions" onmouseover="MyTip('extensions')" onmouseout="UnTip()">Erweiterungen</a>
+                        <br>&nbsp;<br>
+                        <a href="#download" onmouseover="MyTip('download')" onmouseout="UnTip()">Download</a>
+                        <br>&nbsp;
+                      </small>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Dieses Tooltip-JavaScript erzeugt Tooltips, kleine <a href="javascript:void(0);" onmouseover="Tip('Ein Tooltip')" onmouseout="UnTip()">Informations-Boxen</a> &uuml;ber HTML-Elementen.
+                Die Verwendung dieses Tooltip-Scripts ist sehr einfach.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <big><a name="features"> </a>&nbsp;<br><b>Kurzbeschreibung</b></big>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Die
+                <a href="javascript:void(0)" onmouseover="TagToTip('T2TAdaptWidth')" onmouseout="UnTip()">Breite</a>
+                dieser JavaScript-Tooltips passt sich automatisch an den Inhalt an.
+                <span id="T2TAdaptWidth">Nat&uuml;rlich k&ouml;nnen Sie auch eine feste Tooltip-Breite vorgeben.</span>
+                Die Tooltips k&ouml;nnen einfachen Text enthalten, aber auch HTML, zum Beispiel
+                <a href="javascript:void(0);" onmouseover="Tip('Dieses Bild wurde per &amp;lt;img&amp;gt;-Tag in den Tooltip-Text eingef&uuml;gt<br>&nbsp;<br><img src=http://www.walterzorn.de/en/images/tooltip/leop.jpg width=150 height=102>', WIDTH, 150, PADDING, 6, BGCOLOR, '#ffffff')" onmouseout="UnTip()">Bilder</a>,
+                Zeilen-
+                <a href="javascript:void(0)" onmouseover="Tip('Text mit Zeilen-<br>umbruch, der mit einem &amp;lt;br&amp;gt;-Tag erzwungen wurde')" onmouseout="UnTip()">Umbr&uuml;che</a>,
+                <a href="javascript:void(0)" onmouseover="Tip('<table border=\'0\' cellspacing=\'5\'><tr><th colspan=\'2\' style=\'font-size:8pt;background:#ffcccc;\'>HTML-Tabelle in Tooltip<\/th><\/tr><tr><td style=\'font-size:8pt;background:#ffffff;\'>Zeile 2, Zelle 1<\/td><td style=\'font-size:8pt;background:#ffffff;\'>Zeile 2, Zelle 2<\/td><\/tr><tr><td style=\'font-size:8pt;background:#ffffff;\'>Zeile 3, Zelle 1<\/td><td style=\'font-size:8pt;background:#ffffff;\'>Zeile 3, Zelle 2<\/td><\/tr><\/table>')" onmouseout="UnTip()">Tabellen</a>,
+                Listen etc..
+                <img src="http://www.walterzorn.de/en/images/kreuzot_ss.jpg" align="left" alt="Bild mit JavaScript-Tooltip" title="Bild mit JavaScript-Tooltip" width="200" height="105" vspace="8" hspace="8" onmouseover="Tip('Tooltip &uuml;ber einem IMG-Tag. Ein- und Ausblend-Animation mit den FADEIN- und FADEOUT-Kommandos. (Auf 200-Kilometer-Tour im Alpenvorland.)', WIDTH, 300, FADEIN, 500, FADEOUT, 500)" onmouseout="UnTip()">
+                Das
+                <a href="javascript:void(0);" onmouseover="Tip('Tooltip mit ver&auml;nderter Schrift und Farbe', TITLE, '&Uuml;berschrift', BGCOLOR, '#ffcccc', FONTCOLOR, '#800000', FONTSIZE, '9pt', FONTFACE, 'Courier New, Courier, mono', BORDERCOLOR, '#c00000')" onmouseout="UnTip()">Aussehen</a>
+                und
+                <a href="javascript:void(0);" onmouseover="Tip('Tooltip mit Ein- und Ausblend-Animation (FADEIN- und FADEOUT-Kommandos), oberhalb des Mauszeigers positioniert (ABOVE-Kommando).', WIDTH, 250, ABOVE, true, OFFSETX, 1, FADEIN, 400, FADEOUT, 300)" onmouseout="UnTip()">Verhalten</a>
+                eines solchen mit wz_tooltip.js erzeugten Tooltips k&ouml;nnen Sie auf vielf&auml;ltige Weise konfigurieren.
+                Die Standard-Einstellungen f&uuml;r alle Tooltips k&ouml;nnen in der JavaScript-Datei selbst ge&auml;ndert werden (Abschnitt GLOBAL TOOLTIP CONFIGURATION).
+                Mit
+                <a href="#docu" onmouseover="Tip('Anleitung und Beispiele f&uuml;r die Konfiguration von Tooltips finden Sie in der <a href=#docu>Dokumentation<\/a>', WIDTH, 300, TITLE, 'Tooltip-Konfiguration', SHADOW, true, FADEIN, 300, FADEOUT, 300, STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true)" onmouseout="UnTip()">Kommandos</a>
+                lassen sich Tooltips individuell konfigurieren.
+                <br>&nbsp;<br>
+                Dar&uuml;berhinaus gibt es
+                <a href="#extensions" onmouseover="TagToTip('T2TBalloon', BALLOON, true, ABOVE, true, WIDTH, 300, PADDING, 8, TEXTALIGN, 'justify', OFFSETX, -17)" onmouseout="UnTip()">Erweiterungen (Plugins)</a>
+                (oder schreiben Sie sich Ihre eigenen!) mit weiteren Optionen zum Konfigurieren der Tooltips.
+                <span id="T2TBalloon">F&uuml;r ein <b>Ballon-Tooltip</b> wie dieses m&uuml;ssen Sie nur das JavaScript-Plugin &quot;tip_balloon.js&quot; in Ihre Seite einbinden und dann das BALLOON-Kommando auf das Tooltip anwenden.</span>
+                <br>&nbsp;<br>
+                Als weitere Besonderheit kann diese Tooltip-DHTML-Bibliothek beliebige HTML-Elemente dynamisch in Tooltips verwandeln.
+                Da solche HTML-Seiteninhalte im Gegensatz zu JavaScript-Strings suchmaschinen-relevant sind, k&ouml;nnen Sie also wirklich wichtige Inhalte in Tooltips verpacken.
+                Siehe <a href="#docu" onmouseover="Tip('Anhand seiner ID kann ein beliebiges HTML-Element in ein Tooltip verwandelt werden. Siehe <a href=#docu>Dokumentation<\/a>.', TITLE, 'Erweiterte M&ouml;glichkeiten', WIDTH, 300, SHADOW, true, STICKY, 1, CLOSEBTN, true, CLICKCLOSE, true)" onmouseout="UnTip()">Dokumentation</a>.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <big>&nbsp;<br>&nbsp;<br><a name="browser"> </a>&nbsp;<br><b>Cross-Browser</b></big>
+              </td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+                Das Tooltip-Script unterst&uuml;tzt alle Browser bis auf ein paar selten verwendete Exoten und Uralt-Browser (NN&nbsp;4, Opera&nbsp;5/6), die kein Mensch mehr benutzt.
+                Unterst&uuml;tzte Browser:
+                Gecko-Browser (Firefox, Mozilla, Netscape&nbsp;6+, Galeon und andere),
+                IE&nbsp;5+, Opera&nbsp;7+, Konqueror, Safari,
+                und alle Browser, die einigerma&szlig;en dem W3C-Standard folgen.
+                <br>&nbsp;<br>
+                Im Opera-Browser unterdr&uuml;ckt dieses Tooltip-JavaScript die betriebssystem-basierten Tooltips, die normalerweise &uuml;ber Links erscheinen w&uuml;rden.
+                Diese browsereigenen Tooltips w&uuml;rden nat&uuml;rlich auch DHTML-Inhalte verdecken und deshalb
+                <a href="javascript:void(0);" onmouseover="Tip('<img src=\'http://www.walterzorn.de/en/images/tooltip/operatooltip.gif\' border=\'0\' height=\'162\' width=\'500\'>', WIDTH, 500, BGCOLOR, '#FFFFFF', TITLE, 'Browsereigene Tooltips &uuml;ber Links in Opera')" onmouseout="UnTip()">so aussehen</a>.
+              </td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+                <big>&nbsp;<br>&nbsp;<br>&nbsp;<br><a name="docu"> </a>&nbsp;<br><b>Verwendung des Tooltip-Scripts</b></big>
+              </td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+                <b><big>1.</big> Bibliothek herunterladen</b>
+                <br>
+                <a onmouseover="MyTip('download')" onmouseout="UnTip()" href="#download">Die JavaScript-Datei downloaden</a> und entzippen.
+              </td>
+              <td rowspan="3" valign="top" align="center" width="150">
+                <table cellpadding="0" cellspacing="3">
+                  <tr>
+                    <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt="DHTML: Tooltips per JavaScript"></td>
+                    <td>
+                      <small>
+                        &nbsp;<br>
+                        <a href="#top">Seitenanfang</a>
+                        <br>&nbsp;<br>
+                        <a href="#features" onmouseover="MyTip('features')" onmouseout="UnTip()">Kurzbeschreibung</a>
+                        <br>&nbsp;<br>
+                        <a onmouseover="MyTip('browser')" onmouseout="UnTip()" href="#browser">Cross-Browser</a>
+                        <br>&nbsp;<br>
+                        <a href="#docu" onmouseover="MyTip('docu')" onmouseout="UnTip()">Dokumentation</a>
+                        <br>&nbsp;<br>
+                        <a href="#extensions" onmouseover="MyTip('extensions')" onmouseout="UnTip()">Erweiterungen</a>
+                        <br>&nbsp;<br>
+                        <a href="#download" onmouseover="MyTip('download')" onmouseout="UnTip()">Download</a>
+                        <br>&nbsp;
+                      </small>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>&nbsp;<br>&nbsp;<br><big>2.</big> In die HTML-Datei einbinden</b>
+                <br>
+                Folgende Zeilen <b style="color:#ff0000;">innerhalb des BODY-Bereichs</b>,
+                am besten <a href="javascript:void(0)" onmouseover="TagToTip('T2TBegBody', WIDTH, 300)" onmouseout="UnTip()">unmittelbar</a>
+                nach dem &ouml;ffnenden &lt;body&gt;-Tag einf&uuml;gen:
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <table class="sample">
+                  <tr>
+                    <td>
+<tt><font size="2" class="tt">&lt;script type=&quot;text/javascript&quot; src=&quot;wz_tooltip.js&quot;&gt;&lt;/script&gt;</font></tt>
+                    </td>
+                  </tr>  
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Gegebenenfalls muss der Pfad src=&quot;wz_tooltip.js&quot; zur JavaScript-Datei angepasst werden.<br>
+                <span id="T2TBegBody">Einbinden am Anfang des BODY-Bereichs stellt sicher, dass die Tooltips nahezu sofort funktionieren, lange bevor der Ladevorgang der Seite abgeschlossen ist.</span>
+                <b>&nbsp;<br>&nbsp;<br><big>3.</big> Tooltips in HTML-Tags definieren</b>
+                <br>
+                Die Tags ben&ouml;tigen je ein onmouseover- und ein onmouseout-Attribut:
+              </td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+                <table class="sample">
+                  <tr>
+                    <td>
+<tt><font size="2" class="tt">&lt;a href=&quot;index.htm&quot; onmouseover=&quot;Tip('Some&nbsp;text')&quot; onmouseout=&quot;UnTip()&quot;&gt;Homepage</font></tt>
+<tt><font size="2" class="tt">&lt;/a&gt;</font></tt>
+                    </td>
+                  </tr>  
+                </table>
+              </td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+                Das ist alles. Kein title-Attribut, kein Container-DIV.
+                <br>&nbsp;<br>
+                Wie man sieht, wird der Text dem Funktionsaufruf <tt>Tip()</tt> mitgegeben und steht in einfachen Anf&uuml;hrungszeichen (Apostrophen, Hochkommata).
+                <b>Achtung:</b> Apostrophe innerhalb des Tooltip-Textes m&uuml;ssen deshalb mit Backslashes maskiert werden.
+                Beispiel:<br>
+                <tt>Tip('Mit Hans<b style="color:#dd0000;">\'</b> Freundin auf dem Ku<b style="color:#dd0000;">\'</b>damm.')</tt>
+                <br>&nbsp;<br>
+                Der Aufruf von <tt>UnTip()</tt> im onmouseout-Eventhandler macht das Tooltip wieder unsichtbar.
+                <br>&nbsp;<br>
+                Sie k&ouml;nnen nat&uuml;rlich auch andere Eventhandler f&uuml;r <tt>Tip()</tt> und/oder <tt>UnTip()</tt> verwenden.
+              </td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+                <br>&nbsp;<br>&nbsp;<br><b><big>4.</big> Funktioniert nicht?</b>
+                <br>
+                Dann funktioniert (hoffentlich) alles.
+                Wenn nicht:
+                <br>
+                <b>a)</b> Das (ggf. serverseitig generierte) HTML und das CSS der Seite &uuml;berpr&uuml;fen, am besten mit dem W3C-Online-Validator unter <a href="http://validator.w3.org/" target="_blank">http://validator.w3.org/</a>.
+                <br>
+                <b>b)</b>
+                &Uuml;berpr&uuml;fen, ob die <a href="#docu">Schritte&nbsp;1&nbsp;bis&nbsp;3</a> zur Einbindung des Scripts und ggf. auch alle Punkte unter &quot;Weitergehende Gestaltung&quot;, siehe unten, befolgt wurden (mit Abstand h&auml;ufigste Fehlerursache).
+                <br>
+                <b>c)</b>
+                Die JavaScript-Fehlerkonsole Ihres Browsers konsultieren.
+                Eine JavaScript-Fehlermeldung beruht praktisch immer auf fehlerhafter Einbindung des Scripts, oder auf Syntax- oder Logikfehlern in eigenen Scriptzeilen.
+                <br>
+                <b>d)</b>
+                <b>Und, bitte behaupten Sie nicht, Sie h&auml;tten einen Bug gefunden</b>
+                - au&szlig;er Sie haben alles sehr sorgf&auml;ltig &uuml;berpr&uuml;ft und sind sich ganz sicher.
+                Bitte haben Sie Verst&auml;ndnis, dass ich lieber Code entwickeln als fremde Seiten debuggen m&ouml;chte.
+                Feedback ist nat&uuml;rlich willkommen!
+              </td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+                <big>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br><b>Weitergehende Gestaltung</b></big>
+              </td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+                <b><big>5.</big> Alternative: HTML-Element in Tooltip verwandeln</b>
+                <br>
+                Dazu brauchen Sie im onmouseover-Attribut nur die ID des betreffenden HTML-Elements anzugeben, z.B. eines SPAN-Tags.
+                Vorteile:
+                <ul>
+                  <li>HTML-Seiteninhalte sind im Gegensatz zu JavaScript-Strings suchmaschinen-relevant. Es spricht also nichts dagegen, wirklich wichtige Inhalte in Tooltips zu verpacken.</li>
+                  <li>Insbesondere bei geschickter Platzierung sind die HTML-Elemente auch f&uuml;r Besucher sichtbar, die JavaScript deaktiviert haben.</li>
+                  <li>Optional kann das HTML-Element, aus dem das Tooltip erzeugt wird, sogar sichtbar bleiben, zum Beispiel, um irgendetwas nochmals an einer anderen Stelle der Seite in einem Tooltip zu zeigen.</li>
+                  <li>Direkt im HTML der Seite kann komplexes inneres HTML f&uuml;r das Tooltip einfacher definiert werden als in einem JavaScript-String.</li>
+                </ul>
+              </td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+                &nbsp;<br>
+                Um ein Tooltip aus einem HTML-Element zu erzeugen, m&uuml;ssen Sie nur die ID des HTML-Tags an die Funktion TagToTip() &uuml;bergeben:
+              </td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+                <table class="sample">
+                  <tr>
+                    <td>
+<tt><font size="2" class="tt">&lt;a href=&quot;index.htm&quot; onmouseover=&quot;TagToTip('Span2')&quot; onmouseout=&quot;UnTip()&quot;&gt;Startseite</font></tt>
+<tt><font size="2" class="tt">&lt;/a&gt;</font></tt>
+<br>
+...
+<br>
+<tt><font size="2" class="tt">&lt;span id=&quot;Span2&quot;&gt;Irgendein Kommentar&lt;br&gt;zur Startseite&lt;/span&gt;</font></tt>
+<br>
+...
+                    </td>
+                  </tr>  
+                </table>
+              </td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+                In diesem Beispiel zeigt das Tooltip &uuml;ber dem Link den Inhalt des SPAN-Elements an.
+                Beachten Sie, dass nur der Inhalt mitsamt dem &lt;br&gt;-Tag &uuml;bernommen wird,
+                aber weder das Tag selbst (hier das SPAN-Element) noch CSS-Formatierungen, die auf dieses Tag angewendet wurden.
+                <br>&nbsp;<br>
+                Normalerweise macht das Tooltip-Script Elemente, die in Tooltips verwandelt werden (im Beispiel das SPAN-Element), automatisch beim Laden der Seite unsichtbar.
+                Sie k&ouml;nnen dieses automatische Verbergen deaktivieren, indem Sie die Konfigurationsvariable <tt>TagsToTip</tt> im globalen Konfigurationsabschnitt von in wz_tooltip.js auf false setzen
+                (Voreinstellung: true).
+                Dann m&uuml;ssen Sie sich ggf. aber selbst darum k&uuml;mmern, solche HTML-Elemente zu verbergen, indem Sie deren CSS-Eigenschaft 'display' auf 'none' setzen.
+                <br>&nbsp;<br>
+                Anmerkung: Insbesondere im IE profitiert die Webseiten-Ladegeschwindigkeit deutlich, wenn Sie das automatische Verbergen deaktivieren.
+              </td>
+              <td rowspan="2" align="center" width="150">
+                <table cellpadding="0" cellspacing="3">
+                  <tr>
+                    <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt="DHTML: Tooltips per JavaScript"></td>
+                    <td>
+                      <small>
+                        &nbsp;<br>
+                        <a href="#top">Seitenanfang</a>
+                        <br>&nbsp;<br>
+                        <a href="#features" onmouseover="MyTip('features')" onmouseout="UnTip()">Kurzbeschreibung</a>
+                        <br>&nbsp;<br>
+                        <a onmouseover="MyTip('browser')" onmouseout="UnTip()" href="#browser">Cross-Browser</a>
+                        <br>&nbsp;<br>
+                        <a href="#docu" onmouseover="MyTip('docu')" onmouseout="UnTip()">Dokumentation</a>
+                        <br>&nbsp;<br>
+                        <a href="#extensions" onmouseover="MyTip('extensions')" onmouseout="UnTip()">Erweiterungen</a>
+                        <br>&nbsp;<br>
+                        <a href="#download" onmouseover="MyTip('download')" onmouseout="UnTip()">Download</a>
+                        <br>&nbsp;
+                      </small>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>&nbsp;<br>&nbsp;<br><big>6.</big> HTML im Tooltip-Text</b>
+                <br>
+                F&uuml;r <i>Bilder</i> innerhalb von Tooltips m&uuml;ssen <strong>unbedingt die width- und height-Attribute in den &lt;img&gt;-Tags</strong> angegeben werden;
+                andernfalls kann die Gr&ouml;&szlig;e der Tooltips nicht richtig berechnet werden.
+                <br>&nbsp;<br>
+                <i>Doppelte Anf&uuml;hrungszeichen</i> (&quot;) innerhalb des Tooltip-Textes m&uuml;ssen als HTML-Entity &amp;quot; geschrieben werden, da Anf&uuml;hrungszeichen bereits als Begrenzer f&uuml;r das onmouseover-Attribut vergeben sind.
+                <i>Apostrophe (einfache Anf&uuml;hrungszeichen)</i> m&uuml;ssen mit einem vorangestellten Backslash maskiert werden, da Apostrophe bereits als Begrenzer f&uuml;r den Tooltip-Text dienen.
+                Als <i>Begrenzer f&uuml;r HTML-Tag-Attribute</i> innerhalb des Tooltiptexts k&ouml;nnen Sie entweder &amp;quot; oder \'&nbsp; benutzen.
+                Beispiel:
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <table cellpadding="3">
+      <tr>
+        <td width="50"><br></td>
+        <td>
+          <table class="sample">
+            <tr>
+              <td>
+<b>Richtig:</b>
+<br>
+<tt class="tt">
+&lt;a href=&quot;index.htm&quot;
+</tt>
+<tt class="tt">
+onmouseover=&quot;Tip('Text mit &lt;img src=<b style="color:#dd0000;">\'</b>pics/image.jpg<b style="color:#dd0000;">\'</b> width=<b style="color:#dd0000;">\'</b>60<b style="color:#dd0000;">\'</b>&gt;Bild.')&quot;
+</tt>
+<tt class="tt">
+onmouseout=&quot;UnTip()&quot;&gt;
+</tt>
+<tt class="tt">
+Homepage &lt;/a&gt;
+</tt>
+<br>
+oder
+<br>
+<tt class="tt">
+&lt;a href=&quot;index.htm&quot;
+</tt>
+<tt class="tt">
+onmouseover=&quot;Tip('Text mit &lt;img src=<b style="color:#dd0000;">&amp;quot;</b>pics/image.jpg<b style="color:#dd0000;">&amp;quot;</b> width=<b style="color:#dd0000;">&amp;quot;</b>60<b style="color:#dd0000;">&amp;quot;</b>&gt;Bild.')&quot;
+</tt>
+<tt class="tt">
+onmouseout=&quot;UnTip()&quot;&gt;
+</tt>
+<tt class="tt">
+Homepage &lt;/a&gt;
+</tt>
+
+<br>&nbsp;<br>
+<b>Falsch:</b>
+<br>
+<tt class="tt">
+&lt;a href=&quot;index.htm&quot;
+</tt>
+<tt class="tt">
+onmouseover=&quot;Tip('Text mit &lt;img src=<b style="color:#dd0000;">&quot;</b>pics/image.jpg<b style="color:#dd0000;">&quot;</b> width=<b style="color:#dd0000;">&quot;</b>60<b style="color:#dd0000;">&quot;</b>&gt;Bild.')&quot;
+</tt>
+<tt class="tt">
+onmouseout=&quot;UnTip()&quot;&gt;
+</tt>
+<tt class="tt">
+Homepage &lt;/a&gt;
+</tt>
+              </td>
+            </tr>  
+          </table>
+        </td>
+        <td width="50"><br></td>
+      </tr>
+    </table>
+    <table cellpadding="3">
+      <tr>
+        <td width="130"><br></td>
+        <td>
+          <table>
+            <tr>
+              <td>
+                <b>&nbsp;<br>&nbsp;<br><big>7.</big> Tooltips mit CSS-Klassen gestalten</b>
+                <br>
+                Fassen Sie einfach den Tooltip-Text in ein DIV- oder SPAN-Element der gew&uuml;nschten CSS-Klasse ein.
+                Dasselbe k&ouml;nnen Sie mit dem Titeltext machen 
+                (wie man einen Tooltip-Titel definiert, finden Sie in der Beschreibung des TITLE-Kommandos weiter unten auf dieser Seite).
+                Beispiel:
+                <br>
+                <table class="sample">
+                  <tr>
+                    <td>
+<tt><font size="2" class="tt">... onmouseover=&quot;Tip('&lt;div class=&amp;quot;TipCls1&amp;quot;&gt;Text von Tooltip 1&lt;/div&gt;')&quot; ...</font></tt>
+<br>
+<tt><font size="2" class="tt">... onmouseover=&quot;Tip('&lt;span class=\'TipCls2\'&gt;Text von Tooltip 2&lt;/span&gt;')&quot; ...</font></tt>
+<br>
+<tt><font size="2" class="tt">... onmouseover=&quot;Tip('Tooltip Nummer 3', TITLE, '&lt;div class=\'TitleCls\'&gt;Ein Titel&lt;/div&gt;')&quot; ...</font></tt>
+                    </td>
+                  </tr>  
+                </table>
+              </td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+                <b>&nbsp;<br>&nbsp;<br><big>8.</big> Tooltip-Inhalt per JavaScript-Variable oder Funktionsaufruf</b>
+                <br>
+                <tt>Tip()</tt> akzeptiert anstatt eines Textes in Anf&uuml;hrungszeichen auch eine JS-Variable oder einen Funktionsaufruf.
+                Das gleiche gilt f&uuml;r Kommandos, die an <tt>Tip()</tt> oder <tt>TagToTip()</tt> &uuml;bergeben werden.
+                Vorteile:
+                Jedesmal, wenn ein Tooltip erscheint, k&ouml;nnen Inhalt, Aussehen und Verhalten dynamisch festgelegt werden.
+                Einundderselbe Text kann f&uuml;r mehrere Tooltips verwendet werden und muss ggf. nur in der Variable oder Funktion ge&auml;ndert werden.
+                Der Umgang mit Anf&uuml;hrungszeichen innerhalb des Tooltip-Texts wird einfacher, weil nicht schon beide Typen vergeben sind
+                (doppelte Anf&uuml;hrungszeichen als Begrenzer f&uuml;r das onmouseover-Attribut, einfache Anf&uuml;hrungszeichen f&uuml;r den Tooltiptext).
+                Variablen oder Funktionen werden am besten in einer separaten JS-Datei oder in einem &lt;script&gt;-Block im &lt;head&gt;-Bereich definiert:
+                <table class="sample">
+                  <tr>
+                    <td>
+<tt class="tt">
+&lt;html&gt;
+<br>
+&lt;head&gt;
+<br>
+...
+<br>
+&lt;script type=&quot;text/javascript&quot;&gt;
+<br>
+<font style="color:#dd0000;">var txt1 = &quot;Dies ist der Text des ersten Tooltips&quot;;
+<br>
+<br>
+function TooltipTxt(n)
+<br>
+&#123;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return &quot;Dies ist der Text des &quot; + n + &quot; Tooltips&quot;;
+<br>
+&#125;</font>
+<br>
+&lt;/script&gt;
+<br>
+&lt;/head&gt;
+<br>
+&lt;body&gt;
+<br>
+&lt;script type=&quot;text/javascript&quot; src=&quot;wz_tooltip.js&quot;&gt;&lt;/script&gt;
+<br>
+...
+<br>
+&lt;a href=&quot;a.htm&quot; <font style="color:#dd0000;">onmouseover=&quot;Tip(txt1)&quot;</font> onmouseout=&quot;UnTip()&quot;&gt;Link 1&lt;/a&gt;
+<br>
+...
+<br>
+&lt;a href=&quot;b.htm&quot; <font style="color:#dd0000;">onmouseover=&quot;Tip(TooltipTxt('zweiten'))&quot;</font> onmouseout=&quot;UnTip()&quot;&gt;Link 2&lt;/a&gt;
+<br>
+...
+<br>
+&lt;a href=&quot;c.htm&quot; <font style="color:#dd0000;">onmouseover=&quot;Tip(TooltipTxt('dritten'))&quot;</font> onmouseout=&quot;UnTip()&quot;&gt;Link 3&lt;/a&gt;
+<br>
+...
+<br>
+&lt;/body&gt;
+<br>
+&lt;/html&gt;
+</tt>
+                    </td>
+                  </tr>  
+                </table>
+              </td>
+              <td rowspan="2" align="center" width="150">
+                <table cellpadding="0" cellspacing="3">
+                  <tr>
+                    <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt="DHTML: Tooltips per JavaScript"></td>
+                    <td>
+                      <small>
+                        &nbsp;<br>
+                        <a href="#top">Seitenanfang</a>
+                        <br>&nbsp;<br>
+                        <a href="#features" onmouseover="MyTip('features')" onmouseout="UnTip()">Kurzbeschreibung</a>
+                        <br>&nbsp;<br>
+                        <a onmouseover="MyTip('browser')" onmouseout="UnTip()" href="#browser">Cross-Browser</a>
+                        <br>&nbsp;<br>
+                        <a href="#docu" onmouseover="MyTip('docu')" onmouseout="UnTip()">Dokumentation</a>
+                        <br>&nbsp;<br>
+                        <a href="#extensions" onmouseover="MyTip('extensions')" onmouseout="UnTip()">Erweiterungen</a>
+                        <br>&nbsp;<br>
+                        <a href="#download" onmouseover="MyTip('download')" onmouseout="UnTip()">Download</a>
+                        <br>&nbsp;
+                      </small>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>&nbsp;<br>&nbsp;<br><big>9.</big> Tooltips mittels Kommandos konfigurieren</b>
+                <br>
+                Die Standardeinstellungen f&uuml;r alle Tooltips k&ouml;nnen Sie in wz_tooltip.js selbst &auml;ndern,
+                und zwar im Bereich &quot;GLOBAL TOOLTIP CONFIGURATION&quot;.
+                Das Aussehen und Verhalten einzelner Tooltips kann mit Kommandos ge&auml;ndert werden, siehe Kommando-Liste unten.
+                Diese Kommandos haben Vorrang vor der globalen Konfiguration und werden an <tt>Tip()</tt> oder <tt>TagToTip()</tt> &uuml;bergeben.
+                Jedem Kommando muss mit einem Komma abgetrennt der gew&uuml;nschte Wert folgen.
+                <br>
+                <table class="sample">
+                  <tr>
+                    <td>
+<tt><font size="2" class="tt">onmouseover=&quot;Tip('Irgendein Text', ABOVE, true)&quot;</font></tt>
+<br>
+oder
+<br>
+<tt><font size="2" class="tt">onmouseover=&quot;TagToTip('HtmlTagID', TITLEFONTCOLOR, '#CCFFCC')&quot;</font></tt>
+                    </td>
+                  </tr>  
+                </table>
+                <br>
+                Mehrere Kommandos formen eine komma-separierte Liste von Kommando-Wert-Paaren.
+                Die Reihenfolge der Kommandos ist beliebig:
+                <table class="sample">
+                  <tr>
+                    <td>
+<tt><font size="2" style="font-size:12px;">onmouseover=&quot;Tip('Irgendein Text', SHADOW, true, TITLE, 'Irgendein Titel', PADDING, 9)&quot;</font></tt>
+                    </td>
+                  </tr>  
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <table>
+      <tr>
+        <td width="50"><br></td>
+        <td>
+          <table bgcolor="#000099" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td>
+                <table border="0" cellpadding="6" cellspacing="1">
+                  <tr bgcolor="#eeeeee">
+                    <th align="left">Kommando</th>
+                    <th align="left">Beschreibung</th>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Tooltip oberhalb des Mauszeigers', ABOVE, true);" onmouseout="UnTip()">ABOVE</a></tt>
+                    </td>
+                    <td>
+                      Platziert das Tooltip oberhalb des Mauszeigers.
+                      Wert: true oder false.
+                      <br>&nbsp;<br>
+                      Kombinieren Sie ABOVE mit
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Diese Kommandos wurden angewandt:<br>ABOVE, true, OFFSETY, 50', ABOVE,true,OFFSETY,50);" onmouseout="UnTip()">OFFSETY</a></tt>,
+                      um den vertikalen Abstand zur Maus einzustellen,
+                      oder mit
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Diese Kommandos wurden angewandt:<br>ABOVE, true, CENTERMOUSE, true', ABOVE, true, CENTERMOUSE, true, OFFSETX, 0);" onmouseout="UnTip()">CENTERMOUSE</a></tt>,
+                      um das Tooltip &uuml;ber der Maus zu zentrieren.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Ge&auml;nderte Hintergrundfarbe', BGCOLOR,'#f3e0f3');" onmouseout="UnTip()">BGCOLOR</a></tt>
+                    </td>
+                    <td>
+                      Hintergrundfarbe des Tooltips.
+                      Wert: HTML-Farbe, in einfachen Anf&uuml;hrungszeichen, z.B. '#D3E3F6' oder 'DarkCyan',
+                      oder Leerstring <tt>''</tt> f&uuml;r
+                      <tt><a class="nodeco" href="javascript:void(0)" onmouseover="Tip('Dieses Tooltip hat weder einen Rand<br>noch eine Hintergrundfarbe.', BORDERWIDTH, 0, BGCOLOR, '', FONTWEIGHT, 'bold', FONTCOLOR, '#00AA00')" onmouseout="UnTip()">keinen Hintergrund</a></tt>.
+                      <br>Beispiel:
+                      <br>
+                      <tt><font size="2" style="font-size:12px;">onmouseover=&quot;Tip('Irgendein Text', BGCOLOR, '#D3E3F6')&quot;</font></tt>
+                      <br>oder<br>
+                      <tt><font size="2" style="font-size:12px;">onmouseover=&quot;Tip('Irgendein Text', BGCOLOR, '')&quot;</font></tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Tooltip mit Hintergrundbild', BGIMG, 'http://www.walterzorn.de/en/images/tooltip/tt_bg.jpg', PADDING, 10, WIDTH, 180);" onmouseout="UnTip()">BGIMG</a></tt>
+                    </td>
+                    <td>
+                      Hintergrundbild.
+                      Wert: Pfad zum Bild, in einfachen Anf&uuml;hrungszeichen.
+                      <br>Beispiel:
+                      <br>
+                      <tt><font size="2" style="font-size:12px;">onmouseover=&quot;Tip('Irgendein Text', BGIMG, '../images/tipbackground.gif')&quot;</font></tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Ge&auml;nderte Randfarbe', BORDERCOLOR, '#dd00aa');" onmouseout="UnTip()">BORDERCOLOR</a></tt>
+                    </td>
+                    <td>
+                      Farbe des Tooltip-Randes.
+                      Wert: HTML-Farbe, in einfachen Anf&uuml;hrungszeichen, z.B. '#dd00aa'.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Gestrichelter Rand', BORDERSTYLE, 'dashed', PADDING, 8);" onmouseout="UnTip()">BORDERSTYLE</a></tt>
+                    </td>
+                    <td>
+                      Stil des Tooltip-Randes.
+                      Wert: CSS border style, in einfachen Anf&uuml;hrungszeichen.
+                      Empfehlenswert sind 'solid' (Standardeinstellung), 'dashed' oder 'dotted', andere funktionieren nicht in allen Browsern.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Sehr fetter Tooltip-Rand', BORDERWIDTH, 5);" onmouseout="UnTip()">BORDERWIDTH</a></tt>
+                    </td>
+                    <td>
+                      Dicke des Tooltip-Randes.
+                      Wert: Ganzzahl&nbsp;&ge;&nbsp;0. Standard ist 1. Wert 0 f&uuml;r keinen Rand.
+                      <br>Beispiel:
+                      <br>
+                      <tt><font size="2" style="font-size:12px;">onmouseover=&quot;Tip('Irgendein Text', BORDERWIDTH, 2)&quot;</font></tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td align="right">
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Unterhalb der Maus zentriert', CENTERMOUSE, true, OFFSETX, 0, OFFSETY, 22);" onmouseout="UnTip()">CENTERMOUSE</a></tt>
+                    </td>
+                    <td>
+                      Zentriert das Tooltip unterhalb (oder oberhalb) des Mauszeigers.
+                      Wert: true oder false.
+                      Beachten Sie, dass die Zentrierung um den Wert abweicht, der global in wz_tooltip.js eingestellt ist (<tt>config.&nbsp;OffsetX</tt>) oder der per OFFSETX-Kommando gesetzt wurde.
+                      <br>Beispiel:
+                      <br>
+                      <tt><font size="2" style="font-size:12px;">onmouseover=&quot;Tip('Irgendein Text', CENTERMOUSE, true, OFFSETX, 0)&quot;</font></tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Dieses Tooltip ist &quot;sticky&quot;, aber es kann mit einem Klick in das Tooltip oder in das Dokument geschlossen werden, da das Kommando CLICKCLOSE, true angewandt wurde.', CLICKCLOSE, true, STICKY, true, WIDTH, 300);" onmouseout="UnTip()">CLICKCLOSE</a></tt>
+                    </td>
+                    <td>
+                      Schlie&szlig;t das Tooltip, sobald der Benutzer irgendwo in das Tooltip oder in das Dokument klickt.
+                      Wert: true, false.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Klicken Sie auf den Link, um das Tooltip zu fixieren.', CLICKSTICKY, true);" onmouseout="UnTip()">CLICKSTICKY</a></tt>
+                    </td>
+                    <td>
+                      Der Benutzer kann ein solches Tooltip fixieren (STICKY machen), indem er einfach auf das Element, zum Beispiel den Link klickt, zu dem das Tooltip geh&ouml;rt.
+                      Das macht es f&uuml;r den Benutzer bequemer, einen l&auml;ngeren Tooltiptext zu lesen.
+                      Wert: true, false.
+                      <br>&nbsp;<br>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Klicken Sie auf den Link, um das Tooltip STICKY zu machen. Das fixierte Tooltip k&ouml;nnen Sie dann schlie&szlig;en, indem Sie irgendwohin klicken.', TITLE, 'CLICKSTICKY &amp; CLICKCLOSE &amp; CLOSEBTN', CLICKSTICKY, true, CLICKCLOSE, true, CLOSEBTN, true, WIDTH, -1)" onmouseout="UnTip()">onmouseover=&quot;Tip('Text', CLICKSTICKY, true, CLICKCLOSE, true, CLOSEBTN, true)&quot;</a></tt>
+                      <br>
+                      In diesem Beispiel haben wir auch das CLICKCLOSE-Kommando gesetzt, damit der Benutzer das fixierte Tooltip mit einem Klick schlie&szlig;en kann.
+                      Zus&auml;tzlich stellen wir per CLOSEBTN auch noch einen Schlie&szlig;en-Knopf bereit.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Schlie&szlig;en-Knopf in der Titelleiste', CLOSEBTN, true, STICKY, true);" onmouseout="UnTip()">CLOSEBTN</a></tt>
+                    </td>
+                    <td>
+                      F&uuml;gt einen Schlie&szlig;en-Knopf in die Titelleiste ein.
+                      Wert: true, false.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Ge&auml;nderte Farben f&uuml;r den Schlie&szlig;en-Knopf', CLOSEBTN, true, STICKY, true, CLOSEBTNCOLORS, ['#7799cc', '#ffaaaa', '#ffffff', '#ff0000']);" onmouseout="UnTip()">CLOSEBTNCOLORS</a></tt>
+                    </td>
+                    <td>
+                      Farben f&uuml;r den Schlie&szlig;en-Knopf.
+                      <br>&nbsp;<br>
+                      Wert:
+                      Komma-separierte Liste (Array) von insgesamt vier HTML-Farben.
+                      Jede Farbe in einfachen Anf&uuml;hrungszeichen.
+                      Die Liste muss von rechteckige Klammern umschlossen sein, siehe Beispiel unten, da sie eigentlich ein einzelner Parameter ist.
+                      Die vier Farben haben folgende Bedeutung:
+                      <br>
+                      1. Hintergrundfarbe
+                      <br>
+                      2. Textfarbe
+                      <br>
+                      3. Hervorgehobene Hintergrundfarbe, w&auml;hrend sich die Maus &uuml;ber dem Knopf befindet
+                      <br>
+                      4. Hervorgehobene Textfarbe, w&auml;hrend sich die Maus &uuml;ber dem Knopf befindet
+                      <br>
+                      F&uuml;r jede dieser Farben kann auch ein Leerstring <tt>''</tt> angegeben werden.
+                      In diesem Fall erbt der Knopf die Hintergrund- bzw. Textfarbe der Titelleiste.
+                      <br>&nbsp;<br>
+                      Beispiel:<br>
+                      <tt><font size="2" class="tt">Tip('Text', CLOSEBTN, true, CLOSEBTNCOLORS, ['', '#66ff66', 'white', '#00cc00'], STICKY, true)</font></tt>
+                      <br>
+                      In diesem Beispiel ist die erste Farbe (Hintergrundfarbe) ein Leerstring.
+                      Solange sich die Maus nicht &uuml;ber dem Schlie&szlig;en-Knopf befindet, erbt er also den Titelleisten-Hintergrund.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Ge&auml;nderter Text f&uuml;r den Schlie&szlig;en-Knopf', CLOSEBTN, true, STICKY, true, CLOSEBTNTEXT, 'Klick mich');" onmouseout="UnTip()">CLOSEBTNTEXT</a></tt>
+                    </td>
+                    <td>
+                      Text im Schlie&szlig;en-Knopf.
+                      Wert in einfachen Anf&uuml;hrungszeichen.
+                      Beispiel:
+                      <br>
+                      <tt><font size="2" class="tt">Tip('Tooltip-Text', CLOSEBTN, true, CLOSEBTNTEXT, 'Click Me', STICKY, true)</font></tt>
+                      <br>
+                      Global voreingestellt ist &uuml;brigens '&amp;nbsp;X&amp;nbsp;' - die zwei Leerzeichen-Entities neben dem gro&szlig;en X machen den Button etwas breiter.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="TagToTip('T2tDirect', COPYCONTENT, false, PADDING, 0, BORDERWIDTH, 0, WIDTH, 300);" onmouseout="UnTip()">COPYCONTENT</a></tt>
+                      <div id="T2tDirect">
+                        Dieses DIV ist tempor&auml;r in ein Tooltip verwandelt worden, war aber urspr&uuml;nglich ganz normaler Bestandteil des HTML-Dokuments.
+                      </div>
+                    </td>
+                    <td>
+                      COPYCONTENT wirkt sich nur auf Tooltips aus, die mit <tt>TagToTip()</tt> erzeugt werden, also wenn ein HTML-Element in ein Tooltip verwandelt wird.
+                      <br>
+                      Wert: true, false.
+                      <br>
+                      Wenn true (dieses Verhalten ist in wz_tooltip.js voreingestellt), wird nur das innere HTML bzw. der Text des HTML-Elements in das Tooltip kopiert.
+                      Wenn false, wird das ganze HTML-Element (sein DOM-Knoten) selbst in ein Tooltip verwandelt, was in folgender Hinsicht n&uuml;tzlich sein kann:
+                      <br>
+                      1.) Falls das umzuwandelnde HTML-Element ein Formular enth&auml;lt, bleiben dessen Benutzereingaben erhalten, auch w&auml;hrend das Tooltip unsichtbar ist.
+                      <br>
+                      2.) Das Tooltip &uuml;bernimmt automatisch die CSS-Formatangaben des HTML-Elements.
+                      <br>
+                      Zur Verdeutlichung ein Beispiel, wie mit dem Wert false ein HTML-Element komplett in ein Tooltip verwandelt werden kann:
+                      <br>
+                      <tt><font size="2" class="tt">TagToTip('SomeID', COPYCONTENT, false, BORDERWIDTH, 0, PADDING, 0)</font></tt>
+                      <br>
+                      Wie man sieht, werden in diesem Beispiel auch der Tooltiprand (BORDERWIDTH) und das Padding auf 0 gesetzt.
+                      Somit sind nur der Rand und das Padding sichtbar, die per CSS f&uuml;r das HTML-Element selbst definiert wurden.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Dieses Tooltip erschien nach einer Verz&ouml;gerung von 1000 ms.<br>&nbsp;<br>Eine kleine Verz&ouml;gerung von 400 ms ist in wz_tooltip.js voreingestellt (Abschnitt &quot;GLOBAL TOOLTIP CONFIGURATION&quot;) und kann dort ge&auml;ndert werden. Werte wesentlich l&auml;nger oder k&uuml;rzer als 500 ms k&ouml;nnten als irritierend empfunden werden.', DELAY, 1000, WIDTH, 360);" onmouseout="UnTip()">DELAY</a></tt>
+                    </td>
+                    <td>
+                      Das Tooltip erscheint nach der angegebenen Verz&ouml;gerung in Millisekunden.
+                      Das Verhalten entspricht betriebssystem-basierten Tooltips.
+                      <br>
+                      Wert:
+                      Ganzzahl&nbsp;&ge;&nbsp;0.
+                      In wz_tooltip.js voreingestellt und empfohlen ist der Wert 400.
+                      <br>Beispiel:
+                      <br>
+                      <tt><font size="2" style="font-size:12px;">onmouseover=&quot;Tip('Irgendein Text', DELAY, 1000)&quot;</font></tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Lebensdauer auf 2500 Millisekunden beschr&auml;nkt', DURATION, 2500);" onmouseout="UnTip()">DURATION</a></tt>
+                    </td>
+                    <td>
+                      Zeitspanne in Millisekunden bis das Tooltip geschlossen wird,
+                      auch dann, wenn das <tt>STICKY</tt>-Kommando angewandt wurde
+                      oder wenn sich die Maus noch &uuml;ber dem HTML-Element befindet, zu dem das Tooltip geh&ouml;rt.
+                      <br>
+                      Wert: Ganzzahl.
+                      Wert 0 f&uuml;r unbeschr&auml;nkte Lebensdauer (voreingestellt).
+                      <br>&nbsp;<br>
+                      Ein negativer Wert hat eine andere Bedeutung:
+                      <tt><a class="nodeco" href="javascript:void(0)" onmouseover="Tip('Dieses verschwindet erst 2 Sekunden, nachdem die Maus den Link verlassen hat. Au&szlig;erdem folgt es nicht der Maus, und das Ein- und Ausblenden ist dank der FADEIN- und FADEOUT-Kommandos animiert.', DURATION, -2000, FOLLOWMOUSE, false, FADEIN, 400, FADEOUT, 400, WIDTH, 300)" onmouseout="UnTip()">Er spezifiziert eine Verz&ouml;gerung</a></tt>
+                      in Millisekunden <i>ab dem Mouseout-Ereignis</i>, bis das Tooltip geschlossen wird.
+                      So kann man eine bestimmte Mindestanzeigedauer des Tooltips sicherstellen, selbst wenn die Maus den Link sofort wieder verl&auml;sst.
+                      Das kann f&uuml;r Tooltips sinnvoll sein, die nicht der Maus folgen - hier ein Beispiel:
+                      <br>
+                      <tt><font size="2" style="font-size:12px;">onmouseover=&quot;Tip('Irgendein Text', FOLLOWMOUSE, false, DURATION, -2000)&quot;</font></tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover=" Tip('Dieses Tooltip verschwindet auch dann nicht, wenn ein anderes HTML-Element, das ein Tooltip enth&auml;lt, mit der Maus &uuml;berfahren wird. Sie m&uuml;ssen dieses Tooltip aktiv schlie&szlig;en.', EXCLUSIVE, true, TITLE, 'EXCLUSIVE', STICKY, true, CLOSEBTN, true, WIDTH, 280);" onmouseout="UnTip()">EXCLUSIVE</a></tt>
+                    </td>
+                    <td>
+                      Bis der Benutzer das Tooltip aktiv geschlossen hat, kann kein anderes erscheinen.
+                      Wert: true, false.
+                      Macht nur Sinn in Verbindung mit dem STICKY-Kommando (das Tooltip bleibt sichtbar, nachdem das ausl&ouml;sende HTML-Element von der Maus verlassen wurde, und folgt nicht der Maus)
+                      und dem CLOSEBTN- und/oder CLICKCLOSE-Kommando (damit der Benutzer das Tooltip schlie&szlig;en kann).
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover=" Tip('Einblend-Animation', FADEIN, 1000, PADDING, 10);" onmouseout="UnTip()">FADEIN</a></tt>
+                    </td>
+                    <td>
+                      Einblend-Animation.
+                      Der Wert (Ganzzahl&nbsp;&ge;&nbsp;0) spezifiziert die Dauer des Einblendvorgangs in Millisekunden.
+                      0 f&uuml;r keine Animation.
+                      <br>&nbsp;<br>
+                      Nicht unterst&uuml;tzt von Opera &auml;lter als v.9.0, alten Safari-Versionen, einigen Versionen von Konqueror.
+                      Diese fallen auf nicht animiertes Verhalten zur&uuml;ck.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover=" Tip('Ausblend-Animation', FADEOUT, 1000, PADDING, 10);" onmouseout="UnTip()">FADEOUT</a></tt>
+                    </td>
+                    <td>
+                      Ausblend-Animation.
+                      Der Wert (Ganzzahl&nbsp;&ge;&nbsp;0) spezifiziert die Dauer des Ausblendvorgangs in Millisekunden.
+                      0 f&uuml;r keine Animation.
+                      Empfohlen: Kombination mit
+                      <tt><a class="nodeco" href="javascript:void(0)" onmouseover="Tip('Auf 200-km-Tour im Alpenvorland<br><img src=\'http://www.walterzorn.de/en/images/ko5obersoech.jpg\' width=\'180\' height=\'115\' \/>', FADEIN, 800, FADEOUT, 800, TEXTALIGN, 'center', BGCOLOR, '#ffffff')" onmouseout="UnTip()">FADEIN</a></tt>.
+                      In wz_tooltip.js voreingestellt (und empfohlen) ist eine kurze Animation von 100 ms, die kaum auff&auml;llt, aber das Ein- und Ausblenden angenehm weich macht.
+                      <br>&nbsp;<br>
+                      Nicht unterst&uuml;tzt von Opera &auml;lter als v.9.0, alten Safari-Versionen, einigen Versionen von Konqueror.
+                      Diese fallen auf nicht animiertes Verhalten zur&uuml;ck.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover=" Tip('Tooltip auf fester Position', FIX, FixCalcXY(this));" onmouseout="UnTip()">FIX</a></tt>
+                      <br>
+                      Modus 1: Feste x- und y-Koordinaten.
+                    </td>
+                    <td>
+                      Zeigt das Tooltip an den festen Koordinaten [x, y].
+                      Wert: Zwei Ganzzahlen, komma-separiert, in eckigen Klammern. Also ein Array.
+                      <br>
+                      Beispiel:
+                      <br>
+                      <tt>onmouseover=&quot;Tip('Irgendein Text', FIX, [230, 874])&quot;</tt>
+                      <br>
+                      Sie k&ouml;nnen auch Funktion(en) aufrufen, mit der Sie die Koordinaten dynamisch berechnen:
+                      <br>
+                      <tt>onmouseover=&quot;Tip('Text', FIX, [CalcFixX(), CalcFixY()], BORDERWIDTH, 2)&quot;</tt>
+                      <br>
+                      oder
+                      <br>
+                      <tt>onmouseover=&quot;Tip('Text', FIX, CalcFixXY(), ABOVE, true)&quot;</tt>
+                      <br>
+                      Im letzten Beispiel muss die Funktion CalcFixXY() ein Array mit zwei Ganzzahlen zurückgeben (return).
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover=" Tip('Tooltip am <strong>unteren</strong> Rand des hellroten SPAN-Elements', FIX, ['PurpleSpan', 0, 0], WIDTH, 200);" onmouseout="UnTip()">FIX</a></tt>
+                      <br>
+                      Modus 2: An einem bestimmten HTML-Element fixiert.
+                    </td>
+                    <td>
+                      Positioniert das Tooltip an einem beliebigen <span id="PurpleSpan" style="background:#ffcccc;">HTML-Element</span>; es kann sich auch um ein anderes Element handeln als das mit der Maus &uuml;berfahrene.
+                      Wert: Drei komma-separierte Werte in eckigen Klammern.
+                      Der erste Wert gibt das HTML-Element an,
+                      entweder als ID (String in einfachen Anf&uuml;hrungszeichen), oder als direkte Referenz (ohne Anf&uuml;hrungszeichen).
+                      Der zweite und dritte Wert (Ganzzahlen) geben den horizontalen und vertikalen Abstand des Tooltips von der linken unteren Ecke des HTML-Elements an.
+                      <br>&nbsp;<br>
+                      Beispiel 1, ID des HTML-Elements:
+                      <table class="sample">
+                        <tr>
+                          <td>
+                            <tt>... onmouseover=&quot;Tip('Some text', FIX, ['PurpleSpan', 0, 5])&quot;</tt>
+                            <br>
+                            <tt>...</tt>
+                            <br>
+                            <tt>&lt;span id=&quot;PurpleSpan&quot;&gt;HTML element to show the tooltip on&lt;/span&gt;</tt>
+                          </td>
+                        </tr>
+                      </table>
+                      Dieser Codeausschnitt l&auml;sst das Tooltip 5 Pixel unterhalb des SPAN-Elements erscheinen.
+                      <br>&nbsp;<br>
+                      Beispiel 2, direkte Referenz auf HTML-Element:
+                      <table class="sample">
+                        <tr>
+                          <td>
+                            <tt>&lt;a href=&quot;...&quot; onmouseover=&quot;Tip('Some text', FIX, [this, 0, 5], ABOVE, true)&quot;</tt>
+                            <tt>onmouseout=&quot;UnTip()&quot;&gt;Link&lt;/a&gt;</tt>
+                          </td>
+                        </tr>
+                      </table>
+                      Mit diesem Codeauschnitt wird das Tooltip direkt an dem mit der Maus &uuml;berfahrenen HTML-Element (Link) positioniert.
+                      Als Referenz auf das HTML-Element wird hier bequem das JavaScript-Schl&uuml;sselwort this &uuml;bergeben 
+                      - das innerhalb von JavaScript-Eventhandlern (z.B. onmouseover) automatisch immer auf das betreffende HTML-Element verweist.
+                      Zus&auml;tzlich wird das ABOVE-Kommando verwendet, um 
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover=" Tip('Tooltip am <strong>oberen</strong> Rand des mit der Maus &uuml;berfahrenen Elements', FIX, [this, 0, 0], WIDTH, 200, ABOVE, true);" onmouseout="UnTip()">das Tooltip oberhalb des HTML-Elements</a></tt>
+                      zu positionieren.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Dieses Tooltip folgt nicht den Mausbewegungen, da wir das FOLLOWMOUSE-Kommando mit dem Wert false angewandt haben', FOLLOWMOUSE, false, WIDTH, 300);" onmouseout="UnTip()">FOLLOWMOUSE</a></tt>
+                    </td>
+                    <td>
+                      Das Tooltip folgt den Bewegungen der Maus.
+                      Wert: true, false. Voreinstellung: true.
+                      <br>
+                      Falls Sie dieses Verhalten mit dem Wert false abstellen,
+                      entspricht es dem von typischen betriebssystem-basierten Tooltips.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Ge&auml;nderte Schriftfarbe', FONTCOLOR, '#ff0000');" onmouseout="UnTip()">FONTCOLOR</a></tt>
+                    </td>
+                    <td>
+                      Schriftfarbe.
+                      Wert: HTML-Farbe, in einfachen Anf&uuml;hrungszeichen, z.B. '#990099'
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Ge&auml;nderte Schrift', FONTFACE, 'Courier New, Courier, mono');" onmouseout="UnTip()">FONTFACE</a></tt>
+                    </td>
+                    <td>
+                      Schrift (font face, font family).
+                      <br>
+                      Wert:
+                      Wie in HTML oder CSS, aber in einfache Anf&uuml;hrungszeichen eingeschlossen, z.B.
+                      <tt>Tip('Irgendein Text', FONTFACE, 'Arial, Helvetica, sans-serif', FONTSIZE, '12pt')</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Upsala...', FONTSIZE, '72pt');" onmouseout="UnTip()">FONTSIZE</a></tt>
+                    </td>
+                    <td>
+                      Schriftgr&ouml;&szlig;e.
+                      Wert: Gr&ouml;&szlig;e mitsamt Einheit, in einfachen Anf&uuml;hrungszeichen.
+                      Angabe der Einheit ('px', 'pt', 'em' etc.) ist notwendig. Beispiel:
+                      <tt>Tip('Irgendein Text', FONTSIZE, '12pt')</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('FONTWEIGHT, \'bold\'', FONTWEIGHT, 'bold');" onmouseout="UnTip()">FONTWEIGHT</a></tt>
+                    </td>
+                    <td>
+                      Schriftdicke.
+                      Wert: 'normal' oder 'bold', in einfachen Anf&uuml;hrungszeichen.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('HEIGHT, 90<br>&nbsp;<br>Dieses Beispiel mit l&auml;nglichem Text demonstriert, dass das Tooltip mit einem Scrollbalken ausgestattet wird, wenn mehr Platz beansprucht wird als von HEIGHT vorgegeben', FONTSIZE, '12pt', HEIGHT, 90, WIDTH, 240, TITLE, 'Begrenzte H&ouml;he', CLOSEBTN, true, STICKY, true);" onmouseout="UnTip()">HEIGHT</a></tt>
+                    </td>
+                    <td>
+                      H&ouml;he des Inhaltbereiches, ohne Titel, Schatten usw..
+                      Wert: Ganzzahl, auch 0 oder negativ.
+                      <br>
+                      Beim Wert 0 (Voreinstellung) wird die H&ouml;he automatisch an den Inhalt angepasst.
+                      Eine negative Zahl gibt eine Obergrenze f&uuml;r die automatische H&ouml;henanpassung an
+                      (beim Wert -100 kann die H&ouml;he also 100 Pixel nicht &uuml;berschreiten).
+                      <br>&nbsp;<br>
+                      Beachten Sie, dass die Tooltips den Regeln des W3C-Box-Modells folgen.
+                      Die H&ouml;henangabe bezieht sich also nur auf den eigentlichen Inhalt des Tooltips, ohne Innenabstand (siehe PADDING-Kommando), Rand und ggf. Schatten.
+                      Falls der Inhalt mehr Platz beansprucht als vom HEIGHT-Wert vorgegeben, wird das Tooltip mit einem senkrechten Scollbalken ausgestattet.
+                      Es sollte sichergestellt sein, dass solche Tooltips festgeheftet sind (siehe STICKY-Kommando), damit der Benutzer den Scrollbalken bedienen kann.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Jumping', JUMPHORZ, true, LEFT, true);" onmouseout="UnTip()">JUMPHORZ</a></tt>
+                    </td>
+                    <td>
+                      Wert: true, false.
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Wenn das Tooltip den rechten Fensterrand ber&uuml;hrt, springt es auf die andere Seite der Maus. Machen Sie das Fenster schmal genug, um diesen Effekt testen zu k&ouml;nnen.', JUMPHORZ, true, WIDTH, 200);" onmouseout="UnTip()">Nochmals testen.</a></tt>
+                      <br>
+                      Wenn true:
+                      Wenn das Tooltip den Fensterrand ber&uuml;hrt, springt es horizontal auf die andere Seite der Maus.
+                      <br>
+                      Wenn false (in wz_tooltip.js voreingestellt):
+                      Das Tooltip bleibt am rechten bzw. linken Fenserrand stehen.
+                      So oder so wird also versucht zu verhindern, dass das Tooltip teilweise hinter dem Fensterrand verschwindet
+                      (jedenfalls solange das Tooltip nicht zu gro&szlig; ist).
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('F&uuml;r dieses Tooltip wurde JUMPVERT abgeschaltet (auf false gesetzt), so dass es nicht auf die andere Seite der Maus springt, wenn es den unteren Fensterrand ber&uuml;hrt', JUMPVERT, false, WIDTH, 200, FONTSIZE, '12pt');" onmouseout="UnTip()">JUMPVERT</a></tt>
+                    </td>
+                    <td>
+                      Wenn das Tooltip den unteren (oder oberen) Fensterrand ber&uuml;hrt, springt es vertikal auf die andere Seite der Maus.
+                      <br>
+                      Wert: true, false.
+                      Dieses Verhalten ist in wz_tooltip.js als aktiv (true) voreingestellt.
+                      <br>&nbsp;<br>
+                      <strong>Wichtig:</strong>
+                      Es sollte entweder das JUMPVERT- oder das JUMPHORZ-Verhalten oder beide aktiviert (true) sein -
+                      damit die Maus nicht auf das Tooltip geraten und so ein Mouseout-Ereignis ausl&ouml;sen kann, wenn das Tooltip gleichzeitig von einem waagrechten und einem senkrechten Fensterrand gestoppt wird.
+                      Lediglich bei STICKY-Tooltips spielt das keine Rolle.
+                      Empfohlen und in wz_tooltip.js voreingestellt: JUMPVERT true, JUMPHORZ false.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td align="right">
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Auf der anderen Seite', LEFT, true);" onmouseout="UnTip()">LEFT</a></tt>
+                    </td>
+                    <td>
+                      Tooltip auf der linken Seite des Mauszeigers.
+                      Wert: true, false.
+                      <br>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('LEFT und ABOVE kombiniert...', LEFT, true, ABOVE, true);" onmouseout="UnTip()">LEFT und ABOVE Kommandos kombiniert</a></tt>.
+                      <br>Beispiel:
+                      <br>
+                      <tt><font size="2" style="font-size:12px;">onmouseover=&quot;Tip('Irgendein Text', LEFT, true, ABOVE, true)&quot;</font></tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Ver&auml;nderter horizontaler Abstand zur Maus', OFFSETX, 150);" onmouseout="UnTip()">OFFSETX</a></tt>
+                    </td>
+                    <td>
+                      Horizontaler Abstand zum Mauszeiger.
+                      Wert: Beliebige Ganzzahl, auch negativ.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Ver&auml;nderter vertikaler Abstand zur Maus', OFFSETY, 70);" onmouseout="UnTip()">OFFSETY</a></tt>
+                    </td>
+                    <td>
+                      Vertikaler Abstand zum Mauszeiger.
+                      Wert: Beliebige Ganzzahl, auch negativ.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Ein semi-transparentes Tooltip', OPACITY, 70, PADDING, 14);" onmouseout="UnTip()">OPACITY</a></tt>
+                    </td>
+                    <td>
+                      Transparenz des Tooltips.
+                      Wert: Ganzzahl zwischen 0 (vollst&auml;ndig transparent) und 100 (opak, undurchsichtig).
+                      <br>&nbsp;<br>
+                      Opazit&auml;t ist das Gegenteil von Transparenz, also<br>
+                      Opazit&auml;t&nbsp;=&nbsp;100&nbsp;-&nbsp;Transparenz&nbsp;(in&nbsp;Prozent).<br>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('<img src=http://www.walterzorn.de/en/images/dragdrop/fateba_fi.jpg width=130 height=103><br>Tooltip mit Bild, Schatten, Hintergrundbild und Ein-/Ausblend-Animation.', WIDTH, 180, OPACITY, 80, TEXTALIGN, 'center', TITLEALIGN, 'center', SHADOW, true, TITLE, 'Nifty', BGIMG, 'http://www.walterzorn.de/en/images/tooltip/tt_bg.jpg', FADEIN, 700, FADEOUT, 700);" onmouseout="UnTip()">Weiteres Beispiel</a></tt>
+                      mit Bild (aufgenommen auf meiner 9000-km-Liegeradtour Hamburg-Nordkapp-M&uuml;nchen), Schatten mittels SHADOW-Kommando, zentriertem Inhalt mittels TEXTALIGN, Hintergrundbild via BGIMG und Animation via FADEIN und FADEOUT.
+                      <br>&nbsp;<br>
+                      Nicht unterst&uuml;tzt von Opera &auml;lter als v.9.0, alten Safari-Versionen, einigen Versionen von Konqueror.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Tooltip mit reichlich Abstand um seinen Inhalt', PADDING, 30);" onmouseout="UnTip()">PADDING</a></tt>
+                    </td>
+                    <td>
+                      Innenabstand zwischen Rand und eigentlichem Tooltip-Inhalt.
+                      Wert: Ganzzahl&nbsp;&ge;&nbsp;0.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Dieses hat wohl einen Schatten', SHADOW, true);" onmouseout="UnTip()">SHADOW</a></tt>
+                    </td>
+                    <td>
+                      Tooltip wirft einen Schatten.
+                      Wert: true, false
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Ge&auml;nderte Schattenfarbe', PADDING, 8, SHADOW, true, SHADOWCOLOR, '#dd99aa');" onmouseout="UnTip()">SHADOWCOLOR</a></tt>
+                      <!--br>
+                      <form> &nbsp; &nbsp; <select><option>aaa</option><option>bbb</option><option>ccc</option></select></form-->
+                    </td>
+                    <td>
+                      Farbe des Schattens.
+                      Wert: HTML-Farbe, in einfachen Anf&uuml;hrungszeichen.
+                      <br>Beispiel:
+                      <br>
+                      <tt><font size="2" style="font-size:12px;">onmouseover=&quot;Tip('Irgendein Text', SHADOW, true, SHADOWCOLOR, '#dd99aa')&quot;</font></tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Vergr&ouml;&szlig;erte Schattenbreite', SHADOW, true, SHADOWWIDTH, 10, PADDING, 8);" onmouseout="UnTip()">SHADOWWIDTH</a></tt>
+                    </td>
+                    <td>
+                      Breite (Offset) des Schattens.
+                      Wert: Ganzzahl&nbsp;&ge;&nbsp;0.
+                      <br>Beispiel:
+                      <br>
+                      <tt><font size="2" style="font-size:12px;">onmouseover=&quot;Tip('Irgendein Text', SHADOW, true, SHADOWWIDTH, 7)&quot;</font></tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('STICKY, true<ul><li style=\'font-family:Verdana,Geneva,sans-serif;font-size:8pt;\'><a href=#top>Seitenanfang<\/a><\/li><li style=\'font-family:Verdana,Geneva,sans-serif;font-size:8pt;\'><a href=\'#docu\'>Anfang der Dokumentation<\/a><\/li><\/ul>', STICKY, true, CLICKCLOSE, true, PADDING, 6);" onmouseout="UnTip()">STICKY</a></tt>
+                    </td>
+                    <td>
+                      Das Tooltip ver&auml;ndert seine Position nicht und bleibt sichtbar, bis ein anderes Tooltip erscheint.
+                      Wert: true, false.
+                      <br>&nbsp;<br>
+                      Mit
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('STICKY, true, DURATION, 2500<br>Dieses Tooltip ist sticky, aber seine Lebenszeit ist auf 2,5 Sekunden begrenzt.', STICKY, true, CLICKCLOSE, true, DURATION, 2500, WIDTH, 280)" onmouseout="UnTip()">DURATION</a></tt>
+                      k&ouml;nnen Sie erzwingen, dass das Tooltip nach einer bestimmten Zeit verschwindet.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Das TEXTALIGN-Kommando akzeptiert als Werte entweder \'right\', \'center\', \'justify\' oder \'left\'. Der Titel ist nat&uuml;rlich nicht politisch gemeint.', WIDTH, 200, TITLE, 'Rechts ausgerichteter Text', TEXTALIGN, 'right');" onmouseout="UnTip()">TEXTALIGN</a></tt>
+                    </td>
+                    <td>
+                      Textausrichtung im Tooltip.
+                      Wert: 'right', 'center',
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('<img align=\'right\' src=\'http://www.walterzorn.de/en/images/dragdrop/muckl.jpg\' width=\'100\' height=\'130\'>Dieser l&auml;ngliche Text soll den Effekt demonstrieren, der mit dem Wert \'justify\' des TEXTALIGN-Kommandos erzielt werden kann. Beachten Sie, dass der Wert \'justify\' nicht f&uuml;r Texte zu empfehlen ist, die aus relativ kurzen Zeilen bestehen - wie es zum Beispiel auch in diesem Tooltip der Fall ist, insbesondere im Bereich oben neben dem Muckl-Bild.', TITLE, 'Ausgerichteter Text mit Muckl', TEXTALIGN, 'justify', WIDTH, 250);" onmouseout="UnTip()">'justify'</a></tt>
+                      oder 'left'.
+                      <br>Beispiel:
+                      <br>
+                      <tt><font size="2" style="font-size:12px;">onmouseover=&quot;Tip('Irgendein Text', TEXTALIGN, 'right')&quot;</font></tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Inhalt', TITLE, 'Titel');" onmouseout="UnTip()">TITLE</a></tt>
+                    </td>
+                    <td>
+                      F&uuml;gt eine Titelleiste hinzu.
+                      Wert: Text der Titelleiste, in einfachen Anf&uuml;hrungszeichen.
+                      Kann auch HTML enthalten, was Ihnen viel zus&auml;tzliche Freiheit bei der Gestaltung des Titels gibt.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Das TITLEALIGN-Kommando akzeptiert als Wert \'right\', \'center\', \'justify\' oder \'left\'', TITLE, 'Rechts ausgerichteter Titel', TITLEALIGN, 'right');" onmouseout="UnTip()">TITLEALIGN</a></tt>
+                    </td>
+                    <td>
+                      Textausrichtung in der Titelleiste.
+                      Wert: 'right', 'center', 'justify' oder 'left'.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('onmouseover=&quot;Tip(\'Text\', TITLEBGCOLOR, \'#990099\')&quot;', TITLE, 'Titelhintergrund', TITLEBGCOLOR, '#990099');" onmouseout="UnTip()">TITLEBGCOLOR</a></tt>
+                    </td>
+                    <td>
+                      Hintergrundfarbe der Titelleiste.
+                      Wert: HTML-Farbe, in einfachen Anf&uuml;hrungszeichen.
+                      Im Fall eines Leerstrings <tt>''</tt> wird die Randfarbe (siehe auch BORDERCOLOR-Kommando) verwendet (dies ist Voreinstellung).
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('TITLEFONTCOLOR, \'#ff6666\'', TITLE, 'Roter Titeltext',  TITLEFONTCOLOR, '#ff6666');" onmouseout="UnTip()">TITLEFONTCOLOR</a></tt>
+                    </td>
+                    <td>
+                      Farbe des Titeltextes.
+                      Wert: HTML-Farbe, in einfachen Anf&uuml;hrungszeichen.
+                      Im Fall eines Leerstrings <tt>''</tt> wird die Hintergrundfarbe des Tooltips-K&ouml;rpers (siehe auch BGCOLOR-Kommando) verwendet (dies ist Voreinstellung).
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('TITLEFONTFACE, \'Courier New, Courier, mono\'', TITLE, 'Ge&auml;nderte Titelschrift',  TITLEFONTFACE, 'Courier New, Courier, mono');" onmouseout="UnTip()">TITLEFONTFACE</a></tt>
+                    </td>
+                    <td>
+                      F&uuml;r den Titel ververwendete Schrift.
+                      Wert: Wie in HTML oder CSS, aber eingeschlossen in einfache Anf&uuml;hrungszeichen.
+                      Im Fall eines Leerstrings <tt>''</tt> (Voreinstellung) wird die Schrift des Tooltips-K&ouml;rpers in 'fett' ('bold') verwendet.
+                      <br>
+                      Beispiel:
+                      <br>
+                      <tt><font size="2" style="font-size:12px;">onmouseover=&quot;Tip('Irgendein Text', TITLE, 'Some Title', TITLEFONTFACE, 'Verdana,sans-serif')&quot;</font></tt>
+                      <br>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Angewandtes Kommando: TITLEFONTSIZE, \'18pt\'', TITLE, 'Gro&szlig;er Titel',  TITLEFONTSIZE, '18pt');" onmouseout="UnTip()">TITLEFONTSIZE</a></tt>
+                    </td>
+                    <td>
+                      Gr&ouml;&szlig;e der Titelschrift.
+                      Wert: Gr&ouml;&szlig;e mitsamt Einheit, in einfachen Anf&uuml;hrungszeichen.
+                      Angabe der Einheit ('px', 'pt', 'em' etc.) ist notwendig. Beispiel:
+                      Im Fall eines Leerstrings <tt>''</tt> wird die Schriftgr&ouml;&szlig;e des Tooltips-K&ouml;rpers &uuml;bernommen.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Ein Tooltip mit reichlich Innenabstand<br>um den Titel herum', TITLE, 'Titel mit Innenfutter', TITLEPADDING, 8);" onmouseout="UnTip()">TITLEPADDING</a></tt>
+                    </td>
+                    <td>
+                      Innenabstand um den Titeltext herum.
+                      Wert: Ganzzahl&nbsp;&ge;&nbsp;0.
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Festgelegte Breite', WIDTH, 200);" onmouseout="UnTip()">WIDTH</a></tt>
+                    </td>
+                    <td>
+                      Legt die Breite des Tooltips fest.
+                      Wert: Ganzzahl, auch 0 oder negativ.
+                      <br>
+                      Wenn 0 (Voreinstellung), richtet sich die Breite automatisch nach dem Tooltip-Inhalt.
+                      Mit einer negativen Zahl (z.B. -240) kann eine Obergrenze f&uuml;r die automatische Breitenanpassung angegeben werden
+                      (in diesem Beispiel betr&auml;gt die Obergrenze also 240&nbsp;Pixel).
+                      <br>&nbsp;<br>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Trotz des l&auml;ngliches Textes richtet sich die Breite dieses Tooltips nach der Breite des Titels. Der Text dieses Beispiels wird also automatisch umgebrochen; er enth&auml;lt weder &amp;lt;br&amp;gt;- noch &amp;lt;p&amp;gt;-HTML-Tags oder sonstige hart-kodierte Zeilenumbr&uuml;che.', WIDTH, -1, TITLE, 'Vom Titel bestimmte Breite');" onmouseout="UnTip()">Der Wert -1 f&uuml;r WIDTH</a></tt>
+                      hat eine besondere Bedeutung:
+                      In diesem Fall ist das Tooltip so breit wie der Titel plus gegebenenfalls der Schlie&szlig;en-Knopf.
+                      <br>&nbsp;<br>
+                      Beachten Sie, dass die Tooltips den Regeln des W3C-Box-Modells folgen.
+                      Das hei&szlig;t, die Breitenangabe bezieht sich nur auf den eigentlichen Inhalt des Tooltips, ohne Innenabstand (siehe PADDING-Kommando), Rand und ggf. Schatten.
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td width="50"><br></td>
+      </tr>
+    </table>
+    <table cellpadding="3">
+      <tr>
+        <td width="130"><br></td>
+        <td>
+          <table>
+            <tr>
+              <td>
+                <big>&nbsp;<br><a name="extensions"> </a>&nbsp;<br><b>Erweiterungen</b></big>
+              </td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+                Auf der
+                <a href="extensions.htm" onmouseover="TagToTip('T2TExtensions', ABOVE, true, OFFSETX, -17, BALLOON, true)" onmouseout="UnTip()">Erweiterungen-Seite</a>
+                finden Sie zus&auml;tzliche Konfigurationsm&ouml;glichkeiten.
+                <span id="T2TExtensions">Diese <b>Plugins</b> erweitern die Konfigurationsm&ouml;glichkeiten,<br>zum Beispiel um einen Ballon-Stil wie diesen.</span>
+              </td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+                <b><a name="download"> </a>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+                <img src="http://www.walterzorn.de/en/images/redarrow.gif" width="15" height="13" alt="" align="middle"><big>Download</big></b>
+              </td>
+              <td rowspan="2" valign="top" align="center" width="150">
+                <br>&nbsp;<br>
+                <table cellpadding="0" cellspacing="3">
+                  <tr>
+                    <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt="DHTML: Tooltips per JavaScript"></td>
+                    <td>
+                      <small>
+                        &nbsp;<br>
+                        <a href="#top">Seitenanfang</a>
+                        <br>&nbsp;<br>
+                        <a href="#features" onmouseover="MyTip('features')" onmouseout="UnTip()">Kurzbeschreibung</a>
+                        <br>&nbsp;<br>
+                        <a onmouseover="MyTip('browser')" onmouseout="UnTip()" href="#browser">Cross-Browser</a>
+                        <br>&nbsp;<br>
+                        <a href="#docu" onmouseover="MyTip('docu')" onmouseout="UnTip()">Dokumentation</a>
+                        <br>&nbsp;<br>
+                        <a href="#extensions" onmouseover="MyTip('extensions')" onmouseout="UnTip()">Erweiterungen</a>
+                        <br>&nbsp;<br>
+                        <a href="#download" onmouseover="MyTip('download')" onmouseout="UnTip()">Download</a>
+                        <br>&nbsp;
+                      </small>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                wz_tooltip.js 5.31, Lizenz <b>LGPL</b>:<br>
+                <a onmouseover="Tip('Enth&auml;lt wz_tooltip.js')" href="http://www.walterzorn.de/en/scripts/wz_tooltip.zip" onmouseout="UnTip()">wz_tooltip.zip</a> (16 KB)
+                <br>&nbsp;<br>
+                <a href="http://www.walterzorn.de/en/tooltip/history.htm" onmouseover="Tip('Schauen Sie hier nach, ob sich ein Update lohnt')" onmouseout="UnTip()">history.htm</a> (Changelog of wz_tooltip.js)
+                <br>&nbsp;<br>
+                <div style="padding:5px;border-style:solid;border-width:1px;border-color:#000099;">
+                  <strong>Hinweise f&uuml;r die Benutzer &auml;lterer Versionen</strong>
+                  <br>&nbsp;<br>
+                  Seit Version 5.0 ist ein onmouseout-Attribut erforderlich f&uuml;r jedes HTML-Tag, das ein Tooltip enth&auml;lt.
+                  Beispiel:
+                  <br>
+                  <tt>&lt;a</tt> <tt>href=&quot;index.htm&quot;</tt> <tt>onmouseover=&quot;Tip('Some text')&quot;</tt> <tt>onmouseout=&quot;UnTip()&quot;&gt;</tt> <tt>Home</tt> <tt>&lt;/a&gt;</tt>
+                  <br>
+                  Rufen Sie einfach UnTip() von diesen onmouseout-Attributen aus auf. Mehr in der Dokumentation weiter oben.
+                  Das zus&auml;tzlich erforderliche onmouseout-Attribut ist zwar weniger elegant, l&auml;sst Ihnen aber mehr Freiheit, bei welchem Event ein Tooltip verschwinden soll.
+                </div>
+                <br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+                <b><big>Alte Version</big></b>
+                <br>
+                Falls Sie bereits eine Version &auml;lter als v.4.0 verwenden, aber wegen der ge&auml;nderten Regeln zum Definieren von Tooltips und Einbinden des Scripts nicht auf v.4.0+ umsteigen m&ouml;chten:
+                <br>
+                <a href="../tooltip_old/tooltip.htm">Dokumentation und Download von wz_tooltip.js v.3.45</a>
+                <br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+                <br>
+                <br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <br>&nbsp;<br>
+    <hr width="90%">
+    <p>
+      &nbsp;<br><small>Walter Zorn, M&uuml;nchen, 2008
+      <br><a href="http://www.kreuzotter.de/impressum.htm">Impressum und über diese Seite</a></small>
+      <br>
+      &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+    </p>
+  </center>
+</body>
+</html>

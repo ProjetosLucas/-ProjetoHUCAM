@@ -1,0 +1,304 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="expires" content="0">
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<title>JavaScript Vektorgrafik -Bibliothek: Geschichte der Updates</title>
+<link rel="stylesheet" type="text/css" href="../newwalterzorn.css">
+<script language="JavaScript" type="text/javascript" src="http://www.walterzorn.de/en/scripts/wz_jsgraphics.js"></script>
+</head>
+<body bgcolor="#ffffff">
+<script language="JavaScript" type="text/javascript">
+<!--
+var wndw = parseInt(
+		(document.body && document.body.clientWidth)? document.body.clientWidth
+		: (window.innerWidth || document.getElementsByTagName('body')[0].offsetWidth || 770)
+);
+var jg = new jsGraphics(document);
+jg.setStroke(2);
+jg.setColor('#ff9966');
+jg.drawEllipse((wndw>>1)-100, 46, 200, 100);
+jg.paint();
+//-->
+</script>
+<a name="top"> </a>
+  <center>
+    <table cellpadding="6">
+      <tr>
+        <td align="center"><a href="../index.htm"><img name="logo" border="0" src="../images/logo.gif" alt="Home" width="271" height="30"></a></td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td align="center">
+          <b>&nbsp;<br><big><a href="jsgraphics.htm">Zur Hauptseite: Linien, Kreise, Ellipsen, Polygone, Polylinien per JavaScript</a></big><br>&nbsp;<br>&nbsp;</b>
+        </td>
+      </tr>
+    </table>
+  </center>
+  <table>
+    <tr>
+      <td><img src="../images/transparentpixel.gif" width="90" height="1" alt=""></td>
+      <td>
+        <table cellspacing="5">
+          <tr>
+            <td colspan="2"><b><big>Liste der Updates</big></b></td>
+          </tr>
+          <tr>
+            <td valign="top">v&nbsp;3.05&nbsp;(2.&nbsp;2.&nbsp;2009):&nbsp;</td>
+            <td>
+              Bugfix: Darstellung funktioniert jetzt auch im IE8 (fehlende 'px'-Einheiten bei einigen CSS-Attributen).
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v&nbsp;3.03&nbsp;(28.&nbsp;1.&nbsp;2008):&nbsp;</td>
+            <td>
+              + width- und height-Parameter der drawImage()-Methode sind jetzt optional.
+              Implementiert von Mahmut Keygubatli.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v&nbsp;3.0&nbsp;(4.&nbsp;2.&nbsp;2007):&nbsp;</td>
+            <td>
+              + <b>fillArc()</b>-Methode implementiert, wobei ich nat&uuml;rlich die gleichen Optimierungs-Prinzipien wie bei den anderen Funktionen angewendet habe
+              (so ist fillArc() z.B. 10 bis 15 mal schneller als bisherige Notbehelf-Implementierungen, die auf der fillPolygon()-Methode der Bibliothek basierten).
+              <br>
+              + Die jsGraphics() Konstruktorfunktion akzeptiert jetzt auch eine direkte Referenz auf ein Zeichenfl&auml;chen-DIV.
+              <br>
+              * In jeder Zeichenfl&auml;che wird automatisch ein weiters Container-DIV erzeugt, um eventuell bereits vorhandene Inhalte der Zeichenfl&auml;che besser zu sch&uuml;tzen.
+              <br>
+              - Netscape 4 wird nicht mehr unterst&uuml;tzt.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td align="center" colspan="2" height="150">
+              <div id="cnv2" align="center" style="position:relative;height:150px;width:400px;">
+<script language="JavaScript" type="text/javascript">
+<!--
+jg = new jsGraphics("cnv2");
+jg.setStroke(2);
+jg.setColor('#80cc80');
+jg.fillArc(100, 0, 200, 148, 40, 320);
+jg.paint();
+//-->
+</script>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v2.36&nbsp;(21.&nbsp;6.&nbsp;2006):&nbsp;</td>
+            <td>
+              Korrektur: JS-Fehler im Safari, wenn die Grafik in ein anderes Fenster gezeichnet wurde.
+              Dank an Marianne Roger f&uuml;r den Patch.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v2.35&nbsp;(29.&nbsp;5.&nbsp;2006):&nbsp;</td>
+            <td>
+              Erweiterte Fehlerpr&uuml;fung. Wenn eine Zeichenfl&auml;che ung&uuml;ltig ist, sollte kein JavaScript-Fehler mehr auftreten.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v2.34&nbsp;(23.&nbsp;5.&nbsp;2006):&nbsp;</td>
+            <td>
+              Fix: Gr&ouml;&szlig;e von Bildern, die mit drawImage() gezeichnet wurden, war im Firefox nicht immer korrekt.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v2.33&nbsp;(24.&nbsp;10.&nbsp;2005):&nbsp;</td>
+            <td>
+              Fix: Linien, die 0 Pixel lang, aber breiter als 3 Pixel sind, werden jetzt korrekt dargestellt (nicht mehr als relativ lange senkrechte Linie).
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v2.32&nbsp;(21.&nbsp;6.&nbsp;2005):&nbsp;</td>
+            <td>
+              <tt>drawImage()</tt> akzeptiert einen optionalen f&uuml;nften Parameter, mit dem ein Eventhandler definiert und automatisch in das erzeugte Bild eingef&uuml;gt werden kann.
+              Danke an Pavel Illich aus Russland f&uuml;r diesen Vorschlag.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v2.31&nbsp;(28.&nbsp;3.&nbsp;2005):&nbsp;</td>
+            <td>
+              <b>drawStringRect()</b>-Methode von Rick Blommers hinzugef&uuml;gt.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v2.3&nbsp;(14.&nbsp;2.&nbsp;2004):&nbsp;</td>
+            <td>
+              <b>drawImage()</b>-Methode implementiert.
+              Work-around f&uuml;r &quot;overflow:hidden&quot;-Bug des Mozilla 1.6
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v2.2&nbsp;(8.&nbsp;2.&nbsp;2004):&nbsp;</td>
+            <td>
+              <b>fillPolygon()</b>-Methode implementiert.
+              Dank vor allem an Matthieu Haller aus Frankreich, an Kirsten Schulz und andere.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v2.11&nbsp;(18.&nbsp;12.&nbsp;2003):&nbsp;</td>
+            <td>
+              Und nochmals im Internet Explorer deutlich schneller
+              (Dank an John Holdsworth, der die interne Umwandlung des Graphik-HTML und die daf&uuml;r zust&auml;ndige RegExp-Operation weiter optimiert hat).
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v2.1&nbsp;(3.&nbsp;11.&nbsp;2003):&nbsp;</td>
+            <td>
+              Im Internet Explorer nochmals deutlich schneller
+              (Dank an Thomas Frank aus Schweden f&uuml;r den Trick, zun&auml;chst intern ein stark verk&uuml;rztes Graphik-HTML zu erzeugen und erst bei der Ausgabe in normales HTML umzuwandeln).
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v2.03&nbsp;(11.&nbsp;6.&nbsp;2003):&nbsp;</td>
+            <td>
+              Kann in andere Frames zeichnen oder in Fenster, die per JavaScript erzeugt wurden,
+              wenn der Konstruktorfunction <tt>jsGraphics()</tt> eine Referenz auf das betreffende Fenster als zweiter Parameter mitgegeben wird.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v2.02&nbsp;(12.&nbsp;5.&nbsp;2003):&nbsp;</td>
+            <td>
+              Gepunktete Linien sind m&ouml;glich (nat&uuml;rlich auch bei Rechtecken, Polygonen, Ellipsen).
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v2.01&nbsp;(7.&nbsp;4.&nbsp;2003):&nbsp;</td>
+            <td>
+              wz_jsgraphics.js kann jetzt optional Elemente so darstellen, dass sie sich drucken lassen.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v2.0&nbsp;(31.&nbsp;3.&nbsp;2003):&nbsp;</td>
+            <td>
+              <b>Die Liniendicke kann per .setStroke() spezifiziert werden</b>.
+              Und: dicke Linien werden mit nur geringf&uuml;gigen Performanceeinbu&szlig;en gezeichnet.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td align="center" colspan="2" height="150">
+              <div id="cnv1" align="center" style="position:relative;height:150px;width:400px;">
+<script language="JavaScript" type="text/javascript">
+<!--
+jg = new jsGraphics("cnv1");
+jg.setStroke(2);
+jg.setColor('#00aa00');
+jg.drawPolyline(new Array(80, 0, 175, 400), new Array(0, 140, 50, 140));
+jg.paint();
+//-->
+</script>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v1.42&nbsp;(28.&nbsp;2.&nbsp;2003):&nbsp;</td>
+            <td>
+              drawString()-Methode l&auml;sst auch bei Platzmangel keine unbeabsichtigten Zeilenumbr&uuml;che mehr zu.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v1.41&nbsp;(21.&nbsp;2.&nbsp;2003):&nbsp;</td>
+            <td>
+              paint()-Methode jetzt wieder so schnell, wie sie vor Einf&uuml;hrung der &quot;Direkt in's document zeichnen&quot;-Option war.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v1.4&nbsp;(17.&nbsp;2.&nbsp;2003):&nbsp;</td>
+            <td>
+              Jetzt gibt es einen Zeichenmodus, mit dem auch Netscape 4 und Opera &auml;lter als Version&nbsp;7 zurechtkommen: Wird der Konstruktorfunktion beim Laden der Seite eine Referenz auf das document anstatt auf ein HTML-Element wie z.B. ein DIV &uuml;bergeben, zeichnet die Methode paint() per document.write() in's Dokument.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v1.31&nbsp;(11.&nbsp;2.&nbsp;2003):&nbsp;</td>
+            <td>
+              L&ouml;schen mittels clear()-Methode in Gecko-Browsern wesentlich schneller (das L&ouml;schen hatte bislang mindestens so lange, i.d.R. sogar l&auml;nger als das Neuzeichnen gedauert).
+              In allen Browsern nochmals kleine Geschwindigkeitssteigerung beim Neuzeichnen (Verzweigungen in paint() werden nicht mehr anhand von Objekt-/Methodenabfragen, sondern von Booleans entschieden).
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v1.3&nbsp;(5.&nbsp;2.&nbsp;2003):&nbsp;</td>
+            <td>
+              Ausgepr&auml;gte Geschwindigkeitssteigerung im IE und Opera 7, insbesondere wenn bereits vorhandenen Inhalten einer Zeichenfl&auml;che neue hinzugef&uuml;gt werden.
+              Ellipsen-Problem behoben: Kein DIV-Overlap mehr entlang der Linie des horizontalen Durchmessers.
+              Dieses Problem machte sich allerdings nur bei Anwendung von Opacity-Filtern bemerkbar.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v1.26&nbsp;(10.&nbsp;1.&nbsp;2003):&nbsp;</td>
+            <td>
+              Ellipsenberechnung nochmals einen Tick schneller (weniger Bit-Shifts innerhalb der Schleife).<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v1.25&nbsp;(17.&nbsp;12.&nbsp;2002):&nbsp;</td>
+            <td>
+              Keine Verzweigungen innerhalb der Funktion, die die einzelnen DIVs erzeugt =&gt; nochmals geringf&uuml;gig schneller.<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v1.24&nbsp;(16.&nbsp;12.&nbsp;2002):&nbsp;</td>
+            <td>
+              Funktioniert wieder im Konqueror 3 (v. 1.23 nicht, weil er irrt&uuml;mlich in den DOM-Methoden-Zweig geriet).<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v1.23&nbsp;(15.&nbsp;12.&nbsp;2002):&nbsp;</td>
+            <td>
+              Gecko-Engine-Browser deutlich schneller: Nur die jeweils neu erzeugten HTML-Knoten werden in den DOM-Baum eingeh&auml;ngt.<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v1.22&nbsp;(15.&nbsp;12.&nbsp;2002):&nbsp;</td>
+            <td>
+              Linienberechnung im Durchschnitt schneller: zwar etwas langsamer bei nahezu 90 Grad steilen Linien, daf&uuml;r deutlich schneller in allen anderen F&auml;llen, insbesondere bei Linien flacher als 45 Grad.<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">v1.1&nbsp;(12.&nbsp;2002) &nbsp;<br>v1.2<br>v1.21</td>
+            <td valign="top">
+              Schnellere Ellipsenberechnung.<br>&nbsp;
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td><img src="../images/transparentpixel.gif" alt="" width="90" height="1"></td>
+    </tr>
+  </table>
+  <p> &nbsp; &nbsp; <a href="#top"><img src="http://www.walterzorn.de/en/images/topOfPage.gif" border="0" width="21" height="20" alt="Top of page"></a></p>
+  <!--hr width="95%" size="1" noshade-->
+  <table cellpadding="20">
+    <tr>
+      <td>
+        <small>Walter Zorn, Munich
+        <br><a href="http://www.kreuzotter.de/impressum.htm">Impressum und über diese Seite</a></small>
+        <br>
+        &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

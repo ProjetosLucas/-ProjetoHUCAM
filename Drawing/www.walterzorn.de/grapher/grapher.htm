@@ -1,0 +1,738 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<!--  Created by Walter Zorn  -->
+<html>
+<head>
+<title>Funktionsgraphen online</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../newwalterzorn.css">
+<style type="text/css">
+<!--
+-->
+</style>
+<script type="text/javascript">
+<!--
+function mkFourier(f)
+{
+    var cnv = document.all? document.all['FouOut'] : document.getElementById? document.getElementById('FouOut') : null;
+    if (cnv && typeof cnv.innerHTML != 'undefined')
+    {
+        var htm = '';
+        var na = parseInt(f.FOU_NA.value), nz = parseInt(f.FOU_NZ.value), dn = parseFloat(f.FOU_DN.value);
+        var sgn = f.FOU_SGN[2].checked? -1 : f.FOU_SGN[3].checked? 1 : 0;
+        for (var i = na; i <= nz; i += (dn || nz))
+        {
+            htm += ((i == na)? '' : (sgn < 0 || !sgn && f.FOU_SGN[1].checked)? '-' : '+') + f.FOU_TERM.value.replace(/\s/g, '').replace(/sin/g,'sim').replace(/n/gi, ''+i).replace(/sim/g,'sin');
+            sgn = -sgn;
+        }
+        cnv.innerHTML = htm;
+    }
+    else alert('Die JavaScript-Unterstützung Ihres Browsers ist unzureichend.');
+}
+//-->
+</script>
+</head>
+<body bgcolor="#ffffff">
+  <form name="fo" action="javascript:if (window.mkGraph) mkGraph(this);" onsubmit="return false;">
+    <a name="top"> </a>
+    <center>
+      <div id="body1">
+        <table width="99%">
+          <tr>
+            <td align="left">
+              &nbsp;<a href="http://www.walterzorn.de/en/grapher/grapher_e.htm" target="_top"><img src="../images/uk.gif" align="middle" border="0" alt="English version" width="22" height="15"></a> <a href="http://www.walterzorn.de/en/grapher/grapher_e.htm" target="_top"><img src="../images/usa.gif" align="middle" border="0" alt="English version" width="22" height="15"></a> <small><a href="http://www.walterzorn.de/en/grapher/grapher_e.htm" target="_top">English version</a></small>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td align="center"><a href="../index.htm"><img border="0" src="../images/logo.gif" alt="" width="271" height="30"></a></td>
+          </tr>
+        </table>
+        <table cellspacing="12">
+          <tr valign="top">
+            <td><a href="../index.htm">Startseite</a></td>
+            <td><a href="../dragdrop/dragdrop.htm">DHTML-Bibliothek</a></td>
+            <td><a href="../jsgraphics/jsgraphics.htm">Vektorgrafik-Bibliothek</a></td>
+            <td><a href="../tooltip/tooltip.htm">Tooltip-Script</a></td>
+            <td><br></td>
+            <td style="border: 1px solid #000099;">
+
+
+
+            </td>
+          </tr>
+        </table>
+        <table cellpadding="6" width="740">
+          <tr>
+            <td align="left">
+              <b><big>Online - Funktionsgraph - Plotter</big></b><br>
+              <small>Geschrieben vollst&auml;ndig in JavaScript<br>Entwickler: Walter Zorn</small><br>&nbsp;
+            </td>
+          </tr>
+        </table>
+        <table cellpadding="6" width="740">
+          <tr>
+            <td align="left">
+              Derzeit in Entwicklung:
+              Der WZ Funktionsgraf -Plotter als eigenst&auml;ndiges Programm, geschrieben in C,
+              wesentlich schneller und m&auml;chtiger,
+              z.B. dargestellten Bereich zoomen und scrollen,
+              numerisch ableiten und integrieren (Integralkurven darstellen), Differentialgleichungen numerisch lösen,
+              Graphen in Polarkoordinaten,
+              eingebauter Funktionsrechner für Einzelwerte und Wertetabellen mitsamt 1. Ableitung ...
+              <a href="http://www.walterzorn.de/en/grapher/grapher_app.htm">Download von WZGrapher</a> (frei).<br>&nbsp;
+            </td>
+          </tr>
+        </table>
+        <div id="inputs" style="position:relative;text-align:left;">
+          <div style="padding-top:8px;padding-right:8px;padding-left:8px;">
+            <input type="submit" class="bt2" value="Graph zeichnen" onclick="if (window.mkGraph) mkGraph(this.form); return false;">
+            <input name="Add" type="checkbox">vorherige Graphen nicht l&ouml;schen&nbsp;
+            &nbsp;<input type="button" class="bt2" value="Graphen l&ouml;schen" onmouseup="this.form.F.focus()" onclick="delGraphs(1)">
+            <br>
+            x min <input name="XA" type="text" class="input" size="8" maxlength="13" value="-5">
+            &nbsp;x max <input name="XZ" type="text" class="input" size="8" maxlength="13" value="5">&nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp;y min <input name="YA" type="text" class="input" size="8" maxlength="13" value="-5">
+            &nbsp;y max <input name="YZ" type="text" class="input" size="8" maxlength="13" value="5">
+            <br>
+            <b>Funktion f(x)</b><small> (es k&ouml;nnen bis zu ca. 5 Funktionen mit Semikola voneinander abgetrennt eingegeben werden)</small>
+            <br><textarea name="F" class="input" cols="90" rows="4">cos(pi*x) / (-LN2*x);
+sqrt(9-x^2);
+-sqrt(9-x^2)
+            </textarea>
+          </div>
+        </div>
+      </div>
+      <div id="graphframe" style="position:relative;left:0px;top:0px;">
+        <noscript><big><b><font color="#cc0000">&nbsp;<br>Um den Funktionsgrafen zu zeichnen, muss JavaScript aktiviert sein.</font></b></big></noscript>
+        Hier wird der Graf / werden die Grafen der Funktion hineingezeichnet.
+      </div>
+      <div id="terms" style="position:relative;left:0px;top:0px;width:690px;padding:3px;text-align:left;"></div>
+      <div id="body2">
+        <table cellpadding="14">
+          <tr>
+            <td align="left">
+              <big>&nbsp;<br><b>Rechenzeichen und Hilfsfunktionen</b></big> <small>Gro&szlig;- und Kleinschreibung beliebig</small>
+              <table>
+                <tr>
+                  <td valign="top">
+                    <b>+ - * : /</b>
+                    <br>
+                    <b>() [] {}</b>
+                  </td>
+                  <td>
+                    Addition, Subtraktion, Multiplikation, Division, Klammern.
+                    Auch <b>/</b> gilt hinsichtl. der Rechenregel &quot;Punkt vor Strich&quot; als Punkt.
+                    Das Multiplikationszeichen <b>*</b> kann weggelassen werden:
+                    <b style="white-space:nowrap;">0.5x^3-3x</b> oder <b style="white-space:nowrap;">pixeln(2cos[LN2x])</b>  oder <b style="white-space:nowrap;">Pipi/(Exe)</b>&nbsp;.
+                    Mit den optional drei verschiedenen Klammertypen k&ouml;nnen Sie (m&uuml;ssen aber nicht) verschachtelte Klammerungen &uuml;bersichtlicher gestalten.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <i>Basis</i><b>^</b><i>Exponent</i>
+                    <br>
+                    oder
+                    <br>
+                    <span style="white-space:nowrap;"><b>p(</b>Basis<b>,</b> Exponent<b>)</b></span>
+                  </td>
+                  <td>
+                    Potenzieren. Berechnet Basis<sup>Exponent</sup>, z.B. <b>p(x,2)</b> oder <b>x^2</b>&nbsp;.
+                    Das <b>^</b> finden Sie links oben (neben der 1) auf der Tastatur.
+                    Statt <b>^</b> kann auch ein einfaches <b>'</b> oder doppeltes <b>&quot;</b> Anf&uuml;hrungszeichen verwendet werden.
+                    Falls Sie nicht p() benutzen, m&uuml;ssen Sie zusammengesetzte (Additionen, Subtraktionen, Multiplikationen, Divisionen etc.) Basis- oder Exponent-Ausdr&uuml;cke zur eindeutigen Abgrenzung in Klammern setzen.
+                    Bsp: <b style="white-space:nowrap;">(x/3)^(2x)</b>&nbsp;.
+                    Selbstverst&auml;ndlich k&ouml;nnen Sie statt <b style="white-space:nowrap;">x&quot;3</b> auch <b style="white-space:nowrap;">xxx</b> schreiben, oder statt <b style="white-space:nowrap;">tan(x)'2</b> auch <b style="white-space:nowrap;">tan(x)tan(x)</b>&nbsp;.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>root(</b>Wert<b>,</b>Wurzelexp.<b>)</b></span>
+                  </td>
+                  <td>
+                    zieht &quot;<i>Wurzelexponent</i>-te&quot; Wurzel aus <i>Wert</i> (Zahl oder Ausdruck).
+                    Bsp: <b style="white-space:nowrap;">root(x,6)</b> sechste Wurzel aus x, <b style="white-space:nowrap;">root[tan(x),4]</b> vierte Wurzel aus Tangens von x.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>sqrt()</b></span>
+                  </td>
+                  <td>
+                    Quadratwurzel des in den Klammern stehenden Arguments (Zahl oder Ausdruck). Dasselbe wie root(<i>Argument</i>,2)
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>cbrt()</b></span>
+                  </td>
+                  <td>
+                    Kubikwurzel des Arguments. Dasselbe wie root(<i>Argument</i>,3)
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>logn(</b>Wert<b>,</b>Basis<b>)</b></span>
+                  </td>
+                  <td>
+                    Logarithmus von <i>Wert</i> zur Basis <i>Basis</i>.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>ln()</b>
+                  </td>
+                  <td>
+                    nat&uuml;rlicher (Basis E, Euler'sche Zahl) Logarithmus des Arguments, entspricht <span style="white-space:nowrap;">logn(<i>Argument</i>,E)</span>.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>lg()</b>
+                  </td>
+                  <td>
+                    dekadischer (Basis 10) Logarithmus des Arguments, entspr. <span style="white-space:nowrap;">logn(<i>Argument</i>,10)</span>.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>lb()</b>
+                  </td>
+                  <td>
+                    Zweierlogarithmus (Basis 2) des Arguments.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>exp()</b>
+                  </td>
+                  <td>
+                    berechnet Exponentialfunktion E hoch Argument (E-Funktion), gleicht also E^<i>Argument</i>.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>sin()</b>
+                  </td>
+                  <td>
+                    Sinus des Arguments.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>cos()</b>
+                  </td>
+                  <td>
+                    Kosinus, Cosinus.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>tan()</b>
+                  </td>
+                  <td>
+                    Tangens.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>cot()</b></span>
+                  </td>
+                  <td>
+                    Kotangens, Cotangens.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>sec()</b>
+                  </td>
+                  <td>
+                    Sekans, Secans, Kehrwert des Cosinus, Hypotenuse/Ankathete.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>csc()</b>
+                  </td>
+                  <td>
+                    Kosekans, Cosecans, Kehrwert des Sinus, Hypotenuse/Gegenkathete.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>asin()</b></span>
+                  </td>
+                  <td>
+                    Arkusinus, Arcussinus des Arguments, Umkehrfunktion des Sinus.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>acos()</b></span>
+                  </td>
+                  <td>
+                    Arkuskosinus, Arcuscosinus.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>atan()</b></span>
+                  </td>
+                  <td>
+                    Arkustangens, Arcustangens, Umkehrfunktion des Tangens.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>acot()</b></span>
+                  </td>
+                  <td>
+                    Arkuskotangens, Arcuscotangens, Umkehrfunktion des Cotangens.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>asec()</b></span>
+                  </td>
+                  <td>
+                    Arkussekans, Arcussecans, Umkehrfunktion des Secans.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>acsc()</b></span>
+                  </td>
+                  <td>
+                    Arkuskosekans, Arcuscosecans, Umkehrfunktion des Cosecans.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>sinh()</b></span>
+                  </td>
+                  <td>
+                    Hyperbel- Sinus, Sinus hyperbolicus.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>cosh()</b></span>
+                  </td>
+                  <td>
+                    Hyperbel- Kosinus, Cosinus hyperbolicus.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>tanh()</b></span>
+                  </td>
+                  <td>
+                    Hyperbel- Tangens, Tangens hyperbolicus.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>coth()</b></span>
+                  </td>
+                  <td>
+                    Hyperbel- Kotangens, Cotangens hyperbolicus.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>sech()</b></span>
+                  </td>
+                  <td>
+                    Hyperbel- Sekans, Secans hyperbolicus.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>csch()</b></span>
+                  </td>
+                  <td>
+                    Hyperbel- Kosekans, Cosecans hyperbolicus.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>asinh()</b></span>
+                  </td>
+                  <td>
+                    Areasinus, Area sinus hyperbolicus, Umkehrfunktion von sinh().
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>acosh()</b></span>
+                  </td>
+                  <td>
+                    Area- Kosinus, Area cosinus hyperbolicus, Umkehrfunktion von cosh().
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>atanh()</b></span>
+                  </td>
+                  <td>
+                    Area- Tangens, Area tangens hyperbolicus, Umkehrfunktion von tanh().
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>acoth()</b></span>
+                  </td>
+                  <td>
+                    Area- Kotangens, Area cotangens hyperbolicus, Umkehrfunktion von cotanh().
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>asech()</b></span>
+                  </td>
+                  <td>
+                    Area- Sekans, Area secans hyperbolicus, Umkehrfunktion von sech().
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>acsch()</b></span>
+                  </td>
+                  <td>
+                    Area- Kosekans, Area cosecans hyperbolicus, Umkehrfunktion von csch().
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>gaussd(x,</b>Mittelwert<b>,</b>Sigma<b>)</b></span>
+                  </td>
+                  <td>
+                    Gau&szlig;'sche Normalverteilung (Glockenkurve).
+                    Der Sonderfall <b style="white-space:nowrap;">gaussd(x,0,1)</b> stellt die normierte Wahrscheinlichkeitsdichte dar (Mittelwert 0, Standardabweichung 1).
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>min(</b>Ausdr1<b>,</b>Ausdr2<b>)</b></span>
+                  </td>
+                  <td>
+                    liefert den kleineren der beiden &uuml;bergebenen Ausdr&uuml;cke bzw. Werte.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>max(</b>Ausdr1<b>,</b>Ausdr2<b>)</b></span>
+                  </td>
+                  <td>
+                    liefert den gr&ouml;&szlig;eren der beiden &uuml;bergebenen Ausdr&uuml;cke bzw. Werte.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b style="white-space:nowrap;">round()</b>
+                  </td>
+                  <td>
+                    rundet Argument kaufm&auml;nnisch.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b style="white-space:nowrap;">floor()</b>
+                  </td>
+                  <td>
+                    rundet Argument ab.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b style="white-space:nowrap;">ceil()</b>
+                  </td>
+                  <td>
+                    rundet Argument auf.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>abs()</b> od. <b>|&nbsp;|</b>
+                  </td>
+                  <td>
+                    Betrag des in den Klammern oder zwischen den Pipes stehenden Ausdrucks.
+                    <b style="white-space:nowrap;">2abs(sin[x])</b> ist also &auml;quivalent zu <b style="white-space:nowrap;">2|sin(x)|</b>&nbsp;.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>sgn()</b>
+                  </td>
+                  <td>
+                    Vorzeichenfunktion.
+                    <br>
+                    <table>
+		      <tr>
+			<td rowspan="3" valign="middle">
+			  <b style="white-space:nowrap;">sgn(x)</b>&nbsp;&nbsp;=&nbsp;&nbsp;
+                        </td>
+                        <td>&nbsp;1 f&uuml;r x &gt; 0</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;0 f&uuml;r x = 0</td>
+                      </tr>
+                      <tr>
+                        <td>-1 f&uuml;r x &lt; 0</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td align="left">
+              <big>&nbsp;<br><b>Vordefinierte Konstanten, Werte</b></big> <small>Gro&szlig;- und Kleinschreibung beliebig</small>
+              <table>
+                <tr>
+                  <td valign="top">
+                    <b>rand</b>
+                  </td>
+                  <td>
+                    Zufallszahl zwischen 0 und 1. Bsp:
+                    <br>
+                    <b style="white-space:nowrap;">pi*rand*sin(x)</b> (Sie k&ouml;nnen auch <b style="white-space:nowrap;">Pirandsin(x)</b> schreiben!)
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>E</b>
+                  </td>
+                  <td>
+                    Eulersche Zahl 2.718281828459045...
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>LN2</b>
+                  </td>
+                  <td>
+                    nat&uuml;rlicher Logarithmus von 2, ist 0.6931471805599453...
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>LN10</b>
+                  </td>
+                  <td>
+                    nat&uuml;rlicher Logarithmus von 10, ist 2.302585092994046...
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>LOG2E</b>
+                  </td>
+                  <td>
+                    Logarithmus von E (siehe oben) zur Basis 2, ist 1.4426950408889633...
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>LOG10E</b>
+                  </td>
+                  <td>
+                    Logarithmus von E zur Basis 10, ist 0.4342944819032518...
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>PHI</b>
+                  </td>
+                  <td>
+                    Fibonacci-Zahl, Goldener Schnitt 1.61803398874989...
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>PI</b>
+                  </td>
+                  <td>
+                    Kreiszahl 3.141592653589793...
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>SQRT1_2</b>
+                  </td>
+                  <td>
+                    Quadratwurzel von 1/2, ist 0.7071067811865476...
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>SQRT2</b>
+                  </td>
+                  <td>
+                    Quadratwurzel von 2, ist 1.4142135623730951...
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td align="left">
+              <big>&nbsp;<br><b>Hinweise</b></big>
+              <br>
+              Funktionen k&ouml;nnen weitgehend nach der gewohnten Schreibweise und Taschenrechnersyntax eingegeben werden.
+              Dezimaltrennzeichen: Punkt. Unabh&auml;ngige Variable im Funktionsterm ist x.
+              <br>&nbsp;<br>
+              Klammerungen und Hilfsfunktionen d&uuml;rfen beliebig tief verschachtelt werden. Beispiele:<br>
+              <b style="white-space:nowrap;">cos[atan(5x)^4]</b> oder <b style="white-space:nowrap;">sqrt{16*[1-sec(x)^2/4]}</b>
+              <br>&nbsp;<br>
+              Der Funktionsgraph -Plotter h&auml;lt sich an die &uuml;blichen Rechenregeln wie &quot;umklammerte Ausdr&uuml;cke zuerst&quot;, &quot;Punkt- vor Strichrechnung&quot; und &quot;Auswertung von links nach rechts&quot;.
+              Das Divisionszeichen <b>/</b> gilt wie das ebenfalls m&ouml;gliche <b>:</b> als Punkt-Rechenzeichen.
+              <br>
+              <b style="white-space:nowrap;">2*x-3/x</b> wird also wie <b style="white-space:nowrap;">(2*x) - (3/x)</b> gerechnet.
+              <br>&nbsp;<br>
+              Z&auml;hler- und Nenner-Ausdr&uuml;cke im Zweifelsfall jeweils komplett in Klammern setzen, da ein waagrechter Bruchstrich, der einen Bruch eindeutig abgrenzt, nicht m&ouml;glich ist.
+              Also beispielsweise <b style="white-space:nowrap;">pi-(5-x)/(3x)*acoth(x)</b> schreiben.
+              <b style="white-space:nowrap;">pi-5-x/3x*acoth(x)</b> hingegen w&uuml;rde gem&auml;&szlig; Rechenregeln wie <b style="white-space:nowrap;">pi-5-(x/3)*x*acoth(x)</b> gerechnet werden.
+              <br>&nbsp;<br>
+              Gro&szlig;- und Kleinschreibung spielen keine Rolle und k&ouml;nnen beliebig angewendet und gemischt werden; das gilt auch f&uuml;r die vordefinierten Konstanten.
+              Leerzeichen n&uuml;tzen und schaden nichts; das Programm ignoriert sie.
+              <br>&nbsp;<br>
+              Der Bereich von x (x&nbsp;min bis x&nbsp;max) kann frei gew&auml;hlt werden (naja, von etwa minus 10<sup>12</sup> bis etwa plus 10<sup>12</sup>).
+              Der Wertebereich von y (y&nbsp;min bis y&nbsp;max) ist optional;
+              wird hier nichts eingegeben, versucht das Funktionsgraph-Programm von sich aus, den y-Wertebereich f&uuml;r den vorgegebenen x-Bereich zu ermitteln.
+              <br>&nbsp;<br>
+            </td>
+          </tr>
+          <tr>
+            <td align="left">
+              <big>&nbsp;<br><b>Mehrere Graphen auf einmal</b></big>
+              <br>
+              Es k&ouml;nnen bis zu ca. 5 Funktionen auf einmal mit Semikola voneinander abgetrennt eingegeben werden.
+              Nat&uuml;rlich dauert der Aufbau des Diagramms bzw. der Funktionsgraphen dann entsprechend l&auml;nger, unter Umst&auml;nden etliche Sekunden.
+              Beispiel (zum Kopieren in das Funktionseingabefeld):<br>
+              <b>
+                sqrt[16*(1-x&sup2;/2)];<br>
+                -sqrt[16*(1-x&sup2;/2)];<br>
+                sqrt[2*(1-x&sup2;/16)];<br>
+                -sqrt[2*(1-x&sup2;/16)]
+              </b>
+            </td>
+          </tr>
+          <tr>
+            <td align="left">
+              <big>&nbsp;<br><b>Fourierreihe erzeugen</b></big>
+              <br>
+              <table cellpadding="5">
+                <tr>
+                  <td align="left" bgcolor="#eeeeee">
+                    <small>
+                    Die Fourierreihe wird in das hellblaue Feld hier unten geschrieben.
+                    <br>
+                    Von dort k&ouml;nnen Sie sie kopieren und im Funktionsgraph-Plotter als Funktion eingeben
+                    <br>&nbsp;<br></small>
+                    <b>n:</b>
+                    von<input name="FOU_NA" type="text" size="4" value="1">
+                    bis<input name="FOU_NZ" type="text" size="4" maxlength="3" value="10">
+                    Schrittweite<input name="FOU_DN" type="text" size="4" value="1">
+                    <br>
+                    Einzelterme
+                    addieren<input type="radio" name="FOU_SGN">
+                    subtrahieren<input type="radio" name="FOU_SGN">
+                    oder alternierend, Beginn mit plus<input type="radio" name="FOU_SGN">
+                    minus <input type="radio" name="FOU_SGN" checked>
+                    <br>
+                    <b>Einzelterm:</b>
+                    <input name="FOU_TERM" type="text" size="44" value="0.9^n * cos(n*x)/2">
+                    <input class="bt2" type="button" value="Fourierreihe erzeugen" onclick="mkFourier(this.form)">
+                    <br>
+                    <div id="FouOut" style="background:#d3e6ff;padding:8px;font-weight:bold;">&nbsp;</div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td align="center">
+              <table cellpadding="40">
+                <tr>
+                  <td><a href="#top"><img border="0" src="../images/topOfPage.gif" alt="Seitenanfang" width="21" height="20"></a></td>
+                  <td><a href="../index.htm" target="_top">Home</a></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <hr width="95%" size="1" noshade>
+        <table width="740">
+          <tr>
+            <td>
+              <small>Walter Zorn, M&uuml;nchen
+              <br><a href="http://www.kreuzotter.de/impressum.htm">Impressum und über diese Seite</a></small>
+              <br>
+              &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </center>
+  </form>
+  <!--div id="helplyr" style="position:absolute;left:200px;top:300px;border:1px solid #000000;background:#f0f0f0;z-index:10;visibility:hidden;">
+    <div style="background:#334499;text-align:center;"><b><small style="color:#f0f0f0;">&lt; Mit der Maus verschiebbar &gt;</small></b></div>
+    <div style="text-align:left;padding:4px;">
+      <small>
+        <b>Rechenzeichen, Hilfsfunktionen</b>
+        <br>
+        + - * / :
+        <br>
+        </small><small style="white-space:nowrap;">Basis^Exponent oder Basis'Exponent oder Basis&quot;Exponent</small><small>
+        <br>
+        root(Arg,Wurzelexponent) sqrt() cbrt()
+        <br>
+        logn(Arg,Basis) ln() lg() lb() exp()
+        <br>
+        sin() cos() tan() cot() sec() csc()
+        <br>
+        asin() acos() atan() acot() asec() acsc()
+        <br>
+        sinh() cosh() tanh() coth() sech() csch()
+        <br>
+        asinh() acosh() atanh() acoth() asech() acsch()
+        <br>
+        abs() oder |&nbsp;|
+        <br>
+        min(Arg1,Arg2) max(Arg1,Arg2) round() floor() ceil()
+      </small>
+      <br>
+      <small>
+        <b>Konstanten, Werte</b>
+        <br>
+        PI
+        <br>
+        E
+        <br>
+        LN2
+        <br>
+        LN10
+        <br>
+        LOG2E
+        <br>
+        LOG10E
+        <br>
+        SQRT1_2
+        <br>
+        SQRT2
+        <br>
+        rand (erzeugt Zufallszahl)
+      </small>
+    </div>
+  </div-->
+<script type="text/javascript">
+<!--
+var G_LANG = "D";
+//-->
+</script>
+<script type="text/javascript" src="http://www.walterzorn.de/en/scripts/wz_grapherstr.js"></script>
+<script type="text/javascript" src="http://www.walterzorn.de/en/scripts/wz_grapher.js"></script>
+</body>
+</html>

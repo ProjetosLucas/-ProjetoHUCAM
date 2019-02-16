@@ -1,0 +1,126 @@
+<html>
+<head>
+<meta name="keywords" content="Primfaktor, Primfaktoren, Primfaktorenzerlegung, Primfaktoren-Zerlegung, Primfaktorzerlegung, Primfaktor-Zerlegung, gemeinsamer Teiler, gemeinsamen Teiler, ggT">
+<title>Zahl in Primfaktoren zerlegen (Online-Rechner)</title>
+<link rel="stylesheet" type="text/css" href="walterzorn.css">
+<style type="text/css">
+<!--
+#ET,#EP,.e
+{
+  border:none;
+  width:100%;
+  text-align:center;
+  color:#990099;
+  font-family:verdana,geneva,helvetica,sans-serif;
+  font-size:12px;
+  font-weight:bold;
+}
+-->
+</style>
+<script language="JavaScript">
+<!--
+var d, f;
+
+function GET(div,input1,input2)
+{
+    return [(d.layers)? d.layers[div] : (d.all)? d.all[div] : (d.getElementById)? d.getElementById(div) : 0 , (input1.value!='')? parseInt(input1.value) : 0 , (input2&&input2.value!='')? parseInt(input2.value) : 0];
+}
+
+
+function RESULT(txt,div)
+{
+    if (typeof div.innerHTML != "undefined") div.innerHTML = txt;
+    if (d.layers) with(div.document)
+    {
+        open(); write('<span class="e">' + txt + '<\/span>'); close();
+    }
+} 
+
+
+function PF()
+{
+    var txt = '', x=GET('EP', f.Pz);
+    if (x[1]==0 || x[0]==0) return;
+    var maxFakt = x[1];
+    
+    RESULT("Berechnung läuft...",x[0]);
+
+    txt += '' + x[1];
+    var i = 2; while (i<x[1])
+    {
+        if (x[1]%i==0)
+        {
+            txt += ((x[1]==maxFakt)? ' = ' : '') + i + ' &middot; ';
+            x[1] /= i;
+        }
+        else (i<3)? (i++) : (i+=2);
+   }
+   RESULT(txt + ((x[1]==maxFakt)? ' ist Primzahl!' : (''+i)), x[0]);
+}
+
+
+function GGT()
+{
+    var txt = '', x = GET('ET', f.T1, f.T2);
+    var num1 = a = x[1], num2 = b = x[2];
+    if (a==0 || b==0 || x[0]==0) return;
+    while (a!=b)
+    {
+        var v = parseInt((b<a)? a/b : (b/a)) - 1;
+        if (b<a) a -= (v>1)? v*b : b;
+        else b -= (v>1)? v*a : a;
+    }
+    RESULT(txt + 'Gr&ouml;&szlig;ter gemeinsamer Teiler von ' + num1 + ' und ' + num2 + ' ist ' + a, x[0]);
+}
+//-->
+</script>
+</head>
+<body bgcolor="#ffffff" link="#4466dd" alink="#4466dd" vlink="#4466dd" onload="d=document;f=d.forms[0];">
+  <center>
+    <form>
+      <table cellpadding="8">
+        <tr>
+          <td align="center">
+            <a href="index.htm" target="_top"><img border="0" src="images/logo_small.gif" alt="zur Startseite" width="174" height="15"></a>
+          </td>
+        </tr>
+      </table>
+      <br>
+      <table bgcolor="#990099" border="0" cellpadding="0" cellspacing="0" width="680">
+        <tr>
+          <td>
+            <table border="0" cellpadding="8" cellspacing="1" width="100%">
+              <tr>
+                <td align="center" bgcolor="#e0ecff">
+                  Nat&uuml;rliche Zahl in ihre Primfaktoren zerlegen: <small><b><a href="#" onclick="alert('Die Zerlegung großer Zahlen kann unter ungünstigen Umständen 1 Minute oder länger dauern\n\(z.B. Primzahl, Zahl aus nur 2 oder 3 Primfaktoren, langsamer Rechner...\)');">(wichtiger Hinweis)</a></b></small><br>
+                  <input name="Pz" type="text" size="10" maxlength="10" value=""><br>
+                  <input class="bt2" type="button" value="Zerleg!" onclick="PF()">
+                  <br> <br> <br> <br>
+                </td>
+              </tr>
+              <tr>
+                <td align="center" bgcolor="#e0ecff">
+                  Gr&ouml;&szlig;ten gemeinsamen Teiler zweier nat&uuml;rlicher Zahlen suchen:<br>
+                  Zahl 1:<input name="T1" type="text" size="13" maxlength="13" value=""><span class="vs2"> &nbsp; Zahl 2: </span><input name="T2" type="text" size="13" maxlength="13" value=""><br>
+                  <input class="bt2" type="button" value="Such ggT!" onclick="GGT()">
+                  <br> <br> <br> <br>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </form>
+    <p>&nbsp;</p>
+    <table cellpadding="20">
+      <tr>
+        <td><b><a href="index.htm" target="_top">Home</a></b></td>
+        <td><b>&nbsp;</b></td>
+      </tr>
+    </table>
+  </center>
+   <div id="EP" style="position:absolute;left:0px;top:130px;">&nbsp;</div>
+   <div id="ET" style="position:absolute;left:0px;top:250px;">&nbsp;</div>
+  <br>
+</body>
+</html>

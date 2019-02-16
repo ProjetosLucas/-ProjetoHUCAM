@@ -1,0 +1,696 @@
+<!--DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"-->
+<!--DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN"
+       "http://www.w3.org/TR/html4/strict.dtd"-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+<title>JavaScript: DHTML API, Drag &amp; Drop f&uuml;r Bilder und Layer</title>
+<link rel="stylesheet" type="text/css" href="../newwalterzorn.css">
+<style type="text/css">
+<!--
+#reltab {
+  position:relative;
+  border:1px solid #000099;
+  background:#d3e3f9;
+  layer-background-color:#d3e3f9;
+}
+
+#greylyr {
+  position:absolute;
+  left:6px;
+  top:380px;
+  width:134px;
+  border:1px solid #000099;
+  background:#eeeeee;
+  layer-background-color:#eeeeee;
+  overflow:hidden;
+  visibility:hidden;
+  z-index:3;
+}
+
+#ingreylyr {
+  padding:2px;
+}
+
+#bluelyr {
+  position:absolute;
+  visibility:hidden;
+  left:0px;
+  top:2000px;
+  width:460px;
+  padding:20px;
+  border:1px solid #000099;
+  background:#d3e3f9;
+  layer-background-color:#d3e3f9;
+  visibility:hidden;
+}
+-->
+</style>
+<script type="text/javascript">
+<!--
+if (!document.layers)
+{
+    document.write('<style type="text/css">#reldiv {position:relative;background-color:#ffffff;border:1px solid #000099;overflow:hidden;}'+
+                   '#reldiv2 {position:relative;background-color:#ffffff;border:1px solid #000099;overflow:hidden;}<\/style>');
+}
+//-->
+</script>
+</head>
+<body bgcolor="#ffffff">
+<script type="text/javascript" src="http://www.walterzorn.de/en/scripts/wz_dragdrop.js"></script>
+<a name="top"> </a>
+  <table cellpadding="0" cellspacing="0" width="99%">
+    <tr>
+      <td>
+        &nbsp;<a href="http://www.walterzorn.de/en/dragdrop/dragdrop_e.htm" target="_top"><img src="../images/uk.gif" align="middle" border="0" alt="English version" width="22" height="15"></a> <a href="http://www.walterzorn.de/en/dragdrop/dragdrop_e.htm" target="_top"><img src="../images/usa.gif" align="middle" border="0" alt="English version" width="22" height="15"></a> <small><a href="http://www.walterzorn.de/en/dragdrop/dragdrop_e.htm" target="_top">English version</a></small>
+      </td>
+      <td align="right">
+        <small>
+        <!--a href="javascript:void(0)" onclick="dd.elements[dd.n4? 'reldivn4' : 'reldiv'].write('PUSH Plough Using Smart Harmonics')">w1</a>
+        <a href="javascript:void(0)" onclick="dd.elements[dd.n4? 'reldivn4' : 'reldiv'].write('Um Bilder oder Layer dhtml&nbsp;- &nbsp;und drag&amp;drop&nbsp;-f&auml;hig zu machen, m&uuml;ssen lediglich ihre Namen bzw. IDs einem Funktionsaufruf SET_DHTML() &uuml;bergeben werden. An der DHTML&nbsp;Drag&nbsp;Drop&nbsp;JavaScript&nbsp;Bibliothek selbst muss nichts ge&auml;ndert werden.')">w0</a>
+        <a href="javascript:void(0)" onclick="dd.elements[dd.n4? 'reldivn4' : 'reldiv'].addChild(dd.elements.greylyr);">ad</a>
+        <a href="javascript:void(0)" onclick="dd.elements[dd.n4? 'reldivn4' : 'reldiv'].removeChild('greylyr');">rem</a>
+        <a href="javascript:void(0)" onclick="dd.elements.rabbit.copy();">cp</a>
+        <a href="javascript:void(0)" onclick="var c = dd.elements.rabbit; c.moveTo(c.defx, c.defy); if (c.copies) for (var i = 0; i < c.copies.length; i++) c.copies[i].moveTo(c.copies[i].defx, c.copies[i].defy);">mov</a-->
+        <!--a href="javascript:void(0)" onclick="ADD_DHTML('greylyr');">-</a-->
+        <!--a href="javascript:void(0)" onclick="dd.elements.cat.setDraggable(dd.elements.cat.nodrag);">-</a-->
+        </small>
+      </td>
+    </tr>
+  </table>
+  <center>
+    <table>
+      <tr>
+        <td id="op56check" align="center"><a href="../index.htm"><img name="logo" border="0" src="../images/logo.gif" alt="" width="271" height="30"></a></td>
+      </tr>
+    </table>
+    <table cellspacing="12">
+      <tr>
+        <td><a href="../index.htm">Startseite</a></td>
+        <td><a href="../jsgraphics/jsgraphics.htm">Vektorgrafik-Bibliothek</a></td>
+        <td><a href="../tooltip/tooltip.htm">Tooltips-Script</a></td>
+        <td><a href="../grapher/grapher.htm">Funktionsgraph-Plotter</a></td>
+      </tr>
+    </table>
+    <br>
+  </center>
+  <center>
+    <table cellpadding="4">
+      <tr align="left">
+        <td valign="top" align="right" width="144">
+          <img src="../images/transparentpixel.gif" alt="JavaScript Drag and Drop und DHTML-Bibliothek" width="1" height="60">
+          <br>
+          <img name="cat" src="http://www.walterzorn.de/en/images/dragdrop/ddcat.jpg" width="129" height="154" alt="Drag&amp;Drop Image">
+          <!--img name="cat" src="http://www.walterzorn.de/en/images/dragdrop/ddcat.jpg" alt="Drag&amp;Drop Image"-->
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td>
+                <big><b>JavaScript: DHTML Bibliothek,
+                <br>
+                Drag &amp; Drop f&uuml;r Bilder und Layer.</b></big>
+                <br>
+                <small>JavaScript Bibliothek. Entwickler: Walter Zorn</small>
+              </td>
+              <td rowspan="3" valign="top" width="130">
+                <img src="../images/transparentpixel.gif" alt="Drag-n-Drop JavaScript f&uuml;r Bilder und Layer" width="1" height="80">
+                <br>
+                <table cellpadding="0" cellspacing="3">
+                  <tr>
+                    <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt="JavaScript Drag and Drop f&uuml;r Layer und Bilder"></td>
+                    <td>
+                      <small>
+                        &nbsp;<br>
+                        <a href="#browser">Welche Browser?</a>
+                        <br>&nbsp;<br>
+                        <a href="#config">Script einbinden</a>
+                        <br>&nbsp;<br>
+                        <a href="#addons">DHTML API</a>
+                        <br>&nbsp;<br>
+                        <a href="#download">Download</a>
+                        <br>&nbsp;
+                      </small>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Eine Cross-Browser JavaScript-DHTML-Bibliothek, die Layer (DIV-Elemente) und Bilder mit einem einzigen Funktionsaufruf in DHTML-Elemente verwandelt und mit der Maus verschiebbar (drag&amp;drop-f&auml;hig) macht.
+                Bilder m&uuml;ssen nicht einmal per CSS positioniert (hartkodiert) sein, sondern k&ouml;nnen ganz normal (logisch) im Seitenaufbau und <img name="smile1" src="http://www.walterzorn.de/en/images/smile.gif" width="11" height="11" alt="Drag &amp; Drop Image"> Textfluss integriert sein.
+                <div id="reldiv"><ilayer name="reldivn4" bgcolor="#eeeeee"><div>
+                  Um Bilder oder Layer dhtml- &nbsp;und drag&amp;drop-f&auml;hig zu machen, m&uuml;ssen lediglich ihre Namen bzw. IDs einem Funktionsaufruf SET_DHTML() &uuml;bergeben werden.
+        	    </div></ilayer></div>
+        	    Mit optionalen <a href="commands.htm">Kommandos</a> kann das Verhalten von Drag&amp;Drop-Elementen beeinflusst werden.
+        	    Beispielsweise l&auml;sst sich der Cursor spezifizieren, ein Bild vervielf&auml;ltigen oder die Verschiebbarkeit auf einen Bereich beschr&auml;nken.
+        	    Die DHTML API (Programmierschnittstelle) von wz_dragdrop.js ist intuitiv und einfach verwendbar.
+                Mit <a class="code" href="javascript:void(0)" onclick=";if(window.dd &amp;&amp; dd.elements){dd.elements.cat.maximizeZ();dd.elements.cat.moveTo(dd.elements.cat.x+20, dd.elements.cat.y+20);}return false;">moveTo()</a> wird ein DHTML-Drag&amp;Drop-Element verschoben,
+                mit <a class="code" href="javascript:void(0);" onclick=";if(window.dd &amp;&amp; dd.elements)dd.elements.cat.hide();return false;">hide()</a> versteckt
+                und mit <a class="code" href="javascript:void(0);" onclick=";if(window.dd &amp;&amp; dd.elements) dd.elements.cat.show();return false;">show()</a> wieder sichtbar gemacht.
+                Mit <a class="code" href="javascript:void(0)" onclick=";if(window.dd &amp;&amp; dd.elements){dd.elements.cat.maximizeZ();dd.elements.cat.resizeTo((dd.elements.cat.w > 195)? 129 : 258, (dd.elements.cat.h > 221)? 154 : 308);}return false;">resizeTo()</a> kann seine Gr&ouml;&szlig;e ver&auml;ndert werden,
+                <a class="code" href="javascript:void(0)" onclick="if (window.dd &amp;&amp; dd.elements) dd.elements.cat.copy();">copy()</a> kopiert ein Bild an Ort und Stelle.
+                <a class="code" href="javascript:void(0)" onclick=";if(window.dd &amp;&amp; dd.elements){var reldiv = dd.n4? dd.elements.reldivn4 : dd.elements.reldiv; reldiv.setBgColor((reldiv.bgColor == '#d3e6ff')? '#ffcccc' : (reldiv.bgColor == '#ffcccc')? '#cceecc' : (reldiv.bgColor == '#cceecc')? (dd.n4? '#eeeeee' : '#ffffff') : '#d3e6ff');}">Usw</a>.
+                Die JavaScript DHTML Drag&nbsp;Drop&nbsp;Bibliothek ist objektorientiert.
+                Jedes Element hat Eigenschaften wie x, y, w, h, z, name (absolute Koordinaten, Gr&ouml;&szlig;e, Z-Index, Name), defx, defy, defw, defh, defz (Standardwerte) und viele weitere.
+                F&uuml;r sp&auml;tere Weiterverwendung k&ouml;nnten Sie diese Werte in &lt;input&nbsp;type=&quot;hidden&quot;&gt;-Formularelemente schreiben und zum Server &uuml;bertragen.
+                F&uuml;r eine Beschreibung der API mit einigen Kurzbeispielen siehe <a href="api.htm">DHTML API</a>- und <a href="commands.htm">Kommando</a>-Referenzen.
+                <br>
+                <div id="reldiv2"><ilayer name="reldiv2n4" bgcolor="#eeeeee"><div>
+                wz_dragdrop.js habe ich nicht in erster Linie daf&uuml;r entwickelt, Seitenbesuchern nur im IE ein paar mit der Maus verschiebbare Layer oder Bildchen zu pr&auml;sentieren,
+                sondern auch als clientseitiges Crossbrowser-API f&uuml;r interaktive Webseiten und Webanwendungen.
+        	    </div></ilayer></div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <big>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br><b>Gr&ouml;&szlig;e mit der Maus ver&auml;ndern</b></big>
+                <br>
+                War zu Beginn (beim Mousedown) eines Drag-Vorgangs <img name="tryit" src="http://www.walterzorn.de/en/images/tryit.gif" width="50" height="17" alt="Drag n Drop DHTML JavaScript f&uuml;r Bilder und Layer"> die Shift-(Umschalt-)Taste gedr&uuml;ckt, arbeitet wz_dragdrop.js im Gr&ouml;&szlig;en&auml;nderungs -Modus, auch im Netscape&nbsp;4 und Opera&nbsp;5 und 6.
+                Diese optionale Funktionalit&auml;t kann mit dem RESIZABLE-<a href="#addons">Kommando</a> f&uuml;r einzelne oder alle JavaScript Drag Drop Elemente aktiviert werden.
+                Bei Verwendung des alternativ m&ouml;glichen SCALABLE-Kommandos beh&auml;lt das Element sogar sein Breite/H&ouml;he-Verh&auml;ltnis bei.
+                Auf diesen Seiten ist die RESIZABLE-Funktionalit&auml;t &uuml;brigens global aktiviert.
+                <br clear="all">
+                <img name="bikegoeteborg" src="http://www.walterzorn.de/en/images/dragdrop/northcapetrip_goeteborg.jpg" alt="Auf meiner ersten Radtour zum Nordkap" title="Auf meiner ersten Radtour zum Nordkap" align="left" border="0" height="444" width="426">
+                <br clear="all">
+                <small><i>Auf meiner 8-Megameter-Radtour durch Norwegen, Nord-Finnland und Schweden<br>
+                (Hamburg-Nordkap-Kirkenes-Trelleborg-M&uuml;nchen)</i></small>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <big>&nbsp;<br>&nbsp;<br><a name="browser"> </a>&nbsp;<br>&nbsp;<br><b>Welche Browser?</b></big>
+                <br>
+                Bis auf ein paar selten verwendete Exoten k&ouml;nnen alle Browser das DHTML&nbsp;&amp;&nbsp;Drag&nbsp;&amp;&nbsp;Drop JavaScript ausf&uuml;hren. Im Einzelnen:
+                <br>&nbsp;<br>
+                <img align="right" name="leop" src="http://www.walterzorn.de/en/images/dragdrop/ddleop.jpg" alt="Drag und Drop f&uuml;r Bilder und Layer (JavaScript, DHTML)" width="300" height="205">
+                Linux:<br>
+                Browser mit Gecko-Engine (Mozilla, Netscape&nbsp;6+, Galeon...), Konqueror ab v.3.2, Netscape&nbsp;4, Opera&nbsp;5, 6, 7.
+                <br>&nbsp;<br>
+                Windows:<br>
+                Gecko-Browser (Mozilla, Netscape&nbsp;6+, Phoenix...), Netscape&nbsp;4, Opera&nbsp;5, 6 und 7, Internet Explorer&nbsp;4+.
+                <br>&nbsp;<br>
+                Andere Systeme:<br>
+                Mac-Safari einwandfrei.
+                Gecko-Browsern, Netscape&nbsp;4 und Opera&nbsp;5+ wird die Interpretation des DHTML&nbsp;&amp;&nbsp;Drag&amp;Drop JavaScript&nbsp;'s erlaubt, weil ich das gleiche Verhalten wie bei den Linux- bzw. Windows-Pendants vermute.
+                Einen Mac zum Testen habe ich nicht.
+                Falls ein Problem mit dem JavaScript DHTML API auftritt, teilen Sie es mir bitte <a href="javascript:void(0)" onmouseover="this.href=Ml()">per Mail</a> mit.
+              </td>
+              <td rowspan="2" width="130">
+                <table cellpadding="0" cellspacing="3">
+                  <tr>
+                    <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt=""></td>
+                    <td>
+                      <small>
+                        &nbsp;<br>
+                        <a href="#top">Seitenanfang</a>
+                        <br>&nbsp;<br>
+                        <a href="#browser">Welche Browser?</a>
+                        <br>&nbsp;<br>
+                        <a href="#config">Script einbinden</a>
+                        <br>&nbsp;<br>
+                        <a href="#addons">DHTML API</a>
+                        <br>&nbsp;<br>
+                        <a href="#download">Download</a>
+                        <br>&nbsp;
+                      </small>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <big>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br><b>Gr&ouml;&szlig;en&auml;nderungen des Fensters</b></big>
+                <br>
+                Bilder und relativ positionierte Layer behalten ihre r&auml;umlich-logische Eingliederung in die Seitenstruktur bei,
+                werden also automatisch so versetzt, wie es ver&auml;nderte Zeilenumbr&uuml;che, Tabellengr&ouml;&szlig;en etc. erfordern.
+                Sofern ein Element zuvor mit der Maus verschoben wurde, bleibt sein relativer Abstand zum Normalplatz im Textfluss erhalten.
+                Das hei&szlig;t: Diese DHTML-Drag-Drop-Bibliothek l&auml;sst sich auch auf nicht hartkodierten Seiten nicht so ohne weiteres durcheinanderbringen, wenn dem User einf&auml;llt, die Fenstergr&ouml;&szlig;en zu ver&auml;ndern.
+                <br>
+                <img name="skitour" src="http://www.walterzorn.de/en/images/skitour_suedtirol_2.jpg" alt="" width="550" height="298">
+                <br>
+                <small><i>Skitour in S&uuml;dtirol</i></small>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <big>&nbsp;<br>&nbsp;<br><a name="config"> </a>&nbsp;<br>&nbsp;<br><b>Drag &amp; Drop Script einbinden</b></big>
+                <br>
+                <b><big>1.</big> HTML-Datei: Namen f&uuml;r Drag&amp;Drop-Elemente</b>
+                <br>
+                <b>Bilder:</b>
+                Jedes Bild, das dhtml - und drag&nbsp;drop -f&auml;hig werden soll, muss einen nur einmal vergebenen Namen haben (name-Attribut):
+                <img align="left" name="chameleon" src="http://www.walterzorn.de/en/images/dragdrop/ddcham.jpg" width="155" height="95" alt="JavaScript, DHTML: Drag&amp;Drop f&uuml;r Bilder und Layer">
+                &lt;img&nbsp;name=&quot;name1&quot; src=&quot;bildchen.jpg&quot; width=&quot;240&quot; height=&quot;135&quot;&gt;
+                Die Attribute width und height
+                d&uuml;rfen keine Prozentangaben wie &quot;33%&quot; sein, sondern nur absolute Werte wie &quot;240&quot;.
+                <b>Layer:</b>
+                M&uuml;ssen absolut oder relativ positioniert und mit einer eindeutigen ID gekennzeichnet sein:
+				&lt;div&nbsp;id=&quot;name2&quot;&nbsp;style=&quot;position:absolute;...&quot;&gt;Inhalt&lt;/div&gt;.
+              </td>
+              <td rowspan="5" width="130">
+                <table cellpadding="0" cellspacing="3">
+                  <tr>
+                    <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt=""></td>
+                    <td>
+                      <small>
+                        &nbsp;<br>
+                        <a href="#top">Seitenanfang</a>
+                        <br>&nbsp;<br>
+                        <a href="#browser">Welche Browser?</a>
+                        <br>&nbsp;<br>
+                        <a href="#config">Script einbinden</a>
+                        <br>&nbsp;<br>
+                        <a href="#addons">DHTML API</a>
+                        <br>&nbsp;<br>
+                        <a href="#download">Download</a>
+                        <br>&nbsp;
+                      </small>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>&nbsp;<br><big>2.</big> Codeschnipsel in HTML-Datei einf&uuml;gen</b>
+                <br>
+                Folgende Codeschnipsel <b><font color="red">innerhalb des &lt;body&gt;-Bereichs</font></b> einf&uuml;gen.
+                Diese Zeile am besten unmittelbar <b>nach</b> (keinesfalls vor!) dem &ouml;ffnenden &lt;body&gt;-Tag:
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <table bgcolor="#000099" border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tr>
+                    <td>
+                      <table border="0" cellpadding="1" cellspacing="1" width="100%">
+                        <tr>
+                          <td bgcolor="#eeeeee">
+<tt><font size="2" style="font-size:12px;">
+&lt;script type=&quot;text/javascript&quot; src=&quot;wz_dragdrop.js&quot;&gt;&lt;/script&gt;
+</font></tt>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Und diesen Schnipsel unmittelbar vor dem schlie&szlig;enden &lt;/body&gt;-Tag:
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <table bgcolor="#000099" border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tr>
+                    <td>
+                      <table border="0" cellpadding="1" cellspacing="1" width="100%">
+                        <tr>
+                          <td bgcolor="#eeeeee">
+<tt><font size="2" style="font-size:12px;">
+&lt;script type=&quot;text/javascript&quot;&gt;<br>
+&lt;!--<br>
+ <br>
+SET_DHTML(&quot;name1&quot;,&nbsp;&quot;name2&quot;,&nbsp;&quot;nochEinLayer&quot;,&nbsp;&quot;letztesBild&quot;);<br>
+ <br>
+//--&gt;<br>
+&lt;/script&gt;
+</font></tt>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Dem Funktionsaufruf SET_DHTML( ) m&uuml;ssen, wie man sieht, lediglich die Namen der Bilder und Layer (DIV-Elemente) mitgegeben werden,
+                mit Kommata voneinander abgetrennt und jeweils in Anf&uuml;hrungzeichen, Reihenfolge beliebig.
+              </td>
+              <td rowspan="3" width="130">
+                <table cellpadding="0" cellspacing="3">
+                  <tr>
+                    <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt=""></td>
+                    <td>
+                      <small>
+                        &nbsp;<br>
+                        <a href="#top">Seitenanfang</a>
+                        <br>&nbsp;<br>
+                        <a href="#browser">Welche Browser?</a>
+                        <br>&nbsp;<br>
+                        <a href="#config">Script einbinden</a>
+                        <br>&nbsp;<br>
+                        <a href="#addons">DHTML API</a>
+                        <br>&nbsp;<br>
+                        <a href="#download">Download</a>
+                        <br>&nbsp;
+                      </small>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <table align="right" border="0" cellpadding="0" cellspacing="0" width="265">
+                  <tr>
+                    <td><img name="northcape" align="right" src="http://www.walterzorn.de/en/images/dragdrop/nothcapetrip2_northcape.jpg" alt="Wieder mal am Nordkap" title="Wieder mal am Nordkap" border="0" height="410" width="265"></td>
+                  </tr>
+                  <tr>
+                    <td><small><i>Am Nordkap, auf meiner zweiten Scandinavien-Radtour</i></small></td>
+                  </tr>
+                </table>
+                &nbsp;<br>&nbsp;<br>
+                <b><big>3.</big> Scriptdatei speichern</b>
+                <br>
+                <a href="#download">Die JavaScript-Datei downloaden</a> und entzippen.
+                Entweder als wz_dragdrop.js im selben Verzeichnis wie die HTML-Datei speichern, oder den Pfad &quot;wz_dragdrop.js&quot; in obigem Codeschnipsel entsprechend anpassen.
+                <br>&nbsp;<br>&nbsp;<br><b><big>4.</big> Transparentes 1-Pixel-Gif speichern</b>
+                <br>
+                Das Bild namens transparentpixel.gif ist in der Download-Datei wz_dragdrop.zip enthalten.
+                Es wird vom Netscape&nbsp;4 als Platzhalter f&uuml;r die Drag Drop Bilder ben&ouml;tigt und muss im selben Verzeichnis wie die HTML-Datei gespeichert werden.
+                <br>&nbsp;<br>&nbsp;<br><b><big>5.</big> Funktioniert nicht?</b>
+                <br>
+                Dann funktioniert (hoffentlich) alles.
+                Wenn nicht:
+                <br>
+                <b>a)</b> Die HTML-Datei und die CSS-Syntax &uuml;berpr&uuml;fen, beides am besten mit dem W3C-Online-Validator unter <a href="http://validator.w3.org/" target="_blank">http://validator.w3.org/</a>.
+                <br>
+                <b>b)</b>
+                &Uuml;berpr&uuml;fen, ob die <a href="#config">Schritte&nbsp;1&nbsp;bis&nbsp;4</a> zur Einbindung befolgt wurden (mit Abstand h&auml;ufigste Fehlerursache).
+                <br>
+                <b>c)</b>
+                Die JavaScript-Fehlerkonsole Ihres Browsers konsultieren.
+                Eine JavaScript-Fehlermeldung beruht praktisch immer auf fehlerhafter Einbindung oder Syntax-/Logikfehlern in eigenen Scriptzeilen.
+                Bitte haben Sie Verst&auml;ndnis, dass ich lieber entwickeln als fremde Seiten debuggen m&ouml;chte.
+                <br>
+                <b>d)</b>
+                Manchmal kommt es in XHTML-Dokumenten zu Problemen, weil XHTML kein document.write() zul&auml;sst.
+                Dann hilft nur Umstellung auf eine andere DTD, z.B. HTML4.01.
+                <br>
+                <b>Bitte behaupten Sie nicht, Sie h&auml;tten einen Bug gefunden</b>
+                - au&szlig;er Sie haben alles sehr sorgf&auml;ltig &uuml;berpr&uuml;ft und sind sich ganz sicher.
+                Feedback ist nat&uuml;rlich willkommen!
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <big>&nbsp;<br><a name="addons"> </a>&nbsp;<br>
+                <img align="right" name="slidercanvas" src="http://www.walterzorn.de/en/images/transparent_300_120.gif" width="300" height="120" alt="">
+                &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+                <b>DHTML API</b></big>
+                <br>
+                <b>Bild vervielf&auml;ltigen oder...</b>
+                <br>
+                <img align="left" name="muckl" src="http://www.walterzorn.de/en/images/dragdrop/muckl.jpg" alt="Drag Drop Bild" width="100" height="130">
+                ...der Cursor soll sich &uuml;ber Drag und Drop Elementen &auml;ndern (so wie auf dieser Seite),
+                <img align="right" name="thumb" src="http://www.walterzorn.de/en/images/dragdrop/sliderthumb.gif" width="22" height="35" alt="">
+                <img align="right" name="track" src="http://www.walterzorn.de/en/images/dragdrop/track.gif" width="94" height="35" alt="">
+                oder ein Bild soll in einen Schieberegler mit definierten Endanschl&auml;gen verwandelt werden
+                (mit dem sich dann mit Hilfe des DHTML-API Weiteres anstellen l&auml;sst - z.B. Schieberegler-Stellung auslesen, in Farbe umrechnen und per setBgColor()-Funktion einem Layer oder transparenten Bild zuweisen)?
+                Geben Sie dem Funktionsaufruf SET_DHTML() die passenden Kommandos mit.
+                <br>&nbsp;<br>
+                <center>
+                  <a class="code" href="javascript:void(0)" onclick="var muckl; if (window.dd &amp;&amp; dd.elements) (muckl = dd.elements.muckl).swapImage((muckl.src != muckl.defsrc)? 'http://www.walterzorn.de/en/images/dragdrop/muckl.jpg' : 'http://www.walterzorn.de/en/images/dragdrop/rex.jpg', true); return false;">swapImage()</a>
+                </center>
+                <b>Drag &amp; Drop Elemente mit JavaScript steuern</b>
+                <br>
+                Wenn Sie diese Drag-Drop JavaScript&nbsp;-Bibliothek als DHTML API verwenden, k&ouml;nnen Sie Bilder und Layer mit einfachen Zeilen steuern und m&uuml;ssen sich nicht mehr mit Browser- und DOM-Erkennung und browserspezifischer Notation abgeben; darum k&uuml;mmert sich die Bibliothek intern.
+                Beispiel:
+				Mit der einfachen Zeile
+				<br><tt>dd.elements.meinBild.moveTo(200,300);</tt>
+				<br>
+                verschieben Sie ein Bild namens "meinBild" an die absoluten, document-bezogenen Koordinaten (200,300), die Notation
+                <tt>dd.elements.meinBild.x</tt>
+                liefert die momentane X-Koordinate des Bildes, und zwar in jedem Browser, der das Script interpretieren kann.
+                So kann eine simple Webseite mit ein paar Bildern und/oder DIVs in eine benutzer-interaktive grafische Anwendung verwandelt werden, die mit den Koodinaten der Elemente arbeitet.
+                <br>
+                <img name="low" src="http://www.walterzorn.de/en/images/dragdrop/low.gif" alt="Drag&amp;Drop Image" width="62" height="25"><img name="upleft" src="http://www.walterzorn.de/en/images/dragdrop/upleft.gif" alt="Drag &amp; Drop Image" width="97" height="41">
+                <br>
+                <table>
+                  <tr>
+                    <td>
+                      <big>&middot;</big>
+                    </td>
+                    <td>
+                      <big><a href="commands.htm">Kommandos</a></big> (Referenz und Demonstration)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <big>&middot;</big>
+                    </td>
+                    <td>
+                      <big><a href="api.htm">DHTML API, JavaScript-Steuerung</a></big> (Referenz und Demo)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <big>&middot;</big>
+                    </td>
+                    <td>
+                      <big><a href="http://www.walterzorn.de/en/dragdrop/demos/demos.htm">Anwendungsbeispiele</a></big> (einfach), erstellt mit dem API von wz_dragdrop.js<a name="download"> </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <big>&middot;</big>
+                    </td>
+                    <td>
+                      <big><a href="history.htm">Geschichte der Updates</a></big> (unbedingt lesen, wenn Sie wissen wollen, ob sich ein Update lohnt)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+                <img align="right" name="koala" src="http://www.walterzorn.de/en/images/dragdrop/ddkoala.jpg" alt="Drag&amp;Drop-Bild" width="160" height="213">
+                <b>&nbsp;<br>&nbsp;<br>
+                <img name="redarrow" src="http://www.walterzorn.de/en/images/redarrow.gif" width="15" height="13" alt="" align="middle"><big>Download</big></b>
+                <br>
+                wz_dragdrop.js 4.91, Lizenz <b>LGPL</b>:<br>
+                <a href="http://www.walterzorn.de/en/scripts/wz_dragdrop.zip">wz_dragdrop.zip</a> (12 KB, enth&auml;lt auch transparentpixel.gif).
+                <br> <br> <br> <br>
+                 
+                <br clear="all">
+                <br>
+                <br>
+                <div id="reltab">
+                  <table>
+                    <tr>
+                      <td>
+                        <b>Achtung:</b>
+                        <br>&nbsp;<br>
+                        <b>1.)</b> Falls Sie eine Version &auml;lter als v.3.4 als Basis f&uuml;r eigene Anwendungen verwenden und auf die aktuelle Version upgraden wollen:
+                        Das Array der DHTML&nbsp;&amp;&nbsp;Drag&nbsp;Drop&nbsp;Elemente wurde ab Version&nbsp;3.4 von <tt><b>dd.element</b></tt> in <tt><b>dd.elements</b></tt> umbenannt.
+                        Sie m&uuml;ssen also Ihren eigenen Code entsprechend &auml;ndern, falls Sie dort den Ausdruck <tt><b>dd.element</b></tt> verwendet haben (siehe auch <a href="api.htm">Referenz&nbsp;des&nbsp;DHTML&nbsp;API</a>).
+                        <br>&nbsp;<br>
+                        <b>2.)</b> Ab Version 4.0 wurde die Bibliothek von dragdrop.js in <b>wz_dragdrop.js</b> umbenannt.
+                        <br>&nbsp;<br>
+                        <b>3.)</b> Ab Version 4.2 wurde die Methode <tt><b>activate()</b></tt> in <tt><b>maximizeZ()</b></tt> umbenannt.
+                        <br>&nbsp;<br>
+                        <b>4.)</b> Ab Version 4.31 wurde das Kommando <tt><b>MULTIPLY</b></tt> in <tt><b>COPY</b></tt> umbenannt und wird wie folgt verwendet:
+                        Schreiben Sie <tt><b>&quot;imageName&quot;+COPY+12</b></tt> anstatt <tt><b>&quot;imageName&quot;+MULTIPLY12</b></tt>, um 12 Kopien eines Bildes namens &quot;ImageName&quot; zu erzeugen.
+                        <br>&nbsp;<br>
+                        <b>5.)</b> Ab Version 4.41 wurde <b>SET_DRAGGABLE()</b> in <b>SET_DHTML()</b> umbenannt und <b>ADD_DRAGGABLE()</b> in <b>ADD_DHTML()</b>.
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </td>
+              <td width="130">
+                <table cellpadding="0" cellspacing="3">
+                  <tr>
+                    <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt=""></td>
+                    <td>
+                      <small>
+                        &nbsp;<br>
+                        <a href="#top">Seitenanfang</a>
+                        <br>&nbsp;<br>
+                        <a href="#browser">Welche Browser?</a>
+                        <br>&nbsp;<br>
+                        <a href="#config">Script einbinden</a>
+                        <br>&nbsp;<br>
+                        <a href="#addons">DHTML API</a>
+                        <br>&nbsp;<br>
+                        <a href="#download">Download</a>
+                        <br>&nbsp;
+                      </small>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <br>&nbsp;<br>
+    <hr width="95%" size="1" noshade>
+    <table cellpadding="20">
+      <tr>
+        <td>
+          <small>Walter Zorn, M&uuml;nchen
+          <br><a href="http://www.kreuzotter.de/impressum.htm">Impressum und über diese Seite</a></small>
+          <br>
+          &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>         </td>
+      </tr>
+    </table>
+  </center>
+<div id="greylyr">
+  <a name="demolyr"> </a>
+  <div id="ingreylyr">
+    <center><img name="button" src="http://www.walterzorn.de/en/images/dragdrop/button_outset.gif" alt="Drag Drop JavaScript" width="60" height="17"></center>
+    <br>
+    <small>Mit wz_dragdrop.js als DHTML Bibliothek ist mit wenigen einfachen Zeilen m&ouml;glich,
+    was sonst einen gro&szlig;en Aufwand erfordern w&uuml;rde...
+    <br>&nbsp;<br>
+    ...auch mit Bildern innerhalb von Layern (DIVs)...
+    <br>&nbsp;<br>
+    <a href="#flexlyr">Zum zweiten Demolayer</a><br>&nbsp;<br>&nbsp;</small>
+
+    <!--applet code="Schwinge.class" codebase="../../../kreuzotter/online/java" archive="../../../kreuzotter/online/java/Schwinge.jar" width="100" height="100"><param name="L" value="d"></applet-->
+    <!--iframe width="100" height="100" src="../index.htm"></iframe-->
+    <!--form>
+    <select>
+    <option>Nummer 1</option>
+    <option>Nummer 2</option>
+    <option>Nummer 3</option>
+    </select>
+    <textarea cols="8" rows="5"></textarea>
+    <input type="text" value="This is a test, the default text box size should be shorter than this, and if you try to scroll to the end using the arrow keys you will not be able to unless you highlight the text" />
+    <br>
+    <input type="button" value="Click" onclick="alert('ja');">
+    <input type="radio" name="r"><input type="radio" name="r">
+    </form-->
+    <!--div style="overflow:auto;width:80px;height:80px;background:white;">
+    blabalalsdasasvödasvasvdasvasvdasvasv<br>asd<br>ad<br>asd<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>adsa<br>
+    </div-->
+
+  </div>
+</div>
+<div id="bluelyr">
+  <a name="flexlyr"> </a>
+  Pr&uuml;fen, ob Links auch in Drag&amp;Drop-Layern funktionieren.
+  Und ob die Verlinkung zwischen beiden Demolayern auch nach Positionsverschiebungen korrekt arbeitet.
+  <small><br>&nbsp;<br><a href="#demolyr">Zur&uuml;ck zum ersten Demolayer</a></small>
+</div>
+<table><tr><td height="150"><br></td></tr></table>
+<script type="text/javascript">
+<!--
+
+SET_DHTML(CURSOR_MOVE, RESIZABLE, NO_ALT, SCROLL, "bikegoeteborg"+TRANSPARENT, "bluelyr"+TRANSPARENT, "button"+VERTICAL+HORIZONTAL+CURSOR_DEFAULT, "cat"+TRANSPARENT, "chameleon", "counter", "greylyr"+TRANSPARENT, "koala", "leop", "low", "muckl"+TRANSPARENT+COPY+4, "northcape"+TRANSPARENT, "redarrow", "reldiv", "reldivn4", "reldiv2"+TRANSPARENT, "reldiv2n4"+TRANSPARENT, "reltab", "skitour"+TRANSPARENT, "slidercanvas", "smile1"+SCALABLE, "thumb"+HORIZONTAL+MAXOFFLEFT+45+MAXOFFRIGHT+45, "track"+NO_DRAG, "tryit", "upleft");
+
+
+// Kreuzotter-vs-Uplefts Animation, demonstrating how to use the API of the DragDrop-Library
+
+function ANIM()
+{
+    if (!dd.obj || !dd.op6)
+    {
+        if (dd.elements.low.z <= dd.elements.upleft.z)
+            dd.elements.upleft.setZ(dd.elements.low.z - 1);
+
+        dd.elements.upleft.moveTo(
+            dd.elements.upleft.x <= -dd.elements.upleft.w?
+                iW - dd.elements.upleft.w - 20 :
+                (dd.elements.upleft.x - 3),
+            (dd.obj==dd.elements.upleft)?
+                dd.elements.upleft.y :
+                (dd.elements.low.y - dh)
+        );
+
+        dd.elements.low.moveTo(
+            dd.elements.low.x <= -dd.elements.low.w?
+                iW-dd.elements.low.w-20 :
+                (dd.elements.low.x-5),
+            dd.elements.upleft.y + dh
+        );
+    }
+    setTimeout("ANIM()", dd.kq? 200 : 100);
+}
+
+
+// override funcs defined within the Lib
+function my_PickFunc()
+{
+    if (dd.obj.name == 'button') dd.obj.swapImage(insetbutton.src);
+    if (!dd.obj.name.indexOf('muckl') && dd.obj.x == dd.obj.defx)
+    {
+        if (dd.elements.muckl.copies.length < 80) dd.elements.muckl.copy();
+    }
+}
+
+function my_DragFunc()
+{
+    if (dd.obj.name == 'thumb')
+    {
+        var red = parseInt((dd.elements.thumb.x-dd.elements.thumb.defx)*255/45),
+        blue = -red,
+        green = (255-Math.abs(red)).toString(16);
+        red = (red > 0? red : 0).toString(16);
+        blue = (blue > 0? blue : 0).toString(16);
+        while (red.length < 2) red = '0'+red;
+        while (blue.length < 2) blue = '0'+blue;
+        while (green.length < 2) green = '0'+green;
+        dd.elements.slidercanvas.setBgColor("#"+red+green+blue);
+    }
+}
+
+function my_DropFunc()
+{
+    if (dd.obj.name == 'button')
+    {
+        dd.obj.swapImage(outsetbutton.src);
+        var minh = dd.elements.button.h+((dd.elements.button.y-dd.elements.greylyr.y)<<1);
+        dd.elements.greylyr.resizeTo(
+            dd.elements.greylyr.w,
+            (dd.elements.greylyr.h != minh)? minh : 300
+        );
+    }
+}
+
+
+
+var outsetbutton = new Image();
+outsetbutton.src = 'http://www.walterzorn.de/en/images/dragdrop/button_outset.gif';
+var insetbutton = new Image();
+insetbutton.src = 'http://www.walterzorn.de/en/images/dragdrop/button_inset.gif';
+
+
+
+var iW = dd.getWndW(),
+dh = dd.elements.upleft.h - dd.elements.low.h;
+ANIM();
+
+dd.elements.bluelyr.moveTo(
+    (iW-dd.elements.bluelyr.w)>>1,
+    dd.elements.counter.defy-dd.elements.bluelyr.h-30
+);
+dd.elements.greylyr.moveTo(dd.elements.cat.x-4, dd.elements.cat.y+dd.elements.cat.h+10);
+dd.elements.bluelyr.show();
+dd.elements.greylyr.show();
+
+dd.elements.thumb.moveTo(dd.elements.track.x+36, dd.elements.track.y);
+dd.elements.thumb.setZ(dd.elements.track.z+1);
+dd.elements.track.addChild('thumb');
+dd.elements.thumb.defx = dd.elements.track.x+36;
+
+document.onkeydown = function(){dd.elements.cat.moveBy(1,1);};
+
+//-->
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+<title>Drag&amp;Drop</title>
+<link rel="stylesheet" type="text/css" href="../../newwalterzorn.css">
+<style type="text/css">
+<!--
+body {
+  padding:40px;
+}
+-->
+</style>
+</head>
+<body bgcolor="#ffffff">
+<script type="text/javascript" src="../../scripts/wz_dragdrop.js"></script>
+  <br>
+  <h3 align="center">Tracking images</h3>
+  <p align="center">
+    <img src="../../images/tooltip/kreuzot_s.jpg" name="kreuzotter" width="300" height="157" alt="">
+  </p>
+  <p align="center">
+    Drag these images around...
+  </p>
+  <p align="center">
+    <img src="../../images/dragdrop/norway.jpg" name="nordland" width="280" height="210" alt="">
+  </p>
+  <p align="center">
+    When using <a href="../dragdrop_e.htm">wz_dragdrop.js</a>, just a few additional JS lines are necessary to create this effect.
+  </p>
+  <p>
+    The formular below demonstrates how to use my_DropFunc() to write properties of a dropped item into form elements, e.g. in order to transmit these values to the server.
+    Of course, you might consider &lt;input&nbsp;type=&quot;hidden&quot;&gt;s to be more appropriate to store data temporarily.
+  </p>
+  <form name="myForm">
+    <center>
+      <table>
+        <tr>
+          <td align="right">name = </td>
+          <td><input name="NAME" type="text" size="12"></td>
+          <td align="right">&nbsp;&nbsp;x = </td>
+          <td><input name="X" type="text" size="12"></td>
+          <td align="right">&nbsp;&nbsp;y = </td>
+          <td><input name="Y" type="text" size="12"></td>
+        </tr>
+      </table>
+    </center>
+  </form>
+  <p align="center">
+    <br>
+    <a href="demos.htm" target="_top">Back to Examples with wz_dragdrop.js</a>
+    <br>
+    <a href="demos.htm" target="_top">Zurück zu Beispiele mit wz_dragdrop.js</a>
+  </p>
+<script type="text/javascript">
+<!--
+SET_DHTML(CURSOR_MOVE, TRANSPARENT, "kreuzotter", "nordland");
+
+// The following loop creates a copy for each of the two images,
+// but hides that copy immediately while the page is still loading
+for (var i = 0; i < 2; i++)
+{
+    dd.elements[i].copy();
+    dd.elements[i].copies[0].hide();
+}
+
+// The following two functions override their empty namesakes predefined in wz_dragdrop.js.
+// They are automatically invoked from wz_dragdrop.js when a drag operation starts
+// and ends, respectively.
+
+// Here we make the non-transparent 'placeholder' copy of the dragged image visible
+// and move it to the place where the drag operation starts
+function my_PickFunc()
+{
+    dd.obj.copies[0].moveTo(dd.obj.x, dd.obj.y);
+    dd.obj.copies[0].show();
+}
+
+// Here we hide the 'placeholder' again
+function my_DropFunc()
+{
+    dd.obj.copies[0].hide();
+
+    // Write the name and coordinates of the dropped item into form inputs:
+    document.myForm.NAME.value = dd.obj.name;
+    document.myForm.X.value = dd.obj.x;
+    document.myForm.Y.value = dd.obj.y;
+}
+//-->
+</script>
+</body>
+</html>

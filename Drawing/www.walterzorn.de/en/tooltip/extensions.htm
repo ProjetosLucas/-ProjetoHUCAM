@@ -1,0 +1,438 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<!--DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"-->
+<head>
+<meta http-equiv="expires" content="0">
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<title>DHTML JavaScript Tooltips: Extensions (Plugins)</title>
+<link rel="stylesheet" type="text/css" href="../newwalterzorn.css">
+<style type="text/css">
+<!--
+.tt {
+  font-size:12px;
+}
+
+#T2tDirect {
+  border:2px solid red;
+  background:yellow;
+  padding:3px;
+  width:240px;
+}
+-->
+</style>
+<script type="text/javascript">
+<!--
+function MyTip(arg)
+{
+    switch(arg)
+    {
+    case "home":
+        return Tip("Go to the startpage of walterzorn.com", SHADOW, true);
+    case "tip":
+        return Tip("Go to the Tooltips main page", SHADOW, true);
+    case "centeralways":
+        return Tip("To this one CENTERWINDOW and CENTERALWAYS have been applied, so it keeps its centered position even if the window is resized or scrolled", TITLE, "Stay Always Centered", CENTERWINDOW, true, CENTERALWAYS, true, STICKY, true, CLOSEBTN, true, WIDTH, 300);
+    case "followscroll":
+        return Tip('This tooltip is sticky (STICKY command), and it keeps its position inside the clientarea even if the window is scrolled', TITLE, 'FOLLOWSCROLL', STICKY, true, FOLLOWSCROLL, true, CLOSEBTN, true, WIDTH, 300);
+    }
+}
+//-->
+</script>
+</head>
+<body bgcolor="#ffffff">
+<script type="text/javascript" src="../scripts/wz_tooltip.js"></script>
+<script type="text/javascript" src="../scripts/tip_balloon.js"></script>
+<script type="text/javascript" src="../scripts/tip_centerwindow.js"></script>
+<script type="text/javascript" src="../scripts/tip_followscroll.js"></script>
+<a name="top"> </a>
+  <center>
+    <table>
+      <tr>
+        <td align="center"><a onmouseover="MyTip('home')" onmouseout="UnTip()" href="../index.htm"><img name="logo" border="0" src="../images/logo.gif" alt="" width="271" height="30"></a></td>
+      </tr>
+    </table>
+    <table cellspacing="10">
+      <tr>
+        <td><img src="../images/transparentpixel.gif" alt="DHTML: Tooltip JavaScript" width="1" height="1"><a onmouseover="MyTip('home')" onmouseout="UnTip()" href="../index.htm">Home</a></td>
+        <td><a onmouseover="MyTip('tip')" onmouseout="UnTip()" href="../tooltip/tooltip_e.htm">Tooltips Main Page</a></td>
+      </tr>
+<!--tr><td colspan="4"><form><select onmouseover="Tip('Tooltip applied to SELECT')" onmouseout="UnTip()"><option>abdlkdvsadfasdfasdvasdfasdfadfadfadsfassdfvsdadfasdfdfvsdfasd</option><option>avasas</option></select> <input type="text" size="20"></form></td></tr-->
+    </table>
+    <br>
+    <table width="760">
+      <tr>
+        <td width="120"><br></td>
+        <td>
+          <table>
+            <tr>
+              <td>
+                <big>&nbsp;<br><b>Extensions for the JavaScript Tooltips Library</b></big>
+              </td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+                These extensions (plugins) provide additional commands and functionalities to customize the look and behaviour of tooltips.
+                <br>&nbsp;<br>
+                To use an extension, include its JavaScript file into your page.
+                However, make sure that the core file of the Tooltips Library is included first.
+                Example:
+              </td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+                <table bgcolor="#000099" border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tr>
+                    <td>
+                      <table border="0" cellpadding="2" cellspacing="1" width="100%">
+                        <tr>
+                          <td bgcolor="#eeeeee">
+<tt><font size="2" class="tt">&lt;script type=&quot;text/javascript&quot; src=&quot;wz_tooltip.js&quot;&gt;&lt;/script&gt;</font></tt>
+<br>
+<tt><font size="2" class="tt">&lt;script type=&quot;text/javascript&quot; src=&quot;tip_centerwindow.js&quot;&gt;&lt;/script&gt;</font></tt>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+                Adapt the paths to the JavaScript files if necessary.
+                If you want to use a different extension, replace &quot;tip_centerwindow.js&quot;.
+                You can include multiple extension files in any order; just make sure that the core file wz_tooltip.js is included first (immediately after the opening &lt;body&gt; tag).
+              </td>
+              <td><br></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <table width="760">
+      <tr>
+        <td width="120"><br></td>
+        <td>
+          <table>
+            <tr>
+              <td>
+                <big>&nbsp;<br>&nbsp;<br><a name="centertip"> </a>&nbsp;<br><b>Balloon Tooltip</b></big>
+              </td>
+              <td rowspan="2" valign="top">
+                <table cellpadding="0" cellspacing="3">
+                  <tr>
+                    <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt="DHTML: Tooltips via JavaScript"></td>
+                    <td>
+                      <small>
+                        &nbsp;<br>
+                        <a href="#top">Top&nbsp;of&nbsp;page</a>
+                        <br>&nbsp;
+                      </small>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="javascript:void(0)" onmouseover="Tip('This is a <b>balloon tooltip<\/b>.<br>Note the nice automatic width and height adaption!', BALLOON, true, ABOVE, true, OFFSETX, -17, PADDING, 8)" onmouseout="UnTip()">Example</a>
+                <br>
+                Gives the tooltip a balloon style, with rounded corners and a stem pointing towards the mouse.
+                <br>&nbsp;<br>
+                File to include: tip_balloon.js.
+                <br>
+                Download <a onmouseover="Tip('Contains the plugin file tip_balloon.js<br>plus the edge, corner and stem images', BALLOON, true, ABOVE, true, OFFSETX, -17)" onmouseout="UnTip()" href="../scripts/tip_balloon.zip">tip_balloon.zip</a> (5 KB)
+                <br>&nbsp;<br>
+                This file contains also a set of images that build the background, stem, edges and corners of the balloon tooltip.
+                You must save these images, preferably leaving them in the sub-directory 'tip_balloon'.
+                In the plugin file tip_ballon.js, section &quot;GLOBAL&nbsp;TOOPTIP&nbsp;CONFIGURATION&quot;, you must adapt the path to these images if necessary.
+                The line to be changed is self-explanatory and commented.
+                <br>&nbsp;<br>
+                Of course you can also create your own set of background/edge/corner/stem images.
+                Note that the corner images (lt.gif, rt.gif, rb.gif und lb.gif) must be quadratic, and their side lengths must be equal to the width of the left/right edge images (l.gif, r.gif) and to the height of the top/bottom edge images (t.gif, b.gif).
+                In the plugin file tip_balloon.js, you should then adapt the global config variables that specify the sizes of these images, if necessary.
+                (If you want to use different sets of images, you can also specify the image path and sizes for each tooltip individually via commands. See below.)
+                <br>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td><br></td>
+        <td>
+          <table bgcolor="#000099" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td>
+                <table border="0" cellpadding="6" cellspacing="1" width="100%">
+                  <tr bgcolor="#eeeeee">
+                    <th align="left">Command</th>
+                    <th align="left">Description</th>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('This is a &quot;balloon&quot; tooltip', BALLOON, true, OFFSETX, -17)" onmouseout="UnTip()">BALLOON</a></tt>
+                    </td>
+                    <td>
+                      Gives the tooltip a balloon style.
+                      Value: true or false.
+                      <br>
+                      Recommended: Combine with
+                      <tt><a class="nodeco" href="javascript:void(0)" onmouseover="Tip('Balloon tooltip positioned above the mouse', BALLOON, true, ABOVE, true, OFFSETX, -17)" onmouseout="UnTip()">ABOVE</a></tt>
+                      command, or set the <tt>config.&nbsp;Above</tt> variable in the global cofiguration in wz_tooltip.js to true if you want this to be the default behaviour.
+                      <br>&nbsp;<br>
+                      Example:
+                      <br>
+                      <tt><font size="2" style="font-size:12px;">onmouseover=&quot;Tip('This is a balloon tooltip', BALLOON, true, ABOVE, true)&quot;</font></tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><b>BALLOONIMGPATH</b></tt>
+                      <br>
+                      <tt><b>BALLOONIMGEXT</b></tt>
+                    </td>
+                    <td>
+                      Specifies the path to the images that build the background, edges, corners and stem of the balloon tooltip.
+                      Useful if you want to use a different set of images (e.g. of other colours) for a certain tooltip.
+                      Path must be relative to the HTML file, and enclosed with single quotes.
+                      BALLOONIMGEXT optionally permits you to specify the file name extension of these images (e.g. "png"), in case that it differs from the extension preset in tip_balloon.js.
+                      <br>&nbsp;<br>
+                      Example, for a set of images in a different directory, and with a different file name extension:
+                      <br>
+                      <tt><font size="2" style="font-size:12px;">onmouseover=&quot;Tip('Tooltip text', BALLOON, true, BALLOONIMGPATH, 'somepath/somedir/', BALLOONIMGEXT, "png")&quot;</font></tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><b>BALLOONEDGESIZE</b></tt>
+                      <br>
+                      <tt><b>BALLOONSTEMWIDTH</b></tt>
+                      <br>
+                      <tt><b>BALLOONSTEMHEIGHT</b></tt>
+                    </td>
+                    <td>
+                      If you want to use a different set of background/edge/corner/stem images for a certain balloon tooltip, these commands allow you to notify the script about the sizes of those images, in case that they differ from the global settings in tip_balloon.js.
+                      Values: Integers&nbsp;&gt;&nbsp;0.
+                    </td>
+                  </tr>  
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('The stem of this one is offset towards the right', BALLOON, true, BALLOONSTEMOFFSET, 18, OFFSETX, 0)" onmouseout="UnTip()">BALLOONSTEMOFFSET</a></tt>
+                    </td>
+                    <td>
+                      Adjusts the horizontal offset of the stem from the mouse.
+                      Value: Integer, also negative.
+                      <br>&nbsp;<br>
+                      In combination with this, you might also want to play with the OFFSETX command - which sets the horizontal offset of the tooltip itself from the mouse
+                      (see <a href="../tooltip/tooltip_e.htm" onmouseover="Tip('See what else is possible with commands', BALLOON, true, ABOVE, true, CENTERMOUSE, true, OFFSETX, 0, PADDING, 8)" onmouseout="UnTip()">commands reference</a>
+                      on the main tooltip page).
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <table width="760">
+      <tr>
+        <td width="120"><br></td>
+        <td>
+          <table>
+            <tr>
+              <td>
+                <b>More sets of ballon style images</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="../scripts/tip_balloon/tip_balloon_simple/tip_balloon_simple.zip" onmouseover="Tip('Download this clear and simple balloon style,<br>made by Stasiek P&#322;oski', BALLOON, true, ABOVE, true, OFFSETX, -17, BALLOONIMGPATH, '../scripts/tip_balloon/tip_balloon_simple', BALLOONSTEMWIDTH, 17, BALLOONSTEMHEIGHT, 9)" onmouseout="UnTip()">Simple Skin</a> by Stasiek P&#322;oski (Homepage: http://www.flupy.net/stasiek&nbsp;).
+                <br>
+                <br>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <table width="760">
+      <tr>
+        <td width="120"><br></td>
+        <td>
+          <table>
+            <tr>
+              <td>
+                <big>&nbsp;<br>&nbsp;<br><a name="centertip"> </a>&nbsp;<br><b>Center Tooltip In Window</b></big>
+              </td>
+              <td rowspan="2" valign="top">
+                <table cellpadding="0" cellspacing="3">
+                  <tr>
+                    <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt="DHTML: Tooltips via JavaScript"></td>
+                    <td>
+                      <small>
+                        &nbsp;<br>
+                        <a href="#top">Top&nbsp;of&nbsp;page</a>
+                        <br>&nbsp;
+                      </small>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="javascript:void(0)" onmouseover="Tip('This tooltip is centered in the window\'s clientarea', TITLE, 'Centered', STICKY, true, CENTERWINDOW, true, CENTERALWAYS, true, CLOSEBTN, true)" onmouseout="UnTip()">Example</a>
+                <br>
+                File to include: tip_centerwindow.js (comes with the download file wz_tooltip.zip)
+                <br>&nbsp;<br>
+                Provides command(s) to center the tooltip in the visible clientarea of the browserwindow.
+                Makes only sense and works only with &quot;sticky&quot; tooltips,
+                that is, to which the STICKY command has been applied so they stay fixed at their initial position until another tooltip pops up.
+                <br>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td><br></td>
+        <td>
+          <table bgcolor="#000099" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td>
+                <table border="0" cellpadding="6" cellspacing="1" width="100%">
+                  <tr bgcolor="#eeeeee">
+                    <th align="left">Command</th>
+                    <th align="left">Description</th>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('Tooltip centered in the window\'s clientarea', TITLE, 'CENTERWINDOW', CENTERWINDOW, true, STICKY, true, CLOSEBTN, true);" onmouseout="UnTip()">CENTERWINDOW</a></tt>
+                    </td>
+                    <td>
+                      Centers the tooltip inside the window's clientarea.
+                      Value: true or false.
+                      <br>&nbsp;<br>
+                      Consider that the position of the tooltip deviates from the center by <tt>OFFSETX</tt> and <tt>OFFSETY</tt> (see commands on
+                      <a onmouseover="MyTip('tip')" onmouseout="UnTip()" href="../tooltip/tooltip_e.htm">tooltips main page</a>),
+                      or by the values globally preset in wz_tooltip.js (<tt>config.&nbsp;OffsetX</tt> and <tt>config.&nbsp;OffsetY</tt>).
+                      <br>&nbsp;<br>
+                      Recommended: Combine with
+                      <tt><a class="nodeco" href="javascript:void(0)" onmouseover="MyTip('centeralways')" onmouseout="UnTip()">CENTERALWAYS</a></tt>
+                      (same extension).
+                      Example:
+                      <br>
+                      <tt><font size="2" style="font-size:12px;">onmouseover=&quot;Tip('Some text', STICKY, true, CENTERWINDOW, true, CENTERALWAYS, true)&quot;</font></tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0)" onmouseover="MyTip('centeralways')" onmouseout="UnTip()">CENTERALWAYS</a></tt>
+                    </td>
+                    <td>
+                      Keeps the tooltip centered in the window's clientarea even if the window is scrolled or resized.
+                      Has only effect if also CENTERWINDOW (see above) has been applied.
+                      Value: true, false.
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+
+    <table width="760">
+      <tr>
+        <td width="120"><br></td>
+        <td>
+          <table>
+            <tr>
+              <td>
+                <big>&nbsp;<br>&nbsp;<br><a name="followscroll"> </a>&nbsp;<br><b>Follow Scroll</b></big>
+              </td>
+              <td rowspan="2" valign="top">
+                <table cellpadding="0" cellspacing="3">
+                  <tr>
+                    <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt="DHTML: Tooltips via JavaScript"></td>
+                    <td>
+                      <small>
+                        &nbsp;<br>
+                        <a href="#top">Top&nbsp;of&nbsp;page</a>
+                        <br>&nbsp;
+                      </small>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="javascript:void(0)" onmouseover="MyTip('followscroll')" onmouseout="UnTip()">Example</a>
+                <br>
+                File to include: tip_followscroll.js (comes with the download file wz_tooltip.zip)
+                <br>&nbsp;<br>
+                This extensions maintains a tooltip's position in the window's visible clientarea even if the window is scrolled.
+                Makes only sense and works only with tooltips to which the STICKY command has been applied so they stay at their initial position until another tooltip pops up.
+                <br>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td><br></td>
+        <td>
+          <table bgcolor="#000099" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td>
+                <table border="0" cellpadding="6" cellspacing="1" width="100%">
+                  <tr bgcolor="#eeeeee">
+                    <th align="left">Command</th>
+                    <th align="left">Description</th>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="Tip('This one keeps its position if the window is scrolled', TITLE, 'FOLLOWSCROLL', FOLLOWSCROLL, true, STICKY, true, CLOSEBTN, true);" onmouseout="UnTip()">FOLLOWSCROLL</a></tt>
+                    </td>
+                    <td>
+                      Keeps the tooltip at its position in the window's clientarea even if the window is scrolled.
+                      Value: true or false.
+                      <br>&nbsp;<br>
+                      Example:
+                      <br>
+                      <tt><font size="2" style="font-size:12px;">onmouseover=&quot;Tip('Some text', STICKY, true, FOLLOWSCROLL, true)&quot;</font></tt>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br><small>Walter Zorn, Munich, 2008
+    <br><a href="http://www.kreuzotter.de/impressum.htm">Impressum / about this page</a></small>
+    <br>
+    &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+  </center>
+</body>
+</html>

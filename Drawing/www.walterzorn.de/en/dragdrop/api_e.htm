@@ -1,0 +1,991 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="expires" content="0">
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+<title>Drag&amp;Drop for Images and Layers: Interface of the JavaScript Library</title>
+<link rel="stylesheet" type="text/css" href="../newwalterzorn.css">
+</head>
+<body bgcolor="#ffffff">
+<script type="text/javascript" src="../scripts/wz_dragdrop.js"></script>
+<a name="top"> </a>
+<form action="">
+  <center>
+    <table cellpadding="6">
+      <tr>
+        <td align="center"><a href="../index.htm"><img name="logo" border="0" src="../images/logo.gif" alt="Home" width="278" height="30"></a></td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td>
+          &nbsp;<br>
+          <b><big>
+          &middot;&nbsp;<a href="dragdrop_e.htm">Main Page: Drag&amp;Drop, DHTML for Images and Layers</a>
+          <br>
+          &middot;&nbsp;<a href="commands_e.htm">Optional Commands</a>
+          <br>
+          &middot;&nbsp;<a href="demos/demos.htm">Demos</a>
+          <br>
+          &middot;&nbsp;<a href="history_e.htm" target="_top">History of Updates</a>
+          <br>
+          &middot;&nbsp;<a href="dragdrop_e.htm#download">Download</a>
+          <br>&nbsp;
+          </big></b>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <table width="760">
+      <tr valign="top">
+        <td>
+          <table>
+            <tr>
+              <td>
+                <b><big>Reference: Access to Drag &amp; Drop Elements with JavaScript</big></b>
+                <br>&nbsp;<br><img name="low" src="../images/dragdrop/low_dragme.gif" alt="Drag&amp;Drop Image" width="119" height="25"><img name="upleft" src="../images/dragdrop/upleft.gif" alt="Drag and Drop Image" width="97" height="41">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                For external scripting of drag drop elements, it's urgently recommended to use the methods and properties provided by this library.
+                Otherwise conflicts between the internally managed data and the externally changed reality may arise.
+                For instance, don't try to resize drag drop elements using your own size-setting code;
+                use the API's (much more convenient) <tt>resizeTo()</tt> or <tt>resizeBy()</tt> methods instead.
+                Or, to retrieve the current width of an item, the statement <tt>dd.elements.ElementName.w</tt> will certainly be much more convenient and reliable than any other attempt.
+                <br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+                <b>Reference to a certain drag drop item</b>
+                (&quot;NameOfElement&quot; is the name, if item is an image, or ID, if item is a layer, you've passed to SET_DHTML). See <a href="dragdrop_e.htm">main page</a>):
+                <br>
+                <tt><b>dd.elements[&quot;NameOfElement&quot;]&nbsp;</b></tt>
+                or
+                <tt><b>dd.elements.NameOfElement</b></tt>
+                or
+                <tt><b>dd.elements[i]</b></tt>
+                (index of item in the array of drag drop elements)
+                <br>&nbsp;<br>&nbsp;<br>
+                <b>A property of an item:</b>
+                <br>
+                <tt><b>dd.elements.NameOfElement.property</b></tt> or
+                <br>
+                <tt><b>dd.elements[&quot;NameOfElement&quot;].property</b></tt>
+                <br>&nbsp;<br>&nbsp;<br>
+                <b>Invoke a method of an item:</b>
+                <br>
+                <tt><b>dd.elements.NameOfElement.method()</b></tt> or
+                <br>
+                <tt><b>dd.elements[&quot;NameOfElement&quot;].method()</b></tt>
+                <br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+                Properties/methods in grey letters are intended for advanced usage only - ignore them if they appear confusing.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <table bgcolor="#000099" border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td>
+                      <table border="0" cellpadding="7" cellspacing="1">
+                        <tr valign="top">
+                          <td colspan="2" bgcolor="#eeeeee"><b>Properties of the drag &amp; drop elements</b></td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" bgcolor="#eeeeee">Data type, [r] read-only, [rw] read and write</td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr valign="top"><td><tt><b>h&nbsp;<img align="top" name="rex" src="../images/dragdrop/rex.jpg" width="100" height="128" alt="Drag &amp; Drop"></b></tt></td><td align="right">number [r]</td></tr></table></td>
+                          <td>
+                            Current height.
+                            <br>
+                            A complete example line how to use a property: <tt><a class="code" href="javascript:void(0)" onclick="if(window.dd &amp;&amp; dd.elements) alert(dd.elements.rex.h);return false;">alert(dd.elements.rex.h);</a></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><b>name</b></tt></td><td align="right">string [r]</td></tr></table></td>
+                          <td>
+                            Retrieves the name (images) or ID (layers) which has been passed to <tt>SET_DHTML()</tt>.
+                            <br>
+                            <tt><a class="code" href="javascript:void(0)" onclick="if(window.dd &amp;&amp; dd.elements) alert(dd.elements.rex.name);return false;">alert(dd.elements.rex.name);</a></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><b>w</b></tt></td><td align="right">number [r]</td></tr></table></td>
+                          <td>
+                            Current width of image/layer.
+                            Use <tt>resizeTo()</tt> or <tt>resizeBy()</tt> to alter the size.
+                            &nbsp; <tt><a class="code" href="javascript:void(0)" onclick="if(window.dd &amp;&amp; dd.elements) alert(dd.elements['rex'].w);return false;">alert(dd.elements['rex'].w);</a></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><b>x</b></tt></td><td align="right">number [r]</td></tr></table></td>
+                          <td>
+                            Current X position inside the document.
+                            x and y are related to the left top corner of the document/page.
+                            Use <tt>moveTo()</tt> or <tt>moveBy()</tt> to change the element's position.
+                            &nbsp; <tt><a class="code" href="javascript:void(0)" onclick="if(window.dd &amp;&amp; dd.elements) alert(dd.elements.rex.x);return false;">alert(dd.elements.rex.x);</a></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><b>y</b></tt></td><td align="right">number [r]</td></tr></table></td>
+                          <td>
+                            Current Y position.
+                            &nbsp; <tt><a class="code" href="javascript:void(0)" onclick="if(window.dd &amp;&amp; dd.elements) alert(dd.elements['rex'].y);return false;">alert(dd.elements[&quot;rex&quot;].y);</a></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><font color="#999999"><b>bgColor</b></font></tt></td><td align="right">string [r]</td></tr></table></td>
+                          <td>
+                            Current background color of a layer.
+                            Use the method <tt>setBgColor()</tt> to change the color.
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td>
+                            <table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><font color="#999999"><b>children</b></font></tt></td><td align="right">object array [r]</td></tr></table>
+                              <img name="buoy1" src="../images/transparentpixel.gif" width="1" height="1" alt="">
+                          </td>
+                          <td>
+                            Contains references to the dhtml &amp; drag&amp;drop enabled children of the element, usually images (=&nbsp;children) nested via HTML into a layer (=&nbsp;parent element).
+                            Note that the <tt>addChild()</tt> method allows arbitrary items to be added to the <tt>children</tt> array, i.e. to be handled as if they were nested into the element.
+                            Children automatically follow their parent's drag operations, <tt>moveTo()</tt>,<tt> moveBy()</tt>, <tt><a class="code" href="javascript:void(0);" onclick="if(window.dd &amp;&amp; dd.elements)dd.elements.greylyr.hide();">hide()</a></tt>, &nbsp; <tt><a class="code" href="javascript:void(0);" onclick="if(window.dd &amp;&amp; dd.elements)dd.elements.greylyr.show();">show()</a></tt> and <tt>maximizeZ()</tt> methods,
+                            provided that neither the <tt>DETACH_CHILDREN</tt> <a href="commands_e.htm">command</a> nor the <tt>.detachChild()</tt> method has been applied to the parent.
+                            <br>&nbsp;<br>
+                            Examples for feasible statements:
+                            <br>
+                            <tt><b>dd.elements.layerName.children[i]</b></tt> or
+                            <br>
+                            <tt><b>dd.elements.layerName.children[&quot;imageName&quot;]</b></tt> or
+                            <tt><b>dd.elements[&quot;layerName&quot;].children.imageName</b></tt> and so forth.
+                            <br><tt><b>dd.elements.layerName.children.length</b></tt> retrieves the number of images contained within the layer.
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td>
+                            <table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><font color="#999999"><b>copies</b></font></tt></td><td align="right">object array [r]</td></tr></table>
+                            <br>
+                            <img align="right" name="muckl" src="../images/dragdrop/muckl.jpg" width="100" height="130" alt="">
+                          </td>
+                          <td>
+                            This array contains the copies of a drag drop image which has been multiplied by the <tt>COPY</tt> <a href="commands_e.htm">command</a> or the <tt>copy()</tt> method.
+                            <br>&nbsp;<br>
+                            With <tt><b>dd.elements.imgName.copies[i]</b></tt> you'll get a reference to copy number i of &quot;imgName&quot; (first copy has the index 0, as usual with arrays).
+                            <br>
+                            <tt><b>dd.elements.imgName.copies.length</b></tt> retrieves the number of copies.
+                            <br>
+                            Being a fully-equipped drag drop image by its own, each of the copies internally gets its own name,
+                            which is the name of the original image with a number appended, beginning with 1 for the first copy.
+                            Therefore <tt><b>dd.elements.imgName.copies[3]</b></tt> is also accessible via <tt><b>dd.elements.imgName4</b></tt>.
+                            <br>
+                            <tt><a class="code" href="javascript:void(0)" onclick=";if(window.dd &amp;&amp; dd.elements) {var i = document.forms[0].I.value, w = document.forms[0].W.value, h = document.forms[0].H.value; dd.elements.muckl.copies[i].resizeTo(w, h);}">dd.elements.muckl.copies[</a><input name="I" type="text" size="2" maxlength="1" value="3"><a class="code" href="javascript:void(0)" onclick=";if(window.dd &amp;&amp; dd.elements) {var i = document.forms[0].I.value, w = document.forms[0].W.value, h = document.forms[0].H.value; dd.elements.muckl.copies[i].resizeTo(w, h);}">].resizeTo(</a><input name="W" type="text" size="4" maxlength="3" value="200">,<input name="H" type="text" size="4" maxlength="3" value="260"><a class="code" href="javascript:void(0)" onclick=";if(window.dd &amp;&amp; dd.elements) {var i = document.forms[0].I.value, w = document.forms[0].W.value, h = document.forms[0].H.value; dd.elements.muckl.copies[i].resizeTo(w, h);}">);</a></tt>
+                            <br>Hint ;-) : Original size was (100, 130)
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><font color="#999999"><b>defh</b></font></tt></td><td align="right">number [r]</td></tr></table></td>
+                          <td>Initial (default) height.</td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><font color="#999999"><b>defsrc</b></font></tt></td><td align="right">string [r]</td></tr></table></td>
+                          <td>
+                            For images only. This property contains the default URL (initial path) even after the image has been swapped.
+                            For example, you might write
+                            <br>
+                            <tt>dd.elements.myImg.swapImage(dd.elements.myImg.defsrc);</tt>
+                            <br>to restore the original source of &quot;myImg&quot;.
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><font color="#999999"><b>defw</b></font></tt></td><td align="right">number [r]</td></tr></table></td>
+                          <td>Initial (default) width.</td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><font color="#999999"><b>defx</b></font></tt></td><td align="right">number [r]</td></tr></table></td>
+                          <td>
+                            Default X position.
+                            The library uses these default co-ordinates to re-integrate images or relatively positioned layers into the logical structure of the page/text flow after the window or a layer has been resized.
+                            You might read these default co-ordinates to find out where a dragged item actually belongs to.
+                            Example how to move an item to its default position:
+                            <br>&nbsp;<br>
+                            <tt>var my_item = dd.elements[&quot;itemName&quot;];
+                            <br>
+                            my_item.moveTo(my_item.defx,&nbsp;my_item.defy);</tt>
+                            <br>&nbsp;<br>
+                            Note: defx and defy of a child element (see children) change according to the movements of its parent element.
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><font color="#999999"><b>defy</b></font></tt></td><td align="right">number [r]</td></tr></table></td>
+                          <td>Original (default) Y position.</td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><font color="#999999"><b>defz</b></font></tt></td><td align="right">number [rw]</td></tr></table></td>
+                          <td>
+                            Original (default) z-index.
+                            Used by the library to restore the z-index of an element to which the RESET_Z <a href="commands_e.htm">command</a> has been applied.
+                            You might modify the default stacking order of your Drag&amp;Drop elements by changing their <tt>defz</tt> values.
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><font color="#999999"><b>div</b></font></tt></td><td align="right">object [r]</td></tr></table></td>
+                          <td>
+                            Direct reference to the DOM node of the item.
+                            Increases the flexibility of the API essentially.
+                            Example:
+                            <tt>dd.elements.someName.div.ondblclick&nbsp;=&nbsp;myDblClickFunc;</tt>
+                            <br>
+                            This example shows how to assign a doubleclick eventhandler to a DHTML&nbsp;&amp;&nbsp;Drag&amp;Drop element.
+                            Please recall, however, that you should never directly change properties which are managed and accessible through the API of wz_dragdrop.js, such as position, z-index or size!
+                            For example, do not write dd.elements.someName.div.width&nbsp;=&nbsp;314px;. Use resizeTo() instead.
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><font color="#999999"><b>horizontal</b></font></tt></td><td align="right">boolean [r]</td></tr></table></td>
+                          <td>
+                            Indicates whether the item can be dragged horizontally only.
+                            To toggle this movement restriction, you can either apply the HORIZONTAL <a href="commands_e.htm">command</a>,
+                            or invoke the <tt>setHorizontal()</tt> method.
+                            <br>
+                            (See also <tt>vertical</tt>.)
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><font color="#999999"><b>index</b></font></tt></td><td align="right">number [r]</td></tr></table></td>
+                          <td>
+                            Index of item within the <tt>dd.elements</tt> array.
+                            Useful, for example, to map the draggable items directly on an array of formular inputs:
+                            <br>&nbsp;<br>
+                            <tt>document.myForm.elements[dd.obj.<b>index</b>].value = dd.obj.x;</tt>
+                            <br>&nbsp;<br>
+                            <tt>dd.obj</tt> is a reference to the currently active item, see further down this page:
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><font color="#999999"><b>is_image</b></font></tt></td><td align="right">boolean [r]</td></tr></table></td>
+                          <td>
+                            <tt>true</tt>, if element is an image, <tt>false</tt> if it's a layer.
+                            Example:
+                            <br>&nbsp;<br>
+                            <tt>if (dd.elements[3].is_image)<br>
+                            {<br>
+                            &nbsp; &nbsp; dd.elements[3].swapImage('images/anotherImg.jpg');<br>
+                            }</tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr valign="top"><td><tt><font color="#999999"><b>maxoffl,<br>maxofft,<br>maxoffr,<br>maxoffb</b></font></tt></td><td align="right">number [rw]</td></tr></table></td>
+                          <td>
+                            These properties reflect the values of the MAXOFFLEFT/MAXOFFTOP/MAXOFFRIGHT/MAXOFFBOTTOM-<a href="commands_e.htm">commands</a>,
+                            that is they limit how far the element can be dragged away from its default position.
+                            Being writable (rw), these properties can directly be set or changed at runtime.
+                            A value of -1 means unlimited drag range.
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr valign="top"><td><tt><font color="#999999"><b>maxw, maxh,<br>minw, minh</b></font></tt></td><td align="right">number [rw]</td></tr></table></td>
+                          <td>
+                            Reflecting the values of the MAXWIDTH/MAXHEIGHT/MINWIDTH/MINHEIGHT-<a href="commands_e.htm">commands</a>,
+                            these properties limit how far the element can be resized with the mouse.
+                            Only relevant for elements the RESIZABLE command has been applied to.
+                            Being writable (rw), these properties can directly be set or changed at runtime.
+                            A value of -1 means unlimited resizability.
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><font color="#999999"><b>original</b></font></tt></td><td align="right">object [r]</td></tr></table></td>
+                          <td>
+                            Exists only with images which are copies.
+                            This property is a reference to the original, i.e. the drag&amp;drop image from which the copy has been derived.
+                            Example:
+                            <br>&nbsp;<br>
+                            <tt>
+                            if (dd.obj.original)<br>
+                            {<br>
+                            &nbsp; &nbsp; dd.obj.original.swapImage('images/anotherImg.jpg');<br>
+                            }</tt>
+                            <br>
+                            By looking for the property <tt>original</tt>, these lines examine if the currently dragged element (<tt>dd.obj</tt>) is a copy.
+                            If yes, its original image (<tt>original</tt>) is swapped.
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><font color="#999999"><b>parent</b></font></tt></td><td align="right">object [r]</td></tr></table></td>
+                          <td>
+                            This property exists only for elements which are children of another element, for example for images nested into a layer.
+                            Inversely to the <tt>children</tt> array, parent is a reference from a child to its parent.
+                            With
+                            <br>
+                            <tt>if(dd.elements.imageName.parent)...;</tt>
+                            <br>or<br>
+                            <tt>if(dd.obj.parent)...;</tt>
+                            <br>
+                            , for example, you might examine if a certain image (first example) or the currently dragged item (second example) belongs to a layer (or to another image) or not.
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><font color="#999999"><b>src</b></font></tt></td><td align="right">string [r]</td></tr></table></td>
+                          <td>
+                            Images only.
+                            Current URL (path, source).
+                            To swap an image, use its <tt>swapImage()</tt> method.
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><font color="#999999"><b>text</b></font></tt></td><td align="right">string [r]</td></tr></table></td>
+                          <td>
+                            Layers only.
+                            Current inner HTML that has been written to the layer by use of the <tt>write()</tt> method.
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><font color="#999999"><b>vertical</b></font></tt></td><td align="right">boolean [r]</td></tr></table></td>
+                          <td>
+                            Indicates whether the item can be dragged vertically only.
+                            To toggle this movement restriction, you can either apply the VERTICAL <a href="commands_e.htm">command</a>,
+                            or invoke the <tt>setVertical()</tt> method.
+                            <br>
+                            (See also <tt>horizontal</tt>.)
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><font color="#999999"><b>visible</b></font></tt></td><td align="right">boolean [r]</td></tr></table></td>
+                          <td>
+                            Indicates visibility of item.
+                            <tt>true</tt> if element is visible, <tt>false</tt> if element has been hidden by use of the <tt>.hide()</tt> method.
+                            To toggle the visibility of an item, it's strictly recommended to use its <tt>hide()</tt> and <tt>show()</tt> methods only.
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><table width="100%" cellpadding="0" cellspacing="0"><tr><td><tt><font color="#999999"><b>z</b></font></tt></td><td align="right">number [r]</td></tr></table></td>
+                          <td>
+                            Retrieves the current z-index, i. e. the stacking order relative to the other drag-drop elements.
+                            Z-indices are internally managed by wz_dragdrop.js and usually not of interest for external scripting use.
+                            Otherwise, use the method setZ() to set the z-index of the item.
+                            Or maximizeZ() to lift the element to the currently highest z-index.
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" bgcolor="#eeeeee"><b>Methods of the Drag &amp; Drop Elements</b></td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td>
+                            <tt style="white-space:nowrap;"><b>copy()</b></tt>
+                            <br>
+                            <img name="cat" align="right" src="../images/dragdrop/azcat.jpg" width="110" height="106" alt="">
+                          </td>
+                          <td>
+                            For images only.
+                            Creates a copy and adds it to the image's <tt>copies</tt> array.
+                            Optionally, <tt>copy()</tt> accepts a parameter that specifies how many copies to be created:
+                            <br>
+                            <tt><a class="code" href="javascript:void(0);" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.cat.copy(2);return false;">dd.elements.cat.copy(2);</a></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><tt style="white-space:nowrap;"><b>hide()</b></tt></td>
+                          <td>
+                            <img name="race" align="left" src="../images/dragdrop/ko1_race.jpg" width="140" height="82" alt="">
+                            Hides item: <tt><a class="code" href="javascript:void(0);" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.race.hide();return false;">dd.elements.race.hide();</a></tt>.
+                            Optionally, <tt>hide()</tt> accepts a parameter (value: true) which completely removes the empty space (spacer) for the hidden item:
+                            <tt><a class="code" href="javascript:void(0);" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.race.hide(true);return false;">dd.elements.race.hide(true);</a></tt>
+                            <br>
+                            It's strictly recommended to toggle the visibility of items with <tt>hide()</tt> and <tt>show()</tt> only.
+                            For example, to hide certain items on your page initially, invoke their <tt>hide()</tt> methods immediately after SET_DHTML() has been called, even if the 'visibility' CSS attributes of these items have been set to 'hidden' in advance.
+                            <br>
+                            <tt><a class="code" href="javascript:void(0);" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.race.show();return false;">dd.elements.race.show();</a></tt>
+                            &nbsp; &nbsp; &nbsp;
+                            <tt><a class="code" href="javascript:void(0);" onclick="if(window.dd &amp;&amp; dd.elements) alert(dd.elements.race.visible);return false;">alert(dd.elements.race.visible);</a></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><tt style="white-space:nowrap;"><b>moveBy(</b>deltaX,deltaY<b>)</b></tt></td>
+                          <td>
+                            Often more convenient than moveTo().
+                            <br>
+                            <tt><a class="code" href="javascript:void(0);" onclick="javascript:if(window.dd &amp;&amp; dd.elements) dd.elements.einstein.moveBy(+20, -7);return false;">dd.elements.einstein.moveBy(+20,&nbsp;-7);</a></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td>
+                            <tt style="white-space:nowrap;"><b>moveTo(</b>new_x,&nbsp;new_y<b>)</b></tt>
+                            <br>
+                            <img name="einstein" align="right" src="../images/dragdrop/einstrec.gif" width="150" height="96" alt="">
+                          </td>
+                          <td>
+                            Moves element to the document-related co-ordinates newX, newY.
+                            <br>&nbsp;<br>
+                            <tt>
+                              var einstein = dd.elements.einstein;
+                              <br>
+                              <a class="code" href="javascript:void(0);" onclick="javascript:if(window.dd &amp;&amp; dd.elements) dd.elements.einstein.moveTo(dd.elements.einstein.x-20, dd.elements.einstein.y+7);return false;">einstein.moveTo(einstein.x-20, einstein.y+7);</a>
+                            </tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td>
+                            <tt style="white-space:nowrap;"><b>resizeBy(</b>deltaW,deltaH<b>)</b></tt>
+                          </td>
+                          <td>
+                            Often more convenient than resizeTo().
+                            <br>
+                            <tt><a class="code" href="javascript:void(0);" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.einstein.resizeBy(20, -6);return false;">dd.elements.einstein.resizeBy(22,&nbsp;-5);</a></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td>
+                            <tt style="white-space:nowrap;"><b>resizeTo(</b>width,height<b>)</b></tt>
+                          </td>
+                          <td>
+                            Adjusts width and height of a drag&amp;drop layer or image to the specified pixel sizes.
+                            Warning, regarding only layers, not images: Some browsers with less extended DHTML abilities (Netscape 4, Opera&nbsp;&lt;7) are not able to re-flow the text within a layer after its size has been changed.
+                            Therefore, if the remaining space inside the layer is insufficient, it may happen that parts of the text become clipped off and invisible.
+                            <br>
+                            <tt><a class="code" href="javascript:void(0);" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.einstein.resizeTo(document.forms[0].KW.value, document.forms[0].KH.value);return false;">dd.elements.einstein.resizeTo(</a><input name="KW" type="text" size="4" value="300">,<input name="KH" type="text" size="4" value="192"><a class="code" href="javascript:void(0);" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.einstein.resizeTo(document.forms[0].KW.value, document.forms[0].KH.value);return false;">);</a></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><tt style="white-space:nowrap;"><b>show()</b></tt></td>
+                          <td>
+                            Makes item visible again.
+                            <br>
+                            <tt><a class="code" href="javascript:void(0);" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.race.show();return false;">dd.elements.race.show();</a></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><tt style="white-space:nowrap;"><b>swapImage(</b>&quot;new_path&quot;<b>)</b></tt></td>
+                          <td>
+                            For images only.
+                            Replaces an image by the specified path that must be enclosed in single- or double-quotes.
+                            <br>
+                            <tt><a class="code" href="javascript:void(0);" onclick="javascript:if(window.dd &amp;&amp; dd.elements) dd.elements.fateba_se.swapImage('../images/dragdrop/ko5.jpg');return false;">dd.elements.fateba_se.swapImage('ko5.jpg');</a></tt>
+                            <br>
+                            <tt><a class="code" href="javascript:void(0);" onclick="javascript:if(window.dd &amp;&amp; dd.elements) dd.elements.fateba_se.swapImage(dd.elements.fateba_se.defsrc);return false;">dd.elements.fateba_se.swapImage(dd.elements.fateba_se.defsrc);</a></tt>
+                            <br>
+                            To swap a multiplied (through the COPY-<a href="commands_e.htm">command</a> or the <tt>copy()</tt> method) image and any of his copies ad once, swapImage() accepts an optional second parameter <tt>true</tt>.
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td>
+                            <tt style="white-space:nowrap;"><font color="#999999"><b>addChild(</b>image or layer<b>)</b></font></tt>
+                            <center>
+                              <img name="fateba_se" src="../images/dragdrop/fateba_se.jpg" width="200" height="157" alt="">
+                              <small><br>&nbsp;<br></small>
+                              <img name="ko5_st" src="../images/dragdrop/ko5_st.jpg" width="130" height="60" alt="">
+                            </center>
+                          </td>
+                          <td>
+                            Adds the item specified by the parameter to the element's <tt>children</tt> array.
+                            Hence the new 'child' will be treated as if being nested into the parent element, and be dependent from the parent's behavior, i.e. movements and visibility status.
+                            <br>&nbsp;<br>
+                            <tt>addChild()</tt> can even 'steal' items from other elements, and automatically remove them from the previous parent's <tt>children</tt> array.
+                            However, <tt>addChild()</tt> can not steal DIVs which were natively nested into another parent layer, i.e. through the HTML code.
+                            <br>&nbsp;<br>
+                            Tip: <tt>addChild()</tt> can even build parent-child relationships between images, see example on the left side.
+                            <br>
+                            <tt><a class="code" href="javascript:void(0);" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.fateba_se.addChild(dd.elements.ko5_st);return false;">dd.elements.fateba_se.addChild(dd.elements.ko5_st);</a></tt>
+                            <br>&nbsp;<br>
+                            As parameter, <tt>addChild()</tt> accepts either the name of the new child in single or double quotes, or a reference to the item as in the example above.
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td>
+                            <tt style="white-space:nowrap;"><font color="#999999"><b>attachChild(</b>child element<b>)</b></font></tt>
+                          </td>
+                          <td>
+                            For layers that contain child elements (images or DIVs) that have previously been made independent from the layer through the DETACH_CHILDREN command or the <tt>detachChild()</tt> method.
+                            As parameter, <tt>attachChild()</tt> requires one of these children (i.e. an element of the layer's <tt>children</tt> array).
+                            attachChild() renders this child dependent from the layer's behavior again (i.e. from the layer's moveTo(), moveBy(), hide() and show() methods).
+                            Other than <tt>addChild()</tt>, <tt>attachChild()</tt> is not capable of 'stealing' an image or DIV from elsewhere and adding it to the layer's own <tt>children</tt> array.
+                            <br>
+                            Parameter: either the name of the image in single or double quotes, or the index of the image in the layer's <tt>children</tt> array, or a reference to the image as in the following example:
+                            <br>
+                            <tt><a class="code" href="javascript:void(0);" onclick="if(window.dd &amp;&amp; dd.elements &amp;&amp; dd.elements.fateba_se.children.length > 1) dd.elements.fateba_se.attachChild(dd.elements.ko5_st);return false;">dd.elements.fateba_se.attachChild(dd.elements.ko5_st);</a></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td>
+                            <tt style="white-space:nowrap;"><font color="#999999"><b>detachChild(</b>child element<b>)</b></font></tt>
+                          </td>
+                          <td>
+                            <tt><a class="code" href="javascript:void(0);" onclick="if(window.dd &amp;&amp; dd.elements &amp;&amp; dd.elements.fateba_se.children.length > 1) dd.elements.fateba_se.detachChild('ko5_st');return false;">dd.elements.fateba_se.detachChild('ko5_st');</a></tt>
+                            <br>
+                            For layers containing child elements - child elements are either images nested into a DIV, or elements (images or DIVs) turned into children of the layer via <tt>addChild()</tt>.
+                            Requires one of these children as parameter, and detaches it from the layer, i.e. makes it's movements and visibility independent from the layer.
+                            This method has the same effect for a certain element, as the DETACH_CHILDREN command, passed to SET_DHTML(), would have for all images being nested into the layer.
+                            <br>
+                            Parameter: equivalent to <tt>.attachChild()</tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td>
+                            <tt style="white-space:nowrap;"><font color="#999999"><b>del()</b></font></tt>
+                          </td>
+                          <td>
+                            Removes the element, that is, disables its DHTML capabilities and its draggability and removes it from the <tt>dd.elements</tt> array.
+                            However, del() does not destroy the HTML element per se.
+                            Example:
+                            <br>
+                            <tt>dd.elements.someName.del();</tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td>
+                            <tt style="white-space:nowrap;"><font color="#999999"><b>getEltBelow()</b></font></tt>
+                          </td>
+                          <td>
+                            The API's hit-test function.<br>
+                            Returns the element below the concerned item, that is, the topmost element overlapped by the concerned item, otherwise <tt>null</tt>.
+                            Might be used, for instance, in <tt>my_DropFunc()</tt> to get directly the item on which the dragged element (referencable by <tt>dd.obj</tt>) has been dropped:
+                            <br>
+                            <br>
+                            <tt>var dropTarget = dd.obj.getEltBelow();
+                            <br>
+                            if(dropTarget != null) alert(dropTarget.name);</tt>
+                            <br>
+                            <br>
+                            To satisfy the &quot;hit&quot; condition, the element below must be in both dimensions overlapped by at least 50%.
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><tt><font color="#999999"><b>maximizeZ()</b></font></tt></td>
+                          <td>Sets the z-index of the element to the currently highest level. Therefore this element will be able to overlap each other.
+                          Note: This method automatically is performed if the element is hit by a mousedown-event, i.&nbsp;e. selected to become current drag object.</td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><tt style="white-space:nowrap;"><font color="#999999"><b>setBgColor(</b>&quot;color&quot;<b>)</b></font></tt></td>
+                          <td>
+                            Changes the background color of a layer, or a transparent Drag'nDrop image (GIF, PNG) (!), to the value specified by the parameter.
+                            <br>
+                            <tt><a class="code" href="javascript:void(0)" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.bluelyr.setBgColor(document.forms[0].GreylyrColor.value);return false;">dd.elements.bluelyr.setBgColor(&quot;</a><input type="text" name="GreylyrColor" size="8" value="#99dd99"><a class="code" href="javascript:void(0)" onclick=";if(window.dd &amp;&amp; dd.elements) dd.elements.bluelyr.setBgColor(document.forms[0].GreylyrColor.value);return false;">&quot;);</a></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><tt style="white-space:nowrap;"><font color="#999999"><b>setCursor(</b>&quot;CSS value&quot;<b>)</b></font></tt></td>
+                          <td>
+                            Alters cursor over concerned Drag&amp;Drop item.
+                            Accepts as parameter either a CSS cursor value as string, for example dd.elements.someImg.setCursor('crosshair');, or alternatively one of the API's cursor <a href="commands_e.htm">commands</a>, for example dd.elements.someImg.setCursor(CURSOR_CROSSHAIR);
+                            <!--br>
+                            <tt><a class="code" href="javascript:void(0)" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.bluelyr.setBgColor(document.forms[0].GreylyrColor.value);return false;">dd.elements.bluelyr.setBgColor(&quot;</a><input type="text" name="GreylyrColor" size="8" value="#99dd99"><a class="code" href="javascript:void(0)" onclick=";if(window.dd &amp;&amp; dd.elements) dd.elements.bluelyr.setBgColor(document.forms[0].GreylyrColor.value);return false;">&quot;);</a></tt-->
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td>
+                            <tt style="white-space:nowrap;"><font color="#999999"><b>setDraggable(</b>true/false<b>)</b></font></tt>
+                          </td>
+                          <td>
+                            Parameter <tt>true</tt> enables, <tt>false</tt> disables draggability of the element.
+                            However, even with switched-off draggability, the element is not removed from the <tt>dd.elements</tt> array, hence keeping any of its DHTML abilities, except of the ability to be dragged or resized with the mouse.
+                            <br>
+                            <tt><a class="code" href="javascript:void(0)" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.dog.setDraggable(false);return false;">dd.elements.dog.setDraggable(false);</a></tt>
+                            <br>
+                            <tt><a class="code" href="javascript:void(0)" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.dog.setDraggable(true);return false;">dd.elements.dog.setDraggable(true);</a></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td>
+                            <tt style="white-space:nowrap;"><font color="#999999"><b>setHorizontal(</b>true/false<b>)</b></font></tt>
+                            <br>
+                            <img name="dog" src="../images/dragdrop/deddie2.jpg" width="100" height="113" alt="">
+                          </td>
+                          <td>
+                            After calling that method with the parameter <tt>true</tt>, the item can be dragged horizontally only. The parameter <tt>false</tt> removes that restriction again.
+                            Compare with the HORIZONTAL <a href="commands_e.htm">command</a> which has the same effect, but can only be applied with the intial call of <tt>SET_DHTML()</tt>.
+                            The current state can be checked via the property <tt>horizontal</tt>.
+                            Play again with the dog Teddy (or: learn how to flip a slider):
+                            <br>
+                            <tt><a class="code" href="javascript:void(0)" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.dog.setHorizontal(true);return false;">dd.elements.dog.setHorizontal(true);</a></tt>
+                            <br>
+                            <tt><a class="code" href="javascript:void(0)" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.dog.setHorizontal(false);return false;">dd.elements.dog.setHorizontal(false);</a></tt>
+                            <br>
+                            <tt><a class="code" href="javascript:void(0)" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.dog.setVertical(true);return false;">dd.elements.dog.setVertical(true);</a></tt>
+                            <br>
+                            <tt><a class="code" href="javascript:void(0)" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.dog.setVertical(false);return false;">dd.elements.dog.setVertical(false);</a></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td>
+                            <tt style="white-space:nowrap;"><font color="#999999"><b>setOpacity(</b>float<b>)</b></font></tt>
+                          </td>
+                          <td>
+                            Sets the opacity of the item (image or DIV).
+                            Parameter must be a decimalpoint number between 0.0 (entirely transparent, invisible) and 1.0 (opaque, no transparency).
+                            <br>
+                            <tt><a class="code" href="javascript:void(0)" onclick=";if(window.dd &amp;&amp; dd.elements) dd.elements.dog.setOpacity(parseFloat(document.forms[0].Opaq.value.replace(/\,/g, '.')));return false;">dd.elements.dog.setOpacity(</a></tt>
+                            <input type="text" name="Opaq" size="5" maxlength="4" value="0.6"><tt><a class="code" href="javascript:void(0)" onclick=";if(window.dd &amp;&amp; dd.elements) dd.elements.dog.setOpacity(parseFloat(document.forms[0].Opaq.value.replace(/\,/g, '.')));return false;">);</a></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td>
+                            <tt style="white-space:nowrap;"><font color="#999999"><b>setResizable(</b>true/false<b>)</b></font></tt>
+                          </td>
+                          <td>
+                            Enables/disables RESIZABLE functionality of concerned element.
+                            RESIZABLE functionality means that the element can be resized instead of dragged if the SHIFT key is pressed during a drag movement (more precisely: at the beginning of a drag action).
+                            <br>
+                            <tt><a class="code" href="javascript:void(0)" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.dog.setResizable(false);return false;">dd.elements.dog.setResizable(false);</a></tt>
+                            <br>
+                            <tt><a class="code" href="javascript:void(0)" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.dog.setResizable(true);return false;">dd.elements.dog.setResizable(true);</a></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td>
+                            <tt style="white-space:nowrap;"><font color="#999999"><b>setScalable(</b>true/false<b>)</b></font></tt>
+                          </td>
+                          <td>
+                            Enables/disables SCALABLE functionality of element.
+                            Resembling RESIZABLE in any other aspect, SCALABLE preserves the width/height ratio of item.
+                            <br>
+                            <tt><a class="code" href="javascript:void(0)" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.dog.setScalable(false);return false;">dd.elements.dog.setScalable(false);</a></tt>
+                            <br>
+                            <tt><a class="code" href="javascript:void(0)" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.dog.setScalable(true);return false;">dd.elements.dog.setScalable(true);</a></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td>
+                            <tt style="white-space:nowrap;"><font color="#999999"><b>setVertical(</b>true/false<b>)</b></font></tt>
+                          </td>
+                          <td>
+                            Has the same effect as the VERTICAL <a href="commands_e.htm">command</a>, but allows you to toggle that dragdirection restriction at runtime.
+                            The current state can be checked via the property <tt>vertical</tt>.
+                            See also <tt>setHorizontal()</tt>.
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><tt><font color="#999999"><b>setZ(</b>number<b>)</b></font></tt></td>
+                          <td>
+                            Sets the z-index of the element to the specified value.
+                            May be useful, for example, to permute the stacking order of two drag drop items overlapping each other - the property z retrieves the current z-index.
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td>
+                            <tt style="white-space:nowrap;"><font color="#999999"><b>write(</b>&quot;html&quot;<b>)</b></font></tt>
+                            <br>
+                            <img name="buoy2" src="../images/transparentpixel.gif" width="1" height="1" alt="">
+                          </td>
+                          <td>
+                            Writes to a layer and replaces its content.
+                            Plus, assigns the new HTML to the <tt>text</tt> property of the concerned Drag&amp;Drop&amp;DHTML object.
+                            Drag 'n Drop images within the layer, however, are protected and will not be deleted.
+                            <br>
+                            <tt><a class="code" href="javascript:void(0)" onclick="if(window.dd &amp;&amp; dd.elements) dd.elements.bluelyr.write(document.forms[0].GreylyrTxt.value);return false;">dd.elements.bluelyr.write(&quot;</a></tt>
+                            <input type="text" name="GreylyrTxt" size="68" value="This &lt;i&gt;HTML&lt;/i&gt; will be &lt;b&gt;written&lt;/b&gt; into the &lt;small&gt;small&lt;/small&gt; lightblue layer"><tt><a class="code" href="javascript:void(0)" onclick=";if(window.dd &amp;&amp; dd.elements) dd.elements.bluelyr.write(document.forms[0].GreylyrTxt.value);return false;">&quot;);</a></tt>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" bgcolor="#eeeeee"><b>Further interfaces to the library</b></td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" bgcolor="#eeeeee">
+                            Properties and methods of the library's main object dd (&quot;drag-drop&quot;):
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><tt><b>dd.elements</b></tt></td>
+                          <td>
+                            Array of drag drop elements.
+                            To access a certain drag drop element you may use any of the following notations:
+                            <br>
+                            <tt><b>dd.elements.ItemName</b></tt>
+                            <br>or<br>
+                            <tt><b>dd.elements[&quot;ItemName&quot;]</b></tt>
+                            <br>or<br>
+                            <tt><b>dd.elements[i]</b></tt> where i is index of the element.
+                            <br>&nbsp;<br>
+                            <tt><b>dd.elements.length</b></tt> returns the number of drag drop items on your page (including copies of multiplied images).
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><tt><b>dd.obj</b></tt></td>
+                          <td>
+                            Contains the current drag object; otherwise nothing or null.
+                            For example, to find out if &quot;image2&quot; is current drag object, simply write:
+                            <br>
+                            <tt><b>if&nbsp;(dd.obj&nbsp;==&nbsp;dd.elements.image2)&nbsp;{<i>dependent&nbsp;statements;</i>}</b></tt>
+                            <br>or alternatively<br>
+                            <tt><b>if&nbsp;(dd.obj.name&nbsp;==&nbsp;"image2")&nbsp;{<i>dependent&nbsp;statements;</i>}</b></tt>
+                            <br>&nbsp;<br>
+                            An easy and direct way to access a property or call a method of the current drag item is a statement like <tt><b>dd.obj.<i>property</i></b></tt> or <tt><b>dd.obj.<i>method()</i></b></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><tt><font color="#999999"><b>dd.getScrollX()</b></font></tt></td>
+                          <td>
+                            Returns how far the window has been scrolled horizontally.
+                            <br>
+                            <tt><b><a class="code" href="javascript:void(0)" onclick="if (window.dd) alert(dd.getScrollX());">alert(dd.getScrollX());</a></b></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><tt><font color="#999999"><b>dd.getScrollY()</b></font></tt></td>
+                          <td>
+                            Returns how far the window has been scrolled vertically.
+                            <br>
+                            <tt><b><a class="code" href="javascript:void(0)" onclick="if (window.dd) alert(dd.getScrollY());">alert(dd.getScrollY());</a></b></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><tt><font color="#999999"><b>dd.getWndH()</b></font></tt></td>
+                          <td>
+                            Returns the inner window height (of the visible client area).
+                            <br>
+                            <tt><b><a class="code" href="javascript:void(0)" onclick="if (window.dd) alert(dd.getWndH());">alert(dd.getWndH());</a></b></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><tt><font color="#999999"><b>dd.getWndW()</b></font></tt></td>
+                          <td>
+                            Returns the inner window width (of the visible client area).
+                            <br>
+                            <tt><b><a class="code" href="javascript:void(0)" onclick="if (window.dd) alert(dd.getWndW());">alert(dd.getWndW());</a></b></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><tt><font color="#999999"><b>dd.Int()</b></font></tt></td>
+                          <td>
+                            Transforms argument surely into integer.
+                            Even if the transformation actually isn't possible, as for dd.Int(&quot;abc&quot;), the number 0 will be returned.
+                            This behavior avoids data type errors.
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><tt><font color="#999999"><b>dd.db</b></font></tt></td>
+                          <td>
+                            = document.body, or, in Non-BackCompat-mode of IE6, document.documentElement.
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><tt><font color="#999999"><b>dd.ie</b></font></tt></td>
+                          <td>
+                            true, if Internet Explorer 4+
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><tt><font color="#999999"><b>dd.n</b></font></tt></td>
+                          <td>
+                            navigator.userAgent (lower case).
+                            <tt><b><a class="code" href="javascript:void(0)" onclick="if (window.dd) alert(dd.n);">alert(dd.n);</a></b></tt>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><tt><font color="#999999"><b>dd.n4</b></font></tt></td>
+                          <td>
+                            true, if Netscape 4 (not Netscape &gt; 4).
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><tt><font color="#999999"><b>dd.n6</b></font></tt></td>
+                          <td>
+                            true, if browser based on Gecko-Engine (Mozilla, Netscape 6+, Galeon, Phoenix...);
+                            also true with browsers with advanced W3C-DOM support.
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td><tt><font color="#999999"><b>dd.op</b></font></tt></td>
+                          <td>
+                            true, if Opera 5+ browser, else false.
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" bgcolor="#eeeeee">
+                            <b>Making layers draggable by way of addition</b>
+                          </td>
+                        </tr>
+                        <tr valign="top" bgcolor="#ffffff">
+                          <td>
+                            <tt>
+                              <b>ADD_DHTML()</b><br>
+                            </tt>
+                            <br>
+                            <div id="NewLayer1" style="position:relative;left:0px;top:10px;width:70px;height:50px;visibility:hidden;border:1px solid #000099;background:#d6e6ff;layer-background-color:#d6e6ff;"></div>
+                            <div id="NewLayer2" style="position:relative;left:0px;top:20px;width:70px;height:50px;visibility:hidden;border:1px solid #660000;background:#ffcccc;layer-background-color:#ffcccc;"></div>
+                          </td>
+                          <td>
+                            Converts layers (DIV elements) into DHTML Drag'nDrop elements by way of addition, even after the page has fully loaded.
+                            Useful particularly for dynamically created layers.
+                            Note that SET_DHMTL() must have been invoked while the page was still loading, optionally even without arguments.
+                            ADD_DHTML() does not work with images.
+                            For a workaround you might insert images each into a DIV.
+                            <br>&nbsp;<br>
+                            Like with SET_DHTML(), ADD_DHTML() requires the ID of the concerned layer(s) as parameter(s), each enclosed in single or double quotes,
+                            and you can append individual commands with a plus-sign.
+                            Of course, each of these layers will be added to the <tt>dd.elements</tt> array and hence provide the same properties and methods as layers initialized via SET_DHTML().
+                            <br>&nbsp;<br>
+                            Example:
+                            <br>&nbsp;<br>
+                            <tt>
+                            <a class="code" href="javascript:void(0);" onclick=";if (window.dd &amp;&amp; dd.elements &amp;&amp; !dd.elements.NewLayer1) { ADD_DHTML('NewLayer1'+VERTICAL+MAXOFFTOP+100+MAXOFFBOTTOM+100); dd.elements.NewLayer1.show(); } return false;">ADD_DHTML(&quot;NewLayer1&quot;+VERTICAL+MAXOFFTOP+100+MAXOFFBOTTOM+100);</a>
+                            <br>
+                            <a class="code" href="javascript:void(0);" onclick=";if (window.dd &amp;&amp; dd.elements &amp;&amp; !dd.elements.NewLayer2) { ADD_DHTML('NewLayer2'+HORIZONTAL); dd.elements.NewLayer2.show(); } return false;">ADD_DHTML(&quot;NewLayer2&quot;+HORIZONTAL);</a>
+                            <br>&nbsp;<br>
+                            <a class="code" href="javascript:void(0);" onclick=";if (window.dd &amp;&amp; dd.elements &amp;&amp; dd.elements.NewLayer1) dd.elements.NewLayer1.setBgColor('#99dd99'); return false;">dd.elements.NewLayer1.setBgColor(&quot;#99dd99&quot;);</a>
+                            <br>
+                            <a class="code" href="javascript:void(0);" onclick=";if (window.dd &amp;&amp; dd.elements &amp;&amp; dd.elements.NewLayer2) dd.elements.NewLayer2.moveBy(16,8); return false;">dd.elements.NewLayer2.moveBy(16,8);</a>
+                            </tt>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>&nbsp;<br>&nbsp;<br><big>Extending the Script</big></b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                &nbsp;<br>
+                <b>1.)</b> wz_dragdrop.js provides four empty JavaScript function bodies that may be used for your own scripting extensions.
+                Have a look at the comment blocks inside these functions for the most important details.
+                For instance, you can access any of the above mentioned properties and methods of the currently dragged item with a statement like <tt>dd.obj.property</tt> and <tt>dd.obj.method()</tt>.
+                With <tt>dd.obj.name</tt> you'll get the name passed to SET_DHTML(), <tt>dd.obj.x</tt> and <tt>dd.obj.y</tt> will retrieve the co-ordinates of the currently dragged item;
+                with a statement as <tt>dd.obj.swapImage('anotherImg.jpg');</tt> you could swap an image once it reaches/leaves a predefined area, etc...
+                <br>&nbsp;<br>
+                <tt><b>my_PickFunc()</b></tt> is automatically called when a drag drop item is hit by a mousedown event.
+                <br>&nbsp;<br>
+                <tt><b>my_DragFunc()</b></tt> is permanently invoked while an item is dragged.
+                You can use this function, for instance, to compare the current location (x, y properties) of the dragged item with other DHTML elements on the page.
+                <br>&nbsp;<br>
+                <tt><b>my_ResizeFunc()</b></tt> is permanently invoked while an item is resized,
+                i.e. if the RESIZABLE command has been applied to the item and  the &lt;shift&gt; key was pressed when the Drag operation started.
+                <br>&nbsp;<br>
+                <tt><b>my_DropFunc()</b></tt> is automatically called when an item is dropped.
+                This function may be used, for example, to find out which item (property <tt>name</tt>) has just been dropped at which location (coordinates <tt>x</tt> and <tt>y</tt>).
+                Or a statement like <tt>dd.obj.moveTo(someX,&nbsp;someY)</tt> might let the dropped item &quot;snap&quot; to a predefined location.
+                <tt>my_DropFunc()</tt> is also the ideal place to write properties like the coordinates, size and name of an item into &lt;input&nbsp;type=&quot;hidden&quot;&gt; form elements to transmit these values to the server.
+                Note that dd.obj is still defined during the entire runtime of <tt>my_DropFunc()</tt> or other functions defined elsewhere but invoked from inside <tt>my_DropFunc()</tt>.
+                <br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+                <b>2.)</b> Alternatively, wz_dragdrop.js provides setter methods to define custom event functions for each draggable item dynamically:
+                <br>&nbsp;<br>
+                With <tt><b>setPickFunc(</b><i>FunctionName</i><b>)</b></tt> you can define which function shall be automatically envoked when a drag operation starts,
+                <tt><b>setDragFunc(</b><i>FunctionName</i><b>)</b></tt> sets the function to be permanently called while the item is dragged,
+                <tt><b>setResizeFunc(</b><i>FunctionName</i><b>)</b></tt> does the same for resize operations with the mouse,
+                <tt><b>setDropFunc(</b><i>FunctionName</i><b>)</b></tt> sets the function to be called when the item is dropped.
+                <br>&nbsp;<br>
+                Example:
+                <br>
+                A statement<br>
+                <tt>dd.elements.someName.setDropFunc(mySomeNameDropFunc);</tt>
+                <br>
+                would tell the library to invoke automatically your custom function <tt>mySomeNameDropFunc()</tt> whenever the item <tt>&quot;someName&quot;</tt> is dropped.
+                <br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+                <b>3.)</b> wz_dragdrop.js is object-oriented. Nobody prevents you from simply <b>adding your own properties or even methods</b> to the <tt>dd.elements</tt>, even at runtime.
+                Preferably with the prefix my... to avoid conflicts with already predefined properties/methods:
+                <br>
+                <tt>dd.elements[i].myProperty = ...;</tt>
+                <br>&nbsp;<br>
+                A yet more sofisticated approach to add custom properties is prototyping using the JavaScript keyword <tt>prototype</tt>:
+                <br>
+                <tt>DDObj()</tt> is the internal function that creates the draggable objects.
+                That means, a statement
+                <br>
+                <tt>DDObj.prototype.myNewProperty&nbsp;=&nbsp;someValue;</tt>
+                <br>
+                would instantly add a new property <tt>myNewProperty</tt> to <b>all</b> draggable items, and initialize the property with whichever value <tt>someValue</tt> has.
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <p> &nbsp; &nbsp; <a href="#top"><img src="../images/topOfPage.gif" border="0" width="21" height="20" alt="Top of page"></a></p>
+    <hr width="95%" size="1" noshade>
+    <table width="750">
+      <tr>
+        <td>
+          <small>Walter Zorn, Munich
+          <br><a href="http://www.kreuzotter.de/impressum.htm">Impressum and about this page</a></small>
+          <br>
+          &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+        </td>
+      </tr>
+    </table>
+  </center>
+</form>
+<div id="greylyr" style="position:absolute;left:100px;top:1200px;padding:4px;border:1px solid #000099;background:#dddddd;layer-background-color:#dddddd;visibility:hidden;">
+    <small>This is a draggable layer</small>
+    <br>
+    <img name="ko5obersoech" src="../images/dragdrop/ko5obersoech.jpg" width="100" height="55" alt="">
+    <br>
+    <img name="fateba_fi" src="../images/dragdrop/fateba_fi.jpg" width="130" height="103" alt="">
+</div>
+
+<div id="bluelyr" style="position:absolute;left:100px;top:2200px;width:180px;padding:6px;border:1px solid #000099;background:#d6e6ff;layer-background-color:#d6e6ff;visibility:hidden;">
+  Drag me
+</div>
+
+<img name="button" src="../images/dragdrop/button_outset.gif" width="60" height="17" alt="">
+
+<script type="text/javascript">
+<!--
+
+//if (dd.n4) window.onload = new Function('var orglyr = dd.elements.bluelyr; orglyr.write("<layer width=130 height=32><\/layer>");');
+
+SET_DHTML(CURSOR_MOVE, RESIZABLE, SCROLL, "bluelyr", "buoy1"+NO_DRAG, "buoy2"+NO_DRAG, "button"+VERTICAL+HORIZONTAL+CURSOR_DEFAULT, "cat", "counter", "dog", "einstein", "fateba_fi", "fateba_se", "greylyr", "ko5_st", "ko5obersoech", "low", "muckl"+COPY+10, "race", "rex", "upleft");
+
+var iW, low, upleft, dh;
+function ANIM()
+{
+    if(!dd.obj || !dd.op6)
+    {
+        if(low.z<=upleft.z)
+            low.maximizeZ();
+        upleft.moveTo(
+            upleft.x<=-upleft.w? iW-upleft.w-20 : (upleft.x-3),
+            (dd.obj==upleft)? upleft.y : (low.y-dh)
+        );
+        low.moveTo(
+            low.x<=-low.w? iW-low.w-20 : (low.x-5),
+            upleft.y+dh
+        );
+    }
+    setTimeout("ANIM()", dd.kq? 100 : 50);
+}
+
+
+// override funcs defined within the Lib
+function my_PickFunc()
+{
+    if (dd.obj.name == 'button') dd.obj.swapImage(insetbutton.src);
+}
+
+function my_DropFunc()
+{
+    if (dd.obj.name == 'button')
+    {
+        dd.obj.swapImage(outsetbutton.src);
+        var minh = dd.elements.button.h+((dd.elements.button.y-dd.elements.fateba_se.y)<<1);
+        dd.elements.fateba_se.resizeTo(
+            dd.elements.fateba_se.w,
+            (dd.elements.fateba_se.h != minh)? minh : parseInt(dd.elements.fateba_se.w*157/200)
+        );
+    }
+}
+
+
+dd.elements.greylyr.moveTo(dd.elements.buoy1.x, dd.elements.buoy1.y);
+dd.elements.greylyr.show();
+
+dd.elements.bluelyr.moveTo(dd.elements.buoy2.x, dd.elements.buoy2.y);
+dd.elements.bluelyr.show();
+
+var outsetbutton = new Image();
+outsetbutton.src = '../images/dragdrop/button_outset.gif';
+var insetbutton = new Image();
+insetbutton.src = '../images/dragdrop/button_inset.gif';
+
+dd.elements.button.moveTo(dd.elements.fateba_se.x+2, dd.elements.fateba_se.y+2)
+dd.elements.fateba_se.addChild('button');
+
+iW = dd.getWndW();
+low = dd.elements.low;
+upleft = dd.elements.upleft;
+dh = upleft.h-low.h;
+ANIM();
+
+//-->
+</script>
+</body>
+</html>

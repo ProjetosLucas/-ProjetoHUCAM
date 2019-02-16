@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="expires" content="0">
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+<title>JavaScript: Rotate Images</title>
+<link rel="stylesheet" type="text/css" href="../newwalterzorn.css">
+</head>
+<body bgcolor="#ffffff">
+<script type="text/javascript" src="../scripts/wz_rotateimg.js"></script>
+  <a name="top"> </a>
+  <form>
+    <center>
+      <table>
+        <tr>
+          <td id="button" align="center"><a href="../index.htm"><img name="logo" border="0" src="../images/logo.gif" alt="" width="271" height="30"></a></td>
+        </tr>
+      </table>
+      <table cellspacing="12">
+        <tr>
+          <td><a href="../index.htm">Home</a></td>
+          <td><a href="../dragdrop/dragdrop_e.htm">DHTML-Drag&amp;Drop-Library</a></td>
+          <td><a href="../jsgraphics/jsgraphics_e.htm">Vectorgraphics-Library</a></td>
+          <td><a href="../tooltip/tooltip_e.htm">Tooltips-Script</a></td>
+          <td><a href="../grapher/grapher_e.htm">Function-Grapher</a></td>
+        </tr>
+      </table>
+      <br>
+      <table width="700">
+        <tr>
+          <td>
+            <table width="100%">
+              <tr>
+                <td>
+                  <b><big>Rotate Image</big>
+                  <br>
+                  A JavaScript Experiment to rotate images on a webpage by arbitrary angles</b>
+                  <br>
+                  <small><i>By Walter Zorn</i></small>
+                  <br>&nbsp;<br>&nbsp;
+                </td>
+              </tr>
+              <tr>
+                <td align="center">
+                  <table cellpadding="24">
+                    <tr>
+                      <td align="center">
+                        <img name="newImg" src="../images/new_e.gif" width="37" height="17">
+                      </td>
+                      <td>
+                        <tt><a href="javascript:void(0)" onclick="if (window.rots) rots.newImg.rotateTo(parseInt(document.forms[0].A.value));">rots.newImg.rotateTo(</a></tt><input name="A" type="text" size="4" value="270"><tt><a href="javascript:void(0)" onclick="if (window.rots) rots.newImg.rotateTo(parseInt(document.forms[0].A.value));">)</a></tt>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center">
+                        <img name="winky" src="../images/wink.gif" width="15" height="15">
+                      </td>
+                      <td>  
+                        <tt><a href="javascript:void(0)" onclick="if (window.rots) {ang = 0; Roll();}">Roll</a></tt>
+                        <!--br>
+                        <tt><a href="javascript:void(0)" onclick="var winky = rots.winky; winky.swapImage((winky.src == winky.defsrc)? '../images/mad.gif' : winky.defsrc);">rots.winky.swapImage(...)</a></tt-->
+                      </td>
+                    </tr>
+                  </table>    
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <b><big>Warning:</big></b><br>
+                  This is just a quickly hacked, unpromising experiment!!
+                  It is (and will alway be) strictly advised against using this library on a website!
+                  <br>&nbsp;<br>
+                  To make an image rotatable, the script internally re-composes the image by width x height DIV elements (for example, 629 for a tiny 37px x 17px image), each containing the original image, but clipped in a manner that only the required pixel is visible.
+                  <br>&nbsp;<br>
+                  Due to this huge number of DIVs and image copies required, dynamical client-side rotation of HTML images will always be slow and restricted to small images -
+                  although this library uses a fast matrix-multiplication algorithm.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br><b><big>Download</big></b>
+                  <br>
+                  wz_rotateimg.js &nbsp; ver. 0.5 pre-alpha zipped
+                  <br>
+                  <a href="../scripts/wz_rotateimg.zip">wz_rotateimg.zip</a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br><big><b>Inclusion into a website</b></big>
+                  <br>
+                  If you can't refrain from trying this library:
+                  Each of the images requires a unique name, for example<br>
+                  &lt;img name=&quot;newImg&quot; src=&quot;newImg.gif&quot; width=&quot;37&quot; height=&quot;17&quot;&gt;
+                  <br>
+                  Then insert the following lines <b>after</b> the last of the images into the HTML source, preferably immediately before the closing &lt;/body&gt; tag.
+                  Example:
+                  <br>&nbsp;<br>
+                  <tt>
+                  &lt;script&nbsp;type=&quot;text/javascript&quot;&nbsp;src=&quot;wz_rotateimg.js&quot;&gt;&lt;/script&gt;
+                  <br>
+                  &lt;script&nbsp;type=&quot;text/javascript&quot;&gt;
+                  <br>
+                  &lt;--
+                  <br>
+                  SET_ROTATABLE(&quot;newImg&quot;,90,&quot;winky&quot;,180);</tt>
+                  <br>
+                  //--&gt;
+                  <br>
+                  &lt;/script&gt;
+                  <br>&nbsp;<br>
+                  As parameters separated with commas from each other, SET_ROTATABLE() requires the name of each image, followed by the desired initial rotation angle in degrees.
+                  After SET_ROTATABLE() has been invoked, the images are accessible via the <tt><b>rots</b></tt> array, by an expression as
+                  <br>
+                  <tt><b>rots.nameOfImage</b></tt>
+                  <br>
+                  or
+                  <br>
+                  <tt><b>rots['nameOfImage']</b></tt>
+                  <br>
+                  or, of course,
+                  <br>
+                  <tt><b>rots[&quot;nameOfImage&quot;]</b></tt>
+                  <br>
+                  You can at any time envoke an image's <tt><b>rotateTo()</b></tt> method as the following examples illustrate:
+                  <tt><b>rots.newImg.rotateTo(270);</b></tt>
+                  <br>
+                  or
+                  <br>
+                  <tt><b>rots[&quot;winky&quot;].rotateTo(135);</b></tt>
+                  <br>
+                  (see also clickable demo example on top of this page).
+                  As parameter, <tt>rotateTo()</tt> requires the desired rotation angle in degrees.
+                  You can retrieve the current angle of an image by it's <tt><b>angle</b></tt> property, for the above example:
+                  <br>
+                  <tt><b>rots.newImg.angle</b></tt>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+          <br>
+          &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+    </center>
+  </form>
+<script type="text/javascript">
+<!--
+SET_ROTATABLE("newImg", 90, "winky", 180);
+
+
+var ang = 0;
+function Roll()
+{
+    rots.winky.rotateTo(ang += 10);
+    if (ang < 360) setTimeout('Roll()', 50);
+}
+//-->
+</script>
+</body>
+</html>

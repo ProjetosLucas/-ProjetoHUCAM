@@ -1,0 +1,1361 @@
+<!--DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="expires" content="0">
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<title>JavaScript, DHTML: Linie, Ellipse, Kreis, Polygon, Dreieck, Rechteck, Polyline zeichnen</title>
+<link rel="stylesheet" type="text/css" href="../newwalterzorn.css">
+<script type="text/javascript" src="http://www.walterzorn.de/en/scripts/wz_jsgraphics.js"></script>
+</head>
+<body bgcolor="#ffffff">
+<a name="top"> </a>
+  &nbsp;<a href="http://www.walterzorn.de/en/jsgraphics/jsgraphics_e.htm" target="_top"><img src="../images/uk.gif" align="middle" border="0" alt="English version" width="22" height="15"></a> <a href="http://www.walterzorn.de/en/jsgraphics/jsgraphics_e.htm" target="_top"><img src="../images/usa.gif" align="middle" border="0" alt="English version" width="22" height="15"></a> <small><a href="http://www.walterzorn.de/en/jsgraphics/jsgraphics_e.htm" target="_top">English version</a></small>
+  <center>
+    <table>
+      <tr>
+        <td align="center"><a href="../index.htm"><img name="logo" border="0" src="../images/logo.gif" alt="" width="271" height="30"></a></td>
+      </tr>
+    </table>
+    <table cellspacing="12">
+      <tr>
+        <td><img src="../images/transparentpixel.gif" alt="DHTML, JavaScript: Ellipse, Oval, Kreis, Polygon, Dreieck, Rechteck, Linie zeichnen" width="1" height="1"><a href="../index.htm">Home</a></td>
+        <td><a href="../dragdrop/dragdrop.htm">DHTML-Bibliothek</a></td>
+        <td><a href="../tooltip/tooltip.htm">Tooltips-Script</a></td>
+        <td><a href="../grapher/grapher.htm">Funktionsgraph-Plotter</a></td>
+      </tr>
+    </table>
+  </center>
+<div id="main" style="position:relative;height:230px;width:100%;"><table width="100%"><tr><td height="230"></td></tr></table></div>
+  <table>
+    <tr>
+      <td width="80"><img src="../images/transparentpixel.gif" alt="" width="80" height="1"></td>
+      <td>
+        <table>
+          <tr>
+            <td>
+              <b><big>DHTML, JavaScript
+              <br>Linie, Ellipse, Kreis, Rechteck, Polygon zeichnen.</big>
+              <br>Schnelle JavaScript Vektorgraphik Bibliothek.</b><br>
+              <small><i>Entwickler: Walter Zorn</i></small><br>&nbsp;<br>
+            </td>
+            <td rowspan="4" valign="top">
+              <table cellpadding="0" cellspacing="3">
+                <tr>
+                  <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt="DHTML, JavaScript: Ellipsen, Ovale, Kreise, Polygone, Dreiecke, Rechtecke, schr&auml;ge Linien zeichnen"></td>
+                  <td>
+                    <small>
+                      &nbsp;<br>
+                      <a href="#performance">Performance</a>
+                      <br>&nbsp;<br>
+                      <a href="#browser">Welche Browser?</a>
+                      <br>&nbsp;<br>
+                      <a href="#docu">Dokumentation</a>
+                      <br>&nbsp;<br>
+                      <a href="#download">Download</a>
+                      <br>&nbsp;<br>
+                      &nbsp;
+                      <br>&nbsp;
+                    </small>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              JavaScript ist eine Programmiersprache, die eigentlich keine Grafik-F&auml;higkeit mitbringt.
+              Diese JavaScript-Vektorgrafikbibliothek implementiert Funktionen f&uuml;r Grafik-Grundelemente wie
+              Linien, Kreise, Ellipsen (Ovale), Polygone (auch Dreiecke, Rechtecke) und Polylinien (geknickte Linien), und kann solche Elemente dynamisch in eine Webseite zeichnen.
+              Ziele der Entwicklung waren nebenbei auch optimierte <a href="#performance">Performance</a> und optimal gezeichneten Pixeltreppchen (Pixeloptimierung).
+              Die Verwendung dieser Vector-Grafik -Bibliothek ist selbst bei nicht vorhandener JavaScript-Erfahrung relativ einfach.
+              Der Testbereich und, weiter unten auf dieser Seite die <a href="#docu">Dokumentation</a>, machen Ihnen hoffentlich Mut zum Experimentieren.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <big>&nbsp;<br><b>Hier testen:</b></big>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table border="0" bgcolor="#000099" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td>
+                    <table border="0" cellpadding="0" cellspacing="1" width="100%">
+                      <tr>
+                        <td bgcolor="white">
+                          <form action="">
+                            <table cellspacing="0">
+                              <tr align="right">
+                                <td><input style="width:100%" type="button" value="drawLine()" onclick="DRAW(this.value)"></td>
+                                <td>x1<input name="dl_x1" type="text" size="5" maxlength="4" value="50">&nbsp;</td>
+                                <td>y1<input name="dl_y1" type="text" size="5" maxlength="4" value="-330">&nbsp;</td>
+                                <td>x2<input name="dl_x2" type="text" size="5" maxlength="4" value="500">&nbsp;</td>
+                                <td>y2<input name="dl_y2" type="text" size="5" maxlength="4" value="800">&nbsp;</td>
+                                <td><br></td>
+                                <td><br></td>
+                              </tr>
+                              <tr align="right">
+                                <td><input style="width:100%" type="button" value="drawRect()" onclick="DRAW(this.value)"></td>
+                                <td>x<input name="dr_x" type="text" size="5" maxlength="4" value="130">&nbsp;</td>
+                                <td>y<input name="dr_y" type="text" size="5" maxlength="4" value="20">&nbsp;</td>
+                                <td>w<input name="dr_w" type="text" size="5" maxlength="4" value="350">&nbsp;</td>
+                                <td>h<input name="dr_h" type="text" size="5" maxlength="4" value="60">&nbsp;</td>
+                                <td><br></td>
+                                <td><br></td>
+                              </tr>
+                              <tr align="right">
+                                <td><input style="width:100%" type="button" value="fillRect()" onclick="DRAW(this.value)"></td>
+                                <td>x<input name="fr_x" type="text" size="5" maxlength="4" value="-70">&nbsp;</td>
+                                <td>y<input name="fr_y" type="text" size="5" maxlength="4" value="130">&nbsp;</td>
+                                <td>w<input name="fr_w" type="text" size="5" maxlength="4" value="160">&nbsp;</td>
+                                <td>h<input name="fr_h" type="text" size="5" maxlength="4" value="100">&nbsp;</td>
+                                <td><br></td>
+                                <td><br></td>
+                              </tr>
+                              <tr align="left">
+                                <td align="right"><input type="button" value="fillPolygon()" onclick="DRAW(this.value)"></td>
+                                <td colspan="6">
+                                  x<input name="fp_x" type="text" size="25" value="80,126,-30,-60">&nbsp;y<input name="fp_y" type="text" size="25" value="0,130,40,100">
+                                </td>
+                              </tr>
+                              <tr align="right">
+                                <td><input style="width:100%" type="button" value="drawEllipse()" onclick="DRAW(this.value)"></td>
+                                <td>x<input name="do_x" type="text" size="5" maxlength="4" value="320">&nbsp;</td>
+                                <td>y<input name="do_y" type="text" size="5" maxlength="4" value="-20">&nbsp;</td>
+                                <td>w<input name="do_w" type="text" size="5" maxlength="3" value="250">&nbsp;</td>
+                                <td>h<input name="do_h" type="text" size="5" maxlength="4" value="140">&nbsp;</td>
+                                <td><br></td>
+                                <td><br></td>
+                              </tr>
+                              <tr align="right">
+                                <td><input style="width:100%" type="button" value="fillEllipse()" onclick="DRAW(this.value)"></td>
+                                <td>x<input name="fo_x" type="text" size="5" maxlength="4" value="75">&nbsp;</td>
+                                <td>y<input name="fo_y" type="text" size="5" maxlength="4" value="140">&nbsp;</td>
+                                <td>w<input name="fo_w" type="text" size="5" maxlength="3" value="240">&nbsp;</td>
+                                <td>h<input name="fo_h" type="text" size="5" maxlength="4" value="400">&nbsp;</td>
+                                <td><br></td>
+                                <td><br></td>
+                              </tr>
+                              <tr align="right">
+                                <td><input style="width:100%" type="button" value="fillArc()" onclick="DRAW(this.value)"></td>
+                                <td>x<input name="fa_x" type="text" size="5" maxlength="4" value="350">&nbsp;</td>
+                                <td>y<input name="fa_y" type="text" size="5" maxlength="4" value="140">&nbsp;</td>
+                                <td>w<input name="fa_w" type="text" size="5" maxlength="4" value="240">&nbsp;</td>
+                                <td>h<input name="fa_h" type="text" size="5" maxlength="4" value="400">&nbsp;</td>
+                                <td>arc&nbsp;begin<input name="fa_angA" type="text" size="5" maxlength="6" value="25">&deg;</td>
+                                <td>arc&nbsp;end<input name="fa_angZ" type="text" size="5" maxlength="6" value="290">&deg;</td>
+                              </tr>
+                              <tr>
+                                <td colspan="7">
+                                  <table width="100%" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                      <td>
+                                        setColor(&quot;#<input name="Color" type="text" size="7" maxlength="6" value="00aaaa">&quot;)
+                                      </td>
+                                      <td align="center">
+                                        setStroke(<input name="Stroke" type="text" size="3" maxlength="2" value="4">)
+                                      </td>
+                                      <td align="right">
+                                        setStroke(Stroke.DOTTED<input name="Dotted" type="checkbox">)
+                                      </td>
+                                    </tr>
+                                  </table>
+                                  <input type="button" style="font-weight:bold;width:290px;" value="clear() Diese Zeichenfl&auml;che l&ouml;schen" onclick=";if(jg2)jg2.clear();">
+                                </td>
+                              </tr>
+                              <tr>
+                                <td colspan="5" height="250" valign="top">
+                                  <div id="dt" style="position:relative;left:-80px;top:10px;height:1px;"></div>
+                                  <div id="test" style="position:relative;left:0px;top:0px;width:400px;height:250px;z-index:2;overflow:visible;"><center><small>Test-Zeichenfl&auml;che</small></center></div>
+                                </td>
+                              </tr>
+                            </table>
+                          </form>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <table>
+    <tr>
+      <td width="80"><img src="../images/transparentpixel.gif" alt="" width="80" height="1"></td>
+      <td>
+        <table>
+          <tr>
+            <td>
+              Hier noch ein <a href="http://www.walterzorn.de/en/jsgraphics/demos/animarc.htm">Beispiel f&uuml;r eine animierte Vektorgrafik</a>.
+              <br>&nbsp;<br>
+              Und <a href="http://www.walterzorn.de/en/dragdrop/demos/drawonimg.htm">so kann man direkt auf ein Bild zeichnen</a>, und das Bild selbst als Zeichenfl&auml;che (Canvas) benutzen
+              (dieses Beispiel verwendet auch meine <a href="../dragdrop/dragdrop_e.htm">DHTML-Drag&amp;Drop-Bibliothek</a>).
+            </td>
+            <td><br></td>
+          </tr>
+          <tr>
+            <td><b><big>&nbsp;<br>&nbsp;<br><a name="performance"> </a>&nbsp;<br>Performance</big></b></td>
+            <td rowspan="4" valign="top">
+              <table cellpadding="0" cellspacing="3">
+                <tr>
+                  <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt="DHTML, JavaScript: Ellipsen, Ovale, Kreise, Polygone, Dreiecke, Rechtecke, schr&auml;ge Linien zeichnen"></td>
+                  <td>
+                    <small>
+                      &nbsp;<br>
+                      <a href="#top">Seitenanfang</a>
+                      <br>&nbsp;<br>
+                      <a href="#performance">Performance</a>
+                      <br>&nbsp;<br>
+                      <a href="#browser">Welche Browser?</a>
+                      <br>&nbsp;<br>
+                      <a href="#docu">Dokumentation</a>
+                      <br>&nbsp;<br>
+                      <a href="#download">Download</a>
+                      <br>&nbsp;<br>
+                      &nbsp;
+                      <br>&nbsp;
+                    </small>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              In HTML selbst gibt es keine schr&auml;gen Linien, Kreise, Ellipsen oder andere nicht-rechteckig begrenzten Elemente.
+              Als Work-around k&ouml;nnte man entsprechend viele kleine farbige DIV-Elemente (Layer) erzeugen und passend aneinanderreihen<a href="#notes">[1]</a>.
+              Da jedes DIV zwangsl&auml;ufig seinen gesamten browserinternen Objekt-Overhead mitbringt, w&auml;re es allerdings suboptimal, f&uuml;r jedes Pixel ein eigenes DIV zu erzeugen.
+<script type="text/javascript">
+<!--
+function drwRcEx(hnd, left, top, width, height, crFg, crBg)
+{
+	hnd.setColor(crBg);
+	hnd.fillRect(left, top, width, height);
+	hnd.setColor(crFg);
+	hnd.drawRect(left, top, width, height);
+}
+
+function drwPxOv(hnd, left, top, width, height, fact, crFg, crBg, bad)
+{
+	var a = width>>1, b = height>>1,
+	cx = left + a*fact, cy = top + b*fact,
+	x = 0, y = b,
+	ox = 0, oy = b,
+	a2 = (a*a)<<1, b2 = (b*b)<<1,
+	st = (a2>>1)*(1-(b<<1)) + b2,
+	tt = (b2>>1) - a2*((b<<1)-1);
+	if (bad) drwRcEx(hnd, cx+fact*x, cy-fact*y, fact, fact, crFg, crBg);
+	do
+	{
+		if (st<0)
+		{
+			st += b2*((x<<1)+3);
+			tt += (b2<<1)*(x+1);
+			x++;
+		}
+		else if (tt<0)
+		{
+			st += b2*((x<<1)+3) - (a2<<1)*(y-1);
+			tt += (b2<<1)*(x+1) - a2*((y<<1)-3);
+			x++;
+			y--;
+		if(!bad)
+			drwRcEx(hnd, cx+fact*ox, cy-fact*oy, fact*(x-ox), fact*(oy-y), crFg, crBg);
+		ox = x;
+		oy = y;
+		}
+		else
+		{
+			st -= (a2<<1)*(y-1);
+			tt -= a2*((y<<1)-3);
+			y--;
+		}
+		if(bad)
+			drwRcEx(hnd, cx+fact*x, cy-fact*y, fact, fact, crFg, crBg);
+	}
+	while (y>0);
+	if (!bad) drwRcEx(hnd, cx+fact*ox, cy-fact*oy, fact*(a-ox+1), fact*(oy+1), crFg, crBg);
+}
+
+
+
+/////////////// Pixel stairs demo ///////////////
+var jg = new jsGraphics();
+
+jg.htm += '<table align="left" width="354" cellpadding="0"><tr><td height="150" valign="top"><div id="stairsdemo" style="position:relative;width:350px;height:150px;">';
+
+jg.setFont("verdana,geneva,sans-serif", "10px", Font.PLAIN);
+jg.setColor("#ee8800");
+jg.drawString("Grafik selbstverst&auml;ndlich von wz_jsgraphics.js gezeichnet", 0, 2);
+
+jg.setFont("verdana,geneva,sans-serif", "11px", Font.PLAIN);
+jg.setColor("#ffbbdd");
+jg.fillRect(0, 25, 30, 10);
+jg.fillRect(20, 35, 30, 10);
+jg.fillRect(40, 45, 30, 10);
+jg.fillRect(60, 55, 10, 20);
+jg.fillRect(70, 65, 10, 30);
+jg.fillRect(80, 85, 10, 30);
+jg.setColor("#cc0000");
+jg.drawString("miserabel", 10, 129);
+jg.drawRect(0, 25, 10, 10);
+jg.drawRect(10, 25, 10, 10);
+jg.drawRect(20, 25, 10, 10);
+jg.drawRect(20, 35, 10, 10);
+jg.drawRect(30, 35, 10, 10);
+jg.drawRect(40, 35, 10, 10);
+jg.drawRect(40, 45, 10, 10);
+jg.drawRect(50, 45, 10, 10);
+jg.drawRect(60, 45, 10, 10);
+jg.drawRect(60, 55, 10, 10);
+jg.drawRect(60, 65, 10, 10);
+jg.drawRect(70, 65, 10, 10);
+jg.drawRect(70, 75, 10, 10);
+jg.drawRect(70, 85, 10, 10);
+jg.drawRect(80, 85, 10, 10);
+jg.drawRect(80, 95, 10, 10);
+jg.drawRect(80, 105, 10, 10);
+
+jg.setColor("#008800");
+jg.drawString("schlecht", 130, 129);
+drwPxOv(jg, 30, 25, 16, 16, 10, "#006600", "#cceecc", true);
+
+jg.setColor("#0000cc");
+jg.drawString("optimal<br>wz_jsgraphics.js", 240, 119);
+drwPxOv(jg, 150, 25, 16, 16, 10, "#000099", "#ccccff");
+
+jg.htm += '<\/div><\/td><\/tr><\/table>';
+
+jg.paint();
+//-->
+</script>
+              <br>&nbsp;<br>
+              Diese Vektorgrafik-Bibliothek versucht nun, diesen Overhead m&ouml;glichst gering zu halten.
+              Neben schnellen Algorithmen zur Berechnung der Formen (haupts&auml;chlich aufgebaut auf Bresenham-Algorithmen) besteht der Trick vor allem darin, jeweils m&ouml;glichst viele Pixel zu einem DIV zusammenzufassen.
+              Die Anzahl ben&ouml;tigter Layer sinkt<a href="#notes">[2]</a> (bei 1 Pixel breiten bzw. geraden Linien) auf einen pro Pixeltreppchenstufe, wie in der Grafik links anhand eines Kreissegments im Ma&szlig;stab 11/1 veranschaulicht, und die Performance steigt entsprechend, i.d.R. sogar &uuml;berproportional.
+              Noch gr&ouml;&szlig;er werden die Vorteile dieses L&ouml;sungsansatzes bei gef&uuml;llten Fl&auml;chen -
+              siehe als Illustration die bunte Ellipse unterhalb dieses Abschnitts, und stellen Sie sich zum Vergleich ein Oval vor, das aus 1*1-Pixel-DIVs besteht.
+              <br>&nbsp;<br>
+              <b>Trotzdem: Die Performance kann nicht mit Java oder einem Stand-Alone-Programm vergleichbar sein!</b>
+              Layer (DIV-Elemente) zu erzeugen ist langsamer als direkt Pixel einzuf&auml;rben&nbsp;<b><a href="#notes">[3]</a></b>.
+              Mit diesem JavaScript-Programm habe ich lediglich versucht, aus dieser webtechnologie-bedingten Einschr&auml;nkung das Bestm&ouml;gliche an Performance herauszuholen.
+              Anhaltspunkt: Zu zeichnende Formen sollten nicht in beiden Dimensionen gr&ouml;&szlig;er als 600 bis 1000 Pixel sein (genauer: die Summe der Pixeltreppchenstufen aller Elemente einer Grafik sollte nicht gr&ouml;&szlig;er als 1000 sein).
+              <br>&nbsp;<br>
+              <b>Alternative zu SVG?</b>
+              Derzeit sind SVG-f&auml;hige Browser, bzw. Browser, in die ein SVG-Plugin korrekt eingebunden wurde, noch rar.
+              Diese Vektorgraphik -Bibliothek d&uuml;rfte als nicht-propriet&auml;re Alternative f&uuml;r kleine oder wenig komplexe Grafikelemente in den Browsern von <b>mehr als 95%</b> aller Internetbesucher laufen.
+              Au&szlig;erdem kann sie an beliebigen Stellen in ein HTML-Dokument zeichnen, weil die Grafik &uuml;ber den Rand von &quot;Zeichenfl&auml;chen&quot; hinausflie&szlig;en darf.
+              <br clear="all">
+              <img src="http://www.walterzorn.de/en/images/jsgraphics/filloval.gif" width="100" height="148" alt="JavaScript Vector Graphics Library: fillEllipse()">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <big>&nbsp;<br>&nbsp;<br><a name="browser"> </a>&nbsp;<br>&nbsp;<br><b>Welche Browser?</b></big>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Linux:
+              <br>Browser mit Gecko-Engine (Mozilla, Galeon, Netscape&nbsp;6+), Konqueror, Opera&nbsp;5, 6 und 7+.
+              <br>&nbsp;<br>
+              Windows:
+              <br>Gecko-Browser, IE 4, 5, 6, Opera&nbsp;5, 6 und 7+.
+              <br>&nbsp;<br>
+	          Mac:
+	          <br>Safari, Gecko-Browser, Opera, teilweise IE.
+	          <br>&nbsp;<br>
+              Die Funktionalit&auml;t &quot;Beim Laden in die Seite zeichnen&quot; ist cross-browser-tauglich. &quot;Nachtr&auml;glich in bestimmte HTML-Elemente zeichnen&quot; hingegen funktioniert im Opera erst ab Version 7.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <big>&nbsp;<br>&nbsp;<br>&nbsp;<br><a name="docu"> </a>&nbsp;<br>&nbsp;<br><b>jsGraphics-Bibliothek einbinden</b></big>
+            </td>
+            <td><br></td>
+          </tr>
+          <tr>
+            <td>
+              <b><big>1.</big> Bibliothek in die HTML-Datei einbinden</b>
+              <br>
+              Folgenden Codeschnipsel am besten im Kopfbereich der HTML-Datei (irgendwo zwischen &lt;head&gt; und &lt;/head&gt;) einf&uuml;gen:
+            </td>
+            <td><br></td>
+          </tr>
+          <tr>
+            <td>
+              <table bgcolor="#000099" border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td>
+                    <table border="0" cellpadding="1" cellspacing="1" width="100%">
+                      <tr>
+                        <td bgcolor="#eeeeee">
+<tt><font size="2" style="font-size:12px;">
+&lt;script type=&quot;text/javascript&quot; src=&quot;wz_jsgraphics.js&quot;&gt;<br>
+&lt;/script&gt;<br>
+</font></tt>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td><br></td>
+          </tr>
+          <tr>
+            <td>
+              <b>&nbsp;<br><big>2.</big> DIV-Bereich(e) als Fl&auml;che(n) zum Zeichnen</b>
+              <br>
+              Dieser Schritt ist nicht erforderlich, wenn beim Laden der Seite direkt in das Dokument gezeichnet werden soll.
+              Ansonsten: Sowohl relativ (r&auml;umliche Eingliederung dort, wo im HTML-Quelltext definiert) als auch absolut positionierte DIV-Bereiche sind geeignet.
+              Die zum Zeichnen vorgesehenen DIV-Bereiche m&uuml;ssen je eine eindeutige (nur einmal vergebene) ID haben:
+              <br>
+              &lt;div id=&quot;myCanvas&quot; style=&quot;position:relative;height:250px;width:100%;&quot;&gt;&lt;/div&gt;<br>
+              ...<br>
+              &lt;div id=&quot;anotherCanvas&quot; style=&quot;position:relative;height:100px;width:300px;&quot;&gt;&lt;/div&gt;
+            </td>
+            <td><br></td>
+          </tr>
+          <tr>
+            <td>
+              <b>&nbsp;<br><big>3.</big> Bibliothek speichern</b>
+              <br>
+              <a href="#download">Die JavaScript-Datei downloaden</a> und entzippen. Entweder im gleichen Verzeichnis wie die HTML-Datei speichern, oder den Pfad src=&quot;wz_jsgraphics.js&quot; im HEAD-Bereich der HTML-Datei anpassen.<br>
+            </td>
+            <td><br></td>
+          </tr>
+          <tr>
+            <td>
+              <big>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br><b>Dokumentation: Verwendung der Zeichenmethoden</b></big>
+            </td>
+            <td rowspan="4" valign="top">
+              <table cellpadding="0" cellspacing="3">
+                <tr>
+                  <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt="DHTML, JavaScript: Ellipsen, Ovale, Kreise, Polygone, Dreiecke, Rechtecke, schr&auml;ge Linien zeichnen"></td>
+                  <td>
+                    <small>
+                      &nbsp;<br>
+                      <a href="#top">Seitenanfang</a>
+                      <br>&nbsp;<br>
+                      <a href="#performance">Performance</a>
+                      <br>&nbsp;<br>
+                      <a href="#browser">Welche Browser?</a>
+                      <br>&nbsp;<br>
+                      <a href="#docu">Dokumentation</a>
+                      <br>&nbsp;<br>
+                      <a href="#download">Download</a>
+                      <br>&nbsp;<br>
+                      &nbsp;
+                      <br>&nbsp;
+                    </small>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b><big>1.</big> jsGraphics-Objekt erzeugen</b>
+              <br>&nbsp;<br>
+              <b>a) In Layer (DIV) zeichnen:</b>
+              <br>
+              Ist auch nach Abschluss des Ladevorgangs m&ouml;glich, funktioniert aber nicht im Opera &auml;lter als Version&nbsp;7.
+              Folgendes Beispiel zeigt, wie ein jsGraphics-Objekt instanziiert werden kann.
+              Der Code sollte irgendwo nach dem als Zeichenfl&auml;che dienenden DIV, aber noch vor dem schlie&szlig;enden &lt;/body&gt;-Tag eingef&uuml;gt werden.
+              Als Parameter erwartet <tt>new&nbsp;jsGraphics()</tt> entweder die ID des DIVs in Anf&uuml;hrungszeichen oder Hochkommata, oder eine direkte Referenz auf das DIV:<br>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table bgcolor="#000099" border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td>
+                    <table border="0" cellpadding="1" cellspacing="1" width="100%">
+                      <tr>
+                        <td bgcolor="#eeeeee">
+<tt><font size="2" style="font-size:12px;">
+&lt;script type=&quot;text/javascript&quot;&gt;<br>
+&lt;!--<br>
+var jg = new jsGraphics(&quot;myCanvas&quot;);<br>
+//--&gt;<br>
+&lt;/script&gt;
+</font></tt>
+<br>
+<br>
+<b>oder</b>
+<br>
+<br>
+<tt><font size="2" style="font-size:12px;">
+&lt;script type=&quot;text/javascript&quot;&gt;<br>
+&lt;!--<br>
+var cnv = document.getElementById(&quot;myCanvas&quot;);<br>
+var jg = new jsGraphics(cnv);<br>
+//--&gt;<br>
+&lt;/script&gt;
+</font></tt>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Falls Sie mehrere DIVs als jeweils eigenst&auml;ndige Zeichenfl&auml;chen definieren wollen, m&uuml;ssen Sie f&uuml;r jedes ein eigenes jsGraphics-Objekt erzeugen:
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table bgcolor="#000099" border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td>
+                    <table border="0" cellpadding="1" cellspacing="1" width="100%">
+                      <tr>
+                        <td bgcolor="#eeeeee">
+<tt><font size="2" style="font-size:12px;">
+&lt;script type=&quot;text/javascript&quot;&gt;<br>
+&lt;!--<br>
+<br>
+var jg = new jsGraphics(&quot;myCanvas&quot;);<br>
+var jg2 = new jsGraphics(&quot;anotherCanvas&quot;);<br>
+<br>
+//--&gt;<br>
+&lt;/script&gt;
+</font></tt>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td><br></td>
+          </tr>
+          <tr>
+            <td>
+              &nbsp;<br>&nbsp;<br>
+              <b>b) Beim Laden direkt in das Dokument zeichnen:</b>
+              <br>
+              Funktioniert auch im uralten Opera 5/6.
+              &Uuml;bergeben Sie dem Konstuktor anstatt einer DIV-ID einfach nichts (oder den Wert null).
+            </td>
+            <td><br></td>
+          </tr>
+          <tr>
+            <td>
+              <table bgcolor="#000099" border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td>
+                    <table border="0" cellpadding="1" cellspacing="1" width="100%">
+                      <tr>
+                        <td bgcolor="#eeeeee">
+<tt><font size="2" style="font-size:12px;">
+&lt;script type=&quot;text/javascript&quot;&gt;<br>
+&lt;!--<br>
+ <br>
+var jg_doc = new jsGraphics();<br>
+ <br>
+//--&gt;<br>
+&lt;/script&gt;
+</font></tt>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td><br></td>
+          </tr>
+          <tr>
+            <td>
+              Statt jg, jg2 oder jg_doc k&ouml;nnen Sie Ihre jsGraphics-Instanzen nat&uuml;rlich auch anders nennen, sofern die Regeln f&uuml;r Variablennamen eingehalten werden.
+            </td>
+            <td><br></td>
+          </tr>
+          <tr>
+            <td>
+              <b>&nbsp;<br>&nbsp;<br>&nbsp;<br><big>2.</big> Zeichenmethoden aufrufen</b>
+              <br>
+              Nachdem Sie nun eine Objekt-Instanz beispielsweise namens jg erzeugt haben, k&ouml;nnen Sie die Methoden jederzeit wie in folgendem funktionsf&auml;higen Beispiel verwenden, auch nach Abschluss des Ladevorgangs
+              (Anmerkung: Wenn die Objekt-Instanz au&szlig;erhalb von Funktionen (global) deklariert wurde, bleibt sie erhalten, solange die Webseite im Browser geladen ist):
+            </td>
+            <td><br></td>
+          </tr>
+          <tr>
+            <td>
+              <table bgcolor="#000099" border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td>
+                    <table border="0" cellpadding="1" cellspacing="1" width="100%">
+                      <tr>
+                        <td bgcolor="#eeeeee">
+<tt><font size="2" style="font-size:12px;">
+&lt;script type=&quot;text/javascript&quot;&gt;<br>
+&lt;!--<br>
+function myDrawFunction()<br>
+{<br>
+&nbsp; jg_doc.setColor(&quot;#00ff00&quot;); <i><font color="#999999">// gr&uuml;n</font></i><br>
+&nbsp;&nbsp;jg_doc.fillEllipse(100,&nbsp;200,&nbsp;100,&nbsp;180);&nbsp;<i><font color="#999999">//&nbsp;Koordinaten&nbsp;auf&nbsp;document&nbsp;bezogen</font></i><br>
+&nbsp; jg_doc.setColor(&quot;maroon&quot;);<br>
+&nbsp; jg_doc.drawPolyline(new Array(50, 10, 120), new Array(10, 50, 70));<br>
+&nbsp; jg_doc.paint(); <i><font color="#999999">// zeichnet in diesem Fall direkt in's document</font></i><br>
+<br>
+&nbsp; jg.setColor(&quot;#ff0000&quot;); <i><font color="#999999">// rot</font></i><br>
+&nbsp;&nbsp;jg.drawLine(10,&nbsp;113,&nbsp;220,&nbsp;55);&nbsp;<i><font color="#999999">//&nbsp;Koordinaten&nbsp;auf&nbsp;Zeichenfl&auml;che&nbsp;bezogen</font></i><br>
+&nbsp; jg.setColor(&quot;#0000ff&quot;); <i><font color="#999999">// blau</font></i><br>
+&nbsp; jg.fillRect(110, 120, 30, 60);<br>
+&nbsp; jg.paint();<br>
+<br>
+&nbsp; jg2.setColor(&quot;#0000ff&quot;); <i><font color="#999999">// blau</font></i><br>
+&nbsp; jg2.drawEllipse(10, 50, 30, 100);<br>
+&nbsp; jg2.drawRect(400, 10, 100, 50);<br>
+&nbsp; jg2.paint();<br>
+}<br>
+<br>
+var jg_doc&nbsp;=&nbsp;new&nbsp;jsGraphics();&nbsp;<i><font color="#999999">//&nbsp;direkt&nbsp;in's&nbsp;document&nbsp;zeichnen</font></i><br>
+var jg = new jsGraphics(&quot;myCanvas&quot;);<br>
+var jg2 = new jsGraphics(&quot;anotherCanvas&quot;);<br>
+<br>
+myDrawFunction();<br>
+<br>
+//--&gt;<br>
+&lt;/script&gt;
+</font></tt>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td><br></td>
+          </tr>
+          <tr>
+            <td>
+              Wie man sieht, sollte zuerst f&uuml;r jede Fl&auml;che eine Malfarbe gesetzt werden, andernfalls wird alles in der Standardfarbe Schwarz gezeichnet.
+              Die Koordinaten beziehen sich im Modus &quot;In document zeichnen&quot; auf die linke obere Ecke des Dokuments, im Modus &quot;In DIV zeichnen&quot; auf die linke obere Ecke des Layers.
+              Da die Zeichenmethoden die Grafik zun&auml;chst intern erzeugen, muss zur Ausgabe in die jeweilige Malfl&auml;che explizit die Methode paint() aufgerufen werden.
+            </td>
+            <td><br></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  &nbsp;<br>
+  <table bgcolor="#000099" border="0" cellpadding="0" cellspacing="0" style="margin:10px;">
+    <tr>
+      <td>
+        <table border="0" cellspacing="1" cellpadding="8">
+          <tr bgcolor="#eeeeee">
+            <td><b>Name der Methode</b><br><small>(Bildchen selbstverst&auml;ndlich von der Vektorgraphik-Bibliothek in die Tabelle gezeichnet)</small></td>
+            <td><b>Codebeispiel (am Beispiel von jg)</b></td>
+          </tr>
+          <tr bgcolor="white" valign="top">
+            <td colspan="2">
+              <b>Allgemeine Hinweise</b>
+              <br>&nbsp;<br>
+              <b>1.)</b> Zahlen, die den Funktionen &uuml;bergeben werden, m&uuml;ssen <b>Ganzzahlen (Integers)</b> sein.
+              Zeichenketten (Strings) und Nicht-Ganzzahlen (Flie&szlig;kommazahlen) m&uuml;ssen mit den JavaScript-Standardfunktionen <code>parseInt()</code> bzw. <code>Math.round()</code> in Integers umgewandelt werden.
+              JavaScript-Berechnungen beispielsweise haben &uuml;berwiegend Flie&szlig;kommazahlen als Ergebnis, Werte von Formulareingabefeldern sind immer Strings, auch wenn Zahlen eingegeben wurden.
+              Codebeispiel:<br><code>jg.setStroke(parseInt(document.MyForm.Linewidth.value));</code>
+              <br>&nbsp;<br>
+              <b>2.)</b> Falls Sie gezeichnete Elemente sehr genau positionieren m&uuml;ssen/wollen:
+              Beachten Sie, dass Koordinaten zwischen Pixeln liegen, nicht auf ihnen, und dass der &quot;Malstift&quot; die Pixel rechts unterhalb des durch die Koordinaten vorgegebenen Pfades f&auml;rbt, auch bei Linien dicker als 1&nbsp;px.
+            </td>
+          </tr>
+          <tr bgcolor="white" valign="top">
+            <td>
+              <code><b>setColor(</b>&quot;#Hexfarbwert&quot;<b>);</b></code>
+              <br>&nbsp;<br>Setzt Malfarbe f&uuml;r die nachfolgend aufgerufenen Zeichenmethoden, und zwar so lange, bis sie durch einen erneuten Aufruf von setColor() ge&auml;ndert wird.
+              Der Farbwert muss in Anf&uuml;hrungszeichen stehen.
+              Mit R&uuml;cksicht auf Cross-Browser-Funktionalit&auml;t sollte er hexadezimal, nach dem in HTML &uuml;blichen Schema &quot;#rrggbb&quot;, angegeben werden.
+              Erlaubt sind aber auch die in HTML zul&auml;ssigen Farbnamen.
+            </td>
+            <td><code>jg.setColor(&quot;#ff0000&quot;);</code><br>&nbsp;<br>oder mit identischem Ergebnis<br>&nbsp;<br><code>jg.setColor(&quot;red&quot;);</code></td>
+          </tr>
+          <tr bgcolor="white" valign="top">
+            <td>
+              <code><b>setStroke(</b>Zahl<b>);</b></code>
+              <br>&nbsp;<br>Kann optional aufgerufen werden und setzt die Liniendicke f&uuml;r die nachfolgend aufgerufenen Zeichenmethoden, und zwar so lange, bis sie durch einen erneuten Aufruf von setStroke() ge&auml;ndert wird.
+              Voreingestellte Dicke, solange <tt>.setStroke()</tt> nicht aufgerufen wurde, ist 1&nbsp;px.
+              <br>&nbsp;<br>
+              Um eine gepunktete Linie (g&uuml;ltig auch f&uuml;r Umrandungen von Ellipsen, Polygonen etc.) zu erzeugen, k&ouml;nnen Sie <tt>setStroke()</tt> als Parameter die Konstante <tt>Stroke.DOTTED</tt> &uuml;bergeben.
+              Die Liniendicke wird automatisch auf 1 Pixel gesetzt, andere Dicken sind nicht m&ouml;glich.
+            </td>
+            <td>
+              <code>jg.setStroke(3);</code>
+              <br>&nbsp;<br>
+              oder
+              <br>&nbsp;<br>
+              <code>jg.setStroke(Stroke.DOTTED)</code>
+            </td>
+          </tr>
+          <tr bgcolor="white" valign="top">
+            <td>
+              <code><b>drawLine(</b>X1, Y1, X2, Y2<b>);</b></code>
+              <br>
+<script type="text/javascript">
+<!--
+jg.htm += '<div style="position:relative;width:50px;height:13px;"><table cellpadding="0" cellspacing="0"><tr><td>';
+
+jg.setStroke(2);
+jg.setColor("#ff6666");
+jg.drawLine(0, 11, 40, 0);
+
+jg.htm += '<\/td><\/tr><\/table><\/div>';
+jg.paint();
+//-->
+</script>
+              1 Pixel breite Linie (Gerade) von Anfangs- zu Endkoordinaten.
+              Um die Linienst&auml;rke zu &auml;ndern, kann zuvor die Methode <b><tt>.setStroke(Zahl)</tt></b> aufgerufen werden.
+              Diese Einstellung bleibt f&uuml;r alle nachfolgend aufgerufenen Linienmethoden erhalten, bis .setStroke() erneut aufgerufen wird.
+            </td>
+            <td><code>jg.drawLine(0, 11, 40, 0);</code></td>
+          </tr>
+          <tr bgcolor="white" valign="top">
+            <td>
+              <code><b>drawPolyline(</b>X-Werte Anfang/Knicke/Ende, Y-Werte<b>);</b></code>
+              <br>
+<script type="text/javascript">
+<!--
+jg.htm += '<div style="position:relative;width:50px;height:13px;"><table cellpadding="0" cellspacing="0"><tr><td>';
+
+jg.setColor("#55aaaa");
+jg.drawPolyLine(new Array(0, 10, 20, 30, 40), new Array(0, 11, 0, 11, 0));
+
+jg.htm += '<\/td><\/tr><\/table><\/div>';
+jg.paint();
+//-->
+</script>
+              (Mehrfach) geknickte Linie, beginnend beim ersten X- und Y-Wert.
+              X- und Y-Werte sind Arrays. Sie k&ouml;nnen entweder direkt im Methodenaufruf definiert, oder vorher nach folgendem Schema angelegt werden:
+              <br>
+              <code>var xWerte = new Array(x1,x2,x3,x4,x5);<br>var yWerte = new Array(y1,y2,y3,y4,y5);</code>
+              <br>&nbsp;<br>
+              Liniendicke entweder, wie per <b><tt>.setStroke()</tt></b> eingestellt, oder 1px.
+            </td>
+            <td>
+              <code>jg.drawPolyline(new Array(10,85,93,60),</code> <code>new Array(50,10,105,87));</code>
+              <br>&nbsp;<br>
+              oder alternativ
+              <br>&nbsp;<br>
+              <code>var xWerte = new Array(10,85,93,60);<br>
+              var yWerte = new Array(50,10,105,87);<br>
+              jg.drawPolyline(xWerte,yWerte);</code>
+            </td>
+          </tr>
+          <tr bgcolor="white" valign="top">
+            <td>
+              <code><b>drawRect(</b>X,Y,Breite,H&ouml;he<b>);</b></code>
+              <br>
+<script type="text/javascript">
+<!--
+jg.htm += '<div style="position:relative;width:50px;height:13px;"><table cellpadding="0" cellspacing="0"><tr><td>';
+
+jg.setColor("#6666ff");
+jg.drawRect(0, 0, 40, 11);
+
+jg.htm += '<\/td><\/tr><\/table><\/div>';
+jg.paint();
+//-->
+</script>
+              Rechteck, nicht gef&uuml;llt, aus 1 px dicken Linien. Koordinaten beziehen sich auf die linke obere Ecke.
+              Die Liniendicke kann mit <b><tt>.setStroke(Dicke)</tt></b> ge&auml;ndert werden.
+            </td>
+            <td><code>jg.drawRect(0, 0, 40, 11);</code></td>
+          </tr>
+          <tr bgcolor="white" valign="top">
+            <td>
+              <code><b>fillRect(</b>X,Y,Breite,H&ouml;he<b>);</b></code>
+              <br>
+<script type="text/javascript">
+<!--
+jg.htm += '<div style="position:relative;width:50px;height:13px;"><table cellpadding="0" cellspacing="0"><tr><td>';
+
+jg.setColor("#ffcc66");
+jg.fillRect(0, 0, 40, 11);
+
+jg.htm += '<\/td><\/tr><\/table><\/div>';
+jg.paint();
+//-->
+</script>
+              Gef&uuml;lltes Rechteck. Koordinaten beziehen sich auf linke obere Ecke.
+            </td>
+            <td><code>jg.fillRect(0, 0, 40, 11);</code></td>
+          </tr>
+          <tr bgcolor="white" valign="top">
+            <td>
+              <code><b>drawPolygon(</b>X-Werte Ecken, zugeh&ouml;rige Y-Werte<b>);</b></code>
+              <br>
+<script type="text/javascript">
+<!--
+jg.htm += '<div style="position:relative;width:50px;height:13px;"><table cellpadding="0" cellspacing="0"><tr><td>';
+
+jg.setColor("#cc66cc");
+jg.drawPolygon(new Array(0, 20, 40, 20), new Array(5, 0, 5, 11));
+
+jg.htm += '<\/td><\/tr><\/table><\/div>';
+jg.paint();
+//-->
+</script>
+              Vieleck. X- und Y-Werte sind Arrays. Sie k&ouml;nnen entweder direkt im Methodenaufruf definiert, oder vorher nach folgendem Schema angelegt werden:
+              <br>
+              <code>var xWerte = new Array(x1,x2,x3,x4,x5);<br>var yWerte = new Array(y1,y2,y3,y4,y5);</code>
+              <br>
+              Falls das letzte X-/Y-Wertepaar nicht identisch mit dem ersten ist, schlie&szlig;t das Programm von sich aus das Polygon, indem es eine Linie vom letzten zum ersten Koordinatenpaar zieht.
+              <br>&nbsp;<br>
+              Liniendicke entweder, wie per <b><tt>.setStroke()</tt></b> eingestellt, oder 1px.
+            </td>
+            <td>
+              <code>jg.drawPolygon(new Array(10,85,93,60),</code> <code>new Array(50,10,105,87));</code>
+              <br>&nbsp;<br>
+              oder alternativ
+              <br>&nbsp;<br>
+              <code>var xWerte = new Array(10,85,93,60);<br>
+              var yWerte = new Array(50,10,105,87);<br>
+              jg.drawPolygon(xWerte,yWerte);</code><br>
+              Statt &quot;xWerte&quot; bzw. &quot;yWerte&quot; k&ouml;nnen Sie nat&uuml;rlich andere Variablennamen verwenden.
+            </td>
+          </tr>
+          <tr bgcolor="white" valign="top">
+            <td>
+              <code><b>fillPolygon(</b>X-Werte Ecken, zugeh&ouml;rige Y-Werte<b>);</b></code>
+              <br>
+<script type="text/javascript">
+<!--
+jg.htm += '<div style="position:relative;width:50px;height:13px;"><table cellpadding="0" cellspacing="0"><tr><td>';
+
+jg.setColor("#99ccff");
+jg.fillPolygon(new Array(0, 20, 40, 20), new Array(6, -1, 6, 13));
+
+jg.htm += '<\/td><\/tr><\/table><\/div>';
+jg.paint();
+//-->
+</script>
+              Gef&uuml;lltes Polygon.
+              Parameter analog zu <tt>drawPolygon()</tt>
+            </td>
+            <td>
+              <code>jg.fillPolygon(new Array(10,85,93,60),</code> <code>new Array(50,10,105,87));</code>
+            </td>
+          </tr>
+          <tr bgcolor="white" valign="top">
+            <td>
+              <code><b>drawEllipse(</b>X,Y,Breite,H&ouml;he<b>);</b></code>
+              <br>
+<script type="text/javascript">
+<!--
+jg.htm += '<div style="position:relative;width:50px;height:13px;"><table cellpadding="0" cellspacing="0"><tr><td>';
+
+jg.setColor("#55bb55");
+jg.drawOval(0, -1, 40, 12);
+
+jg.htm += '<\/td><\/tr><\/table><\/div>';
+jg.paint();
+//-->
+</script>
+              Ellipse.
+              Liniendicke entweder, wie per <b><tt>.setStroke()</tt></b> eingestellt, oder 1px.
+              Koordinaten beziehen sich auf das virtuelle Rechteck, das die Ellipse (genauer: den Pfad, dem der Malstift folgt) umfasst.
+            </td>
+            <td>
+              <code>jg.drawEllipse(0, 0, 40, 12);</code>
+              <br>
+              oder
+              <br>
+              <code>jg.drawOval(0, 0, 40, 12);</code>
+            </td>
+          </tr>
+          <tr bgcolor="white" valign="top">
+            <td>
+              <code><b>fillEllipse(</b>X,&nbsp;Y,&nbsp;Breite,&nbsp;H&ouml;he<b>);</b></code>
+              <br>
+<script type="text/javascript">
+<!--
+jg.htm += '<div style="position:relative;width:50px;height:13px;"><table cellpadding="0" cellspacing="0"><tr><td>';
+
+jg.setColor("#ffccdd");
+jg.fillOval(0, -1, 41, 13);
+
+jg.htm += '<\/td><\/tr><\/table><\/div>';
+jg.paint();
+//-->
+</script>
+              Gef&uuml;llte Ellipse. Koordinaten beziehen sich auf das virtuelle Rechteck, das die Ellipse exakt umfasst.
+            </td>
+            <td>
+              <code>jg.fillEllipse(0, 0, 41, 13);</code>
+              <br>
+              oder
+              <br>
+              <code>jg.fillOval(0, 0, 41, 13);</code>
+            </td>
+          </tr>
+          <tr bgcolor="white" valign="top">
+            <td>
+              <code><b>fillArc(</b>X,&nbsp;Y,&nbsp;width,&nbsp;height,&nbsp;Startwinkel,&nbsp;Endwinkel<b>);</b></code>
+              <br>
+<script type="text/javascript">
+<!--
+jg.htm += '<div style="position:relative;width:50px;height:13px;"><table cellpadding="0" cellspacing="0"><tr><td>';
+
+jg.setColor("#ffbb00");
+jg.fillArc(0, -1, 41, 13, 270, 220);
+
+jg.htm += '<\/td><\/tr><\/table><\/div>';
+jg.paint();
+//-->
+</script>
+              F&uuml;llt ein Ellipsen-Segment.
+              Die Werte f&uuml;r Start- und Endwinkel d&uuml;rfen hier ausnahmsweise auch Dezimalpunkt-Zahlen sein.
+              Wie bei den anderen ...Ellipse()-Funktionen geben X und Y nicht den Mittelpunkt, sondern die linke obere Ecke des umfassenden Recktecks an.
+            </td>
+            <td>
+              <code>jg.fillArc(20,20,41,12,270.0,220.0);</code>
+            </td>
+          </tr>
+          <tr bgcolor="white" valign="top">
+            <td>
+              <code><b>drawString(</b>&quot;Text&quot;, X, Y<b>);</b></code>
+              <br>
+<script type="text/javascript">
+<!--
+jg.htm += '<div style="position:relative;width:400px;height:16px;"><table cellpadding="0" cellspacing="0" width="400"><tr><td>';
+
+jg.setFont("arial,helvetica,sans-serif", "15px", Font.ITALIC_BOLD);
+jg.setColor("#cc6600");
+jg.drawString("Mich hat die jsGraphics-Bibliothek geschrieben...", 0, 0);
+
+jg.htm += '<\/td><\/tr><\/table><\/div>';
+jg.paint();
+//-->
+</script>
+              Text an definierte Position schreiben.
+              Die Koordinaten X und Y beziehen sich auch hier, anders als bei Java, auf die linke obere Ecke der (ersten) Textzeile.
+              Der Text muss in Anf&uuml;hrungszeichen gesetzt werden. Enthaltene HTML-Tags werden interpretiert.
+              Ein (nicht maskiertes) &lt;br&gt; w&uuml;rde also tats&auml;chlich einen Zeilenumbruch bewirken.
+              <br>&nbsp;<br>
+              <code><b>setFont(</b>&quot;Schiftfamilie&quot;, &quot;Gr&ouml;&szlig;e+Einheit&quot;, Stil<b>);</b></code>
+              <br>&nbsp;<br>
+              Damit k&ouml;nnen Sie zuvor auch die Schriftart und -Gr&ouml;&szlig;e setzen oder &auml;ndern.
+              Schriftfamilie und Gr&ouml;&szlig;enangabe in Anf&uuml;hrungszeichen.
+              <br>&nbsp;<br>
+              M&ouml;gliche Stilangaben:<br>
+              Font.PLAIN f&uuml;r normale Schrift<br>
+              Font.BOLD f&uuml;r fette Schrift<br>
+              Font.ITALIC f&uuml;r Kursivschrift<br>
+              Font.ITALIC_BOLD oder Font.BOLD_ITALIC, um letztere zu kombinieren
+            </td>
+            <td>
+              <code>jg.setFont(&quot;arial&quot;,&quot;15px&quot;,Font.BOLD);</code>
+              <br>
+              <code>jg.drawString(&quot;Geschwalle&quot;,20,50);</code>
+            </td>
+          </tr>
+          <tr bgcolor="white" valign="top">
+            <td>
+              <code><b>drawStringRect(</b>&quot;Text&quot;, X, Y, Breite, Ausrichtung<b>);</b></code>
+              <br>
+<script type="text/javascript">
+<!--
+jg.htm += '<div style="position:relative;width:400px;height:100px;"><table cellpadding="0" cellspacing="0" width="400"><tr><td>';
+
+jg.setFont("verdana,geneva,sans-serif", "11px", Font.BOLD);
+jg.setColor("#009999");
+jg.drawStringRect("Dieser Text wurde soeben von drawStringRect() gezeichnet. Mit drawStringRect() k&ouml;nnen Sie die Breite des Textcontainers und die Textausrichtung innerhalb dieses Rechtecks vorgeben.", 4, 4, 292, "right");
+
+jg.htm += '<\/td><\/tr><\/table><\/div>';
+jg.paint();
+//-->
+</script>
+              Wie drawString.
+              Zus&auml;tzlich k&ouml;nnen die Breite des Text-&quot;Containers&quot; und die Textausrichtung innerhalb dieses Rechtecks festgelegt werden.
+              Textausrichungswert muss ein String sein (d.h. in Anf&uuml;hrungszeichen oder Apostrophe eingeschlossen sein) und kann entweder &quot;left&quot;, &quot;center&quot;, &quot;right&quot; or &quot;justify&quot; sein.
+            </td>
+            <td>
+              <code>jg.setFont(&quot;verdana&quot;,&quot;11px&quot;,Font.BOLD);</code>
+              <br>
+              <code>jg.drawStringRect(&quot;Text&quot;,20,50,300,&quot;right&quot;);</code>
+            </td>
+          </tr>
+          <tr bgcolor="white" valign="top">
+            <td>
+              <code><b>drawImage(</b>&quot;Pfad&quot;, X, Y, Breite, H&ouml;he<b>);</b></code>
+              <br>
+<script type="text/javascript">
+<!--
+jg.htm += '<div style="position:relative;width:400px;height:64px;"><table cellpadding="0" cellspacing="0" width="400"><tr><td>';
+
+jg.drawImage("http://www.walterzorn.de/en/images/dragdrop/deddie.jpg", 0, 0, 90, 62);
+
+jg.htm += '<\/td><\/tr><\/table><\/div>';
+jg.paint();
+//-->
+</script>
+              Bild exakt an definierter Position in angegebener Gr&ouml;&szlig;e darstellen.
+              <br>&nbsp;<br>
+              &quot;Pfad&quot;-Angabe wie in HTML.
+              Die Parameter Breite und H&ouml;he sind optional
+              (k&ouml;nnen auch 0 oder null sein oder weggelassen werden, das Bild wird dann in seiner Normalgr&ouml;&szlig;e dargestellt),
+              erlauben aber nahezu beliebig verzerrte Darstellung.
+              <br>&nbsp;<br>
+              Optional kann als f&uuml;nfter Parameter ein Eventhandler definiert werden, der dann automatisch in das erzeugte &lt;img&gt;-Tag eingef&uuml;gt wird.
+              Beispiel:
+              <code>jg.drawImage('anImg.jpg',8,5,95,70,'onmouseover=&quot;YourFunc()&quot;');</code>
+            </td>
+            <td>
+              <code>jg.drawImage(&quot;DerTutNix.jpg&quot;,</code> <code>20,50,100,150);</code>
+            </td>
+          </tr>
+          <tr bgcolor="white" valign="top">
+            <td>
+              <code><b>paint();</b></code>
+              <br>&nbsp;<br>
+              Die mit den obigen Methoden zun&auml;chst nur intern erzeugte Grafik wird ausgegeben.
+              F&uuml;r optimale Performance empfiehlt es sich, <tt>paint()</tt> nicht unn&ouml;tig oft (in unn&ouml;tig kleinen Intervallen zwischen den einzelnen Zeichenmethoden) aufzurufen, sondern erst zum Abschluss der internen Grafikerzeugung.
+              <br>&nbsp;<br>Vermeiden Sie also
+              <br>
+              <tt>jg.drawEllipse(0, 0, 100, 100);
+              <br>
+              jg.paint();
+              <br>
+              jg.drawLine(200, 10, 400, 40);
+              <br>
+              jg.paint();
+              <br>...</tt>
+              <br>&nbsp;<br>
+              sondern schreiben Sie besser
+              <br>
+              <tt>jg.drawEllipse(0, 0, 100, 100);
+              <br>
+              jg.drawLine(200, 10, 400, 40);
+              <br>
+              /* ...weitere Zeichenmethoden... */
+              <br>
+              jg.paint();</tt>
+            </td>
+            <td><code>jg.paint();</code></td>
+          </tr>
+          <tr bgcolor="white" valign="top">
+            <td>
+              <code><b>clear();</b></code>
+              <br>&nbsp;<br>
+              Alle vom jsGraphics-JavaScript gezeichneten Inhalte der betreffenden Malfl&auml;che werden gel&ouml;scht. Der urspr&uuml;ngliche Inhalt bleibt aber erhalten, also Text oder Bilder innerhalb des &lt;div&gt;-Elements, die im HTML-Quelltext definiert waren.
+            </td>
+            <td><code>jg.clear();</code><br>&nbsp;<br>Alle script-generierten Inhalte in &quot;myCanvas&quot; werden gel&ouml;scht.</td>
+          </tr>
+          <tr bgcolor="white" valign="top">
+            <td>
+              <code><b>setPrintable(</b>true<b>);</b></code>
+              <br>&nbsp;<br>
+              Normalerweise werden die gezeichneten Elemente beim Drucken nicht sichtbar, weil die Browser unter den Standard-Druckereinstellungen keine Hintergrundfarben mitdrucken.
+              Mit setPrintable() und dem Parameter true werden die nachfolgend gezeichneten Elemente drucker-wiedergabef&auml;hig (zumindest im Mozilla/Netscape&nbsp;6+ und IE).
+              Allerdings auf Kosten der Darstellungsgeschwindigkeit auf dem Bildschirm, die je nach Browser um 10% bis 25% langsamer wird.
+            </td>
+            <td><code>jg.setPrintable(false);</code><br>&nbsp;<br>Setzt die Zeichenmethoden auf &quot;nicht-druckerf&auml;hig&quot; zur&uuml;ck.</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <table width="100%">
+    <tr>
+      <td width="80"><img src="../images/transparentpixel.gif" alt="" width="80" height="1"></td>
+      <td>
+        <table width="100%">
+          <tr>
+            <td>
+              <b>&nbsp;<br>&nbsp;<br><a name="download"> </a>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br><big>Download</big></b>
+            </td>
+            <td rowspan="4" align="right" valign="top">
+              <table cellpadding="0" cellspacing="3">
+                <tr>
+                  <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt="DHTML, JavaScript: Ellipsen, Ovale, Kreise, Polygone, Dreiecke, Rechtecke, schr&auml;ge Linien zeichnen"></td>
+                  <td>
+                    <small>
+                      &nbsp;<br>
+                      <a href="#top">Seitenanfang</a>
+                      <br>&nbsp;<br>
+                      <a href="#performance">Performance</a>
+                      <br>&nbsp;<br>
+                      <a href="#browser">Welche Browser?</a>
+                      <br>&nbsp;<br>
+                      <a href="#docu">Dokumentation</a>
+                      <br>&nbsp;<br>
+                      <a href="#download">Download</a>
+                      <br>&nbsp;<br>
+                      &nbsp;
+                      <br>&nbsp;
+                    </small>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">
+              wz_jsgraphics.js 3.05, Lizenz <b>LGPL</b>:<br>
+              <a href="http://www.walterzorn.de/en/scripts/wz_jsgraphics.zip">wz_jsgraphics.zip</a> (7 KB)
+              <br>&nbsp;<br><a href="history.htm">Geschichte der Updates</a> (unbedingt lesen, jedenfalls wenn Sie eine fr&uuml;here Version verwenden und wissen wollen, ob sich ein Update lohnt).
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b>&nbsp;<br>&nbsp;<br><a name="notes"> </a><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br><big>Fu&szlig;noten</big></b>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b>[1]</b>
+              <br>
+              Eine L&ouml;sung mit farbigen 1x1-Pixel-Bildchen w&uuml;rde die Farbauswahl einschr&auml;nken, es sei denn, beim Seitenaufruf w&uuml;rden 16777216 verschiedenfarbige Bildchen (656&nbsp;MB Datenvolumen) f&uuml;r 24 Bit Farbauswahl mitgeladen, oder die Bildchen l&auml;gen wenigstens auf dem Server bereit, oder das Script selbst w&uuml;rde sich jedesmal, wenn eine Malfarbe definiert wird, ein PNG schreiben...
+              <br>
+              <a href="#performance">Zur&uuml;ck</a>
+              <br>&nbsp;<br>
+              <b>[2]</b>
+              <br>
+              Unter der Annahme, dass Winkel- und L&auml;ngenverteilung der Linien gleichm&auml;&szlig;ig sind, gilt f&uuml;r 1 px breite Linien:<br>
+              Die L&ouml;sung &quot;Pro Pixel ein Layer&quot; erfordert im Durchschnitt
+              <b>sin(45&deg;)&nbsp;/&nbsp;(1&nbsp;-&nbsp;sin(45&deg;))&nbsp;=&nbsp;2.41</b>
+              mal mehr Layer als die L&ouml;sung &quot;Pro Pixeltreppchenstufe ein Layer&quot;.
+              Dies gilt unter der Voraussetzung, dass sich in beiden F&auml;llen die Pixeltreppchenstufen Ecke an Ecke ber&uuml;hren.
+              Dann bleibt die Zahl einzuf&auml;rbender Pixel minimal, und damit auch die Zahl der Layer, die von der &quot;Pro Pixel ein Layer&quot;-L&ouml;sung erzeugt werden muss; andernfalls w&auml;re ihr Performance-Nachteil noch gr&ouml;&szlig;er.
+              <br>
+              <a href="#performance">Zur&uuml;ck</a>
+              <br>&nbsp;<br>
+              <b>[3]</b>
+              <br>
+              Ein wirklich leichtgewichtiges &lt;pixel&nbsp;color=&quot;#ff9900&quot;&nbsp;left=&quot;127&quot;&nbsp;top=&quot;63&quot;&gt;-Tag w&auml;re nett.
+              <br>
+              <a href="#performance">Zur&uuml;ck</a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <hr width="95%" size="1" noshade>
+  <table cellpadding="20">
+    <tr>
+      <td>
+        <small>Walter Zorn, M&uuml;nchen
+        <br><a href="http://www.kreuzotter.de/impressum.htm">Impressum und über diese Seite</a></small>
+        <br>
+        &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+      </td>
+    </tr>
+  </table>
+<script type="text/javascript">
+<!--
+var no_dhtm = (document.layers || window.opera && !document.defaultView);
+
+
+
+function ZOOM()
+{
+    if (document.body && document.body.style && typeof document.body.style.zoom != "undefined")
+    {
+        if (document.body.style.zoom=="400%")
+            document.body.style.zoom = "100%";
+        else
+        {
+            document.body.style.zoom = "400%";
+            alert('Sie haben auf das Dokument doppelgeklickt.\nDoppelklicken Sie nochmals, wenn Sie zur Normalansicht zurckschalten wollen.');
+        }
+    }
+}
+document.ondblclick=ZOOM;
+
+
+
+function DRAW(shape)
+{
+    if (window.opera && !document.defaultView)
+    {
+        alert('Im Netscape 4 und Opera ï¿½ter als Version 7\nsteht die Funktion "Nachtrï¿½lich zeichnen" nicht zur Verfgung.\nDiese Browser kï¿½nen nur beim Laden in die Seite zeichnen, spï¿½er nicht mehr\n(Netscape 4: mangelnde Stabilitï¿½).');
+        return;
+    }
+
+
+    if (window.event) event.cancelBubble = true;
+    var f=document.forms[0];
+
+    var color = f.Color.value;
+    for (var z = 0; z<color.length; z++)
+        if (isNaN(parseInt(color.charAt(z), 16)))
+            color = color.substring(0, z) + '6' + color.substring(z+1);
+
+
+
+
+var t0 = (new Date()).getTime();
+
+    //jg2.setPrintable(true);
+    jg2.setColor("#"+color);
+    jg2.setStroke(f.Dotted.checked? Stroke.DOTTED : parseInt(f.Stroke.value));
+
+    if (shape=="drawLine()")
+        jg2.drawLine(parseInt(f.dl_x1.value), parseInt(f.dl_y1.value), parseInt(f.dl_x2.value), parseInt(f.dl_y2.value));
+    else if (shape=="drawRect()")
+        jg2.drawRect(parseInt(f.dr_x.value), parseInt(f.dr_y.value), parseInt(f.dr_w.value), parseInt(f.dr_h.value));
+    else if(shape=="fillRect()")
+        jg2.fillRect(parseInt(f.fr_x.value), parseInt(f.fr_y.value), parseInt(f.fr_w.value), parseInt(f.fr_h.value));
+    else if(shape=="drawEllipse()")
+        jg2.drawEllipse(parseInt(f.do_x.value), parseInt(f.do_y.value), parseInt(f.do_w.value), parseInt(f.do_h.value));
+    else if(shape=="fillEllipse()")
+        jg2.fillEllipse(parseInt(f.fo_x.value), parseInt(f.fo_y.value), parseInt(f.fo_w.value), parseInt(f.fo_h.value));
+    else if(shape=="fillArc()")
+        jg2.fillArc(parseInt(f.fa_x.value), parseInt(f.fa_y.value), parseInt(f.fa_w.value), parseInt(f.fa_h.value), parseFloat(f.fa_angA.value.replace(/,/, ".")), parseFloat(f.fa_angZ.value.replace(/,/, ".")));
+    else if(shape=="fillPolygon()")
+    {
+        var pgx = f.fp_x.value.split(',');
+        var pgy = f.fp_y.value.split(',');
+        var comm = '\n \nNebenbei:\nDie einzelnen Werte mssen mit Kommata voneinander abgetrennt sein.';
+        if (pgx.length!=pgy.length) alert('Die Zahl der x- und y-Werte muss identisch sein.'+comm);
+        else
+        {
+            for (var z = 0; z<pgx.length; z++)
+            {
+                if (isNaN(pgx[z] = parseInt(pgx[z])) || isNaN(pgy[z] = parseInt(pgy[z])))
+                {
+                    alert('Ungltiger x- oder y-Wert eingegeben.'+comm);
+                    return;
+                }
+            }
+            jg2.fillPolygon(pgx, pgy);
+        }
+    }
+    jg2.paint();
+    var t1 = (new Date()).getTime() - t0;
+    jg3.clear();
+    jg3.setColor('#'+color);
+    jg3.setFont('verdana,geneva,sans-serif', '12px', Font.BOLD);
+    jg3.drawString(t1 + ' milliseconds', 0, 10);
+
+    jg3.paint();
+}
+
+var jg2=new jsGraphics("test");
+var jg3 = new jsGraphics("dt");
+
+
+function D()
+{
+    var wc = (window.innerWidth? innerWidth
+        : (document.documentElement && document.documentElement.clientWidth)? document.documentElement.clientWidth
+        : (document.body && document.body.clientWidth)? document.body.clientWidth
+        : document.getElementsByTagName? document.getElementsByTagName('body')[0].offsetWidth
+        : 800) >>1;
+    var dy = no_dhtm? 115 : 0;
+
+
+    var jg = new jsGraphics(no_dhtm? null : "main");
+
+    jg.setColor("#ff9900");
+    jg.drawEllipse(16, 240+dy, 59, 130);
+    jg.setFont("arial,helvetica,sans-serif", "11px", Font.PLAIN);
+    jg.drawString("<nobr>.drawEllipse(&nbsp;)<\/nobr>",35, 180+dy);
+    jg.drawString(".fillPolygon(&nbsp;)", 360, 66+dy);
+    jg.drawLine(62, 197+dy, 48, 234+dy);
+    jg.drawLine(48, 234+dy, 45, 224+dy);
+    jg.drawLine(49, 234+dy, 57, 228+dy);
+    jg.setColor("#008800");
+    jg.drawOval((250+wc+300)>>1, 4+dy, 64, 64);
+    jg.drawString("These are not image files.<br>Shapes &amp; text have been dynamically drawn with wz_jsgraphics.js.", ((wc+280)>>1)-100, 190+dy);
+
+    jg.setStroke(2);
+    jg.setColor("#ff99b6");
+    jg.drawLine(120, -60+dy, 265, 150+dy);
+    jg.setColor("#ff0080");
+    jg.setStroke(1);
+    jg.drawString("<nobr>.drawLine(&nbsp;)<\/nobr>", 190, 145+dy);
+    var polylx=new Array(420, ((wc+280)>>1)+240, ((wc+280)>>1)+120, (wc<<1)-100);
+    var polyly=new Array(160+dy, 112+dy, 350+dy, 450+dy);
+    jg.drawPolyline(polylx, polyly);
+    jg.drawString(".drawPolyline(&nbsp;)", ((wc+280)>>1)+126, 155+dy);
+
+    jg.setColor("#ffe600");
+    jg.fillPolygon(new Array(383, 390, 397, 420, 397, 390, 383, 360), new Array(23+dy, 0+dy, 23+dy, 30+dy, 37+dy, 60+dy, 37+dy, 30+dy));
+
+    var polygx=new Array(177, 247, 115);
+    var polygy=new Array(24+dy, 45+dy, 140+dy);
+    jg.setColor("#0000cc");
+    jg.drawPolygon(polygx, polygy);
+    jg.drawString(".drawPolygon(&nbsp;)", 256, 30+dy);
+
+    jg.setColor("#aabbff");
+    jg.setStroke(5);
+    jg.drawOval(300, 110+dy, 80, 50);
+
+    // Smiley
+    jg.fillOval(wc+292, 36+dy, 15, 15);
+    jg.setColor("#990099");
+    jg.setStroke(Stroke.DOTTED);
+    jg.drawRect(wc+280, dy, 40, 50);
+    jg.drawString("<nobr>.drawRect(&nbsp;)<\/nobr>", wc+210, 20+dy);
+    jg.setStroke(1);
+    jg.drawOval(wc+292, 36+dy, 14, 14);
+    jg.setColor("#000033");
+    jg.fillRect(wc+295, 41+dy, 2, 2);
+    jg.fillRect(wc+302, 41+dy, 2, 2);
+    jg.drawLine(wc+295, 45+dy, wc+296, 46+dy);
+    jg.drawLine(wc+297, 47+dy, wc+301, 47+dy);
+    jg.drawLine(wc+301, 47+dy, wc+303, 45+dy);
+    jg.setColor("#0000cc");
+    jg.drawString(".fillEllipse(&nbsp;)", wc+214, 36+dy);
+
+    // Pie
+    jg.setColor("#0000ff");
+    jg.drawString(".fillArc(&nbsp;)", wc+240, 120+dy);
+    jg.setColor("#999999");
+    jg.fillOval(wc+210, 150+dy, 120, 80);
+    jg.setColor("#ff8080");
+    jg.fillArc(wc+210, 140+dy, 120, 80, 330, 40);
+    jg.setColor("#8080ff");
+    jg.fillArc(wc+210, 140+dy, 120, 80, 40, 140);
+    jg.setColor("#ff80ff");
+    jg.fillArc(wc+210, 140+dy, 120, 80, 140, 180);
+    jg.setColor("#80bb80");
+    jg.fillArc(wc+210, 140+dy, 120, 80, 180, 280);
+    jg.setColor("#ffcc66");
+    jg.fillArc(wc+210, 140+dy, 120, 80, 280, 330);
+
+    jg.paint();
+}
+
+
+
+if(document.all && !document.getElementById)
+{
+    window.onload = function()
+    {
+        window.setTimeout("D();", 100);
+    }
+}
+else D();
+//-->
+</script>
+
+<!--script type="text/javascript" src="http://www.walterzorn.de/en/scripts/wz_dragdrop.js"></script>
+<script type="text/javascript">
+<!-
+
+SET_DHTML(CURSOR_MOVE, KEYDOWN_RESIZE, "test", "stairsdemo");
+
+//->
+</script-->
+
+</body>
+</html>

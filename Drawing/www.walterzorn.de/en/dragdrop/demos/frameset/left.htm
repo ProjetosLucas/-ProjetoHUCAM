@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="expires" content="0">
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+<title>JavaScript: DHTML Library, Drag &amp; Drop for Images and Layers</title>
+<link rel="stylesheet" type="text/css" href="../../../newwalterzorn.css">
+</head>
+<body bgcolor="#ffffff">
+<script type="text/javascript" src="../../../scripts/wz_dragdrop.js"></script>
+  <table cellpadding="6">
+    <tr>
+      <td>
+        <div id="comment" style="position:relative;">
+          These images are draggable, and can even be resized with mouse+&lt;Shift&gt;
+        </div>  
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img name="prairiedog" src="../../../images/dragdrop/ddprairiedog.jpg" width="135" height="148" alt="">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img name="chameleon" src="../../../images/dragdrop/ddcham.jpg" width="155" height="95" alt="">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img name="einstein" src="../../../images/dragdrop/einstrec.gif" width="150" height="96" alt="">
+      </td>
+    </tr>
+  </table>      
+<script type="text/javascript">
+<!--
+SET_DHTML(CURSOR_MOVE, RESIZABLE, "prairiedog", "chameleon", "einstein", "comment"+NO_DRAG);
+
+for (var i = 0; i < dd.elements.length; i++)
+{
+    dd.elements[i].hide();
+}
+// images should not be visible initially
+//-->
+</script>
+</body>
+</html>
+
+

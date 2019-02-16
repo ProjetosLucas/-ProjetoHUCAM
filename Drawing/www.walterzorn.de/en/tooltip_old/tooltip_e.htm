@@ -1,0 +1,822 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<!--DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"-->
+<head>
+<meta http-equiv="expires" content="0">
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<title>DHTML JavaScript Tooltips</title>
+<link rel="stylesheet" type="text/css" href="../newwalterzorn.css">
+<style type="text/css">
+<!--
+.tt {
+  font-size:12px;
+}
+#bignote {
+  border:1px solid #990099;
+  background:#ffff99;
+}
+-->
+</style>
+</head>
+<body bgcolor="#ffffff">
+<a name="top"> </a>
+  &nbsp;<a href="http://www.walterzorn.de/tooltip/tooltip.htm" target="_top"><img src="../images/germany.gif" align="middle" border="0" alt="German version" width="22" height="15"></a> <small><a href="http://www.walterzorn.de/tooltip/tooltip.htm" target="_top">German version</a></small>
+  <center>
+    <table>
+      <tr>
+        <td align="center"><a onmouseover="this.T_SHADOWWIDTH=5;this.T_WIDTH=100;this.T_PADDING=2;return escape('Home');" href="../index.htm"><img name="logo" border="0" src="../images/logo.gif" alt="" width="271" height="30"></a></td>
+      </tr>
+    </table>
+    <table cellspacing="10">
+      <tr>
+        <td><img src="../images/transparentpixel.gif" alt="DHTML: Tooltip JavaScript" width="1" height="1"><a onmouseover="this.T_SHADOWWIDTH=5;this.T_WIDTH=100;this.T_PADDING=2;return escape('Home')" href="../index.htm">Home</a></td>
+        <td><a onmouseover="this.T_SHADOWWIDTH=5;return escape('A JavaScript to make images and layers draggable. An easy-to-include cross browser solution. See on this page how it works.')" href="../dragdrop/dragdrop_e.htm">DHTML-Drag&amp;Drop-Library</a></td>
+        <td><a onmouseover="this.T_SHADOWWIDTH=5;return escape('Draw lines, circles, ellipses, polygons or rectangles dynamically into a webpage. A JavaScript with optimized performance, creating cleanly arranged pixel stair patterns. Demo page')" href="../jsgraphics/jsgraphics_e.htm">VectorGraphics-Library</a></td>
+        <td><a onmouseover="this.T_BGCOLOR='#ffffff';this.T_WIDTH=218;this.T_SHADOWWIDTH=5;return escape('Online Function Grapher written in JavaScript<br>&nbsp;<br><img src=../images/grapher.gif width=210 height=175>')" href="../grapher/grapher_e.htm">Function-Grapher</a></td>
+      </tr>
+<!--tr><td colspan="4"><form><select onmouseover="return escape('Tooltip applied to SELECT')"><option>abdlkdvsadfasdfasdvasdfasdfadfadfadsfassdfvsdadfasdfdfvsdfasd</option><option>avasas</option></select> <input type="text" size="20"></form></td></tr-->
+    </table>
+    <br>
+    <table width="760">
+      <tr>
+        <td>
+          <table>
+            <tr>
+              <td>
+                <b>
+                <br><big>JavaScript, DHTML
+                <br>Tooltips</big>
+                <br>JavaScript Cross Browser Library.</b><br>
+                <small>Developed by Walter Zorn</small><br>&nbsp;
+                <br>
+                <div id="Bignote">
+                  <big>
+                    <a href="../tooltip/tooltip_e.htm">Here you get the latest version of the Tooltips DHTML Library</a>.
+                    <br>&nbsp;<br>
+                    This page is no longer maintained.
+                    It's only here for the convenience of those who are still using an old version (prior to v.4.0) of wz_tooltip.js.
+                  </big>
+                </div>
+                <br>&nbsp;<br>
+              </td>
+              <td rowspan="6" valign="top">
+                &nbsp;<br>&nbsp;<br>&nbsp;<br>
+                <table cellpadding="0" cellspacing="3">
+                  <tr>
+                    <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt="DHTML: Tooltip with JavaScript"></td>
+                    <td>
+                      <small>
+                        &nbsp;<br>
+                        <a onmouseover="return escape('Netscape&nbsp;4 and 6+; Mozilla; Galeon; Opera&nbsp;5, 6, 7+; MSIE&nbsp;4, 5+; Konqueror&nbsp;3')" href="#browser">Cross Browser</a>
+                        <br>&nbsp;<br>
+                        <a href="#docu">Documentation</a>
+                        <br>&nbsp;<br>
+                        <a href="#download">Download</a>
+                        <br>&nbsp;
+                      </small>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                A cross-browser Tooltip JavaScript to create tooltips (information popup boxes <a href="javascript:void(0);" onmouseover="this.T_WIDTH=80;return escape('Tooltip')">like this one</a>).
+                These crossbrowser JavaScript Tooltips and their behavior can be customized in multiple ways,
+                and may contain plain text as well as <a href="javascript:void(0);" onmouseover="this.T_WIDTH=164;this.T_PADDING=6;this.T_BGCOLOR='#ffffff'; return escape('an image, inserted via & lt;img& gt; tag<br>&nbsp;<br><img src=../images/tooltip/leop.jpg width=150 height=102>')">HTML</a>, such as images or line breaks etc..
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <big>&nbsp;<br>&nbsp;<br>&nbsp;<br><b>Characteristics</b></big>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ilayer><layer onmouseover="return escape('& lt;img& gt; tag with tooltip-onmouseover<br><br>(yes, that\'s me, on a quick 120 miles trip with my homebuilt & quot;Kreuzotter& quot; lowracer<br>-<br>no, you can\'t buy this bicycle, it was just an uncommercial project).')"><img src="../images/tooltip/kreuzot_s.jpg" alt="Image with a JavaScript tooltip (yes, that's me)" title="Image with a JavaScript tooltip (yes, that's me)" width="300" height="157" onmouseover="return escape('& lt;img& gt; tag with tooltip-onmouseover<br><br>(yes, that\'s me, on a quick 120 miles trip with my homebuilt & quot;Kreuzotter& quot; lowracer<br>-<br>no, you can\'t buy this bicycle, it was just an uncommercial project).')"></layer></ilayer>
+                <br>
+                This Tooltip JavaScript works even in Opera&nbsp;5 and&nbsp;6.
+                Each HTML tag to display a tooltip requires an onmouseover attribute only, 'onmouseouts' are unnecessary.
+                Optionally, you can insert commands into these onmouseover attributes to customize the JavaScript tooltips individually.
+                See the <a href="#docu" onmouseover="this.T_SHADOWWIDTH=5;this.T_STICKY=1;this.T_OFFSETX=-20;return escape('For examples how to alter the behaviour and look of tooltips, see the <a href=#docu>documentation<\/a>')">demonstration and documentation</a> on the bottom of this page.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <big>&nbsp;<br>&nbsp;<br><a name="browser"> </a>&nbsp;<br><b>Cross Browser Functionality</b></big>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Except of a few rarely used ones, all browsers can interpret this Tooltip JavaScript.
+                <br>&nbsp;<br>
+                Linux:
+                <br>Konqueror 3, Browsers with Gecko-Engine (Mozilla, Netscape&nbsp;6, Galeon), Netscape&nbsp;4 and 6, Opera&nbsp;5 and 6.
+                <br>&nbsp;<br>
+                Windows:
+                <br>Netscape 4, Gecko Browsers, IE 4, 5+, Opera&nbsp;5, 6, 7+
+                <br>&nbsp;<br>
+                Other systems:
+                <br>The matches to the above listed Linux/Windows browsers have full access.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <big>&nbsp;<br>&nbsp;<br>&nbsp;<br><a name="docu"> </a>&nbsp;<br><b>Documentation</b></big>
+              </td>
+              <td rowspan="4" valign="top">
+                <table cellpadding="0" cellspacing="3">
+                  <tr>
+                    <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt="DHTML: Tooltips via JavaScript"></td>
+                    <td>
+                      <small>
+                        &nbsp;<br>
+                        <a href="#top">Top of page</a>
+                        <br>&nbsp;<br>
+                        <a onmouseover="return escape('Netscape&nbsp;4 and 6+; Mozilla; Galeon; Opera&nbsp;5, 6, 7+; MSIE&nbsp;4, 5+; Konqueror&nbsp;3')" href="#browser">Cross Browser</a>
+                        <br>&nbsp;<br>
+                        <a href="#docu">Documentation</a>
+                        <br>&nbsp;<br>
+                        <a href="#download">Download</a>
+                        <br>&nbsp;
+                      </small>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b><big>1.</big> Save the library</b>
+                <br>
+                <a onmouseover="return escape('download wz_tooltip.js (zipped)')" href="#download">Download wz_tooltip.js</a> and unzipp it.
+                Save it into the same directory as your html file. If you'd prefer to save it into a different directory, adapt the path src=&quot;wz_tooltip.js&quot; in the code piece below.<br>
+                <b>Please</b> use the downloaded version of wz_tooltip.js only.
+                Don't copy the script from your browser's cache, and don't hotlink wz_tooltip.js from this site into your site.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>&nbsp;<br>&nbsp;<br><big>2.</big> Link wz_tooltip.js into the html file</b>
+                <br>
+                Insert the following lines into the &lt;body&gt; section or your html file, preferably <font color="#ff0000"><b>immediately before the closing &lt;/body&gt; tag, but in any case after the last tag containing a tooltip</b></font>:
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <table bgcolor="#000099" border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tr>
+                    <td>
+                      <table border="0" cellpadding="2" cellspacing="1" width="100%">
+                        <tr>
+                          <td bgcolor="#eeeeee">
+<tt><font size="2" class="tt">&lt;script language=&quot;JavaScript&quot; type=&quot;text/javascript&quot;</font></tt>
+<tt><font size="2" class="tt">src=&quot;wz_tooltip.js&quot;&gt;&lt;/script&gt;</font></tt>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>&nbsp;<br>&nbsp;<br><big>3.</big> Insert desired text into the html tags</b>
+                <br>
+                Each of the html tags to create a tooltip requires an onmouseover attribute only, onmouseouts are unnecessary:
+              </td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+                <table bgcolor="#000099" border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tr>
+                    <td>
+                      <table border="0" cellpadding="2" cellspacing="1" width="100%">
+                        <tr>
+                          <td bgcolor="#eeeeee">
+<tt><font size="2" class="tt">&lt;a href=&quot;index.htm&quot; onmouseover=&quot;return escape('Some&nbsp;text')&quot;&gt;Homepage</font></tt>
+<tt><font size="2" class="tt">&lt;/a&gt;</font></tt>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+                As illustrated by this example, the text, enclosed with single quotes, must be passed to a function call <tt>return escape()</tt>.
+                <b>Attention:</b> Single quotes or apostrophes, respectively, inside the tooltip text itself each must be escaped with a backslash.
+                Example:<br>
+                <tt>return escape('This text won<b><font color="#dd0000">\'</font></b>t create an error.');</tt><br>
+                Characters not found in the normal alphanumeric character set, <b>inevitably must be specified using character entities</b>.
+                For instance, use &amp;quot; instead of &quot; or &amp;Ouml; instead of &Ouml;.
+                Consider the following three irregularities: Write &amp;&nbsp;amp; instead of &amp;amp;, &amp;&nbsp;lt; instead of &amp;lt; (displaying as &lt;) and &amp;&nbsp;gt; instead of &amp;gt; (displaying as &gt;).
+              </td>
+              <td rowspan="3">
+                <table cellpadding="0" cellspacing="3">
+                  <tr>
+                    <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt="DHTML: Tooltips per JavaScript"></td>
+                    <td>
+                      <small>
+                        &nbsp;<br>
+                        <a href="#top">Top of page</a>
+                        <br>&nbsp;<br>
+                        <a onmouseover="return escape('Netscape&nbsp;4 and 6+; Mozilla; Galeon; Opera&nbsp;5, 6, 7+; MSIE&nbsp;4, 5+; Konqueror&nbsp;3')" href="#browser">Cross Browser</a>
+                        <br>&nbsp;<br>
+                        <a href="#docu">Documentation</a>
+                        <br>&nbsp;<br>
+                        <a href="#download">Download</a>
+                        <br>&nbsp;
+                      </small>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <big>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br><b>Extended possibilities</b></big>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b><big>4.</big> HTML inside tooltips</b>
+                <br>
+                Consider the following irregularity:
+                <br>
+                Different from normal html, values of tag attributes embedded into the tooltip text must be enclosed in single quotes, each escaped with a backslash, rather than in double quotes.
+                Example:
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td width="50"><br></td>
+        <td>
+          <table bgcolor="#000099" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td>
+                <table border="0" cellpadding="2" cellspacing="1" width="100%">
+                  <tr>
+                    <td bgcolor="#eeeeee">
+                      <b>Correct:</b>
+                      <br>
+<tt><font size="2" style="font-size:12px;">
+&lt;a href=&quot;index.htm&quot;
+</font></tt>
+<tt><font size="2" style="font-size:12px;">
+onmouseover=&quot;return escape('Text with &lt;img src=<b><font style="color:#dd0000;">\'</font></b>image.jpg<b><font style="color:#dd0000;">\'</font></b> width=<b><font style="color:#dd0000;">\'</font></b>60<b><font style="color:#dd0000;">\'</font></b>&gt; image.')&quot;&gt;
+</font></tt>
+<tt><font size="2" style="font-size:12px;">
+Homepage&lt;/a&gt;
+</font></tt>
+<br>&nbsp;<br>
+<b>Wrong:</b>
+<br>
+<tt><font size="2" style="font-size:12px;">
+&lt;a href=&quot;index.htm&quot;
+</font></tt>
+<tt><font size="2" style="font-size:12px;">
+onmouseover=&quot;return escape('Text with &lt;img src=<b><font style="color:#dd0000;">&quot;</font></b>image.jpg<b><font style="color:#dd0000;">&quot;</font></b> width=<b><font style="color:#dd0000;">&quot;</font></b>60<b><font style="color:#dd0000;">&quot;</font></b>&gt;image.')&quot;&gt;
+</font></tt>
+<tt><font size="2" style="font-size:12px;">
+Homepage&lt;/a&gt;
+</font></tt>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td width="50"><br></td>
+      </tr>
+    </table>
+    <table width="760">
+      <tr>
+        <td width="120"><br></td>
+        <td>
+          <table width="100%">
+            <tr>
+              <td>
+                <b>&nbsp;<br>&nbsp;<br><big>5.</big> Tooltip content via variables or function calls</b>
+                <br>
+                Alternatively, instead of a string, <tt>return escape()</tt> accepts a variable defined elsewhere -
+                <br>example: <tt>onmouseover=&quot;return escape(text1)&quot;</tt>
+                <br>
+                - or even a function call -
+                <br>example: <tt>onmouseover=&quot;return&nbsp;escape(TooltipText())&quot;</tt>&nbsp;.
+                <br>
+                Variables or functions should be defined in a separate JS file or a &lt;script&gt; block within the &lt;head&gt; section, and might be useful, for instance, to facilitate having identical text for several tooltips.
+                Even the irregularities with non-alphanumeric characters and with quotes (see point 3 and 4) needn't to be regarded anymore.
+                Therefore, it's also less critical to include text that has been created dynamically on the server.
+              </td>
+              <td rowspan="2">
+                <table cellpadding="0" cellspacing="3">
+                  <tr>
+                    <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt="DHTML: Tooltips per JavaScript"></td>
+                    <td>
+                      <small>
+                        &nbsp;<br>
+                        <a href="#top">Top of page</a>
+                        <br>&nbsp;<br>
+                        <a onmouseover="return escape('Netscape&nbsp;4 and 6+; Mozilla; Galeon; Opera&nbsp;5, 6, 7+; MSIE&nbsp;4, 5+; Konqueror&nbsp;3')" href="#browser">Cross Browser</a>
+                        <br>&nbsp;<br>
+                        <a href="#docu">Documentation</a>
+                        <br>&nbsp;<br>
+                        <a href="#download">Download</a>
+                        <br>&nbsp;
+                      </small>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>&nbsp;<br>&nbsp;<br><big>6.</big> Commands to customize tooltips individually</b>
+                <br>
+                The following commands may be passed to the &quot;onmouseovers&quot; inside the html tags.
+                These commands override the global configuration specified in wz_tooltip.js itself (in the section &quot;GLOBAL TOOLTIP CONFIGURATION&quot;):
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td width="50"><br></td>
+        <td>
+          <table bgcolor="#000099" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td>
+                <table border="0" cellpadding="6" cellspacing="1" width="100%">
+                  <tr bgcolor="#eeeeee">
+                    <td><b>Command</b></td>
+                    <td><b>Effect</b></td>
+                    <td><b>Example</b></td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_ABOVE = true; this.T_WIDTH = 230; return escape('this.T_ABOVE = true;<br>&nbsp;<br>Try out with any of the other tooltips what happens if they touch the bottom edge of the window...');">this.T_ABOVE</a></tt>
+                    </td>
+                    <td>
+                      Places the tooltip above the mousepointer.
+                      Value: true
+                      <br>
+                      You might additionally apply the
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=260;this.T_ABOVE=true;this.T_OFFSETY=70;return escape('this.T_ABOVE = true; this.T_OFFSETY = 70;');">this.T_OFFSETY</a></tt> command in order to set the vertical distance from the mousepointer.
+                      <br>&nbsp;<br>
+                      Note that, in case that the space above the mousepointer isn't sufficient, the tooltip is displayed below the mousepointer as usual.
+                    </td>
+                    <td>
+                      <tt>this.T_ABOVE = true;</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=200;this.T_BGCOLOR='#f3e0f3';return escape('this.T_BGCOLOR=\'#f3e0f3\';');">this.T_BGCOLOR</a></tt>
+                    </td>
+                    <td>
+                      Background color of the tooltip. Value must be enclosed in single quotes.
+                    </td>
+                    <td>
+                      <tt>this.T_BGCOLOR='#d3e3f6';</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_BGIMG='../images/tooltip/tt_bg.jpg';this.T_WIDTH=200;this.T_PADDING=10;return escape('this.T_BGIMG=\'someImg.jpg\';<br>&nbsp;<br>It\'s recommended to use only JPGs as background images. Due to one of its 9222229 bugs, Netscape&nbsp;4 won\'t render other formats (for example GIF) reliably. Note: This bug does not concern foreground images.');">this.T_BGIMG</a></tt>
+                    </td>
+                    <td>
+                      Background image. Value in single quotes.
+                    </td>
+                    <td>
+                      <tt>this.T_BGIMG='images/myBgImg.jpg';</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=200;this.T_BORDERWIDTH=5;return escape('this.T_BORDERWIDTH=5;');">this.T_BORDERWIDTH</a></tt>
+                    </td>
+                    <td>
+                      Width of tooltip border. May be 0 to hide the border.
+                    </td>
+                    <td>
+                      <tt>this.T_BORDERWIDTH=3;</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=200;this.T_BORDERCOLOR='#ff0000';return escape('this.T_BORDERCOLOR=\'#ff0000\';');">this.T_BORDERCOLOR</a></tt>
+                    </td>
+                    <td>
+                      Border color. Value in single quotes.
+                    </td>
+                    <td>
+                      <tt>this.T_BORDERCOLOR='#336699';</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_CLICKCLOSE = true; this.T_STICKY=true; return escape('This tooltip is & quot;sticky& quot;, but it can be closed by clicking somewhere within the tootip or onto the document.');">this.T_CLICKCLOSE</a></tt>
+                    </td>
+                    <td>
+                      Value: true<br>
+                      Closes the tooltip once the user clicks somewhere inside the tooltip or onto the document.
+                      Of course, this.T_CLICKCLOSE has only effect on tooltips to which the this.T_STICKY command has been applied.
+                    </td>
+                    <td>
+                      <tt>this.T_CLICKCLOSE = true;</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_DELAY=1000;return escape('this.T_DELAY=1000;<br>&nbsp;<br>wz_tooltip.js comes with a small delay of 500 ms being preset. Of course this global setting may be changed in wz_tooltip.js itself (in the section &quot;GLOBAL TOOLTIP CONFIGURATION&quot;). Note that values much shorter or longer than 500 ms might be perceived as irritating.');">this.T_DELAY</a></tt>
+                    </td>
+                    <td>
+                      Tooltip shows up after the specified timeout (milliseconds). A behavior similar to that of OS based tooltips.
+                    </td>
+                    <td>
+                      <tt>this.T_DELAY=1000;</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_FIX = [200, 2400]; return escape('this.T_FIX = [200, 2400];');">this.T_FIX</a></tt>
+                    </td>
+                    <td>
+                      Fixes the tooltip to the co-ordinates specified within the square brackets.
+                      Useful, for example, if combined with the <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_STICKY = true; this.T_FIX = [380, 2400]; return escape('this.T_STICKY = true; this.T_FIX = [380, 2400];<br>&nbsp;<br>Click on the page to make this tooltip disappear.');">this.T_STICKY</a></tt> command.
+                    </td>
+                    <td>
+                      <tt>this.T_FIX = [200, 2400];</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=200;this.T_FONTCOLOR='#ff0000';return escape('this.T_FONTCOLOR=\'#ff0000\';');">this.T_FONTCOLOR</a></tt>
+                    </td>
+                    <td>
+                      Font color. Value in single quotes.
+                    </td>
+                    <td>
+                      <tt>this.T_FONTCOLOR='#993399';</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=230;this.T_FONTFACE='courier new, courier';return escape('this.T_FONTFACE=\'courier\';');">this.T_FONTFACE</a></tt>
+                    </td>
+                    <td>
+                      Font face / family. Value in single quotes.
+                    </td>
+                    <td>
+                      <tt>this.T_FONTFACE='verdana,geneva,sans-serif';</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_FONTSIZE='30px';this.T_WIDTH=400;return escape('this.T_FONTSIZE=\'30px\';');">this.T_FONTSIZE</a></tt>
+                    </td>
+                    <td>
+                      Font size + unit. Value in single quotes. Unit inevitably required.
+                    </td>
+                    <td>
+                      <tt>this.T_FONTSIZE='30px';</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=200;this.T_FONTWEIGHT='bold';return escape('this.T_FONTWEIGHT=\'bold\';');">this.T_FONTWEIGHT</a></tt>
+                    </td>
+                    <td>
+                      Font weight. Available values: 'normal' or 'bold'.
+                    </td>
+                    <td>
+                      <tt>this.T_FONTWEIGHT='bold';</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td align="right">
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_LEFT = true; this.T_WIDTH = 120; return escape('this.T_LEFT = true;');">this.T_LEFT</a></tt>
+                    </td>
+                    <td>
+                      Tooltip positioned on the left side of the mousepointer.
+                      Value: true.
+                      <br>&nbsp;<br>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_LEFT = true; this.T_ABOVE = true; this.T_WIDTH = 240; return escape('this.T_LEFT = true; and this.T_ABOVE&nbsp;=&nbsp;true; combined...');">this.T_ABOVE=true;this.T_LEFT=true;</a></tt>
+                    </td>
+                    <td>
+                      <tt>this.T_LEFT = true;</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=200;this.T_OFFSETX=150;return escape('this.T_OFFSETX=150;');">this.T_OFFSETX</a></tt>
+                    </td>
+                    <td>
+                      Horizontal offset from mouse-pointer.
+                      <br>&nbsp;<br>
+                      To <a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=250;this.T_OFFSETX=-125;return escape('this.T_WIDTH = 250;this.T_OFFSETX = -125;');">center</a> the tooltip below (or above) the mousepointer, apply the value -tooltipwidth/2.
+                      In wz_tooltip.js itself, width is preset to 300.
+                    </td>
+                    <td>
+                      <tt>this.T_OFFSETX=32;</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=200;this.T_OFFSETY=70;return escape('this.T_OFFSETY=70;');">this.T_OFFSETY</a></tt>
+                    </td>
+                    <td>
+                      Vertical offset from mouse-pointer.
+                    </td>
+                    <td>
+                      <tt>this.T_OFFSETY=32;</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=180;this.T_OPACITY=80;this.T_PADDING=20;this.T_TEXTALIGN='center';return escape('this.T_OPACITY=80;');">this.T_OPACITY</a></tt>
+                    </td>
+                    <td>
+                      Transparency of tooltip. Opacity is the opposite of transparency.
+                      Value must be a number between 0 (fully transparent) and 100 (opaque, no transparency).
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=180;this.T_OPACITY=80;this.T_TEXTALIGN='center';this.T_SHADOWWIDTH=5;this.T_TITLE='Nifty';this.T_BGIMG='../images/tooltip/tt_bg.jpg';return escape('<img src=../images/dragdrop/fateba_fi.jpg width=130 height=103><br>Tooltip with image, shadow and background image.');">Another example</a></tt>
+                      with image (taken on my 9000-km / 5500-miles recumbent bicycle trip Hamburg-Northcape-Munich), shadow via this.T_SHADOWWIDTH, centered content via this.T_TEXTALIGN and background image via this.T_BGIMG command.
+                    </td>
+                    <td>
+                      <tt>this.T_OPACITY=80;</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=200;this.T_PADDING=30;return escape('this.T_PADDING=30;');">this.T_PADDING</a></tt>
+                    </td>
+                    <td>
+                      Inner spacing, i.e. the spacing between border and content, for instance text or image(s).
+                    </td>
+                    <td>
+                      <tt>this.T_PADDING=5;</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=220;this.T_PADDING=8;this.T_SHADOWCOLOR='#ccaacc'; return escape('this.T_SHADOWCOLOR = \'#ccaacc\';');">this.T_SHADOWCOLOR</a></tt>
+                      <!--br>
+                      <form> &nbsp; &nbsp; <select><option>aaa</option><option>bbb</option><option>ccc</option></select></form-->
+                    </td>
+                    <td>
+                      Creates shadow with the specified color.
+                      Value in single quotes.
+                      Shadow width (strength) is automatically set to 5 (pixels) if no global shadow width setting can be found in in wz_tooltip.js, and the concerned html tag doesn't contain a this.T_SHADOWWIDTH command.
+                    </td>
+                    <td>
+                      <tt>this.T_SHADOWCOLOR='#ccaacc';</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=220;this.T_PADDING=8;this.T_SHADOWCOLOR='#aab0cc';this.T_SHADOWWIDTH=8; return escape('this.T_SHADOWWIDTH = 8;');">this.T_SHADOWWIDTH</a></tt>
+                    </td>
+                    <td>
+                      Tooltip drops a shadow of the specified width (offset).
+                      Shadow color is automatically set to '#c0c0c0' (light grey) if neither a global setting in wz_tooltip.js nor a this.T_SHADOWCOLOR command can be found.
+                    </td>
+                    <td>
+                      <tt>this.T_SHADOWWIDTH=8;</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=200;this.T_STATIC=true;return escape('this.T_STATIC = true;');">this.T_STATIC</a></tt>
+                    </td>
+                    <td>
+                      Like OS-based tooltips, the tooltip doesn't follow the movements of the mouse-pointer.
+                      Value: true
+                    </td>
+                    <td>
+                      <tt>this.T_STATIC=true;</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=200;this.T_STICKY=true;this.T_CLICKCLOSE = true;return escape('this.T_STICKY=true;<br>&nbsp;<br><a href=#top>Top of page<\/a><br><a href=#docu>Begin of documentation<\/a>');">this.T_STICKY</a></tt>
+                    </td>
+                    <td>
+                      The tooltip stays fixed at its initial position until another tooltip pops up.
+                      Value: true.
+                      To enforce the tooltip to disappear after a certain time span, you might additionally apply the <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_STICKY=true; this.T_TEMP=2500; return escape('this.T_STICKY=true; this.T_TEMP=2500;')">this.T_TEMP</a></tt> command.
+                    </td>
+                    <td>
+                      <tt>this.T_STICKY=true;</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=0;this.T_TEMP=1400; return escape('this.T_TEMP=1400;');">this.T_TEMP</a></tt>
+                    </td>
+                    <td>
+                      Specifies a time span in milliseconds after which the tooltip disappears,
+                      even if the mousepointer is still on the concerned HTML element, or if the <tt>this.T_STICKY</tt> command has been applied.
+                    </td>
+                    <td>
+                      <tt>this.T_TEMP=3500;</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=200;this.T_TITLE='Right-Aligned Text';this.T_TEXTALIGN='right'; return escape('The T_TEXTALIGN command takes as values either \'right\', \'justify\' or \'left\', the latter being unnecessary since it is the default value.');">this.T_TEXTALIGN</a></tt>
+                    </td>
+                    <td>
+                      Aligns the text of both the title and the body of the tooltip.
+                      Values must be included in single quotes and can be either 'right', <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_TITLE='Justified Text and Muckl';this.T_TEXTALIGN='justify';this.T_WIDTH=250;this.T_SHADOWWIDTH=5;return escape('<img align=\'right\' src=\'..\/images\/dragdrop\/muckl.jpg\' width=\'100\' height=\'130\'>This is some quite lengthy text which demonstrates the justification effect which can be achieved by using the this.T_TEXTALIGN command with the \'justify\' value. Note that text justification is not recommended for text that consists of relatively short lines - as is also the case with this tooltip, especially with the text alongside the image above.');">'justify'</a></tt> or 'left', the latter being unnecessary since it is the preset default value.
+                    </td>
+                    <td>
+                      <tt>this.T_TEXTALIGN='right';</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=250;this.T_TITLE='Some title'; return escape('this.T_TITLE=\'Some title\';');">this.T_TITLE</a></tt>
+                    </td>
+                    <td>
+                      Title. Text in single quotes. Background color is automatically the same as the border color.
+                    </td>
+                    <td>
+                      <tt>this.T_TITLE='Some title';</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=200;this.T_TITLE='Red title'; this.T_TITLECOLOR='#ff6666'; return escape('this.T_TITLECOLOR=\'#ff6666\';');">this.T_TITLECOLOR</a></tt>
+                    </td>
+                    <td>
+                      Color of title text. Preset in wz_tooltip.js is '#ffffff' (white).
+                    </td>
+                    <td>
+                      <tt>this.T_TITLECOLOR='#ff6666';</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff" valign="top">
+                    <td>
+                      <tt><a class="nodeco" href="javascript:void(0);" onmouseover="this.T_WIDTH=120;return escape('this.T_WIDTH=120;');">this.T_WIDTH</a></tt>
+                    </td>
+                    <td>
+                      Width of tooltip.
+                    </td>
+                    <td>
+                      <tt>this.T_WIDTH=200;</tt>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#eeeeee">
+                    <td colspan="3">
+                      <b>Complete example of how to use these commands:</b>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#ffffff">
+                    <td colspan="3">
+<tt><font size="2" style="font-size:12px;">
+&lt;a href=&quot;index.htm&quot;
+</font></tt>
+<tt><font size="2" style="font-size:12px;">
+onmouseover=&quot;this.T_WIDTH=200;this.T_FONTCOLOR='#003399';return escape('Blablah')&quot;&gt;</font></tt>
+<tt><font size="2" style="font-size:12px;">Homepage&lt;/a&gt;</font></tt>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td width="50"><br></td>
+      </tr>
+    </table>
+    <table width="760">
+      <tr>
+        <td>
+          <table>
+            <tr>
+              <td>
+                &nbsp;<br>
+                As may be evident from this example, the command(s), each terminated with a semicolon, should be inserted ahead of the function call.
+                <br>&nbsp;<br>
+                <b>&nbsp;<br>&nbsp;<br>Multiple Functions From a Single Onmouseover?</b>
+                <br>
+                To apply additional <tt>onmouseover</tt> functions to the same HTML element, e.g. a swap-image function, you cannot put these into the same <tt>onmouseover</tt>.
+                Instead, you must use a second <tt>onmouseover</tt> within a nested HTML tag, for example:
+                <br>&nbsp;<br>
+<tt>&lt;a href=&quot;page.htm&quot; onmouseover=&quot;return escape('Tooltip text')&quot;&gt;
+<br>
+&nbsp;&nbsp;&lt;span onmouseover=&quot;SwapImage(...)&quot;&gt;Link&lt;/span&gt;
+<br>&lt;/a&gt;</tt>
+                <br>&nbsp;<br>
+                <b>&nbsp;<br>&nbsp;<br>How to Apply Tooltips To an Imagemap</b>
+                <br>
+                Insert the tooltips into the &lt;area&gt;-tags. Sample:
+                <br>&nbsp;<br>
+<tt>
+&lt;map name=&quot;myMap&quot;&gt;
+<br>
+&nbsp;&nbsp;&lt;area onmouseover=&quot;return escape('This is area 1')&quot; shape=... &gt;
+  <br>
+&nbsp;&nbsp;&lt;area onmouseover=&quot;return escape('This is area 2')&quot; shape=... &gt;
+  <br>
+&lt;/map&gt;
+<br>
+&lt;img usemap=&quot;#myMap&quot; src=&quot;myImage.jpg&quot; alt=&quot;...&quot;&gt;
+</tt>
+              </td>
+              <td rowspan="2" valign="top">
+                <table cellpadding="0" cellspacing="3">
+                  <tr>
+                    <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt="DHTML: Tooltips per JavaScript"></td>
+                    <td>
+                      <small>
+                        &nbsp;<br>
+                        <a href="#top">Top of page</a>
+                        <br>&nbsp;<br>
+                        <a onmouseover="return escape('Netscape&nbsp;4 and 6+; Mozilla; Galeon; Opera&nbsp;5, 6, 7+; MSIE&nbsp;4, 5+; Konqueror&nbsp;3')" href="#browser">Cross Browser</a>
+                        <br>&nbsp;<br>
+                        <a href="#docu">Documentation</a>
+                        <br>&nbsp;<br>
+                        <a href="#download">Download</a>
+                        <br>&nbsp;
+                      </small>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <table>
+                  <tr>
+                    <td>
+                      <b><a name="download"> </a>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+                      <img src="../images/redarrow.gif" width="15" height="13" alt="" align="middle"><big>Download</big></b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      wz_tooltip.js &nbsp; 3.45 &nbsp; &nbsp; zipped 6.21 KB<br>
+                      <a onmouseover="this.T_WIDTH=130;return escape('Contains wz_tooltip.js')" href="../scripts/wz_tooltip_3_45.zip">wz_tooltip_3_45.zip</a>
+                      <br>&nbsp;<br>
+                      <a href="../tooltip/history.txt" onmouseover="return escape('Read this if you\'re not sure about the benefits from an update :-)')">history.txt</a> (Changelog of wz_tooltip.js)
+                      <br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+               <br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+              </td>
+              <td>
+                <table cellpadding="0" cellspacing="3">
+                  <tr>
+                    <td width="1" bgcolor="#000099"><img src="../images/transparentpixel.gif" width="1" height="1" alt="DHTML: Tooltips per JavaScript"></td>
+                    <td>
+                      <small>
+                        &nbsp;<br>
+                        <a href="#top">Top of page</a>
+                        <br>&nbsp;<br>
+                        <a onmouseover="return escape('Netscape&nbsp;4 and 6+; Mozilla; Galeon; Opera&nbsp;5, 6, 7+; MSIE&nbsp;4, 5+; Konqueror&nbsp;3')" href="#browser">Cross Browser</a>
+                        <br>&nbsp;<br>
+                        <a href="#docu">Documentation</a>
+                        <br>&nbsp;<br>
+                        <a href="#download">Download</a>
+                        <br>&nbsp;
+                      </small>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <table>
+            <tr>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+      &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br><small>Walter Zorn</span>, Munich, 2006</small>
+      <br>
+     &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+<script type="text/javascript" src="../scripts/wz_tooltip_3_45.js"></script>
+</body>
+</html>

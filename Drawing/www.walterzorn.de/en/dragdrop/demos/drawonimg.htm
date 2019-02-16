@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+<title>Draggable Vector Graphics</title>
+<link rel="stylesheet" type="text/css" href="../../newwalterzorn.css">
+<script type="text/javascript" src="../../scripts/wz_jsgraphics.js"></script>
+</head>
+<body bgcolor="#ffffff">
+<script type="text/javascript" src="../../scripts/wz_dragdrop.js"></script>
+  <p align="center">
+    <b>
+      <big>Drawing on images</big>
+      <br>
+      Using the <a href="../../jsgraphics/jsgraphics_e.htm">Vector Graphics Library</a> to draw on (optionally even draggable) images.
+      <br>&nbsp;<br>
+      <span id="titl" style="display:inline;">Drag this intellectual leopard around...</span>
+      <br>
+      <img name="leop" src="../../images/dragdrop/ddleop.jpg" width="300" height="205" alt="">
+    </b>
+  </p>
+  <p align="center">
+    <a href="demos.htm" target="_top">Back, Zur&uuml;ck</a>
+  </p>  
+<script type="text/javascript">
+<!--
+SET_DHTML(CURSOR_MOVE, "leop");   // make image draggable
+
+// First we initialize the DIV (container) of the draggable image as 'canvas'.
+jg = new jsGraphics(dd.elements.leop.div);
+
+
+function DRAW()
+{
+    // Retrieve some additional text
+    var elt = document.getElementById ? document.getElementById("titl")
+			: document.all ? document.all["titl"]
+			: null,
+    s, sPre = "Drag this intellectual leopard around...";
+    
+    if(elt)
+    {
+        if(elt.style)
+            elt.style.display = "none";
+        s = elt.innerHTML || sPre;
+    }
+    else
+        s = sPre;
+    // Now we draw into the 'canvas' (container DIV of the draggable image),
+    // i.e. on top of the image.
+    // 'jg' is the reference to the canvas.
+    jg.setColor("#ff0000");
+    jg.setFont("verdana,geneva,sans-serif", "11px", Font.BOLD);
+    jg.drawString(s, 10, 10);
+    jg.setStroke(4);
+    jg.drawLine(209, 70, 220, 69);
+    jg.setStroke(2);
+    jg.drawLine(181, 74, 170, 64);
+    jg.drawLine(247, 69, 253, 60);
+    jg.setColor("#00dd00");
+    jg.drawOval(181, 66, 28, 18);
+    jg.drawOval(220, 63, 26, 18);
+    jg.setColor("#ffe000");
+    jg.setFont("verdana,geneva,sans-serif", "11px", Font.PLAIN);
+    jg.drawString("The text on this image<br>and the leopard's glasses<br>have been dynamically drawn using the<br>Vectorgraphics Library.<br>I'm sure you've some more useful ideas...", 20, 110);
+    jg.paint();
+}
+window.onload = DRAW; 
+// We call DRAW() once loading the page has been finished.
+    
+//-->
+</script>
+</body>
+</html> 
+
+

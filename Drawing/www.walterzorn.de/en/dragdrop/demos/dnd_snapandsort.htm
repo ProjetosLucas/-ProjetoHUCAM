@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Drag, Snap and Sort</title>
+<link rel="stylesheet" type="text/css" href="../../newwalterzorn.css">
+</head>
+<body>
+<script type="text/javascript" src="../../scripts/wz_dragdrop.js"></script>
+  <p align="center">
+    <b>
+      <big>Sort Draggable Elements</big>
+      <br>
+      and let them snap to predefined positions
+    </b>
+  </p>
+  <p align="center">
+    <a href="demos.htm" target="_top">Back, Zur&uuml;ck</a>
+  </p>  
+  <div id="lyr0" style="position:absolute;left:100px;top:150px;width:200px;height:50px;background:red;"></div>     
+  <div id="lyr1" style="position:absolute;left:100px;top:220px;width:200px;height:50px;background:green;"></div>     
+  <div id="lyr2" style="position:absolute;left:100px;top:290px;width:200px;height:50px;background:blue;"></div>     
+  <div id="lyr3" style="position:absolute;left:100px;top:360px;width:200px;height:50px;background:yellow;"></div>     
+  <div id="lyr4" style="position:absolute;left:100px;top:430px;width:200px;height:50px;background:purple;"></div>     
+<script type="text/javascript">
+<!--
+
+SET_DHTML(CURSOR_MOVE, "lyr0", "lyr1", "lyr2", "lyr3", "lyr4");
+
+
+var dy      = 70;
+var margTop = 150;
+var posOld;
+
+// Array intended to reflect the order of the draggable items
+var aElts = [dd.elements.lyr0, dd.elements.lyr1, dd.elements.lyr2, dd.elements.lyr3, dd.elements.lyr4];
+
+function my_PickFunc()
+{
+    // Store position of the item about to be dragged
+    // so we can interchange positions of items when the drag operation ends
+    posOld = dd.obj.y;
+}
+
+function my_DropFunc()
+{
+    // Calculate the snap position which is closest to the drop coordinates
+    var y = dd.obj.y+dy/2;
+    y = Math.max(margTop, Math.min(y - (y-margTop)%dy, margTop + (aElts.length-1)*dy));
+    
+    // Index of the new position within the spatial order of all items
+    var i = (y-margTop)/dy;
+    
+    // Interchange the positions of the two items  
+    aElts[i].moveTo(100, posOld);
+    
+    // Let the dropped item snap to position
+    dd.obj.moveTo(100, y);
+    
+    // Update the array according to the changed succession of items
+    aElts[(posOld-margTop)/dy] = aElts[i];
+    aElts[i] = dd.obj;
+}
+//-->
+</script>
+</body>
+</html>

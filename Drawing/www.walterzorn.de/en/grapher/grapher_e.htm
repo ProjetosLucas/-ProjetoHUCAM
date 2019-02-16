@@ -1,0 +1,671 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<!--  Created by Walter Zorn  -->
+<html>
+<head>
+<title>Function Grapher Online</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../newwalterzorn.css">
+<style type="text/css">
+<!--
+-->
+</style>
+<script type="text/javascript">
+<!--
+function mkFourier(f)
+{
+    var htm = '';
+    var na = parseInt(f.FOU_NA.value), nz = parseInt(f.FOU_NZ.value), dn = parseFloat(f.FOU_DN.value);
+    var sgn = f.FOU_SGN[2].checked? -1 : f.FOU_SGN[3].checked? 1 : 0;
+    for (var i = na; i <= nz; i += (dn || nz))
+    {
+        htm += ((i == na)? '' : (sgn < 0 || !sgn && f.FOU_SGN[1].checked)? '-' : '+') + f.FOU_TERM.value.replace(/\s/g, '').replace(/sin/g,'sim').replace(/n/gi, ''+i).replace(/sim/g,'sin');
+        sgn = -sgn;
+    }
+    f.FOU_OUT.value = htm;
+}
+//-->
+</script>
+</head>
+<body bgcolor="#ffffff">
+  <form name="fo" action="javascript:if (window.mkGraph) mkGraph(this);" onsubmit="return false;">
+    <a name="top"> </a>
+    <center>
+      <div id="body1">
+        <table width="99%">
+          <tr>
+            <td align="left">
+              &nbsp;<a href="http://www.walterzorn.de/grapher/grapher.htm" target="_top"><img src="../images/germany.gif" align="middle" border="0" alt="German version" width="22" height="15"></a> <small><a href="http://www.walterzorn.de/grapher/grapher.htm" target="_top">German version</a></small>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td align="center"><a href="../index.htm"><img border="0" src="../images/logo.gif" alt="" width="271" height="30"></a></td>
+          </tr>
+        </table>
+        <table cellspacing="12">
+          <tr valign="top">
+            <td><a href="../index.htm">Home</a></td>
+            <td><a href="../dragdrop/dragdrop_e.htm">DHTML-Drag&amp;Drop-Library</a></td>
+            <td><a href="../jsgraphics/jsgraphics_e.htm">VectorGraphics-Library</a></td>
+            <td><a href="../tooltip/tooltip_e.htm">Tooltips-Library</a></td>
+            <td><br></td>
+            <td style="border: 1px solid #000099;">
+            
+            
+            </td>
+          </tr>
+        </table>
+        <table cellpadding="6" width="740">
+          <tr>
+            <td align="left">
+              <b><big>Online Function Grapher</big></b><br>
+              <small>Written entirely in JavaScript<br>By Walter Zorn</small>
+            </td>
+          </tr>
+        </table>
+        <table cellpadding="6" width="740">
+          <tr>
+            <td align="left">
+              Currently under development:
+              A standalone application version of this Function Graphing Program, written in C language,
+              much faster, essentially more capabilities, e.g. scrolling and zooming the displayed range, built-in function calculator, numerical integration, solving differential equations numerically ... <a href="grapher_app.htm">free download of WZGrapher</a>.<br>&nbsp;
+            </td>
+          </tr>
+        </table>
+        <div id="inputs" style="position:relative;text-align:left;">
+          <div style="padding-top:8px;padding-right:8px;padding-left:8px;">
+            <input type="submit" class="bt2" value="Plot Graph" onclick="if (window.mkGraph) mkGraph(this.form); return false;">
+            <input name="Add" type="checkbox">don't delete previous graphs&nbsp;
+            &nbsp;<input type="button" class="bt2" value="Delete graphs" onmouseup="this.form.F.focus()" onclick="delGraphs(1)">
+            <br>
+            x min <input name="XA" type="text" class="input" size="8" maxlength="13" value="-5">
+            &nbsp;x max <input name="XZ" type="text" class="input" size="8" maxlength="13" value="5">&nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp;y min <input name="YA" type="text" class="input" size="8" maxlength="13" value="-5">
+            &nbsp;y max <input name="YZ" type="text" class="input" size="8" maxlength="13" value="5">
+            <br>
+            <b>Function f(x)</b><small> (up to 5 functions may be entered simultaneously, separated from each other by a semicolon)</small>
+            <br><textarea name="F" class="input" cols="90" rows="4">cos(pi*x) / (-LN2*x);
+sqrt(9-x^2);
+-sqrt(9-x^2)
+            </textarea>
+          </div>
+        </div>
+      </div>
+      <div id="graphframe" style="position:relative;left:0px;top:0px;">
+        <noscript><big><b><font color="#cc0000">&nbsp;<br>JavaScript not enabled. Graph of function can't be created.</font></b></big></noscript>
+        <br>Function Graph Area.
+      </div>
+      <div id="terms" style="position:relative;left:0px;top:0px;width:690px;padding:3px;text-align:left;"></div>
+      <div id="body2">
+        <table cellpadding="14">
+          <tr>
+            <td align="left">
+              <big>&nbsp;<br><b>Operators and Helper Functions</b></big> <small>upper/lower case is arbitrary</small>
+              <table>
+                <tr>
+                  <td valign="top">
+                    <b>+ - * : /</b>
+                    <br>
+                    <b>() [] {}</b>
+                  </td>
+                  <td>
+                    Plus, minus, multiplication, division, grouping symbols.
+                    Multiplication sign <b>*</b> is not necessary and can be omitted. Examples:
+                    <b style="white-space:nowrap;">0.5x^3-3x</b> or <b style="white-space:nowrap;">pixeln(2cos[LN2x])</b> or <b style="white-space:nowrap;">Pipi/(Exe)</b>
+                    Using different types of grouping symbols (parentheses, brackets, braces) for clarity of nested expressions is optional, but not necessary.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <i>base</i><b>^</b><i>exponent</i>
+                    <br>or<br>
+                    <span style="white-space:nowrap;"><b>p(</b>base<b>,</b>exponent<b>)</b></span>
+                  </td>
+                  <td>
+                    Exponentiation base<sup>exponent</sup>, for example <b>p(x,2)</b> or <b>x^2</b>&nbsp;.
+                    Instead of <b>^</b> you can also type a single quote <b>'</b> or a double quote <b>&quot;</b>.
+                    If you don't use p(), make sure that bases or exponents composed by sub-expressions such as additions, subtractions, multiplications or divisions, are clearly marked off by being completely enclosed into parentheses, brackets or braces.
+                    Example: <b style="white-space:nowrap;">(x/3)^(2x)</b>&nbsp;.
+                    Instead of <b style="white-space:nowrap;">x&quot;3</b>, of course, you can also enter <b style="white-space:nowrap;">xxx</b>.
+                    Or, instead of <b style="white-space:nowrap;">tan(x)'2</b> you may type <b style="white-space:nowrap;">tan(x)tan(x)</b>.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>root(</b>arg<b>,</b>index<b>)</b></span>
+                  </td>
+                  <td>
+                    &quot;<i>index</i>-th&quot; root of <i>argument</i>.
+                    Example: <b style="white-space:nowrap;">root(x,6)</b> sixth root of x, <b style="white-space:nowrap;">root[tan(x),4]</b> fourth root of the tangent of x.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>sqrt()</b>
+                  </td>
+                  <td>
+                    Square root of argument (number or expression inside the parentheses). Equivalent to root(<i>argument</i>,2)
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>cbrt()</b>
+                  </td>
+                  <td>
+                    Cube root of argument. Equivalent to root(<i>argument</i>,3)
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>logn(</b>arg<b>,</b>base<b>)</b></span>
+                  </td>
+                  <td>
+                    Logarithm base-<i>base</i> of <i>arg</i>.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>ln()</b>
+                  </td>
+                  <td>
+                    Natural logarithm of argument
+                    (base-E logarithm of argument where E is Euler's constant)
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>lg()</b>
+                  </td>
+                  <td>
+                    Logarithm base-10 of argument, equivalent to <span style="white-space:nowrap;">logn(<i>argument</i>,10)</span>.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>lb()</b>
+                  </td>
+                  <td>
+                    Logarithm base-2 of argument.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>exp()</b>
+                  </td>
+                  <td>
+                    Exponential Function E to the power of argument, equivalent to E^<i>argument</i>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>sin()</b>
+                  </td>
+                  <td>
+                    Sine of argument
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>cos()</b>
+                  </td>
+                  <td>
+                    Cosine
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>tan()</b>
+                  </td>
+                  <td>
+                    Tangent
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>cot()</b></span>
+                  </td>
+                  <td>
+                    Cotangent
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>sec()</b>
+                  </td>
+                  <td>
+                    Secant of argument, equiv. to 1/cos(<i>arg</i>).
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>csc()</b>
+                  </td>
+                  <td>
+                    Cosecant, equiv. to 1/sin(<i>arg</i>).
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>asin()</b></span>
+                  </td>
+                  <td>
+                    Arc sine
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>acos()</b></span>
+                  </td>
+                  <td>
+                    Arc cosine
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>atan()</b></span>
+                  </td>
+                  <td>
+                    Arc tangent
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>acot()</b></span>
+                  </td>
+                  <td>
+                    Arc cotangent
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>asec()</b></span>
+                  </td>
+                  <td>
+                    Arc secant, inverse secant.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>acsc()</b></span>
+                  </td>
+                  <td>
+                    Arc cosecant, inverse cosecant.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>sinh()</b></span>
+                  </td>
+                  <td>
+                    Hyperbolic sine, Sinus hyperbolicus
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>cosh()</b></span>
+                  </td>
+                  <td>
+                    Hyperbolic cosine, Cosinus hyperbolicus
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>tanh()</b></span>
+                  </td>
+                  <td>
+                    Hyperbolic tangent, Tangens hyperbolicus
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>coth()</b></span>
+                  </td>
+                  <td>
+                    Hyperbolic cotangent, Cotangens hyperbolicus
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>sech()</b></span>
+                  </td>
+                  <td>
+                    Hyperbolic secant, Secans hyperbolicus.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>csch()</b></span>
+                  </td>
+                  <td>
+                    Hyperbolic cosecant, Cosecans hyperbolicus.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>asinh()</b></span>
+                  </td>
+                  <td>
+                    Area sine, Area sinus hyperbolicus, inverse sinh().
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>acosh()</b></span>
+                  </td>
+                  <td>
+                    Area cosine, Area cosinus hyperbolicus, inverse cosh().
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>atanh()</b></span>
+                  </td>
+                  <td>
+                    Area tangent, Area tangens hyperbolicus, inverse tanh().
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>acoth()</b></span>
+                  </td>
+                  <td>
+                    Area cotangent, Area cotangens hyperbolicus, inverse cotanh().
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>asech()</b></span>
+                  </td>
+                  <td>
+                    Area- secant, Area secans hyperbolicus, inverse sech().
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>acsch()</b></span>
+                  </td>
+                  <td>
+                    Area- cosecant, Area cosecans hyperbolicus, inverse csch().
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>gaussd(x,</b>mean<b>,</b>sigma<b>)</b></span>
+                  </td>
+                  <td>
+                    Gaussian distribution (&quot;Bell Curve&quot;).
+                    <b style="white-space:nowrap;">gaussd(x,0,1)</b>, by the way, is the special case &quot;Normal distribution density with mean-value=0, standard-deviation=1&quot;.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>min(</b>arg1<b>,</b>arg2<b>)</b></span>
+                  </td>
+                  <td>
+                    Returns the lesser of the two arguments
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <span style="white-space:nowrap;"><b>max(</b>arg1<b>,</b>arg2<b>)</b></span>
+                  </td>
+                  <td>
+                    Returns the greater of the two arguments
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b style="white-space:nowrap;">round()</b>
+                  </td>
+                  <td>
+                    Rounds argument up or down to the closest integer
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b style="white-space:nowrap;">floor()</b>
+                  </td>
+                  <td>
+                    Rounds arg down.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b style="white-space:nowrap;">ceil()</b>
+                  </td>
+                  <td>
+                    Rounds arg up.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>abs()</b> or <b>|&nbsp;|</b>
+                  </td>
+                  <td>
+                    Absolute value of argument.
+                    Example: <b style="white-space:nowrap;">2abs(sin[x])</b> or alternatively <b style="white-space:nowrap;">2|sin(x)|</b>&nbsp;.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>sgn()</b>
+                  </td>
+                  <td>
+                    Sign Function.
+                    <br>
+                    <table>
+                      <tr>
+                        <td rowspan="3" valign="middle">
+                          <b style="white-space:nowrap;">sgn(x)</b>&nbsp;&nbsp;=&nbsp;&nbsp;
+                        </td>
+                        <td>&nbsp;1 for x &gt; 0</td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;0 for x = 0</td>
+                      </tr>
+                      <tr>
+                        <td>-1 for x &lt; 0</td>
+                      </tr>
+                    </table> 
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td align="left">
+              <big>&nbsp;<br><b>Predefined Constants, Values</b></big> <small>upper/lower case is arbitrary</small>
+              <table>
+                <tr>
+                  <td valign="top">
+                    <b>rand</b>
+                  </td>
+                  <td>
+                    Random number between 0 und 1. Example:<br><b style="white-space:nowrap;">pi*rand*sin(x)</b> or even <b style="white-space:nowrap;">Pirandsin(x)</b>&nbsp;.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>E</b>
+                  </td>
+                  <td>
+                    Euler's constant 2.718281828459045...
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>LN2</b>
+                  </td>
+                  <td>
+                    Natural logarithm of 2, is 0.6931471805599453...
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>LN10</b>
+                  </td>
+                  <td>
+                    Natural logarithm of 10, is 2.302585092994046...
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>LOG2E</b>
+                  </td>
+                  <td>
+                    Base-2 logarithm of E (E: see above), is 1.4426950408889633...
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>LOG10E</b>
+                  </td>
+                  <td>
+                    Base-10 logarithmus of E, is 0.4342944819032518...
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>PHI</b>
+                  </td>
+                  <td>
+                    Golden Ratio 1.61803398874989...
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>PI</b>
+                  </td>
+                  <td>
+                    3.141592653589793...
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>SQRT1_2</b>
+                  </td>
+                  <td>
+                    Square root of 1/2, is 0.7071067811865476...
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">
+                    <b>SQRT2</b>
+                  </td>
+                  <td>
+                    Square root of 2, is 1.4142135623730951...
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td align="left">
+              <big>&nbsp;<br><b>Notes</b></big>
+              <br>
+              Enter functions in standard mathematical notation, using x as independent variable.
+              As evident from the examples on this page, arguments to helper functions must be enclosed into parentheses (or braces or brackets).
+              <br>&nbsp;<br>
+              Grouping symbols such as parentheses, and helper functions may be arbitrarily deeply nested. Examples:<br>
+              <b style="white-space:nowrap;">cos[atan(5x)^4]</b> or <b style="white-space:nowrap;">sqrt{16*[1-sec(x)^2/4]}</b>
+              <br>&nbsp;<br>
+              The function plotter engine follows the common rules of math. notation and order of operation;
+              for example, expressions inside parentheses have increased precedence, * and / have higher precedence than + and -, etc..
+              In case no grouping symbols are used, <b style="white-space:nowrap;">2*x-3/x</b> evaluates as if it were <b style="white-space:nowrap;">(2*x) - (3/x)</b>.
+              <br>&nbsp;<br>
+              Since horizontal fraction lines aren't available to clearly mark off fraction expressions composed by sub-expressions, is is recommended to insert numerator and denominator each completely into parentheses (or brackets or braces).
+              For example, type in <b style="white-space:nowrap;">pi-(5-x)/(3x)*acoth(x)</b> instead of <b style="white-space:nowrap;">pi-5-x/3x*acoth(x)</b> which otherwise would evaluate to <b style="white-space:nowrap;">pi-5-(x/3)*x*acoth(x)</b>.
+              <br>&nbsp;<br>
+              Upper and lower case may be arbitrarily used and mixed, even for predefined constants.
+              Spaces may be used for clarity as you wish, but neither help nor harm; the program engine ignores them.
+              <br>&nbsp;<br>
+              Range of x (x&nbsp;min to x&nbsp;max) should not extend beyond minus 10<sup>12</sup> and plus 10<sup>12</sup>.
+              Range of y (y&nbsp;min to y&nbsp;max) is optional; if not specified, the function-grapher engine tries to evaluate it for the specified x range.
+              <br>&nbsp;<br>
+            </td>
+          </tr>
+          <tr>
+            <td align="left">
+              <big>&nbsp;<br><b>Multiple Functions at Once</b></big>
+              <br>
+              You may enter up to 5 functions simultaneously, each terminated by a semicolon.
+              Of course building the diagram then will take more time, possibly several seconds.
+              Example (you may copy it into the function input):<br>
+              <b>
+                sqrt[16*(1-x&sup2;/2)];<br>
+                -sqrt[16*(1-x&sup2;/2)];<br>
+                sqrt[2*(1-x&sup2;/16)];<br>
+                -sqrt[2*(1-x&sup2;/16)]
+              </b>
+            </td>
+          </tr>
+          <tr>
+            <td align="left">
+              <big>&nbsp;<br><b>Create Fourier Series</b></big>
+              <br>
+              <table cellpadding="5">
+                <tr>
+                  <td align="left" bgcolor="#eeeeee">
+                    <small>
+                    The Fourier Series will be written into the lightblue area below.
+                    <br>
+                    You may copy it from there, and enter it into the input of the Function Grapher
+                    <br>&nbsp;<br></small>
+                    <b>n:</b>
+                    from <input name="FOU_NA" type="text" size="4" value="1">
+                    to <input name="FOU_NZ" type="text" size="4" maxlength="4" value="10">
+                    step width <input name="FOU_DN" type="text" size="4" value="1">
+                    <br>
+                    Single terms:
+                    Add<input type="radio" name="FOU_SGN" checked>
+                    subtract<input type="radio" name="FOU_SGN">
+                    or alternate, beginning with plus<input type="radio" name="FOU_SGN">
+                    minus<input type="radio" name="FOU_SGN" checked>
+                    <br>
+                    <b>Single term:</b>
+                    <input name="FOU_TERM" type="text" size="44" value="0.9^n * cos(n*x)/2">
+                    <input class="bt2" type="button" value="Create Fourier Series" onclick="mkFourier(this.form)">
+                    <br>
+                    <textarea name="FOU_OUT" cols="82" rows="20" style="background:#d3e6ff;"></textarea>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td align="center">
+              <table cellpadding="40">
+                <tr>
+                  <td><a href="#top"><img border="0" src="../images/topOfPage.gif" alt="Seitenanfang" width="21" height="20"></a></td>
+                  <td><a href="../index.htm" target="_top">Home</a></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <hr width="95%" size="1" noshade>
+        <table width="740">
+          <tr>
+            <td>
+              <small>Walter Zorn
+              <br><a href="http://www.kreuzotter.de/impressum.htm">Impressum and about this page</a></small>
+              <br>
+              &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </center>
+  </form>
+<script type="text/javascript">
+<!--
+var G_LANG = "E";
+//-->
+</script>
+<script type="text/javascript" src="../scripts/wz_grapher.js"></script>
+<script type="text/javascript" src="../scripts/wz_grapherstr.js"></script>
+</body>
+</html>
+

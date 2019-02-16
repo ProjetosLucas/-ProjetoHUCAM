@@ -1,0 +1,903 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="expires" content="0">
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+<title>Drag &amp; Drop f&uuml;r Bilder und Layer: Liste der Updates</title>
+<link rel="stylesheet" type="text/css" href="../newwalterzorn.css">
+</head>
+<body bgcolor="#ffffff">
+<script type="text/javascript" src="http://www.walterzorn.de/en/scripts/wz_dragdrop.js"></script>
+<a name="top"> </a>
+  <center>
+    <table cellpadding="6">
+      <tr>
+        <td align="center"><a href="../index.htm"><img name="logo" border="0" src="../images/logo.gif" alt="Home" width="271" height="30"></a></td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td>
+          &nbsp;<br>
+          <b><big>
+		  &middot;&nbsp;<a href="dragdrop.htm" target="_top">Hauptseite: Drag&amp;Drop, DHTML f&uuml;r Bilder und Layer</a>
+		  <br>
+          &middot;&nbsp;<a href="commands.htm" target="_top">Optionale Kommandos</a>
+          <br>
+          &middot;&nbsp;<a href="api.htm" target="_top">DHTML API, Drag-Drop-Elemente mit JavaScript steuern</a>
+          <br>
+          &middot;&nbsp;<a href="dragdrop.htm#download" target="_top">Download</a>
+          <br>&nbsp;
+          </big></b>
+        </td>
+      </tr>
+    </table>
+  </center>
+  <br>
+  <table>
+    <tr>
+      <td><img src="../images/transparentpixel.gif" width="90" height="1" alt=""></td>
+      <td>
+        <table cellspacing="5">
+          <tr>
+            <td colspan="2"><b><big>Liste der Updates</big></b></td>
+          </tr>
+          <tr>
+            <td><b>Version</b></td>
+            <td><br></td>
+          </tr>
+          <tr>
+            <td valign="top">4.91&nbsp;(10.&nbsp;10.&nbsp;2008):&nbsp;</td>
+            <td>
+              Fix: Transparenz (Opazitätsfilter) der Drag&amp;Drop-Elemente funktioniert auch im Opera 9.5+.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.9&nbsp;(8.&nbsp;5.&nbsp;2008):&nbsp;</td>
+            <td>
+              Wichtiger Fix:
+              Neuberechnung von Position und Gr&ouml;&szlig;e der Elemente funktionierte nicht, wenn es auf der Seite relativ positionierte Elemente als direkte Kinder des BODY-Elements gab.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.89&nbsp;(13.&nbsp;6.&nbsp;2007):&nbsp;</td>
+            <td>
+              Fix: Im IE bdauerte das Entladen einer Seite mit sehr vielen Drag&amp;Drop-Elementen bisweilen mehrere Sekunden.
+              Dank an Miguel M., der die Ursache herausgefunden hat.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.88&nbsp;(31.&nbsp;1.&nbsp;2007):&nbsp;</td>
+            <td>
+              ADD_DHTML() akzeptiert jetzt mehrere Layer (DIVs) als (komma-separierte) Argumente.
+              Implementiert von Christian Binder, <a href="http://www.egroupware.org/">eGroupWare</a>.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.87&nbsp;(29.&nbsp;11.&nbsp;2006):&nbsp;</td>
+            <td>
+              * Kleine Geschwindigkeitsoptimierungen.
+              <br><small>&nbsp;</small><br>
+              ! Workaround um den &quot;False, erraneous deprecation warnings&quot;-Bug von Firefox 2.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.86&nbsp;(6.&nbsp;11.&nbsp;2006):&nbsp;</td>
+            <td>
+              Neue Methoden: <tt>setHorizontal()</tt> und <tt>setVertical()</tt> (Parameter: true oder false).
+              Abfrage &uuml;ber die Eigenschaften <tt>horizontal</tt> und <tt>vertical</tt>.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.85&nbsp;(10.&nbsp;2.&nbsp;2006):&nbsp;</td>
+            <td>
+              Transparenz (TRANSPARENT-Kommando, setOpacity()-Methode) funktioniert auch im Opera 9.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.84&nbsp;(6.&nbsp;1.&nbsp;2006):&nbsp;</td>
+            <td>
+              Kleine &Auml;ndernungen.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.83&nbsp;(9.&nbsp;12.&nbsp;2005):&nbsp;</td>
+            <td>
+              Generell verbesserte Kompatibilit&auml;t mit XHTML-Dokumenten und AJAX-Anwendungen.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.82&nbsp;(9.&nbsp;11.&nbsp;2005):&nbsp;</td>
+            <td>
+              Auto-Scroll-Funktion läuft in Opera 8 und Opera 9.0.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.81&nbsp;(6.&nbsp;10.&nbsp;2005):&nbsp;</td>
+            <td>
+              Fixed: <tt>copy()</tt> -Methode funktionierte manchmal nicht im IE.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.8&nbsp;(23.&nbsp;9.&nbsp;2005):&nbsp;</td>
+            <td>
+              + Neue wichtige und wie ich meine n&uuml;tzliche :-) Methode <tt>getEltBelow()</tt>.
+              Liefert das unter dem betreffenden Element liegende Element zur&uuml;ck, oder <tt>null</tt>.
+              Z.B. w&uuml;rde eine Zeile <tt>dd.obj.getEltBelow();</tt> in <tt>my_DropFunc()</tt> direkt das Element zur&uuml;ckliefern, auf dem das verschobene Element abgelegt wurde.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.7&nbsp;(14.&nbsp;8.&nbsp;2005):&nbsp;</td>
+            <td>
+              + Mehr Flexibilit&auml;t. Mit den Methoden
+              <tt>setPickFunc(<i>FunctionName</i>)</tt>, <tt>setDragFunc(<i>FunctionName</i>)</tt>, <tt>setResizeFunc(<i>FunctionName</i>)</tt> und <tt>setDropFunc(<i>FunctionName</i>)</tt>
+              k&ouml;nnen jetzt jedem Drag&amp;Drop-Element sehr einfach individuelle Eventhandler-Funktionen zugewiesen werden:
+              Beispiel:
+              <br>
+              Eine Programmzeile<br>
+              <tt>dd.elements.someName.setDropFunc(mySomeNameDropFunc);</tt>
+              <br>
+              w&uuml;rde der Bibliothek mitteilen, dass stets, wenn das Element <tt>&quot;someName&quot;</tt> abgelegt wird, automatisch <tt>mySomeNameDropFunc()</tt> aufgerufen werden soll.
+              <br><small>&nbsp;</small><br>
+              * Weiter verbesserte R&uuml;cksichtnahme auf andere Skripte:
+              Das beim Draggen verarbeitete Mousemove-Event wird jetzt automatisch weitergeleitet, sofern andere Mousemove-Eventhandler-Funktionen auf der Seite definiert sind.
+              Analog dazu werden Onunload-Events weitergeleitet, wenn der Benutzer die Seite verl&auml;sst.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.62&nbsp;(7.&nbsp;6.&nbsp;2005):&nbsp;</td>
+            <td>
+              * Neue Eigenschaft <tt>index</tt>, enth&auml;lt den Index des Elements innerhalb des <tt>dd.elements</tt> -Arrays.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.61&nbsp;(21.&nbsp;11.&nbsp;2004):&nbsp;</td>
+            <td>
+              * <tt>SET_DHTML()</tt> kann jetzt auch ganz ohne Argument(e) aufgerufen werden, um das Script lediglich zu initialisieren, beispielsweise f&uuml;r die sp&auml;tere Verwendung von <tt>ADD_DHMTL()</tt> (siehe <a href="api.htm">DHTML API, JavaScript-Steuerung</a>).
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.6&nbsp;(18.&nbsp;11.&nbsp;2004):&nbsp;</td>
+            <td>
+              + Neues Kommando <tt>TRANSPARENT.</tt>
+              Es kann sowohl auf Layer (positionierte DIVs) als auch auf Bilder angewendet werden und bewirkt,
+              dass diese Elemente w&auml;hrend des Draggens halbtransparent sind.
+              <br><small>&nbsp;</small><br>
+              + Neue Methode <tt>setOpacity()</tt>.
+              Setzt die Opazit&auml;t, also den Grad der Undurchsichtigkeit eines Bildes oder DIVs.
+              Parameter muss eine Dezimalpunktzahl zwischen 0.0 (vollkommen durchsichtig, also unsichtbar) und 1.0 (undurchsichtig, Normalzustand) sein.
+              <br><small>&nbsp;</small><br>
+              Sowohl <tt>TRANSPARENT</tt> als auch <tt>setOpacity()</tt> zeigen nur in Gecko-Browsern (Mozilla, Firefox etc.) und im Windows-IE Wirkung.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.56&nbsp;(29.&nbsp;10.&nbsp;2004):&nbsp;</td>
+            <td>
+              * Der IE st&uuml;rzt nun nicht mehr ab, wenn man auf die Aufschrift eines deaktivierten Buttons klickt (ein Bug im IE, nicht in wz_dragdrop.js).
+              <br><small>&nbsp;</small><br>
+              * Die Bibliothek ber&uuml;cksichtigt jetzt auch den Z-Index von Elementen, deren Drag&amp;Drop-F&auml;higkeit mit dem NO_DRAG-Kommando oder der setDraggable(false)-Methode abgeschaltet wurde.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.55&nbsp;(17.&nbsp;5.&nbsp;2004):&nbsp;</td>
+            <td>
+              + Die <tt>.hide()</tt> -Methode akzeptiert jetzt einen optionalen Parameter (Wert: true), der die CSS-Eigenschaft display des Elements auf &quot;none&quot; setzt, anstatt nur die Eigenschaft visibility auf &quot;hidden&quot;.
+              (Die Bibliothek &quot;merkt&quot; sich den vorherigen display-Zustand, weshalb die <tt>.show()</tt> -Methode in keinem Fall einen Parameter erfordert.)
+              <br><small>&nbsp;</small><br>
+              * Das automatische Scrollen (SCROLL Kommando) funktioniert jetzt auch im Mac Safari.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.54&nbsp;(9.&nbsp;5.&nbsp;2004):&nbsp;</td>
+            <td>
+              + Neu: <tt>text</tt> -Eigenschaft f&uuml;r Drag&amp;Drop&amp;DHTML Elemente.
+              Enth&auml;lt das HTML, das mittels der <tt>write()</tt> -Methode in den Layer geschrieben wurde.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.53&nbsp;(9.&nbsp;4.&nbsp;2004):&nbsp;</td>
+            <td>
+              * Workaround f&uuml;r Speicherleck des IE.
+              Dieses Speicherleck (ein Bug im IE, nicht in wz_dragdrop.js) lie&szlig; bei wiederholtem Neuladen einer Seite den Speicherverbrauch permanent ansteigen.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.52&nbsp;(2.&nbsp;2.&nbsp;2004):&nbsp;</td>
+            <td>
+              * Bugfix: Auch Dropdown-Listenelemente (SELECT) funktionieren jetzt (lassen sich ausklappen) innerhalb von Drag&amp;Drop-Elementen.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.51&nbsp;(13.&nbsp;11.&nbsp;2003):&nbsp;</td>
+            <td>
+              + <tt>del()</tt> Methode neu, setzt DHTML- und Drag&amp;Drop-F&auml;higkeit des Elements au&szlig;er Kraft und entfernt es wieder aus dem <tt>dd.elements</tt> -Array.
+              Insbesondere n&uuml;tzlich, wenn Layer wieder entfernt werden sollen, die dynamisch per ADD_DHTML() hinzugef&uuml;gt worden sind.
+              Bsp: <tt>dd.elements.someName.del();</tt>
+              <br><small>&nbsp;</small><br>
+              * Erkennt jetzt automatisch den Z-Index auch von Bildern.
+              Anmerkung: Damit das auch im Opera 7 funktioniert, CSS-Attribute am besten inline, also innerhalb der betreffenden HTML-Tags deklarieren -
+              Opera 7 erlaubt nicht (bzw. nur umst&auml;ndlich) das Auslesen von nicht-inline deklarierten CSS-Attributen.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.5&nbsp;(12.&nbsp;10.&nbsp;2003):&nbsp;</td>
+            <td>
+              * Funktioniert jetzt auch im Safari (Workaround f&uuml;r Safari's &quot;for-Schleifen&quot;-Bug).
+              Thanks to Matthew S. Clark for tracking down and precisely reporting this Safari bug.
+              <br><small>&nbsp;</small><br>
+              + Kommando CURSOR_TEXT hinzugef&uuml;gt, setzt Text-Cursor &uuml;ber betroffenem Drag&amp;Drop-Element.
+              <br><small>&nbsp;</small><br>
+              + setCursor() Methode neu, erlaubt es, nachtr&auml;glich den Cursor des Drag&amp;Drop-Elements zu &auml;ndern.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.49&nbsp;(20.&nbsp;9.&nbsp;2003):&nbsp;</td>
+            <td>
+              * Autoscroll-Funktionalit&auml;t ist nicht von Haus aus aktiviert, sondern nur nach Anwendung des SCROLL-Kommandos.
+              Performance-Optimierungen, Quelltext verk&uuml;rzt.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.48&nbsp;(11.&nbsp;9.&nbsp;2003):&nbsp;</td>
+            <td>
+              + Neue Methoden <tt>setResizable()</tt> und <tt>setScalable()</tt>
+              k&ouml;nnen jederzeit die M&ouml;glichkeit aktivieren/deaktivieren, die Gr&ouml;&szlig;e des betreffenden Elements mit der Maus plus Steuerung- oder Umschalttaste zu ver&auml;ndern.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.47&nbsp;(31.&nbsp;8.&nbsp;2003):&nbsp;</td>
+            <td>
+              * Geschwindigkeitsverbesserung beim Ermitteln von Positionierungen.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.46&nbsp;(30.&nbsp;5.&nbsp;2003):&nbsp;</td>
+            <td>
+              + Neue Kommandos <img name="deddie" src="http://www.walterzorn.de/en/images/dragdrop/deddie.jpg" width="90" height="62" alt=""> <tt>MAXWIDTH, MAXHEIGHT, MINWIDTH, MINHEIGHT</tt> setzen eine Ober- bzw. Untergrenze f&uuml;r die Gr&ouml;&szlig;e, bis zu der ein Element nach Anwendung des <tt>RESIZABLE</tt>- oder <tt>SCALABLE</tt>-Kommandos mit Maus+&lt;Steuerung&gt; oder Maus+&lt;Umschalt&gt; vergr&ouml;&szlig;ert bzw. verkleinert werden kann.
+              <br><small>&nbsp;</small><br>
+              + Auch verschachtelte Layer sind jetzt dhtml- und drag&amp;drop-f&auml;hig.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.45&nbsp;(20.&nbsp;5.&nbsp;2003):&nbsp;</td>
+            <td>
+              + Neue Methode <tt>.setDraggable()</tt> kann mit dem Parameter <tt>false</tt> die Drag&amp;Drop-F&auml;higkeit eines Elements deaktivieren und mit dem Paramter <tt>true</tt> wiederherstellen.
+              <br><small>&nbsp;</small><br>
+              + Neue Eigenschaft <tt>.bgColor</tt> enth&auml;lt die momentane Hintergrundfarbe eines Layers.
+              <br><small>&nbsp;</small><br>
+              * Das <tt>dd.elements</tt>-Array und die einzelnen <tt>dd.elements....</tt>-Objekte (dhtml- und drag&amp;drop-f&auml;hige Elemente) mitsamt ihren Methoden und Eigenschaften werden &quot;virtuell&quot; auch in Browsern angelegt, die die Bibliothek eigentlich nicht interpretieren k&ouml;nnen, vorausgesetzt allerdings, JS1.2-Syntax wird verstanden.
+              Somit ist es bei erweitertem Scripting nicht mehr unbedingt erforderlich, die Existenz der einzelnen Elemente abzufragen, um JS-Fehlermeldungen zu vermeiden.
+              Eine Zeile wie <tt>dd.elements.someName.moveTo(200,600);</tt> beispielsweise w&uuml;rde in einem solchen Browser zwar nichts bewirken, aber auch keine Fehlermeldung erzeugen.
+              <br><small>&nbsp;</small><br>
+              * Bug der Auto-Scroll-Funktionalit&auml;t behoben: Relativ positionierte Layer verschwanden beim Draggen bis zum Fensterrand bisweilen aus dem sichtbaren Fensterbereich
+              (in Browsern, die f&uuml;r absolut positionierte, aber nicht f&uuml;r relativ positionierte Layer Fensterscrollbalken erzeugen/ver&auml;ndern).
+              <br><small>&nbsp;</small><br>
+              * Bug behoben, der im Mac-IE und Windows-IE 5.0 bei Verwendung des <tt>CURSOR_HAND</tt>-Kommandos auftrat.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.44&nbsp;(13.&nbsp;5.&nbsp;2003):&nbsp;</td>
+            <td>
+              * CURSOR-Kommandos lassen sich jetzt auch individuell (f&uuml;r einzelne Drag&amp;Drop-Elemente) verwenden.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.43&nbsp;(5.&nbsp;5.&nbsp;2003):&nbsp;</td>
+            <td>
+              + Neues globales und individuelles Kommando: SCALABLE.
+              Erlaubt wie RESIZABLE (fr&uuml;her KEYDOWN_RESIZE), mit der Maus die Gr&ouml;&szlig;e des Elements zu ver&auml;ndern, wenn &lt;Strg&gt; oder &lt;Umschalt&gt; gedr&uuml;ckt gehalten wird.
+              SCALABLE erzwingt aber, dass das Verh&auml;ltnis Breite/H&ouml;he erhalten bleibt, das Element also nur skaliert werden kann.
+              <br><small>&nbsp;</small><br>
+              + Auch Elemente, auf die lediglich das RESIZABLE-Kommando angewendet wurde, behalten ihr Breite/H&ouml;he-Verh&auml;ltnis bei, sofern &lt;Strg&gt; und &lt;Umschalt&gt; gleichzeitig gedr&uuml;ckt gehalten werden.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.42&nbsp;(3.&nbsp;5.&nbsp;2003):&nbsp;</td>
+            <td>
+              * Wenn ein Layer gedragt wird, werden eingebettete Iframes und Applets unsichtbar gemacht und k&ouml;nnen deshalb den Drag-Vorgang nicht mehr behindern.
+              <br><small>&nbsp;</small><br>
+              * Drag&amp;Drop-Elemente lassen sich nicht mehr mit der Maus vollst&auml;ndig aus dem sichtbaren Fensterbereich hinausschieben,
+              sondern nur soweit, dass mindestens ein 1 Pixel breiter bzw. hoher Randbereich sichtbar bleibt.
+              So soll vermieden werden, dass 1.) der Mozilla wg. eines internen Bugs h&auml;ngen bleibt und 2.) der Benutzer im Anschluss an das Droppen die Kontrollm&ouml;glichkeit &uuml;ber das Element verliert.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.41&nbsp;(25.&nbsp;4.&nbsp;2003):&nbsp;</td>
+            <td>
+              + Neue Eigenschaften <tt>original</tt> (verweist auf das Original von kopierten Bildern) und <tt>src</tt> (Pfad des momentanen Bildes).
+              <br><small>&nbsp;</small><br>
+              + Methode <tt>copy()</tt> kann mehrere Kopien auf einmal erzeugen.
+              Au&szlig;erdem h&auml;ngt die Methode jetzt Kopien automatisch in denjenigen Elternlayer ein, zu dem auch das Original zum Zeitpunkt des Kopiervorgangs geh&ouml;rt.
+              <br><small>&nbsp;</small><br>
+              + Neuer Funktionsrumpf f&uuml;r erweitertes Scripting: my_ResizeFunc().
+              Wird automatisch aufgerufen, w&auml;hrend die Gr&ouml;&szlig;e eines Elements mit der Maus ver&auml;ndert wird (Resize-Modus).
+              <br><small>&nbsp;</small><br>
+              * SET_DRAGGABLE() und ADD_DRAGGABLE() in SET_DHTML() und ADD_DHTML() umbenannt.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.4&nbsp;(23.&nbsp;4.&nbsp;2003):&nbsp;</td>
+            <td>
+              + Die Methode addChild() erlaubt es, Bilder nachtr&auml;glich in einen Layer einzuh&auml;ngen, also dem Layer als neue &quot;Kinder&quot; zuzuweisen.
+              Die Methode kann sogar anderen Layern ihre Bilder &quot;stehlen&quot;.
+              <br><small>&nbsp;</small><br>
+              + Methode <tt>copy()</tt> zum dynamischen Kopieren von Bildern.
+              <br><small>&nbsp;</small><br>
+              * Die Drag'nDrop-F&auml;higkeit von Elementen wird jetzt schneller initialisiert,
+              und zwar sobald SET_DRAGGABLE() ausgef&uuml;hrt wurde, nicht mehr erst dann, wenn der Ladevorgang der Seite abgeschlossen ist.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.3&nbsp;(17.&nbsp;4.&nbsp;2003):&nbsp;</td>
+            <td>
+              Formularelemente innerhalb von Drag'nDrop-Layern sind uneingeschr&auml;nkt editierbar; auch Text kann selektiert werden, ohne dass der Layer bei der Mausbewegung gedragt wird.
+              Wert&uuml;bergabe an Kommandos vereinfacht.
+              Kommandos f&uuml;r maximalen Drag-Abstand von Ursprungsposition implementiert.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.21&nbsp;(15.&nbsp;4.&nbsp;2003):&nbsp;</td>
+            <td>
+              Bugfix: Unsichtbare Layer wurden bei Ausf&uuml;hrung der Gr&ouml;&szlig;enermittlungsfunktion unbeabsichtigt auf sichtbar gesetzt.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.2&nbsp;(7.&nbsp;4.&nbsp;2003):&nbsp;</td>
+            <td>
+              Kann Layerinhalte neu schreiben und Hintergrundfarben &auml;ndern.
+              Neue Methoden implementiert, die Bilder jederzeit nachtr&auml;glich von ihrem Elternlayer unabh&auml;ngig oder wieder abh&auml;ngig machen k&ouml;nnen.
+              Weiterentwickelte Neuberechnung von Elementpositionen nach Fenster- oder Layergr&ouml;&szlig;en&auml;nderungen:
+              Bilder und relativ positionierte Layer behalten grunds&auml;tzlich ihre relative Position in der Seitenstruktur bei, also ihren Abstand zu ihrem Default-Platz.
+              Aus der Funktion my_DropFunc() f&uuml;r erweitertes Scripting heraus, die beim Droppen aufgerufen wird, kann jetzt problemlos die hide()-Methode des gedroppten Elements aufgerufen werden.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.12&nbsp;(25.&nbsp;3.&nbsp;2003):&nbsp;</td>
+            <td>
+              Drag-Drop-Layer behalten ihre CSS-overflow-Eigenschaft bei.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.11&nbsp;(20.&nbsp;3.&nbsp;2003):&nbsp;</td>
+            <td>
+              dd.srcy-statt-dd.scry-Tippfehler-Bug behoben, der unter bestimmten Umst&auml;nden zu automatischem Scrollen führte, auch wenn sich der Mauszeiger beim Draggen nicht in der N&auml;he des Fensterrandes befand.
+              Offset-Bug behoben, der im IE bei auf oberster Ebene unterhalb des &lt;body&gt; relativ positionierten Layern auftrat.
+              Auch in Browsern, die strikt dem W3C-Box-Modell folgen, schlie&szlig;en die Eigenschaften w (Breite) und h (H&ouml;he) zuverl&auml;ssig Rand- und Padding-Weite mit ein.
+              Schlankerer Code.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.1&nbsp;(18.&nbsp;3.&nbsp;2003):&nbsp;</td>
+            <td>
+              Layer k&ouml;nnen auch jederzeit nachtr&auml;glich drag-drop-f&auml;hig gemacht werden, also nach Abschluss des Ladevorgangs.
+              Dazu muss, f&uuml;r jeden neu hinzuzuf&uuml;genden Layer einzeln, die Funktion ADD_DRAGGABLE('layerName'+Kommando1+Kommando2...) aufgerufen werden.
+              Schlankerer Workaround um den Element-Offset-Bug des IE&nbsp;5+ (Windows) bei relativ positionierten Layern.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">4.0&nbsp;(14.&nbsp;3.&nbsp;2003):&nbsp;</td>
+            <td>
+              <table cellpadding="0" cellspacing="0">
+                <tr valign="top">
+                  <td>&middot;&nbsp;</td>
+                  <td>
+                    Code &uuml;ber weite Strecken neu geschrieben.<br>&nbsp;
+                  </td>
+                </tr>
+                <tr valign="top">
+                  <td>&middot;</td>
+                  <td>
+                    <b>Relativ positionierte Layer (DIV-Elemente) werden unterst&uuml;tzt.</b>
+                    Dabei wird auch das in manchen Browsern stattfindende Page-Reflow ber&uuml;cksichtigt.<br>&nbsp;
+                  </td>
+                </tr>
+                <tr valign="top">
+                  <td>&middot;</td>
+                  <td>
+                    <b>Die Gr&ouml;&szlig;e von Drag-Drop-Elementen (sowohl Bildern als auch Layern) kann mit der Maus ge&auml;ndert werden</b>, wenn bei der Drag-Bewegung &lt;Ctlr&gt; oder &lt;Shift&gt; gedr&uuml;ckt gehalten wird.<br>&nbsp;
+                  </td>
+                </tr>
+                <tr valign="top">
+                  <td>&middot;</td>
+                  <td>
+                    moveBy() und <a href="javascript:void(0);" onclick="if(window.dd &amp;&amp; dd.elements.smileH) dd.elements.smileH.resizeBy(Math.round(dd.elements.smileH.w*1.2), Math.round(dd.elements.smileH.w*1.2));return false;">resizeBy()</a> Methoden implementiert;
+                    f&uuml;r eigene JavaScript-Programme oftmals bequemer zu verwenden als moveTo() und <a href="javascript:void(0);" onclick="if(window.dd &amp;&amp; dd.elements.smileH) dd.elements.smileH.resizeTo(dd.elements.smileH.defw, dd.elements.smileH.defh);return false;">resizeTo()</a>.<br>&nbsp;
+                  </td>
+                </tr>
+                <tr valign="top">
+                  <td>&middot;</td>
+                  <td>
+                    Dar&uuml;berhinaus stellt die API weitere neue Eigenschaften und Methoden zur Verf&uuml;gung.<br>&nbsp;
+                  </td>
+                </tr>
+                <tr valign="top">
+                  <td>&middot;</td>
+                  <td>
+                    VERTICAL-Kommando <img name="smileV" src="http://www.walterzorn.de/en/images/smile.gif" width="11" height="11" alt="">: Element l&auml;sst sich mit der Maus nur vertikal verschieben.
+                    <br>
+                    HORIZONTAL-Kommando <img name="smileH" src="http://www.walterzorn.de/en/images/smile.gif" width="11" height="11" alt="">: erlaubt ausschlie&szlig;lich horizontales Draggen.<br>&nbsp;
+                  </td>
+                </tr>
+                <tr valign="top">
+                  <td>&middot;</td>
+                  <td>
+                    Drag-Vorgang kann im Mozilla keine Mouse Gestures mehr ausl&ouml;sen.<br>&nbsp;
+                  </td>
+                </tr>
+                <tr valign="top">
+                  <td>&middot;</td>
+                  <td>
+                    Seite wird automatisch gescrollt, wenn der Mauszeiger beim Draggen in die N&auml;he des Fensterrandes kommt
+                    (Scroll-Geschwindigkeit nicht-linear abh&auml;ngig vom Abstand zum Fensterrand).
+                    Diese Funktionalit&auml;t l&auml;sst sich mit dem f&uuml;r einzelne Elemente oder global verwendbaren NO_SCROLL-Kommando unterdr&uuml;cken.<br>&nbsp;
+                  </td>
+                </tr>
+                <tr valign="top">
+                  <td>&middot;</td>
+                  <td>
+                    Mousedown auf Scrollbar l&ouml;st keinen Drag-Vorgang mehr aus (au&szlig;er u.U. in &auml;lteren Mozillas vor Version 1.0 mit ihrem window.innerWidth-Fehler).<br>&nbsp;
+                  </td>
+                </tr>
+                <tr valign="top">
+                  <td>&middot;</td>
+                  <td>
+                    Variablen so umbenannt, dass Variablennamenskonflikte mit anderen Scripten unwahrscheinlicher sind.<br>&nbsp;
+                  </td>
+                </tr>
+                <tr valign="top">
+                  <td>&middot;</td>
+                  <td>
+                    Viele weitere kleine Verbesserungen/Neuheiten.
+                  </td>
+                </tr>
+              </table>
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td align="center" colspan="2" height="150">
+              <hr size="1" width="300" noshade>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">3.47&nbsp;(23.&nbsp;2.&nbsp;2003):&nbsp;</td>
+            <td>
+              Verbesserterer Umgang mit den Z-Indices der Drag-Drop-Elemente.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">3.46&nbsp;(19.&nbsp;2.&nbsp;2003):&nbsp;</td>
+            <td>
+              Jetzt stehen drei leere Funktionsr&uuml;mpfe f&uuml;r Script-Erweiterungen zur Verf&uuml;gung.
+              Diese Funktionen werden aufgerufen, wenn ein Drag-Vorgang startet, w&auml;hrend er andauert, und sobald er abgeschlossen wird.
+              Innerhalb dieser Funktionen k&ouml;nnen beispielsweise das momentane Drag-Objekt und seine Koordinaten abgefragt werden.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">3.45&nbsp;(12.&nbsp;2.&nbsp;2003):&nbsp;</td>
+            <td>
+              Schnellere Initialisierung der Drag-Drop-Bilder im Netscape 4.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">3.44&nbsp;(9.&nbsp;2.&nbsp;2003):&nbsp;</td>
+            <td>
+              Verringerter Speicherbedarf, weil die meisten Methoden der Drag-Drop Elemente jetzt als vererbbare Prototypen angelegt sind.
+              moveTo()-Methode eines Drag-Drop-Layers bezieht automatisch auch dessen Kinder (Bilder) mit ein.
+              Verbesserter Umgang mit Z-Indizes; insbesondere  Bilder innerhalb von Drag-Drop-Layern behalten auch bei Drag-Aktionen ihres Elternlayers ihre relativen Z-Indizes bei.
+              Beschr&auml;nkung auf JavaScript-1.1-Syntax aufgehoben, Script teilweise nach JavaScript 1.2 &uuml;bersetzt =&gt; trotz Funktionalit&auml;tserweiterung etwas verringerte Dateigr&ouml;&szlig;e.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">3.43&nbsp;(7.&nbsp;2.&nbsp;2003):&nbsp;</td>
+            <td>
+              Verbessertes Browser-Sniffing: Gecko-Browser-Erkennung jetzt unabh&auml;ngig von UserAgent-Einstellung.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">3.42&nbsp;(2.&nbsp;2.&nbsp;2003):&nbsp;</td>
+            <td>
+              Neue Eigenschaft f&uuml;r Drag-Drop-Elemente: name.
+              Liefert den Bildnamen bzw. die Layer-ID zur&uuml;ck, die SET_DRAGGABLE() &uuml;bergeben wurde.
+              <b>Breiten- und H&ouml;henattribut in &lt;img&gt;-Tags nicht mehr zwingend erforderlich</b> (aber weiterhin empfehlenswert).
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">3.41&nbsp;(31.&nbsp;1.&nbsp;2003):&nbsp;</td>
+            <td>
+              Opera 7 Problem behoben: Beim Draggen wird jetzt nichts mehr selektiert, und der Opera erkennt das mouseup-Event zuverl&auml;ssig.
+              Initialisierung von vervielf&auml;ltigten Bildern im Netscape 4 (ab 4.05) beschleunigt.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">3.4&nbsp;(31.&nbsp;1.&nbsp;2003):&nbsp;</td>
+            <td>
+              In einem Drag-Drop-Layer verschachtelte DragDrop-Bilder folgen den show()- und hide()-Funktionen des Elternlayers.
+              Die Bilder innerhalb eines Layers sind mit dem Array dd.elements.LayerName.children[] ansprechbar.
+              Geschwister eines per MULTIPLY-Kommando vervielf&auml;ltigten Bildes sind mit dem Array dd.elements.BildName.copies[] ansprechbar
+              (siehe <a href="api.htm">JavaScript-Steuerung von Drag-Drop-Elementen</a>).
+              Bildwechsel-Funktion f&uuml;r DragDrop-Bilder.
+              Darstellungsproblem von DragDrop-Bildern im Mac IE 5.2 behoben.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">3.3&nbsp;(21.&nbsp;1.&nbsp;2003):&nbsp;</td>
+            <td>
+              Drag-Drop-Bilder innerhalb von Drag-Drop-Layern bleiben an ihren Elternlayer gekoppelt, d.h. wird dieser verschoben, nimmt er seine Drag-Drop-Bilder mit.
+              Dieses Verhalten eines Layers kann durch das DETACH_CHILDREN Kommando unterbunden werden.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">3.21&nbsp;(21.&nbsp;1.&nbsp;2003):&nbsp;</td>
+            <td>
+              RESET_Z Kommando funktioniert auch mit Layern ohne vordefinierten z-index.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">3.2&nbsp;(15.&nbsp;1.&nbsp;2003):&nbsp;</td>
+            <td>
+              MULTIPLYn Kommando zum Vervielf&auml;ltigen von DragDrop-Bildern. Erzeugt n Kopien des betreffenden Bildes.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">3.1&nbsp;(6.&nbsp;1.&nbsp;2003):&nbsp;</td>
+            <td>
+              Diese Version ben&ouml;tigt nicht mehr das transparente Pixel als Platzhalter (an den Originalpl&auml;tzen der DragDrop-Bilder). &quot;transparentpixel.gif&quot; ist also &uuml;berfl&uuml;ssig.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">3.03&nbsp;(5.&nbsp;1.&nbsp;2003):&nbsp;</td>
+            <td>
+              Bug behoben, der in Version 3.02 auftrat: Konqueror setzte die H&ouml;he von DragDrop-Bildern auf 100% der Fensterh&ouml;he anstatt auf 100% der H&ouml;he des Bildlayers.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">3.02&nbsp;(5.&nbsp;1.&nbsp;2003):&nbsp;</td>
+            <td>
+              Verbessertes resizeTo()-Verhalten bei Layern: Text&uuml;berlauf &uuml;ber Layerrand wird auch in Geckos und IE verhindert (clipped off).
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">3.01&nbsp;(2.&nbsp;1.&nbsp;2003):&nbsp;</td>
+            <td>
+              resizeTo() an Bildern funktioniert jetzt auch im Netscape 4 ohne erneuten HTTP-Request.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">3.0&nbsp;(31.&nbsp;12.&nbsp;2002):&nbsp;</td>
+            <td>
+              Inzwischen ist das DragDrop-JavaScript als multifunktionale DHTML-Bibliothek verwendbar.
+              <br>
+              resizeTo() funktioniert jetzt auch bei Bildern.
+              Ob Sie es glauben oder nicht, sogar im Netscape&nbsp;4&nbsp;(!) und Opera&nbsp;&lt;&nbsp;7 (siehe <a href="api.htm">Dokumentation der JavaScript API</a> f&uuml;r mehr Details).
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td align="center" colspan="2" height="150">
+              <hr size="1" width="300" noshade>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">2.78&nbsp;(28.&nbsp;12.&nbsp;2002):&nbsp;</td>
+            <td>
+              resizeTo()-Methode f&uuml;r Drag-Drop-Layer.
+              <br>
+              NO_DRAG Kommando: Unterbindet Drag-Drop-F&auml;higkeit des Elements, wobei Zugriffsm&ouml;glichkeit auf alle Eigenschaften und Methoden des Elements per JavaScript erhalten bleibt. U.&nbsp;U. sinnvoll f&uuml;r Anwendungen oder javascript-gesteuerte Animationen.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">2.77&nbsp;(28.&nbsp;12.&nbsp;2002):&nbsp;</td>
+            <td>
+              Drag-Funktionalit&auml;t wird unterdr&uuml;ckt und das mousedown-Event weitergeleitet, wenn &quot;getroffenes&quot; Element unsichtbar (nach Anwendung der hide()-Methode).
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">2.75&nbsp;(27.&nbsp;12.&nbsp;2002):&nbsp;<br>2.76</td>
+            <td>
+              Neue Funktionen hide() und show(), um das betreffende Drag Drop Element unsichtbar und wieder sichtbar zu machen.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">2.74&nbsp;(21.&nbsp;12.&nbsp;2002):&nbsp;</td>
+            <td>
+              Bessere Verarbeitung und Weiterleitung von window.onload- und onmousedown-Eventhandlern, die von anderen Scripten gesetzt wurden
+              =&gt; Kompatibilit&auml;tswahrscheinlichkeit mit anderen Scripten vergr&ouml;&szlig;ert.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">2.73&nbsp;(8.&nbsp;12.&nbsp;2002):&nbsp;</td>
+            <td>
+              Explizite Anweisung an den Browser, &quot;transparentpixel.gif&quot; zu cachen, um Platzhaltererzeugung zu beschleunigen.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">2.72&nbsp;(30.&nbsp;11.&nbsp;2002):&nbsp;</td>
+            <td>
+              Das NO_ALT-Kommandokann nicht nur global, sondern alternativ auch individuell (wie das CLONE-Kommando) f&uuml;r jedes Element verwendet werden.
+              Neues individuelles Kommando: RESET_Z. Am Ende eines Drag-Vorgans wird der Z-Index des betreffenden Elements auf den urspr&uuml;nglichen Wert zur&uuml;ckgesetzt.
+              Implementierung neuer Kommandos ist jetzt generell einfacher.
+              <br>&nbsp;<br>Bugfixes:
+              <br>
+              - In Formular-Eingabeelemente innerhalb von Drag-Drop-Layern lie&szlig; sich in Gecko-Browsern nichts eingeben.<br>
+              - Netscape 4: Reloads nach Fenstergr&ouml;&szlig;en&auml;nderungen waren unzuverl&auml;ssig.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">2.71&nbsp;(19.&nbsp;11.&nbsp;2002):&nbsp;</td>
+            <td>
+              Kleine Optimierungen.
+              <br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">2.7&nbsp;(17.&nbsp;11.&nbsp;2002):&nbsp;</td>
+            <td>
+              Unterst&uuml;tzt erweiterte DHTML-F&auml;higkeiten des Opera 7.<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">2.63&nbsp;(11.&nbsp;11.&nbsp;2002):&nbsp;<br>2.64</td>
+            <td>
+              Regards the fact that Konqueror v3.0.3, contrary to v3.0.0, relates event-coordinates to visible client area.<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">2.62&nbsp;(1.&nbsp;11.&nbsp;2002):&nbsp;</td>
+            <td>
+              Compatibility further improved. The Drag&amp;Drop Library now takes control over window.onload event handlers of other scripts. So it should be able to preserve it's own document.onmousedown event handler if another script tries to override it finally.<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">2.61&nbsp;(30.&nbsp;10.&nbsp;2002):&nbsp;</td>
+            <td>
+              Works in IE 4 again, as did v2.55, but not v2.6 (assigning properties to event object failed in IE4).<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">2.6&nbsp;(30.&nbsp;10.&nbsp;2002):&nbsp;</td>
+            <td>
+              Improved compatibility. Instead of destroying event handlers of other scripts, the Drag&amp;Drop Library only overrides them temporarily during drag&amp;drop operations to restore them immediately after mouseup.<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">2.55&nbsp;(29.&nbsp;10.&nbsp;2002):&nbsp;<br>2.56<br>&nbsp;</td>
+            <td>
+              Drag&amp;Drop images keep ALT attributes (not in Netscape 4).
+              This can be globally suppressed via NO_ALT command as a separate argument in SET_DHTML.<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">2.53&nbsp;(27.&nbsp;10.&nbsp;2002):&nbsp;<br>2.54<br>&nbsp;</td>
+            <td>
+              Some tuning, especially regarding Galeon.<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">2.52&nbsp;(27.&nbsp;10.&nbsp;2002):&nbsp;</td>
+            <td>
+              Less sticky drag behavior of old Gecko-Engine browsers on slow machines<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">2.5&nbsp;(26.&nbsp;10.&nbsp;2002):&nbsp;</td>
+            <td>
+              External reference to drag&amp;drop elements via JavaScript facilitated =&gt; elements may be animated<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">2.4&nbsp;(26.&nbsp;10.&nbsp;2002):&nbsp;</td>
+            <td>
+              When page is loaded, images don't flicker anymore during set-draggable process (conspicious especially in Netscape 4 and Opera).<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">2.3&nbsp;(25.&nbsp;10.&nbsp;2002):&nbsp;</td>
+            <td>
+              Images in drag&amp;drop-layers may be set draggable.<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">2.1&nbsp;(23.&nbsp;10.&nbsp;2002):&nbsp;</td>
+            <td>
+              Links in drag&amp;drop-layers work.<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">2.0&nbsp;(23.&nbsp;10.&nbsp;2002):&nbsp;</td>
+            <td>
+              Added: Drag&amp;drop functionality for layers.<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td align="center" colspan="2" height="150">
+              <hr size="1" width="300" noshade>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">1.6&nbsp;(21.&nbsp;10.&nbsp;2002):&nbsp;</td>
+            <td>
+              Size of file slightly decreased.<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">1.59&nbsp;(20.&nbsp;10.&nbsp;2002):&nbsp;</td>
+            <td>
+              Workaround for occasional problem of Netscape 6 to cache image clones. Size of file slightly decreased.<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">1.58&nbsp;(19.&nbsp;10.&nbsp;2002):&nbsp;</td>
+            <td>
+              Problem of Opera 5 to release mousemove-event-listening solved.<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">1.57&nbsp;(17.&nbsp;10.&nbsp;2002):&nbsp;</td>
+            <td>
+              Mousemove event-listening limited to mousepressed-over-dragdrop-image state =&gt; reduced probability of interference with other JavaScripts. Size of file slightly decreased.<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">1.56&nbsp;(7.&nbsp;10.&nbsp;2002):&nbsp;</td>
+            <td>
+              Work-around for bug <small><a href="#notes">[1]</a></small> in Opera 6.03 Linux.<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">1.55&nbsp;(6.&nbsp;10.&nbsp;2002):&nbsp;</td>
+            <td>
+              Size of file slightly decreased, performance slightly improved.<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">1.54&nbsp;(28.&nbsp;9.&nbsp;2002):&nbsp;</td>
+            <td>
+              Stricter <img name="biggrin" src="http://www.walterzorn.de/en/images/biggrin.gif" alt="" width="15" height="15">&nbsp;treatment of Opera's resize bug <small><a href="#notes">[2]</a></small>: Page is reloaded.<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">1.53&nbsp;(21.&nbsp;9.&nbsp;2002):&nbsp;</td>
+            <td>
+              Minor &quot;cosmetic&quot; changes of source code, improved performance.<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">1.52&nbsp;(15.&nbsp;9.&nbsp;2002):&nbsp;</td>
+            <td>
+              Size of script file decreased.<br>
+              Improved error-handling (e. g. if a non-existing image is called in SET_DHTML).<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">1.51&nbsp;(11.&nbsp;9.&nbsp;2002):&nbsp;</td>
+            <td>
+              Improved drag performance with cloned images.<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">1.5&nbsp;(4.&nbsp;9.&nbsp;2002):&nbsp;</td>
+            <td>
+              Type of cursor over drag&amp;drop-images can be set on the HTML-page (it's not necessary to touch the script).<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">1.4&nbsp;(3.&nbsp;9.&nbsp;2002):&nbsp;</td>
+            <td>
+              DragDrop function limited to left mousebutton (except Mozilla with her apparent event.which-bug <img align="top" name="frown" alt="" src="http://www.walterzorn.de/en/images/frown.gif" width="15" height="15">).<br>
+              Some minor problems with IE4 solved<br>&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">1.3&nbsp;(2.&nbsp;9.&nbsp;2002):&nbsp;</td>
+            <td>Kann Bilder klonen (eine Kopie verbleibt am Ursprungsplatz).<br>&nbsp;</td>
+          </tr>
+          <tr>
+            <td valign="top">1.2&nbsp;(2.&nbsp;9.&nbsp;2002):&nbsp;</td>
+            <td>Fenstergr&ouml;&szlig;en&auml;nderungen l&ouml;sen Neuberechnung der Bildkoordinaten und ggf. r&auml;umliche Wiedereingliederung der Bilder in die Seitenstruktur aus.<br>&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <b>&nbsp;<br><a name="notes"> </a>&nbsp;<br>&nbsp;<br>&nbsp;<br><big>Fu&szlig;noten</big></b>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              [1]
+              <br>
+              Opera 6.03 Linux: Occasionally the loop calling the constructors of the dragdrop-image objects continued before&nbsp;<img name="mad" src="http://www.walterzorn.de/en/images/mad.gif" align="top" alt="" width="15" height="15">&nbsp; the respective instances of each loop circle were completed.
+              Could surprisingly be solved through breaking-down speed of loop-processing (artificial delay between loop circles).
+              <br>&nbsp;<br>
+              [2]
+              <br>
+              Opera tends to upset correlation between positions of Drag and Drop images and their respective js variables, as if reloading the page but not resetting js variables,
+              and may unpredictably refuse proper, even delayed, recalculation.
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td><img src="../images/transparentpixel.gif" alt="" width="90" height="1"></td>
+    </tr>
+  </table>
+  <p> &nbsp; &nbsp; <a href="#top"><img src="http://www.walterzorn.de/en/images/topOfPage.gif" border="0" width="21" height="20" alt="Top of page"></a></p>
+  <hr width="95%" size="1" noshade>
+  <table cellpadding="20">
+    <tr>
+      <td>
+        <small>Walter Zorn, Munich
+        <br><a href="http://www.kreuzotter.de/impressum.htm">Impressum and about this page</a></small>
+        <br>
+        &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+      </td>
+    </tr>
+  </table>
+<script type="text/javascript">
+<!--
+
+SET_DHTML(CURSOR_MOVE, RESIZABLE, NO_ALT, SCROLL, "biggrin", "counter", "deddie"+MAXWIDTH+270+MAXHEIGHT+186+MINWIDTH+45+MINHEIGHT+31, "frown", "mad", "smileV"+VERTICAL, "smileH"+HORIZONTAL);
+
+//-->
+</script>
+</body>
+</html>

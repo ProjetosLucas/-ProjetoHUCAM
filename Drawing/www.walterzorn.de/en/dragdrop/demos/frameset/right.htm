@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="expires" content="0">
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+<title>JavaScript: DHTML Library, Drag &amp; Drop for Images and Layers</title>
+<link rel="stylesheet" type="text/css" href="../../../newwalterzorn.css">
+</head>
+<body bgcolor="#ffffff">
+  <script type="text/javascript" src="../../../scripts/wz_dragdrop.js"></script>
+  <table cellpadding="6">
+    <tr>
+      <th>
+        <big>
+          Cross-Frame Communication with wz_dragdrop.js
+        </big>
+      </th>
+    </tr>    
+    <tr>
+      <td>
+        Click (repeatedly) on images...
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img name="prairiedog" src="../../../images/dragdrop/ddprairiedog.jpg" width="135" height="148" alt="">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img name="chameleon" src="../../../images/dragdrop/ddcham.jpg" width="155" height="95" alt="">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img name="einstein" src="../../../images/dragdrop/einstrec.gif" width="150" height="96" alt="">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Access to drag&amp;drop items in a different frame is feasible via a statement like
+        <br>&nbsp;<br>
+        <tt>parent.FrameName.dd.elements['ItemName']</tt>
+        <br>&nbsp;<br>
+        (look at the source code of this frame).
+        On the <b><a href="../../api_e.htm" target="_top">API reference of wz_dragdrop.js</a></b> you'll find more details about how to do scripting with drag&amp;drop items.
+        <br>&nbsp;<br>
+        <a href="../demos.htm" target="_top">Back, Zur&uuml;ck</a>
+      </p>  
+      </td>
+    </tr>
+  </table>    
+<script type="text/javascript">
+<!--
+SET_DHTML(CURSOR_CROSSHAIR, "prairiedog"+VERTICAL+HORIZONTAL, "chameleon"+VERTICAL+HORIZONTAL, "einstein"+VERTICAL+HORIZONTAL);
+// Combining VERTICAL and HORIZONTAL is the easiest way to fix elements
+
+function my_PickFunc()             // This function overrides it's namesake in wz_dragdrop.js
+{
+    if (parent.left && parent.left.dd)               // does the left frame exist?
+    {
+        parent.left.dd.elements[dd.obj.name].copy();
+        // Creates a copy of the clicked image's match (same name!) in the left frame
+                
+        var copieslength = parent.left.dd.elements[dd.obj.name].copies.length;
+        // Current number of copies
+        
+        parent.left.dd.elements[dd.obj.name].copies[copieslength-1].moveTo (parent.left.dd.elements[dd.obj.name].x + 10*copieslength,  parent.left.dd.elements[dd.obj.name].y + 10*copieslength);
+        // Offsets the current copy by 10 px from the previous.
+    
+        var comment = parent.left.dd.elements.comment;
+        if (!comment.visible) comment.show();   // Show the initially hidden comment DIV in the left frame
+    }
+}
+
+
+//-->
+</script>
+</body>
+</html>
+
+

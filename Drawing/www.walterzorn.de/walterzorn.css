@@ -1,0 +1,137 @@
+body {
+  margin:0px;
+  padding-left:12px;
+  padding-right:12px;
+  padding-top:0px;
+  padding-bottom:20px;
+}
+
+div, center, p, table, tr, th, td, ul, li {
+  font-family:verdana,geneva,helvetica,arial,sans-serif;
+  font-size:12px;
+}
+
+h1 {
+  font-family:arial,helvetica,sans-serif;
+  font-size:50px;
+}
+
+h2 {
+  font-family:arial,helvetica,sans-serif;
+  font-size:24px;
+}
+
+h3 {
+  font-family:arial,helvetica,sans-serif;
+  font-size:18px;
+}
+
+h4 {
+  font-family:verdana,geneva,helvetica,arial,sans-serif;
+  font-size:12px;
+}
+
+h5 {
+  font-family:verdana,geneva,helvetica,arial,sans-serif;
+  font-size:10px;
+}
+
+big {
+  font-family:arial,helvetica,sans-serif;
+  font-size:15px;
+}
+
+small {
+  font-family:verdana,geneva,helvetica,arial,sans-serif;
+  font-size:10px;
+}
+
+tt, pre {
+  font-size:12px;
+  font-family:courier new,courier;
+  color:#000000;
+}
+
+span, div, h1, h2, h3, h4, h5, h6, center, p, table, tr, th, td, big, small {
+  color:#000000;
+}
+
+.arial {
+  font-family:arial,helvetica,sans-serif;
+}
+
+a {
+  text-decoration:none;
+  color:#4466dd;
+  font-weight:bold;
+}
+
+a:hover {
+  text-decoration:underline;
+  color:#4466dd;
+  font-weight:bold;
+}
+
+input {
+  font-size:12px;
+  font-family:courier new,courier,arial,helvetica,sans-serif;
+}
+
+.bt1 {
+  font-size:17px;
+  font-family:arial,helvetica,sans-serif;
+}
+
+.bt1b {
+  font-size:17px;
+  font-family:arial,helvetica,sans-serif;
+  font-weight:bold;
+}
+
+.bt2 {
+  font-size:12px;
+  font-family:verdana,geneva,helvetica,sans-serif;
+}
+
+.bt2b {
+  font-size:12px;
+  font-family:verdana,geneva,helvetica,sans-serif;
+  font-weight:bold;
+}
+
+.bt3 {
+  font-size:11px;
+  font-family:verdana,geneva,helvetica,sans-serif;
+}
+
+.bt3b {
+  font-size:11px;
+  font-family:verdana,geneva,helvetica,sans-serif;
+  font-weight:bold;
+}
+
+.bt1, .bt1b, .bt2, .bt2b, .bt3, .bt3b {
+  background-color:#cccccc;
+  color:#000000;
+}
+
+textarea {
+  background-Color:#ffffff;
+  font-family:courier new,courier;
+  font-size:12px;
+}
+
+.cross
+{
+  cursor:crosshair;
+  margin:1px;
+}
+
+body {
+  scrollbar-3dlight-color:#c3c3c3;
+  /*scrollbar-arrow-color:#000000;
+  scrollbar-base-color:#cccccc;
+  scrollbar-darkshadow-color:#000000;
+  scrollbar-face-color:#c3c3c3;
+  scrollbar-highlight-color:#ffffff;*/
+}

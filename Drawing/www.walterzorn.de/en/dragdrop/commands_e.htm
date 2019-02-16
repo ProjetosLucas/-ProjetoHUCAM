@@ -1,0 +1,621 @@
+<<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="expires" content="0">
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+<title>Drag&amp;Drop for Images and Layers: Commands available for Drag and Drop Elements</title>
+<link rel="stylesheet" type="text/css" href="../newwalterzorn.css">
+<style type="text/css">
+<!--
+tt.ltgrey {
+  padding:3px;
+  line-height:30px;
+  background-color:#eeeeee;
+  layer-background-color:#eeeeee;
+}
+
+#reZLyr {
+  position:absolute;
+  visibility:hidden;
+  z-index:0;
+  left:0px;
+  top:0px;
+  width:252px;
+  border:1px solid #000099;
+  padding:5px;
+  background:#eeeeee;
+  layer-background-color:#eeeeee;
+}
+
+#nodetachlyr {
+  position:absolute;
+  visibility:hidden;
+  left:0px;
+  top:0px;
+  border:none;
+  padding:3px;
+  background:#d3e3f6;
+  layer-background-color:#d3e3f6;
+}
+
+#detachlyr {
+  position:absolute;
+  visibility:hidden;
+  left:0px;
+  top:0px;
+  border:none;
+  padding:3px;
+  background:#ffcccc;
+  layer-background-color:#ffcccc;
+}
+
+#bluelyr {
+  position:absolute;
+  visibility:hidden;
+  width:80px;
+  border:none;
+  padding:3px;
+  background:#d3e3f6;
+  layer-background-color:#d3e3f6;
+}
+-->
+</style>
+</head>
+<body bgcolor="#ffffff">
+<script type="text/javascript" src="../scripts/wz_dragdrop.js"></script>
+<a name="top"> </a>
+  <center>
+    <table cellpadding="6">
+      <tr>
+        <td align="center"><a href="../index.htm"><img name="logo" border="0" src="../images/logo.gif" alt="Home" width="278" height="30"></a></td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td>
+          &nbsp;<br>
+          <b><big>
+          &middot;&nbsp;<a href="dragdrop_e.htm">Main Page: Drag&amp;Drop, DHTML for Images and Layers</a>
+          <br>
+          &middot;&nbsp;<a href="api_e.htm">DHTML API, Scripting Drag Drop Elements: Reference</a>
+          <br>
+          &middot;&nbsp;<a href="demos/demos.htm">Demos</a>
+          <br>
+          &middot;&nbsp;<a href="history_e.htm" target="_top">History of Updates</a>
+          <br>
+          &middot;&nbsp;<a href="dragdrop_e.htm#download">Download</a>
+          <br>&nbsp;
+          </big></b>
+        </td>
+      </tr>
+    </table>
+  </center>
+  <br>
+  <table>
+    <tr valign="top">
+      <td><img src="../images/transparentpixel.gif" alt="" width="80" height="1"></td>
+      <td>
+        <table>
+          <tr>
+            <td>
+              <b><big>Commands available for Drag'nDrop Elements</big></b>
+              <br>&nbsp;<br>
+              <b>Global</b> commands, taking effect on all Drag Drop elements, are to be passed to SET_DHTML() as separate arguments.
+              <b>Individual</b> commands, on the other hand, are to be appended, with a plus sign as concatenator, directly to the name/ID of the concerned element.
+              See examples below.
+              <br>&nbsp;
+            </td>
+          </tr>
+        </table>
+        <table bgcolor="#000099" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td>
+              <table border="0" cellpadding="6" cellspacing="1">
+                <tr bgcolor="#eeeeee">
+                  <td>
+                    <b>CLONE</b><br>(individual, images only)
+                  </td>
+                </tr>
+                <tr bgcolor="#ffffff">
+                  <td>
+                    <img align="left" name="dolly" src="../images/dragdrop/dddolly.jpg" alt="Drag &amp; Drop Image" title="Drag &amp; Drop Image" width="160" height="111"><img align="left" src="../images/transparentpixel.gif" alt="" width="2" height="111" vspace="3">
+                    Drag this image around...<br>
+                    CLONE creates a static copy, devoid of draggability and DHTML capabilities.
+                    <br clear="all">
+                      Example:
+                    <br>
+                    <table>
+                      <tr>
+                        <td bgcolor="#eeeeee">
+<tt><font size="2" style="font-size:12px;">
+&lt;script type=&quot;text/javascript&quot;&gt;<br>
+&lt;!--<br>
+ <br>
+SET_DHTML(&quot;layer1&quot;,&nbsp;&quot;dolly&quot;+CLONE,&nbsp;&quot;image1&quot;,&nbsp;&quot;image3&quot;+CLONE);<br>
+ <br>
+//--&gt;<br>
+&lt;/script&gt;
+</font></tt>
+                        </td>
+                      </tr>
+                    </table>
+                    <br>&nbsp;
+                  </td>
+                </tr>
+                <tr bgcolor="#eeeeee">
+                  <td>
+                    <b>COPY</b>
+                    <br>(individual, images only)
+                  </td>
+                </tr>
+                <tr bgcolor="#ffffff">
+                  <td>
+                    <img name="muckl" align="left" src="../images/dragdrop/muckl.jpg" width="100" height="130" alt="Mulitiplied drag drop image" title="Mulitiplied drag drop image">
+                    Creates a specifiable number of copies, each being a fully capable DHTML and Drag&amp;Drop item by its own.
+                    Copies even inherit their originals' NO_ALT, RESET_Z, RESIZABLE, SCALABLE, SCROLL and size-limiting commands (MAXWIDTH etc.).
+                    <br>Be carefull with large numbers of copies; large image file sizes combined with the presence of many drag drop images might challenge the visitors' browsers.
+                    <br>
+                    <tt class="ltgrey">SET_DHTML(&quot;layer1&quot;,&nbsp;&quot;muckl&quot;+COPY+5,&nbsp;&quot;anotherImg&quot;);</tt>
+                    <br clear="all">
+                  </td>
+                </tr>
+                <tr bgcolor="#eeeeee">
+                  <td>
+                    <b>CURSOR_HAND</b><br>(global and individual, images and layers)
+                  </td>
+                </tr>
+                <tr bgcolor="#ffffff">
+                  <td>
+                    Alters the cursor over drag and drop items.
+                    Does not work in Netscape&nbsp;4 and Opera earlier than ver.&nbsp;7.
+                    Available cursor commands:
+                    <br><img align="right" name="koala" src="../images/dragdrop/ddkoala.jpg" alt="Drag&amp;Drop Image" title="Drag&amp;Drop Image" width="160" height="213" vspace="6"><small>&nbsp;</small><br>
+                    CURSOR_DEFAULT (preset; default cursor of browser)
+                    <br>
+                    CURSOR_CROSSHAIR
+                    <br>
+                    CURSOR_MOVE (globally set on this page)
+                    <br>
+                    CURSOR_HAND (pointer, as over links)
+                    <br>
+                    CURSOR_E_RESIZE
+                    <br>
+                    CURSOR_NE_RESIZE
+                    <br>
+                    CURSOR_NW_RESIZE
+                    <br>
+                    CURSOR_N_RESIZE
+                    <br>
+                    CURSOR_SE_RESIZE
+                    <br>
+                    CURSOR_SW_RESIZE
+                    <br>
+                    CURSOR_S_RESIZE
+                    <br>
+                    CURSOR_W_RESIZE
+                    <br>
+                    CURSOR_TEXT (as over text)
+                    <br>
+                    CURSOR_WAIT (hourglass or something similar)
+                    <br>
+                    CURSOR_HELP
+                    <br>
+                    <tt class="ltgrey">SET_DHTML(CURSOR_MOVE,&nbsp;&quot;layer1&quot;,&nbsp;&quot;koala&quot;+CURSOR_HAND,&nbsp;&quot;image1&quot;);</tt>
+                    <br>This example, illustrating again how to use commands globally and individually, also intimates that individual commands override global ones.
+                    <br>&nbsp;
+                  </td>
+                </tr>
+                <tr bgcolor="#eeeeee">
+                  <td>
+                    <b>DETACH_CHILDREN</b><br>(individual, layers only)
+                  </td>
+                </tr>
+                <tr bgcolor="#ffffff">
+                  <td>
+                    <br>&nbsp;<br>&nbsp;<br>
+                    <img name="detachbuoy" src="../images/transparentpixel.gif" width="1" height="1" alt="">
+                    <br>
+                    The default behavior of a drag drop layer is as follows:
+                    If the layer contains images which have been set draggable by their own (i.e. their names have been passed to SET_DHTML() too), the library considers these images as &quot;children&quot; of the layer.
+                    Once the layer is dragged, <a class="code" href="javascript:void(0)" onclick=";if (window.dd &amp;&amp; dd.elements)dd.elements.nodetachlyr.hide();">hidden</a> or <a class="code" href="javascript:void(0)" onclick=";if (window.dd &amp;&amp; dd.elements)dd.elements.nodetachlyr.show();">shown</a>, its children automatically follow it.
+                    The DETACH_CHILDREN command detaches images from their parent layer, making them independent from the layer's behavior (example: <a class="code" href="javascript:void(0)" onclick=";if (window.dd &amp;&amp; dd.elements)dd.elements.detachlyr.hide();">hide()</a> and <a class="code" href="javascript:void(0)" onclick=";if (window.dd &amp;&amp; dd.elements)dd.elements.detachlyr.show();">show()</a> again).
+                    <br>
+                    <tt class="ltgrey">SET_DHTML(&quot;LayerName&quot;+DETACH_CHILDREN,&nbsp;&quot;image2&quot;,&nbsp;&quot;image1&quot;,&nbsp;&quot;layer2&quot;);</tt>
+                    <br>&nbsp;
+                  </td>
+                </tr>
+                <tr bgcolor="#eeeeee">
+                  <td>
+                    <b>HORIZONTAL</b><br>(individual, images and layers)
+                  </td>
+                </tr>
+                <tr bgcolor="#ffffff">
+                  <td>
+                    <img align="right" name="rhlguana" src="../images/dragdrop/ddrhinoceroslguana.jpg" width="159" height="127" alt="Drag Drop Image" title="Drag Drop Image">
+                    The element can be dragged horizontally only.
+                    However, the item's <tt>moveTo()</tt> and <tt>moveBy()</tt> methods by their own aren't affected.
+                      Therefore movements in both directions via scripting are unlimited.
+                    <br>
+                    <tt class="ltgrey">SET_DHTML(&quot;FirstImg&quot;,&nbsp;&quot;lguana&quot;+HORIZONTAL);</tt>
+                    <br>&nbsp;
+                  </td>
+                </tr>
+                <tr bgcolor="#eeeeee">
+                  <td>
+                    <b>MAXWIDTH, MAXHEIGHT, MINWIDTH, MINHEIGHT</b><br>(individual, images and  layers)
+                  </td>
+                </tr>
+                <tr bgcolor="#ffffff">
+                  <td>
+                    <img name="deddie" align="left" src="../images/dragdrop/deddie.jpg" width="90" height="62" alt="Drag Drop Image" title="Drag Drop Image">
+                    These commands limit the size to which an element can be resized with mouse+&lt;SHIFT&gt;, a functionality feasible for elements to which the <tt>RESIZABLE</tt> or <tt>SCALABLE</tt> command has been applied.
+                    <b>Note:</b> Default setting, if MINWIDTH / MINHEIGHT haven't been applied, for mimimum width and height is 1&nbsp;px.
+                    <br clear="all">
+                    <tt class="ltgrey">SET_DHTML(&quot;deddie&quot;+RESIZABLE+MAXWIDTH+420+MINHEIGHT+45,&nbsp;&quot;anotherImg&quot;);</tt>
+                    <br>&nbsp;
+                  </td>
+                </tr>
+                <tr bgcolor="#eeeeee">
+                  <td>
+                    <b>MAXOFFBOTTOM, MAXOFFLEFT, MAXOFFRIGHT, MAXOFFTOP</b><br>(individual, images and layers)
+                  </td>
+                </tr>
+                <tr bgcolor="#ffffff">
+                  <td>
+                    These commands specify how far the item can be maximally dragged away from its default position.
+                    To each of these commands, its value must be appended with a plus sign.
+                    For example, by combining MAXOFFLEFT and MAXOFFRIGHT with HORIZONTAL (allowing horizontal movements only), an image might be converted into a horizontal slider with stops.
+                    <table border="0" cellpadding="6" cellspacing="0">
+                      <tr>
+                        <td align="right" height="40">red</td>
+                        <td>
+                          <img name="track_r" src="../images/dragdrop/track.gif" width="94" height="35" alt="red" title="red">
+                          <img name="thumb_r" src="../images/dragdrop/sliderthumb.gif" width="22" height="35" alt="red" title="red">
+                        </td>
+                        <td rowspan="3">
+                          <img name="ccanvas" src="../images/transparent_300_120.gif" width="300" height="120" alt="">
+                        </td>
+                        <td rowspan="3">
+                          <form name="cform"><input name="ctext" type="text" size="9"></form>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="right" height="40">green</td>
+                        <td>
+                          <img name="track_g" src="../images/dragdrop/track.gif" width="94" height="35" alt="green" title="green">
+                          <img name="thumb_g" src="../images/dragdrop/sliderthumb.gif" width="22" height="35" alt="green" title="green">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="right" height="40">blue</td>
+                        <td>
+                          <img name="track_b" src="../images/dragdrop/track.gif" width="94" height="35" alt="blue" title="blue">
+                          <img name="thumb_b" src="../images/dragdrop/sliderthumb.gif" width="22" height="35" alt="blue" title="blue">
+                        </td>
+                      </tr>
+                    </table>
+                    <br>
+                    The following code demonstrates how you can build a slider by using just two images (named &quot;thumb&quot; and &quot;track&quot;).
+                    As always with SET_DHTML(), this code should be inserted immediately before the closing &lt;/body&gt; tag.
+                    <br>
+                    <table>
+                      <tr>
+                        <td bgcolor="#eeeeee">
+                          <tt>
+                          &lt;script type=&quot;text/javascript&quot;&gt;
+                          <br>
+                          &lt;!--
+                          <br>&nbsp;<br>
+                          SET_DHTML(&quot;thumb&quot;+MAXOFFLEFT+45+MAXOFFRIGHT+45+HORIZONTAL,&quot;track&quot;+NO_DRAG);
+                          <br>&nbsp;<br>
+                          dd.elements.thumb.moveTo(dd.elements.track.x+36, dd.elements.track.y);
+                          <br>
+                          dd.elements.thumb.setZ(dd.elements.track.z+1);
+                          <br>
+                          dd.elements.track.addChild(&quot;thumb&quot;);
+                          <br>
+                          dd.elements.thumb.defx = dd.elements.track.x+36;
+                          <br>&nbsp;<br>
+                          //--&gt;
+                          <br>
+                          &lt;/script&gt;
+                          </tt>
+                        </td>
+                      </tr>
+                    </table>
+                    About these lines:
+                    To prevent the slider track from being draggable, we apply the NO_DRAG command to it.
+                    Then, after SET_DHTML() has been invoked and while the page is still loading, the thumb is moved to the center of the track (moveTo() method, visit the <a href="api_e.htm">API reference</a> for more details).
+                    To ensure the right visual &quot;stacking order&quot; of these images initially, the third JavaScript line sets the z-index (setZ() method) of the thumb beyond the track's.
+                    Then, by transforming it into a &quot;child&quot; and hence &quot;sub-image&quot; of the track, the thumb's position and behavior is made dependent from the track's - especially important for window resize events.
+                    The last JS line sets the thumb's default x position (defx) to the center of the track.
+                    <small><br>&nbsp;<br></small>
+                    To retrieve the current position of the thumb (current x minus default x coordinate, <tt>dd.elements.thumb.x-dd.elements.thumb.defx</tt>&nbsp;), use my_DragFunc(), an empty function body for additional/extended scripting.
+                    my_DragFunc(), already included into the library, is automatically and permanently invoked while an item is dragged (see <a href="api_e.htm">API reference</a>).
+                    The above example calculates a color from the positions of the three slider thumbs.
+                    Then, still from inside my_DragFunc(), the API's setBgColor() method of the transparent image is invoked.
+                    <br>&nbsp;
+                  </td>
+                </tr>
+                <tr bgcolor="#eeeeee">
+                  <td>
+                    <b>NO_ALT</b><br>(global and individual, images only)
+                  </td>
+                </tr>
+                <tr bgcolor="#ffffff">
+                  <td>
+                    <img name="azcat" align="left" src="../images/dragdrop/azcat.jpg" width="110" height="106" alt="Drag Drop Image" title="Drag Drop Image">
+                    De-activates the ALT and TITLE attributes of the concerned image.
+                    <br clear="all">
+                    Globally (affecting all drag drop images at once):
+                    <br>
+                    <tt class="ltgrey">SET_DHTML(NO_ALT, &quot;ImgName1&quot;,&nbsp;anotherImg&quot;);</tt>
+                    <br>
+                    Individually:
+                    <br>
+                    <tt class="ltgrey">SET_DHTML(&quot;ImgName1&quot;+NO_ALT,&nbsp;anotherImg&quot;,&nbsp;&quot;img3&quot;+NO_ALT);</tt>
+                    <br>&nbsp;
+                  </td>
+                </tr>
+                <tr bgcolor="#eeeeee">
+                  <td>
+                    <img name="lefttop" align="left" src="../images/transparentpixel.gif" alt="" width="1" height="1" hspace="0">
+                    <b>NO_DRAG</b><br>(individual, images and layers)
+                  </td>
+                </tr>
+                <tr bgcolor="#ffffff">
+                  <td>
+                    Disables Drag'nDrop capabilities and converts item into a &quot;normal&quot; DHTML element (wz_dragdrop.js may be used as general DHTML library).
+                    Access to the item's properties and methods via scripting, however, remains unlimited, for example reading coordinates and size, moving, resizing, hiding, showing again, swapping images etc..
+                    <small><br>&nbsp;<br></small>
+                    NO_DRAG may even be useful for the 'Image Buoy' trick which allows to integrate an absolutely positioned layer into the logical structure of a page:
+                    1.)&nbsp;Place one or several non-draggable (NO_DRAG!) transparent 1x1 px images as 'bouys' into the logical structure or text flow whereever required.
+                    2.)&nbsp;Retrieve the co-ordinates of these invisible images by their x and y properties (see <a href="api_e.htm">DHTML-API</a>), and,
+                    3.)&nbsp;simply by invoking its <tt>moveTo()</tt> method accordingly, place the layer relatively to these Image Buoys.
+                    For example, the small blue layer moving around this text paragraph is controlled by such Image Buoys.
+                    <br>
+                    <tt class="ltgrey">SET_DHTML(&quot;blueLayer&quot;+NO_DRAG,&nbsp;&quot;lefttop&quot;+NO_DRAG,&nbsp;&quot;rightbottom&quot;+NO_DRAG);</tt>
+                    <br><img name="rightbottom" align="right" src="../images/transparentpixel.gif" alt="" width="1" height="1">
+                    <br>&nbsp;
+                  </td>
+                </tr>
+                <tr bgcolor="#eeeeee">
+                  <td>
+                    <b>RESET_Z</b><br>(global and individual, images and layers)
+                  </td>
+                </tr>
+                <tr bgcolor="#ffffff">
+                  <td>
+                    <img name="leop" src="../images/dragdrop/ddleop.jpg" width="300" height="205" alt="Drag&amp;Drop Image" title="Drag&amp;Drop Image">
+                    <br>
+                    As default behavior, once a drag-drop item starts to be dragged, its z-index (its place in the visual stacking order of all elements) is lifted to the top level, and remains there after drag-end.
+                    The RESET_Z command restores the element's original z-index once the element is dropped.
+                    Due to drag-drop intuitivity issues, I don't recommend to use this command unnecessarily.
+                    <br>
+                    <tt class="ltgrey">SET_DHTML(&quot;layer1&quot;,&nbsp;&quot;image2&quot;+RESET_Z,&nbsp;&quot;image1&quot;);</tt>
+                    <br>&nbsp;
+                  </td>
+                </tr>
+                <tr bgcolor="#eeeeee">
+                  <td>
+                    <b>RESIZABLE</b><br>(global and individual, images and layers)
+                  </td>
+                </tr>
+                <tr bgcolor="#ffffff">
+                  <td>
+                    <img align="left" name="chameleon" src="../images/dragdrop/ddcham.jpg" width="155" height="95" alt="JavaScript, DHTML: Drag&amp;Drop Images" title="JavaScript, DHTML: Drag&amp;Drop Images">
+                    Allows an element to be resized instead of dragged.
+                    Keeping the &lt;Shift&gt; key pressed at the beginning of a drag movement lets the left top corner of the element stay fixed whereas the right and bottom boundaries follow the mouse movement.
+                    RESIZABLE (and SCALABLE, see below) Mode mode works even with Netscape&nbsp;4 und Opera&nbsp;5+.
+                    <br clear="all">
+                    <tt class="ltgrey">SET_DHTML(&quot;layer1&quot;,&nbsp;&quot;img1&quot;+RESIZABLE,&nbsp;&quot;anotherImg&quot;);</tt>
+                    <br>&nbsp;
+                  </td>
+                </tr>
+                <tr bgcolor="#eeeeee">
+                  <td>
+                    <b>SCALABLE</b><br>(global and individual, images and layers)
+                  </td>
+                </tr>
+                <tr bgcolor="#ffffff">
+                  <td>
+                    <img align="left" name="grizzly" src="../images/dragdrop/grizzly.jpg" width="130" height="160" alt="Drag Drop Image" title="Drag Drop Image">
+                    Being an alternative to RESIZABLE, SCALABLE preserves the width/height ratio of the element.
+                    In other words, SCALABLE enables the element to be scaled, but, contrary to RESIZABLE, not to be arbitrarily stretched.
+                    <br>&nbsp;<br>
+                    Note about SCALABLE and RESIZABLE:
+                    If one of these commands has been applied globally and the other one individually, only the individual command, overriding the global one, takes effect on the concerned element.
+                    <br>
+                    <tt class="ltgrey">SET_DHTML(&quot;image1&quot;,&nbsp;&quot;image2&quot;+SCALABLE);</tt>
+                    <br>&nbsp;
+                  </td>
+                </tr>
+                <tr bgcolor="#eeeeee">
+                  <td>
+                    <b>SCROLL</b><br>(global and individual, images and layers)
+                  </td>
+                </tr>
+                <tr bgcolor="#ffffff">
+                  <td>
+                    Enables the Auto-Scroll functionality which scrolls the page automatically when the mousepointer approaches the window boundary during a drag operation.
+                    Thereby scrolling velocity is non-linearly determined by the remaining distance of the border, giving the impression that the scrolling velocity depended from the &quot;pressure&quot; executed towards the boundary.
+                    BTW, on these pages the SCROLL command has been applied globally.
+                    <br>
+                    <tt class="ltgrey">SET_DHTML(SCROLL,&nbsp;&quot;blueLayer&quot;,&nbsp;&quot;image2&quot;,&nbsp;&quot;image1&quot;,&nbsp;&quot;layer2&quot;);</tt>
+                    <br>or<br>
+                    <tt class="ltgrey">SET_DHTML(&quot;blueLayer&quot;+SCROLL,&nbsp;&quot;image2&quot;,&nbsp;&quot;image1&quot;,&nbsp;&quot;layer2&quot;);</tt>
+                    <br>&nbsp;
+                  </td>
+                </tr>
+                <tr bgcolor="#eeeeee">
+                  <td>
+                    <b>TRANSPARENT</b><br>(global and individual, images and layers)
+                  </td>
+                </tr>
+                <tr bgcolor="#ffffff">
+                  <td>
+                    <img align="left" name="ko1" src="../images/dragdrop/ko1.png" width="200" height="114" alt="Drag Drop Image" title="Drag Drop Image">
+                    Makes the item semi-transparent while it is being dragged.
+                    <br>&nbsp;<br>
+                    (Yes, that's me.)
+                  </td>
+                </tr>
+                <tr bgcolor="#eeeeee">
+                  <td>
+                    <b>VERTICAL</b><br>(individual, images and layers)
+                  </td>
+                </tr>
+                <tr bgcolor="#ffffff">
+                  <td>
+                    <img align="right" name="lama" src="../images/dragdrop/lama.jpg" width="125" height="150" alt="Drag Drop Image" title="Drag Drop Image">
+                    Element can be dragged vertically only.
+                    However, the item's <tt>moveTo()</tt> and <tt>moveBy()</tt> methods by their own aren't affected.
+                    Therefore movements in both directions via scripting are unlimited.
+                    <br>
+                    <tt class="ltgrey">SET_DHTML(&quot;FirstImg&quot;,&nbsp;&quot;snake&quot;+VERTICAL);</tt>
+                    <br>&nbsp;
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>
+              <b>&nbsp;<br>&nbsp;<br>&nbsp;<br><big>Combine commands?</big></b>
+              <br>
+              <b>Global</b> commands affect all drag drop elements and must be passed to SET_DHTML() as separate arguments, separated with commas from each other:
+              <br>
+              <tt class="ltgrey">SET_DHTML(NO_ALT,CURSOR_MOVE,&nbsp;&quot;ImgName1&quot;,&quot;layerName&quot;,&quot;anotherImg&quot;);</tt>
+              <br>
+              To apply multiple <b>individual</b> commands to a certain drag drop element, use plus signs as connectors, as in the example below:
+              <br>
+              <tt class="ltgrey">SET_DHTML(&quot;layer1&quot;,&nbsp;&quot;muckl&quot;+VERTICAL+COPY+5+RESET_Z,&nbsp;&quot;otherImg&quot;);</tt>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b><a name="notes"> </a><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br><big>Notes</big></b>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td><img src="../images/transparentpixel.gif" alt="" width="80" height="1"></td>
+    </tr>
+  </table>
+  <p> &nbsp; &nbsp; <a href="#top"><img src="../images/topOfPage.gif" border="0" width="21" height="20" alt="Top of page"></a></p>
+  <hr width="95%" size="1" noshade>
+  <table cellpadding="20">
+    <tr>
+      <td>
+        <small>Walter Zorn, Munich
+        <br><a href="http://www.kreuzotter.de/impressum.htm">Impressum / about this page</a></small>
+        <br>
+        &nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+      </td>
+    </tr>
+  </table>
+<div id="reZLyr">
+  <img align="left" src="../images/transparentpixel.gif" alt="" width="60" height="100">
+  Drag this layer and drop it on one of the draggable images on this page.
+</div>
+<div id="nodetachlyr">
+  <center>
+    <img name="madno" src="../images/mad.gif" width="15" height="15" alt="">
+    &nbsp; &nbsp;
+    <img name="biggrinno" src="../images/biggrin.gif" width="15" height="15" alt="">
+    &nbsp; &nbsp;
+    <img name="frownno" src="../images/frown.gif" width="15" height="15" alt="">
+    <br>
+    <small>Layer with standard behavior<br>without DETACH_CHILDREN command</small>
+  </center>
+</div>
+<div id="detachlyr">
+  <center>
+    <img name="madyes" src="../images/mad.gif" width="15" height="15" alt="">
+    &nbsp; &nbsp;
+    <img name="biggrinyes" src="../images/biggrin.gif" width="15" height="15" alt="">
+    &nbsp; &nbsp;
+    <img name="frownyes" src="../images/frown.gif" width="15" height="15" alt="">
+    <br>
+    <small>A layer the DETACH_CHILDREN<br>command has been applied to</small>
+  </center>
+</div>
+<div id="bluelyr"><small>A layer the NO_DRAG command has been applied to<br></small></div>
+<script type="text/javascript">
+<!--
+
+SET_DHTML(CURSOR_MOVE, RESIZABLE, SCROLL, "azcat"+NO_ALT, "biggrinno", "biggrinyes", "bluelyr"+NO_DRAG, "ccanvas"+MAXOFFRIGHT+100+MAXOFFBOTTOM+100+MAXOFFLEFT+100+MAXOFFTOP+100, "chameleon", "counter", "deddie"+MAXWIDTH+270+MAXHEIGHT+186+MINWIDTH+45+MINHEIGHT+31, "detachbuoy"+NO_DRAG, "detachlyr"+DETACH_CHILDREN, "dolly"+CLONE, "frownno", "frownyes", "grizzly"+SCALABLE, "koala"+CURSOR_HAND, "ko1"+TRANSPARENT, "lama"+VERTICAL, "lefttop"+NO_DRAG, "leop", "madno", "madyes", "muckl"+COPY+5, "nodetachlyr", "reZLyr"+RESET_Z, "rhlguana"+HORIZONTAL, "rightbottom"+NO_DRAG, "track_r"+NO_DRAG, "track_g"+NO_DRAG, "track_b"+NO_DRAG, "thumb_r"+MAXOFFLEFT+45+MAXOFFRIGHT+45+HORIZONTAL, "thumb_g"+MAXOFFLEFT+45+MAXOFFRIGHT+45+HORIZONTAL, "thumb_b"+MAXOFFLEFT+45+MAXOFFRIGHT+45+HORIZONTAL);
+
+function moveBluelyr()
+{
+    if (blyr.x > dd.elements.lefttop.x - blyr.w && blyr.y >= dd.elements.rightbottom.y) blyr.moveTo(blyr.x-8, dd.elements.rightbottom.y);
+    else if (blyr.x <= dd.elements.lefttop.x - blyr.w && blyr.y > dd.elements.lefttop.y - blyr.h) blyr.moveTo(dd.elements.lefttop.x - blyr.w, blyr.y-8);
+    else if (blyr.x < dd.elements.rightbottom.x && blyr.y <= dd.elements.lefttop.y - blyr.h) blyr.moveTo(blyr.x+8, dd.elements.lefttop.y - blyr.h);
+    else if (blyr.x >= dd.elements.rightbottom.x && blyr.y < dd.elements.rightbottom.y) blyr.moveTo(dd.elements.rightbottom.x, blyr.y+8);
+    else blyr.moveTo(dd.elements.rightbottom.x, dd.elements.rightbottom.y);
+    setTimeout('moveBluelyr();', 160);
+}
+
+
+
+function my_DragFunc()
+{
+    if (dd.obj.name.indexOf('thumb_') >= 0)
+    {
+        var red = (parseInt((thumb_r.x-thumb_r.defx+45)*255/90)).toString(16),
+        green = (parseInt((thumb_g.x-thumb_g.defx+45)*255/90)).toString(16),
+        blue = (parseInt((thumb_b.x-thumb_b.defx+45)*255/90)).toString(16);
+        while (red.length < 2) red = '0'+red;
+        while  (blue.length < 2) blue = '0'+blue;
+        while  (green.length < 2) green = '0'+green;
+        var color = "#"+red+green+blue;
+        dd.elements.ccanvas.setBgColor(color);
+        document.cform.ctext.value = color;
+    }
+}
+
+
+
+var lyr1 = dd.elements.reZLyr,
+nodet = dd.elements.nodetachlyr,
+det = dd.elements.detachlyr,
+thumb_r = dd.elements.thumb_r,
+thumb_g = dd.elements.thumb_g,
+thumb_b = dd.elements.thumb_b,
+blyr = dd.elements.bluelyr;
+
+blyr.moveTo(dd.elements.rightbottom.x, dd.elements.rightbottom.y);
+blyr.show();
+moveBluelyr();
+
+lyr1 = dd.elements.reZLyr;
+lyr1.moveTo(dd.elements.leop.x + dd.elements.leop.w - 65, dd.elements.leop.y + 20);
+lyr1.show();
+
+nodet.moveTo(dd.elements.detachbuoy.x, dd.elements.detachbuoy.y-nodet.h);
+nodet.show();
+
+det.moveTo(nodet.x+nodet.w+2, nodet.y);
+det.show();
+for (var i = 0; i < det.children.length; i++) det.children[i].moveTo(det.children[i].x+det.x-det.defx, det.children[i].y+det.y-det.defy);
+
+thumb_r.moveTo(dd.elements.track_r.x+36, dd.elements.track_r.y);
+thumb_g.moveTo(dd.elements.track_g.x+36, dd.elements.track_g.y);
+thumb_b.moveTo(dd.elements.track_b.x+36, dd.elements.track_b.y);
+thumb_r.setZ(dd.elements.track_r.z+1);
+thumb_g.setZ(dd.elements.track_g.z+1);
+thumb_b.setZ(dd.elements.track_b.z+1);
+dd.elements.track_r.addChild('thumb_r');
+dd.elements.track_g.addChild('thumb_g');
+dd.elements.track_b.addChild('thumb_b');
+thumb_r.defx = dd.elements.track_r.x+36;
+thumb_g.defx = dd.elements.track_g.x+36;
+thumb_b.defx = dd.elements.track_b.x+36;
+
+//-->
+</script>
+</body>
+</html>

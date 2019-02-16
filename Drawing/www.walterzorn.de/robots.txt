@@ -1,0 +1,5 @@
+# robots.txt http://www.walterzorn.de/
+
+User-agent: *
+Disallow: /logs/
+Disallow: /english/
