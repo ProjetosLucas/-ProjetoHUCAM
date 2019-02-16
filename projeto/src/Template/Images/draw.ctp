@@ -11,7 +11,10 @@ $dir='exames/';//Modifiquei Aqui
 </head>
 <body>  
       <form action="">
-        <table cellspacing="0">
+        <table cellspacing="0" style="width:200%">
+        <tr>
+            <td>
+        <table cellspacing="0" style="width:150%">
           <tr>
             <td><input style="width:100%" type="button" value="drawLine()" onclick="DRAW(this.value)"></td>
             <td>x1<input name="dl_x1" type="text" size="5" maxlength="4" value="50">&nbsp;</td>
@@ -86,15 +89,16 @@ $dir='exames/';//Modifiquei Aqui
                 </tr>
               </table>
               <input type="button" style="font-weight:bold;width:290px;" value="clear() Diese Zeichenfl&auml;che l&ouml;schen" onclick=";if(jg2)jg2.clear();">
+             </table>
             </td>
-          </tr>
-          <tr>
+          <td>
                     <td colspan="5" height="250" valign="top"><div id="test" style="position:relative;left:0px;top:0px;width:400px;height:250px;z-index:2;overflow:visible;">
                         <div><?php  //Modifiquei Aqui
                         $var = '<img src="/Projeto/projeto/'.$dir.$image->file_name.'" alt=""/>'; 
                         echo $var;?></div>
                     </div></td>            
-          </tr>
+        </td>
+        </tr>
         </table>
     </form>
   <hr width="95%" size="1" noshade>
