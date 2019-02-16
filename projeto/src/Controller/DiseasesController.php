@@ -36,9 +36,36 @@ class DiseasesController extends AppController
     }
 
     public function articles()
-    {
-        $query = $this->Diseases->find('all')->where(['aproved' => 1]);
-        $this->set('diseases', $this->paginate($query));
+    {   
+        $keyword = $this->request->query('keyword');
+        if(!empty($keyword)){
+            $this->paginate = 
+                ['conditions'=>
+                    ['OR'=>
+                        [
+                            [
+                                'name LIKE ' => '%'.$keyword.'%',
+                                'aproved' => 1
+                            ],
+                            [
+                                'presentation LIKE ' => '%'.$keyword.'%',
+                                'aproved' => 1
+                            ],
+                            [
+                                'discution LIKE ' => '%'.$keyword.'%',
+                                'aproved' => 1
+                            ]
+                        ]
+                    ]
+            ];
+        }else{
+            $this->paginate = [
+                'conditions'=>['aproved' => 1]
+            ];
+        }
+        $diseases = $this->paginate($this->Diseases);
+        $this->set(compact('diseases'));
+        $this->set('_serialize', ['diseases']);
     }
 
     /**

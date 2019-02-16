@@ -6,6 +6,10 @@
 ?>
 <div class="diseases index large-9 medium-8 columns content">
     <h3><?= __('Articles') ?></h3>
+            <?= $this->Form->create("",['type'=>'get']) ?>
+                <?= $this->Form->control('keyword',['default'=>$this->request->query('keyword')]); ?>
+                <button>Search</button>
+            <?= $this->Form->end() ?>
             <?php foreach ($diseases as $disease): ?>
             <div>
                 <h4><?= h($disease->name) ?> by <?= $disease->has('user') ? $this->Html->link($disease->user->name, ['controller' => 'Users', 'action' => 'view', $disease->user->id]) : '' ?> </h4>
