@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 16-Fev-2019 às 17:27
+-- Generation Time: 16-Fev-2019 às 19:21
 -- Versão do servidor: 10.1.37-MariaDB
 -- versão do PHP: 7.3.1
 
@@ -235,12 +235,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `roles_id`, `created`, `modified`) VALUES
-(2, 'Rodrigo Moll', 'Rodrigo', 'rodrigomoll@gmail.com', '123456', 2, '2019-02-15 00:00:00', '2019-02-15 00:00:00'),
-(3, 'Carolina Fiorin', 'Carolina', 'cfanhoque@gmail.com', '123456', 2, '2019-02-20 00:00:00', '2019-02-20 00:00:00'),
-(4, 'Anselmo', 'Anselmo', 'anselmoneto@gmail.com', '123456', 2, '2019-02-12 00:00:00', '2019-02-20 00:00:00'),
-(5, 'Lucas Profiro', 'Lucas', 'lucasprofiro@gmail.com', '123456', 2, '2019-02-20 00:00:00', '2019-02-21 00:00:00'),
+(2, 'Rodrigo Moll', 'Rodrigo', 'rodrigomoll@gmail.com', '$2y$10$gX3RbJdCLhLTssZVOLjfju40MUrL7nvJq4ICF/pkq0zBdG17Dg2ga', 2, '2019-02-15 00:00:00', '2019-02-16 18:11:31'),
+(3, 'Carolina Fiorin', 'Carolina', 'cfanhoque@gmail.com', '$2y$10$CmGaizd6D6xlhHR/9ugO..YMiOJdt2YGR3jzNYco9M3DvqVfL8M1W', 2, '2019-02-20 00:00:00', '2019-02-16 18:11:52'),
+(4, 'Anselmo', 'Anselmo', 'anselmoneto@gmail.com', '$2y$10$0yHCikBK2ioHa3rTzgE6eOMMeXH3hY0X4GTnKGX4oOTkr/vRhuriW', 2, '2019-02-12 00:00:00', '2019-02-16 18:12:17'),
+(5, 'Lucas Profiro', 'Lucas', 'lucasprofiro@gmail.com', '$2y$10$hu11Rre2Ctf6TmVj9ZMaeud6Ezlm2SldohFbqJ6mOrL6riw4WYrQy', 2, '2019-02-20 00:00:00', '2019-02-16 18:12:48'),
 (6, 'admin', 'admin', 'admin@teste.com', '$2y$10$EXH0LuSXZH3DtU9yLzOC9OM690WaxRWD68mdS2vOVN4NOGFduICaK', 1, '2019-02-15 16:39:26', '2019-02-15 16:57:29'),
-(7, 'moderador', 'moderador', 'moderador@exemple.com', '$2y$10$u84ALy.V7YMVIvQv1qLgo.LIwb/k5tJXfo4QE8F65gfmWrq0Qbl5C', 2, '2019-02-16 16:06:56', '2019-02-16 16:06:56');
+(7, 'moderador', 'moderador', 'moderador@exemple.com', '$2y$10$u84ALy.V7YMVIvQv1qLgo.LIwb/k5tJXfo4QE8F65gfmWrq0Qbl5C', 2, '2019-02-16 16:06:56', '2019-02-16 16:06:56'),
+(8, 'Teste', 'teste', 'teste@exemple.com', '$2y$10$WJ5SzGfYGAORe6XnFMK2G./6gtsthIQakQRXBjRCVniM/dkxL1DKy', 2, '2019-02-16 17:57:40', '2019-02-16 17:57:40');
 
 --
 -- Indexes for dumped tables
@@ -368,7 +369,7 @@ ALTER TABLE `textboxes`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
