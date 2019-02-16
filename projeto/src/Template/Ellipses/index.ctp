@@ -4,14 +4,6 @@
  * @var \App\Model\Entity\Ellipse[]|\Cake\Collection\CollectionInterface $ellipses
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Ellipse'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Images'), ['controller' => 'Images', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Image'), ['controller' => 'Images', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
 <div class="ellipses index large-9 medium-8 columns content">
     <h3><?= __('Ellipses') ?></h3>
     <table cellpadding="0" cellspacing="0">

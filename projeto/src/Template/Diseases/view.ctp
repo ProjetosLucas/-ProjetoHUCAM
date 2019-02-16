@@ -5,19 +5,6 @@
  */
 $dir='exames/';//Modifiquei Aqui
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Disease'), ['action' => 'edit', $disease->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Disease'), ['action' => 'delete', $disease->id], ['confirm' => __('Are you sure you want to delete # {0}?', $disease->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Diseases'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Disease'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Images'), ['controller' => 'Images', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Image'), ['controller' => 'Images', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
 <div class="diseases view large-9 medium-8 columns content">
     <h3><?= h($disease->name) ?></h3>
     <table class="vertical-table">

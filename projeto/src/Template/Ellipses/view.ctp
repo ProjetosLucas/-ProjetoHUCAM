@@ -4,17 +4,6 @@
  * @var \App\Model\Entity\Ellipse $ellipse
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Ellipse'), ['action' => 'edit', $ellipse->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Ellipse'), ['action' => 'delete', $ellipse->id], ['confirm' => __('Are you sure you want to delete # {0}?', $ellipse->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Ellipses'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Ellipse'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Images'), ['controller' => 'Images', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Image'), ['controller' => 'Images', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
 <div class="ellipses view large-9 medium-8 columns content">
     <h3><?= h($ellipse->id) ?></h3>
     <table class="vertical-table">

@@ -4,19 +4,6 @@
  * @var \App\Model\Entity\Patient $patient
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Patient'), ['action' => 'edit', $patient->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Patient'), ['action' => 'delete', $patient->id], ['confirm' => __('Are you sure you want to delete # {0}?', $patient->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Patients'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Patient'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Genders'), ['controller' => 'Genders', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Gender'), ['controller' => 'Genders', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Images'), ['controller' => 'Images', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Image'), ['controller' => 'Images', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
 <div class="patients view large-9 medium-8 columns content">
     <h3><?= h($patient->name) ?></h3>
     <table class="vertical-table">

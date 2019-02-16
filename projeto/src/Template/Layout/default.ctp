@@ -13,7 +13,7 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$cakeDescription = 'Projeto do Hucan';
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,6 +51,38 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                  <li><?= $this->Html->link(__('Projeto Hucan'),['controller'=>'Diseases','action'=>'articles']) ?></li>
             </ul>
         </div>
+    </nav>
+    <nav class="large-3 medium-4 columns" id="actions-sidebar">
+        <?php if (!$username): ?>
+        <ul class="side-nav">
+            <li class="heading"><?= __('Actions') ?></li>
+            <li><?= $this->Html->link(__('Articles'), ['controller' => 'Diseases','action' => 'articles']) ?></li>
+            <li><?= $this->Html->link(__('New Article'), ['controller' => 'Diseases','action' => 'add']) ?></li>
+            <li><?= $this->Html->link(__('Images'), ['controller' => 'Images', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('New Image'), ['controller' => 'Images', 'action' => 'add']) ?></li>
+            <li><?= $this->Html->link(__('Login'), ['controller' => 'Users', 'action' => 'login']) ?></li>
+            <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
+        </ul>
+        <?php endif; ?>
+        <?php if ($username_role===2): ?>
+        <ul class="side-nav">
+            <li class="heading"><?= __('User Actions') ?></li>
+            <li><?= $this->Html->link(__('Articles'), ['controller' => 'Diseases','action' => 'articles']) ?></li>
+            <li><?= $this->Html->link(__('New Article'), ['controller' => 'Diseases','action' => 'add']) ?></li>
+            <li><?= $this->Html->link(__('Images'), ['controller' => 'Images', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('New Image'), ['controller' => 'Images', 'action' => 'add']) ?></li>
+        </ul>
+        <?php endif; ?>
+        <?php if ($username_role===1): ?>
+        <ul class="side-nav">
+            <li class="heading"><?= __('Admin Actions') ?></li>
+            <li><?= $this->Html->link(__('Articles'), ['controller' => 'Diseases','action' => 'articles']) ?></li>
+            <li><?= $this->Html->link(__('New Article'), ['controller' => 'Diseases','action' => 'add']) ?></li>
+            <li><?= $this->Html->link(__('Manage Articles'), ['controller' => 'Diseases','action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('Images'), ['controller' => 'Images', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('New Image'), ['controller' => 'Images', 'action' => 'add']) ?></li>
+        </ul>
+        <?php endif; ?>
     </nav>
     <?= $this->Flash->render() ?>
     <div class="container clearfix">

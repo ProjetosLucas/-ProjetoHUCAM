@@ -4,20 +4,6 @@
  * @var \App\Model\Entity\Arrow $arrow
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $arrow->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $arrow->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Arrows'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Images'), ['controller' => 'Images', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Image'), ['controller' => 'Images', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
 <div class="arrows form large-9 medium-8 columns content">
     <?= $this->Form->create($arrow) ?>
     <fieldset>
