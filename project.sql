@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 15-Fev-2019 às 22:07
+-- Generation Time: 16-Fev-2019 às 17:27
 -- Versão do servidor: 10.1.37-MariaDB
 -- versão do PHP: 7.3.1
 
@@ -239,7 +239,8 @@ INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `roles_id`, 
 (3, 'Carolina Fiorin', 'Carolina', 'cfanhoque@gmail.com', '123456', 2, '2019-02-20 00:00:00', '2019-02-20 00:00:00'),
 (4, 'Anselmo', 'Anselmo', 'anselmoneto@gmail.com', '123456', 2, '2019-02-12 00:00:00', '2019-02-20 00:00:00'),
 (5, 'Lucas Profiro', 'Lucas', 'lucasprofiro@gmail.com', '123456', 2, '2019-02-20 00:00:00', '2019-02-21 00:00:00'),
-(6, 'admin', 'admin', 'admin@teste.com', '$2y$10$EXH0LuSXZH3DtU9yLzOC9OM690WaxRWD68mdS2vOVN4NOGFduICaK', 1, '2019-02-15 16:39:26', '2019-02-15 16:57:29');
+(6, 'admin', 'admin', 'admin@teste.com', '$2y$10$EXH0LuSXZH3DtU9yLzOC9OM690WaxRWD68mdS2vOVN4NOGFduICaK', 1, '2019-02-15 16:39:26', '2019-02-15 16:57:29'),
+(7, 'moderador', 'moderador', 'moderador@exemple.com', '$2y$10$u84ALy.V7YMVIvQv1qLgo.LIwb/k5tJXfo4QE8F65gfmWrq0Qbl5C', 2, '2019-02-16 16:06:56', '2019-02-16 16:06:56');
 
 --
 -- Indexes for dumped tables
@@ -367,7 +368,7 @@ ALTER TABLE `textboxes`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
