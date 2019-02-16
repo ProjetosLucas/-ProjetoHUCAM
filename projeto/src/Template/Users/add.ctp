@@ -13,7 +13,8 @@
             echo $this->Form->control('username');
             echo $this->Form->control('email');
             echo $this->Form->control('password');
-            echo $this->Form->control('roles_id', ['options' => $roles]);
+            echo $this->Form->control('confirm_password',['type'=>'password']);
+            echo $this->Form->hidden('roles_id', ['value'=>2]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
