@@ -104,7 +104,9 @@ Para:
 
 Caso perceba que ocorreu alguma mudança no arquivo project.sql (É dito na tela preta do git), faça a atualização do banco de dados do seu computador: abra o Navegador (GoogleChrome, Mozilla,...) e  escreva: localhost/phpmyadmin/, e vai em cima da tela e aperta Base de Dados, depois seleciona "project" e aperta "Elimina" e depois em "OK". Logo, no canto esquerdo da tela  aperta em "New" e em "Criar base de Dados" escreva "project". Depois vai na aba importar e aperte "Escolher Arquivo", escolha o seguinte arquivo: C:\xampp\htdocs\Projeto\project.sql e depois aperta em "Executar". 
 
-17- Qualquer modificação você deve fazer o seguinte, abrir o git e fazer os seguintes comandos, onde você coloca o seu e-mail no "you@example.com", o seu nome em "Your Name" e algum comentário em  "Algum Comentario":
+17 - Eu baxei um site que utiliza DHTML JavaScript para desenhar sobre as figuras. Para olhar o site escreva no Browser: 'http://localhost/Projeto/Drawing/www.walterzorn.de/jsgraphics/jsgraphics.htm'. Vamos dar uma olhada depois como que colocamos esse projeto junto com o projeto do site atual.
+
+18 - Qualquer modificação você deve fazer o seguinte, abrir o git e fazer os seguintes comandos, onde você coloca o seu e-mail no "you@example.com", o seu nome em "Your Name" e algum comentário em  "Algum Comentario":
 	
 	git config --global user.email "you@example.com"
 	git config --global user.name "Your Name"
