@@ -9,96 +9,98 @@ $dir='exames/';//Modifiquei Aqui
 <head>
 <script type="text/javascript" src="http://www.walterzorn.de/en/scripts/wz_jsgraphics.js"></script>
 </head>
-<body> 
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-        <?php if (!$username): ?>
-        <ul class="side-nav">
-            <li class="heading"><?= __('Actions') ?></li>
-            <li><?= $this->Html->link(__('Articles'), ['controller' => 'Diseases','action' => 'articles']) ?></li>
-            <li><?= $this->Html->link(__('New Article'), ['controller' => 'Diseases','action' => 'add']) ?></li>
-            <li><?= $this->Html->link(__('Images'), ['controller' => 'Images', 'action' => 'index']) ?></li>
-            <li><?= $this->Html->link(__('New Image'), ['controller' => 'Images', 'action' => 'add']) ?></li>
-            <li><?= $this->Html->link(__('Login'), ['controller' => 'Users', 'action' => 'login']) ?></li>
-            <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-        </ul>
-        <?php endif; ?>
-        <?php if ($username_role===2): ?>
-        <ul class="side-nav">
-            <li class="heading"><?= __('User Actions') ?></li>
-            <li><?= $this->Html->link(__('Articles'), ['controller' => 'Diseases','action' => 'articles']) ?></li>
-            <li><?= $this->Html->link(__('New Article'), ['controller' => 'Diseases','action' => 'add']) ?></li>
-            <li><?= $this->Html->link(__('Images'), ['controller' => 'Images', 'action' => 'index']) ?></li>
-            <li><?= $this->Html->link(__('New Image'), ['controller' => 'Images', 'action' => 'add']) ?></li>
-        </ul>
-        <?php endif; ?>
-        <?php if ($username_role===1): ?>
-        <ul class="side-nav">
-            <li class="heading"><?= __('Admin Actions') ?></li>
-            <li><?= $this->Html->link(__('Articles'), ['controller' => 'Diseases','action' => 'articles']) ?></li>
-            <li><?= $this->Html->link(__('New Article'), ['controller' => 'Diseases','action' => 'add']) ?></li>
-            <li><?= $this->Html->link(__('Manage Articles'), ['controller' => 'Diseases','action' => 'index']) ?></li>
-            <li><?= $this->Html->link(__('Images'), ['controller' => 'Images', 'action' => 'index']) ?></li>
-            <li><?= $this->Html->link(__('New Image'), ['controller' => 'Images', 'action' => 'add']) ?></li>
-        </ul>
-        <?php endif; ?>
-</nav>
-<div class="images view large-9 medium-8 columns content"> 
+<body>  
       <form action="">
-        <table cellspacing="0" style="width:100%">
-            <tr>
-             <td colspan="5" height="250" valign="top"><div id="test" style="position:relative;left:0px;top:0px;z-index:2;overflow:visible;">
-                        <div><?php  //Modifiquei Aqui
-                        $var = '<img src="/Projeto/projeto/'.$dir.$image->file_name.'" alt=""/>'; 
-                        echo $var;?></div>
-                    </div></td>
-                </tr> 
+        <table cellspacing="0" style="width:200%">
+        <tr>
+            <td>
+        <table cellspacing="0" style="width:150%">
           <tr>
             <td><input style="width:100%" type="button" value="drawLine()" onclick="DRAW(this.value)"></td>
-            <td>x1<input name="dl_x1" type="text" size="5" maxlength="4" value="0">&nbsp;</td>
-            <td>y1<input name="dl_y1" type="text" size="5" maxlength="4" value="0">&nbsp;</td>
-            <td>x2<input name="dl_x2" type="text" size="5" maxlength="4" value="100">&nbsp;</td>
-            <td>y2<input name="dl_y2" type="text" size="5" maxlength="4" value="100">&nbsp;</td>
+            <td>x1<input name="dl_x1" type="text" size="5" maxlength="4" value="50">&nbsp;</td>
+            <td>y1<input name="dl_y1" type="text" size="5" maxlength="4" value="-330">&nbsp;</td>
+            <td>x2<input name="dl_x2" type="text" size="5" maxlength="4" value="500">&nbsp;</td>
+            <td>y2<input name="dl_y2" type="text" size="5" maxlength="4" value="800">&nbsp;</td>
           </tr>
           <tr align="right">
             <td><input style="width:100%" type="button" value="drawRect()" onclick="DRAW(this.value)"></td>
-            <td>x<input name="dr_x" type="text" size="5" maxlength="4" value="0">&nbsp;</td>
-            <td>y<input name="dr_y" type="text" size="5" maxlength="4" value="0">&nbsp;</td>
+            <td>x<input name="dr_x" type="text" size="5" maxlength="4" value="130">&nbsp;</td>
+            <td>y<input name="dr_y" type="text" size="5" maxlength="4" value="20">&nbsp;</td>
             <td>w<input name="dr_w" type="text" size="5" maxlength="4" value="350">&nbsp;</td>
             <td>h<input name="dr_h" type="text" size="5" maxlength="4" value="60">&nbsp;</td>
             <td><br></td>
             <td><br></td>
           </tr>
           <tr align="right">
+            <td><input style="width:100%" type="button" value="fillRect()" onclick="DRAW(this.value)"></td>
+            <td>x<input name="fr_x" type="text" size="5" maxlength="4" value="-70">&nbsp;</td>
+            <td>y<input name="fr_y" type="text" size="5" maxlength="4" value="130">&nbsp;</td>
+            <td>w<input name="fr_w" type="text" size="5" maxlength="4" value="160">&nbsp;</td>
+            <td>h<input name="fr_h" type="text" size="5" maxlength="4" value="100">&nbsp;</td>
+            <td><br></td>
+            <td><br></td>
+          </tr>
+          <tr align="left">
+            <td align="right"><input type="button" value="fillPolygon()" onclick="DRAW(this.value)"></td>
+            <td colspan="6">
+              x<input name="fp_x" type="text" size="25" value="80,126,-30,-60">&nbsp;y<input name="fp_y" type="text" size="25" value="0,130,40,100">
+            </td>
+          </tr>
+          <tr align="right">
             <td><input style="width:100%" type="button" value="drawEllipse()" onclick="DRAW(this.value)"></td>
-            <td>x<input name="do_x" type="text" size="5" maxlength="4" value="120">&nbsp;</td>
-            <td>y<input name="do_y" type="text" size="5" maxlength="4" value="120">&nbsp;</td>
+            <td>x<input name="do_x" type="text" size="5" maxlength="4" value="320">&nbsp;</td>
+            <td>y<input name="do_y" type="text" size="5" maxlength="4" value="-20">&nbsp;</td>
             <td>w<input name="do_w" type="text" size="5" maxlength="3" value="250">&nbsp;</td>
             <td>h<input name="do_h" type="text" size="5" maxlength="4" value="140">&nbsp;</td>
             <td><br></td>
             <td><br></td>
+          </tr>
+          <tr align="right">
+            <td><input style="width:100%" type="button" value="fillEllipse()" onclick="DRAW(this.value)"></td>
+            <td>x<input name="fo_x" type="text" size="5" maxlength="4" value="75">&nbsp;</td>
+            <td>y<input name="fo_y" type="text" size="5" maxlength="4" value="140">&nbsp;</td>
+            <td>w<input name="fo_w" type="text" size="5" maxlength="3" value="240">&nbsp;</td>
+            <td>h<input name="fo_h" type="text" size="5" maxlength="4" value="400">&nbsp;</td>
+            <td><br></td>
+            <td><br></td>
+          </tr>
+          <tr align="right">
+            <td><input style="width:100%" type="button" value="fillArc()" onclick="DRAW(this.value)"></td>
+            <td>x<input name="fa_x" type="text" size="5" maxlength="4" value="350">&nbsp;</td>
+            <td>y<input name="fa_y" type="text" size="5" maxlength="4" value="140">&nbsp;</td>
+            <td>w<input name="fa_w" type="text" size="5" maxlength="4" value="240">&nbsp;</td>
+            <td>h<input name="fa_h" type="text" size="5" maxlength="4" value="400">&nbsp;</td>
+            <td>arc&nbsp;begin<input name="fa_angA" type="text" size="5" maxlength="6" value="25">&deg;</td>
+            <td>arc&nbsp;end<input name="fa_angZ" type="text" size="5" maxlength="6" value="290">&deg;</td>
           </tr>
           <tr>
             <td colspan="7">
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                   <td>
-                    setColor #<input name="Color" type="text" size="7" maxlength="6" value="00aaaa">
+                    setColor(&quot;#<input name="Color" type="text" size="7" maxlength="6" value="00aaaa">&quot;)
                   </td>
                   <td align="center">
-                    setStroke<input name="Stroke" type="text" size="3" maxlength="2" value="4">
+                    setStroke(<input name="Stroke" type="text" size="3" maxlength="2" value="4">)
                   </td>
                   <td align="right">
-                    setStroke <input name="Dotted" type="checkbox">
+                    setStroke(Stroke.DOTTED<input name="Dotted" type="checkbox">)
                   </td>
                 </tr>
               </table>
-              
-              <input type="button" style="font-weight:bold;width:290px;" value="Clear" onclick=";if(jg2)jg2.clear();">  
+              <input type="button" style="font-weight:bold;width:290px;" value="clear() Diese Zeichenfl&auml;che l&ouml;schen" onclick=";if(jg2)jg2.clear();">
              </table>
-          
-                             
-</form>
-</div>
+            </td>
+          <td>
+                    <td colspan="5" height="250" valign="top"><div id="test" style="position:relative;left:0px;top:0px;width:400px;height:250px;z-index:2;overflow:visible;">
+                        <div><?php  //Modifiquei Aqui
+                        $var = '<img src="/Projeto/projeto/'.$dir.$image->file_name.'" alt=""/>'; 
+                        echo $var;?></div>
+                    </div></td>            
+        </td>
+        </tr>
+        </table>
+    </form>
   <hr width="95%" size="1" noshade>
    
 <script type="text/javascript">
